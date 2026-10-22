@@ -34,15 +34,12 @@ export function initialFX() {
     gsap.utils
       .toArray<HTMLElement>(selector)
       .map((el) => new SplitText(el, TextProps));
-  const frontRoles = split(".landing-role-front");
-  const backRoles = split(".landing-role-back");
+  const roles = split(".landing-role");
   // Every role but the first waits below the line until its turn
-  [...frontRoles.slice(1), ...backRoles.slice(1)].forEach((word) =>
-    gsap.set(word.chars, { yPercent: 110 })
-  );
+  roles.slice(1).forEach((word) => gsap.set(word.chars, { yPercent: 110 }));
 
   gsap.fromTo(
-    frontRoles[0].chars,
+    roles[0].chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
     {
       opacity: 1,
@@ -56,17 +53,6 @@ export function initialFX() {
   );
 
   gsap.fromTo(
-    ".landing-info-h2",
-    { opacity: 0, y: 30 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power1.inOut",
-      y: 0,
-      delay: 0.8,
-    }
-  );
-  gsap.fromTo(
     [".header", ".icons-section"],
     { opacity: 0 },
     {
@@ -77,8 +63,7 @@ export function initialFX() {
     }
   );
 
-  rotateRoles(frontRoles);
-  rotateRoles(backRoles);
+  rotateRoles(roles);
 }
 
 // Cycles through every role: each one holds, then slides up and out while

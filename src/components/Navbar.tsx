@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
 const navLinks = [
+  // The hero section's id
+  { id: "landingDiv", label: "HOME" },
   { id: "about", label: "ABOUT" },
   { id: "projects", label: "PROJECTS" },
   { id: "research", label: "PUBLICATIONS" },
@@ -18,7 +20,6 @@ const navLinks = [
   { id: "skills", label: "SKILLS" },
   { id: "art", label: "ART" },
   { id: "media", label: "MEDIA" },
-  { id: "moments", label: "MOMENTS" },
   { id: "contact", label: "CONTACT" },
 ];
 

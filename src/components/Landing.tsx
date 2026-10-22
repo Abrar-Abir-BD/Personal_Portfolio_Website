@@ -21,7 +21,6 @@ const toLines = (role: string) => {
 const roles = landing.roles.map((role) =>
   toLines(role).map((line) => line.replace(/ /g, "\u00a0"))
 );
-const nextRoles = [...roles.slice(1), ...roles.slice(0, 1)];
 const widestLine = roles
   .flat()
   .reduce((a, line) => (line.length > a.length ? line : a), "");
@@ -50,23 +49,12 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
           <div className="landing-info" style={roleStyle}>
             <h3>{landing.intro}</h3>
-            {/* Faded layer behind previews the next role, so it starts one ahead */}
-            <h2 className="landing-info-h2">
-              <div className="landing-role-sizer" aria-hidden="true">
-                {widestLine}
-              </div>
-              {nextRoles.map((lines, i) => (
-                <div className="landing-role landing-role-back" key={i}>
-                  {renderLines(lines)}
-                </div>
-              ))}
-            </h2>
             <h2>
               <div className="landing-role-sizer" aria-hidden="true">
                 {widestLine}
               </div>
               {roles.map((lines, i) => (
-                <div className="landing-role landing-role-front" key={i}>
+                <div className="landing-role" key={i}>
                   {renderLines(lines)}
                 </div>
               ))}

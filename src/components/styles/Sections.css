@@ -211,6 +211,31 @@
   color: var(--chipText);
   transition: gap 0.3s, color 0.3s;
 }
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.projects-more .glass-button {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 11px 24px;
+  cursor: pointer;
+}
+.projects-more .glass-button svg {
+  font-size: 20px;
+}
+/* Projects revealed by "View all projects" fade up into place */
+.projects-item-new {
+  animation: projectReveal 0.6s ease-out both;
+}
+@keyframes projectReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
 .projects-link-disabled {
   display: inline-flex;
   align-items: center;
@@ -446,5 +471,42 @@
 @media only screen and (max-width: 600px) {
   .projects-item {
     grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-item-new {
+    animation: none;
+  }
+}
+/* Laptops (1150-1400px wide): the shared 900px content width forces projects
+   to stack image over text. Give this section the wider area and keep image
+   and text side by side, with slightly smaller type. */
+@media only screen and (min-width: 1150px) and (max-width: 1400px) {
+  .projects-section .section-container {
+    width: 1200px;
+    max-width: calc(100% - 160px);
+  }
+  .projects-grid {
+    column-gap: 48px;
+  }
+  .projects-item {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 28px;
+  }
+  .projects-item-flip .projects-media {
+    order: 2;
+  }
+  .projects-media {
+    aspect-ratio: 1 / 1;
+  }
+  .projects-info h3 {
+    font-size: 24px;
+  }
+  .projects-desc {
+    font-size: 15px;
+  }
+  .projects-links a,
+  .projects-link-disabled {
+    font-size: 14px;
   }
 }

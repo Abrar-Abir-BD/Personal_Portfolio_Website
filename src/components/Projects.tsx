@@ -1,17 +1,49 @@
-import { MdArrowForward } from "react-icons/md";
+import { useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MdArrowForward, MdExpandLess, MdExpandMore } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import { GlassSection } from "./Glass";
 import { Project, projects } from "../data/portfolioContent";
+import { smoother } from "./Navbar";
 import "./styles/Sections.css";
+
+// How many projects show before "View all projects"
+const PREVIEW_COUNT = 6;
 
 // "Category · Status · Year", skipping any left blank
 const metaOf = (project: Project) =>
   [project.category, project.status, project.year].filter(Boolean).join(" · ");
 
 const Projects = () => {
+  const [expanded, setExpanded] = useState(false);
+  const shown = expanded ? projects : projects.slice(0, PREVIEW_COUNT);
+
+  // Runs only on a click, never on page load (a load-time effect would
+  // scroll the page away from the hero)
+  const toggle = () => {
+    const next = !expanded;
+    setExpanded(next);
+    // Next frame, once React has added or removed the cards
+    requestAnimationFrame(() => {
+      // The page got taller or shorter: let smooth scrolling and the scroll
+      // animations measure it again
+      ScrollTrigger.refresh();
+      // After collapsing, bring the section back into view instead of
+      // leaving the reader stranded further down the page
+      if (!next) {
+        if (window.innerWidth > 1024 && smoother) {
+          smoother.scrollTo("#projects", true, "top 90px");
+        } else {
+          document.getElementById("projects")?.scrollIntoView();
+        }
+      }
+    });
+  };
+
   return (
     <GlassSection
       id="projects"
+      className="projects-section"
       title={
         <>
           My <span>Projects</span>
@@ -20,12 +52,12 @@ const Projects = () => {
       subtitle="Selected work you have built, designed or contributed to."
     >
       <div className="projects-grid">
-        {projects.map((project, index) => (
+        {shown.map((project, index) => (
           <article
             // Every other row puts the text first, like a checkerboard
             className={`projects-item ${
               Math.floor(index / 2) % 2 ? "projects-item-flip" : ""
-            }`}
+            } ${index >= PREVIEW_COUNT ? "projects-item-new" : ""}`}
             key={index}
           >
             <div className="projects-media">
@@ -84,6 +116,27 @@ const Projects = () => {
           </article>
         ))}
       </div>
+      {projects.length > PREVIEW_COUNT && (
+        <div className="projects-more">
+          <button
+            type="button"
+            className="glass-button"
+            onClick={toggle}
+            aria-expanded={expanded}
+            data-cursor="disable"
+          >
+            {expanded ? (
+              <>
+                Show less <MdExpandLess />
+              </>
+            ) : (
+              <>
+                View all projects ({projects.length}) <MdExpandMore />
+              </>
+            )}
+          </button>
+        </div>
+      )}
     </GlassSection>
   );
 };
