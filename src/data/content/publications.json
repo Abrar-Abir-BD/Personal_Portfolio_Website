@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Title of the Paper or Article",
+    "authors": "Your Name, Co-author Name, Co-author Name",
+    "venue": "Journal or Conference Name",
+    "year": "20XX",
+    "type": "Journal",
+    "link": "#"
+  },
+  {
+    "title": "Title of the Paper or Article",
+    "authors": "Your Name, Co-author Name",
+    "venue": "Journal or Conference Name",
+    "year": "20XX",
+    "type": "Conference",
+    "link": "#"
+  },
+  {
+    "title": "Title of the Paper or Article",
+    "authors": "Your Name",
+    "venue": "Journal or Conference Name",
+    "year": "20XX",
+    "type": "Preprint",
+    "link": "#"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "role": "Role / Position Title",
+    "organization": "Organization Name",
+    "year": "20XX",
+    "location": "City, Country",
+    "description": "Describe your responsibilities and the impact you had in this role in one or two sentences.",
+    "highlights": [
+      "Key achievement or initiative",
+      "Another notable result"
+    ]
+  },
+  {
+    "role": "Role / Position Title",
+    "organization": "Organization Name",
+    "year": "20XX",
+    "location": "City, Country",
+    "description": "Describe your responsibilities and the impact you had in this role in one or two sentences.",
+    "highlights": [
+      "Key achievement or initiative",
+      "Another notable result"
+    ]
+  },
+  {
+    "role": "Role / Position Title",
+    "organization": "Organization Name",
+    "year": "NOW",
+    "location": "City, Country",
+    "description": "Describe your responsibilities and the impact you had in this role in one or two sentences.",
+    "highlights": [
+      "Key achievement or initiative",
+      "Another notable result"
+    ]
+  }
+]

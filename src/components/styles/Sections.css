@@ -1,0 +1,450 @@
+/* Skills & Expertise */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.skills-card {
+  padding: 40px;
+}
+.skills-card h3 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0;
+}
+.skills-card > p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--mutedColor);
+  margin: 10px 0px 25px;
+}
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Experience & Leadership (uses the career timeline layout from Career.css) */
+.experience-section .career-container {
+  position: relative;
+  z-index: 1;
+}
+.experience-location {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mutedColor);
+}
+.career-info-box .experience-glass {
+  width: 40%;
+  padding: 24px 28px;
+  box-sizing: border-box;
+}
+.career-info-box .experience-glass p {
+  width: 100%;
+}
+.experience-glass ul {
+  margin: 12px 0px 0px;
+  padding-left: 18px;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mutedColor);
+}
+.experience-glass li {
+  margin-bottom: 4px;
+}
+.experience-glass li::marker {
+  color: var(--accentColor);
+}
+
+/* Awards & Recognition */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.awards-card {
+  padding: 32px;
+}
+.awards-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.awards-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--chipText);
+  background: rgba(27, 104, 207, 0.25);
+  border: 1px solid rgba(111, 180, 240, 0.35);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.3),
+    0px 0px 25px 0px rgba(111, 180, 240, 0.25);
+}
+.awards-year {
+  font-size: 30px;
+  font-weight: 500;
+  color: rgba(var(--line-rgb), 0.35);
+}
+.awards-card h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+}
+.awards-card h4 {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--accentColor);
+  margin: 6px 0px 12px;
+}
+.awards-card p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mutedColor);
+  margin: 0;
+}
+
+/* Projects: floating image beside text, no card */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 60px;
+  row-gap: 90px;
+}
+.projects-item {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 40px;
+}
+.projects-item-flip .projects-media {
+  order: 2;
+}
+.projects-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Soft glow the image floats on */
+.projects-media::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(111, 180, 240, 0.28) 0%,
+    rgba(27, 104, 207, 0.12) 45%,
+    rgba(27, 104, 207, 0) 72%
+  );
+  filter: blur(20px);
+  z-index: 0;
+}
+.projects-media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.55));
+  transition: transform 0.5s;
+}
+.projects-item:hover .projects-media img {
+  transform: translateY(-8px) scale(1.03);
+}
+.projects-media span {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(var(--line-rgb), 0.5);
+}
+.projects-meta {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  margin: 0px 0px 8px;
+}
+.projects-info h3 {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0px 0px 14px;
+}
+.projects-desc {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--mutedColor);
+  margin: 0px 0px 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.projects-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.projects-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.projects-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--chipText);
+  transition: gap 0.3s, color 0.3s;
+}
+.projects-link-disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mutedColor);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.projects-links a:hover {
+  gap: 10px;
+  color: var(--accentColor);
+}
+
+/* Research & Publications */
+.research-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.research-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 32px 40px;
+}
+.research-year {
+  font-size: 40px;
+  font-weight: 500;
+  color: rgba(var(--line-rgb), 0.35);
+  flex-shrink: 0;
+}
+.research-body {
+  flex: 1;
+}
+.research-body h3 {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  margin: 12px 0px 8px;
+}
+.research-authors {
+  font-size: 15px;
+  font-weight: 300;
+  margin: 0;
+}
+.research-venue {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accentColor);
+  margin: 4px 0px 0px;
+}
+.research-card .glass-button {
+  flex-shrink: 0;
+}
+
+/* Art Portfolio */
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.art-card {
+  padding: 16px;
+}
+.art-card .glass-image {
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+}
+.art-grid .art-card:nth-child(3n + 2) .glass-image {
+  aspect-ratio: 1 / 1;
+}
+.art-info {
+  padding: 16px 8px 4px;
+}
+/* Moments from Life: landscape photos, same card style as the art grid */
+.moments-grid .art-card .glass-image,
+.moments-grid .art-card:nth-child(3n + 2) .glass-image {
+  aspect-ratio: 4 / 3;
+}
+.art-info h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+.art-info p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mutedColor);
+  margin: 4px 0px 0px;
+}
+
+/* Featured in Media */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.media-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.media-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.media-date {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--mutedColor);
+}
+.media-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  margin: 0;
+}
+.media-card h3 {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 400;
+  margin: 10px 0px 25px;
+}
+.media-card .glass-button {
+  margin-top: auto;
+}
+
+@media only screen and (max-width: 1400px) {
+  .skills-card {
+    padding: 32px;
+  }
+  .career-info-box .experience-glass {
+    width: 45%;
+  }
+  .projects-item {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .projects-item-flip .projects-media {
+    order: 0;
+  }
+  .projects-media {
+    aspect-ratio: 4 / 3;
+  }
+  .projects-info h3 {
+    font-size: 24px;
+  }
+  .awards-grid,
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .research-card {
+    gap: 25px;
+    padding: 28px 32px;
+  }
+  .research-year {
+    font-size: 30px;
+  }
+  .research-body h3 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .projects-grid {
+    row-gap: 60px;
+  }
+  .projects-item {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  .skills-grid,
+  .awards-grid,
+  .projects-grid,
+  .media-grid,
+  .art-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-card,
+  .awards-card,
+  .media-card {
+    padding: 26px;
+  }
+  .career-info-box .experience-glass {
+    width: 90%;
+    margin-left: 10%;
+    padding: 20px;
+  }
+  .career-info-box .experience-glass p {
+    padding-left: 0;
+  }
+  .research-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 26px;
+  }
+  .research-year {
+    font-size: 24px;
+  }
+  .art-grid .art-card:nth-child(3n + 2) .glass-image {
+    aspect-ratio: 4 / 5;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .art-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Career.css pulls its section up under "What I Do" on tablets/phones;
+   Experience follows Skills instead, so keep normal spacing there. */
+@media only screen and (max-width: 1025px) {
+  .experience-section.career-section {
+    margin-top: 0;
+    padding-top: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .career-info-box .experience-glass {
+    width: 95%;
+    margin-left: 5%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .projects-item {
+    grid-template-columns: 1fr;
+  }
+}

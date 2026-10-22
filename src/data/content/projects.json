@@ -1,0 +1,123 @@
+[
+  {
+    "slug": "flexi-grow",
+    "title": "Flexi-Grow: AI-Enabled Soft Robot for Exploration",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "A pneumatically driven soft-growing robotic platform designed to navigate fragile or narrow environments where traditional rigid robots fail. It utilizes AI-based object detection and real-time FPV video for disaster response and exploration.",
+    "description": [],
+    "image": "/images/projects/flexi_grow.webp",
+    "tags": ["Soft Robotics", "AI", "Disaster Relief", "Pneumatics"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "monando",
+    "title": "MonAndo: A Mental Wellness App",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "A free, AI-powered web app that turns ordinary smartphones into Virtual Reality Exposure Therapy (VRET) devices. Designed for underprivileged youth, it provides immersive therapy scenarios, non-judgmental AI reflection, and emergency SOS tools.",
+    "description": [],
+    "image": "/images/projects/monando.webp",
+    "tags": ["AI", "VR", "Mental Health", "Therapy"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "dynamic-symmetry-robot",
+    "title": "Dynamic Symmetry-Based Omnidirectional Robot",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "A versatile robotic system featuring an extreme dynamic symmetry-based mechanical design for flexible, omnidirectional movement and multifunctional applications.",
+    "description": [
+      "The robot features an extreme dynamic symmetry-based mechanical design for omnidirectional movement. Its symmetrical structure enables versatile locomotion in multiple directions.",
+      "The mechanism allows the robot to adapt its movement to different terrain conditions and navigation challenges. Its design supports multifunctional applications through flexible and efficient mobility.",
+      "The robot demonstrates the potential of symmetrical mechanisms in developing versatile robotic systems."
+    ],
+    "image": "/images/projects/new.webp",
+    "tags": ["Robotics", "Disaster Relief", "Exploration"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "water-contamination-detection-system",
+    "title": "Cheap & Rapid Water Contamination Detection System",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "An ultra-low-cost, handheld device that uses a macro camera and edge AI to inspect water samples. It provides real-time detection of microplastics, microfibers, and iron particles with ~90% accuracy.",
+    "description": [],
+    "image": "/images/projects/water_detect.webp",
+    "tags": ["Water", "Computer Vision", "AI", "Sanitation"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "autonomous-underwater-robot",
+    "title": "Autonomous Underwater Robot for Environmental Analysis",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "This custom AUV submerges to navigate and explore various underwater environments. It inspects water quality in real-time using sensors while detecting contaminants via computer vision. All gathered environmental and visual data is then transmitted back to the surface for analysis.",
+    "description": [],
+    "image": "/images/projects/auto.webp",
+    "tags": ["Robotics", "AI", "Underwater", "Computer Vision"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "ai-drainage-sewage-maintenance-system",
+    "title": "AI-Assisted Drainage & Sewage Maintenance System",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "A system of specialized robots utilizing AI and computer vision to autonomously detect blockages, identify toxic gases, and clean urban drainage systems. It performs these tasks without risking human lives in hazardous environments.",
+    "description": [],
+    "image": "/images/projects/ai-drainage.webp",
+    "tags": ["Robotics", "AI", "Sanitation", "Computer Vision"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "six-wheeler-pipeline-inspection-robot",
+    "title": "6-Wheeler Robot for Pipeline Inspection",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": true,
+    "summary": "A rugged, 6-wheel drive robot that autonomously navigates underground sewage lines to identify blockages and detect explosive gases like methane. It features a robotic arm for debris removal and automatic chemical mitigation.",
+    "description": [],
+    "image": "/images/projects/pipeline_robot.webp",
+    "tags": ["Robotics", "AI", "Sensors", "Safety"],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "artificial-soil-enhanced-substrate",
+    "title": "Artificial Soil: Enhanced Substrate for Agriculture",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "An ultra-lightweight, biologically enhanced coco peat substrate designed to replace traditional soil for rooftop and urban farming. It features superior aeration, retains up to 10x its weight in water, and utilizes Trichoderma fungi for disease resistance.",
+    "description": [],
+    "image": "/images/projects/soil.webp",
+    "tags": ["Agriculture", "Bioengineering", "Urban Farming"],
+    "links": [
+      {
+        "name": "Project Video",
+        "url": "https://youtu.be/H5mQ0zMN1lw"
+      }
+    ],
+    "code": ""
+  }
+]

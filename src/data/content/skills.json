@@ -1,0 +1,43 @@
+[
+  {
+    "category": "Category Name",
+    "description": "A short line about this area of expertise.",
+    "skills": [
+      "Skill One",
+      "Skill Two",
+      "Skill Three",
+      "Skill Four",
+      "Skill Five"
+    ]
+  },
+  {
+    "category": "Category Name",
+    "description": "A short line about this area of expertise.",
+    "skills": [
+      "Skill One",
+      "Skill Two",
+      "Skill Three",
+      "Skill Four"
+    ]
+  },
+  {
+    "category": "Category Name",
+    "description": "A short line about this area of expertise.",
+    "skills": [
+      "Skill One",
+      "Skill Two",
+      "Skill Three",
+      "Skill Four",
+      "Skill Five"
+    ]
+  },
+  {
+    "category": "Category Name",
+    "description": "A short line about this area of expertise.",
+    "skills": [
+      "Skill One",
+      "Skill Two",
+      "Skill Three"
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "title": "DEVELOP",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia aliquid laboriosam ducimus sit molestiae.",
+    "tools": ["JavaScript", "TypeScript", "Three.js", "React", "Css", "Node.js", "Next.js", "Express.js", "PHP", "MySql"]
+  },
+  {
+    "title": "DESIGN",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia aliquid laboriosam ducimus sit molestiae",
+    "tools": ["Blender", "Zbrush", "UI Design", "Motion", "Rigging", "3D Animation", "Character Design", "Modelling"]
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "outlet": "Publication / Outlet",
+    "headline": "Headline of the article, interview or feature",
+    "date": "Month 20XX",
+    "type": "Article",
+    "link": "#"
+  },
+  {
+    "outlet": "Publication / Outlet",
+    "headline": "Headline of the article, interview or feature",
+    "date": "Month 20XX",
+    "type": "Interview",
+    "link": "#"
+  },
+  {
+    "outlet": "Publication / Outlet",
+    "headline": "Headline of the article, interview or feature",
+    "date": "Month 20XX",
+    "type": "Podcast",
+    "link": "#"
+  }
+]
