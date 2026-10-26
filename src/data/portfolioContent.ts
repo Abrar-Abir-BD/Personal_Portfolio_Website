@@ -138,11 +138,43 @@ export type Publication = {
   moreLinks: ProjectLink[];
 };
 
+export type ArtLayout =
+  | "text-left" // text left, artwork right (full-height)
+  | "text-right" // artwork left, text right
+  | "overlay-dark" // full-bleed artwork, light text on a dark veil
+  | "overlay-light" // full-bleed artwork, dark text on a pale panel
+  | "row" // several artworks in a row, text below
+  | "mosaic" // three studies in a staggered grid beside the text
+  | "triptych" // artwork | text | artwork
+  | "wide"; // one landscape artwork framed large, text below
+
 export type Artwork = {
+  slug: string;
   title: string;
   medium: string;
-  year: string;
-  image: string;
+  theme: string;
+  // As written on the piece, e.g. "25/12/24" ("" hides it)
+  date: string;
+  description: string;
+  // File names in /public/images/art/gallery (without .jpg); the 760px
+  // previews are in gallery/thumb
+  images: string[];
+  // Which part of the artwork to keep when it's cropped, e.g. "70% center"
+  focus: string;
+  // "cover" fills the frame (may crop); "contain" shows the whole painting,
+  // with a soft blurred copy filling the spare space
+  fit: "cover" | "contain";
+  layout: ArtLayout;
+  // "portfolio": the PDF collection; "new": the New Works chapter
+  collection: "portfolio" | "new";
+  // Shown in the Art section on the main page
+  featured: boolean;
+};
+
+export type ArtPortfolio = {
+  intro: string;
+  artist: { skills: string[]; bio: string[]; email: string };
+  artworks: Artwork[];
 };
 
 export type Moment = {
@@ -176,7 +208,19 @@ export const awards: Award[] = awardsJson.map((award) => ({
 }));
 export const experience: Experience[] = experienceJson;
 export const skills: SkillGroup[] = skillsJson;
-export const artworks: Artwork[] = artJson;
+// JSON gives the union fields as plain text; narrow just those
+export const art: ArtPortfolio = {
+  ...artJson,
+  artworks: artJson.artworks.map((work) => ({
+    ...work,
+    layout: work.layout as ArtLayout,
+    fit: work.fit as Artwork["fit"],
+    collection: work.collection as Artwork["collection"],
+  })),
+};
+export const artworks = art.artworks;
+export const artImage = (name: string, size: "full" | "thumb" = "full") =>
+  `/images/art/gallery/${size === "thumb" ? "thumb/" : ""}${name}.jpg`;
 export const media: MediaFeature[] = mediaJson;
 export const moments: Moment[] = momentsJson;
 export const contact: Contact = contactJson;

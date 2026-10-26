@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/projects/:slug", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/projects/:slug", "destination": "/index.html" },
+    { "source": "/art", "destination": "/index.html" }
+  ]
 }

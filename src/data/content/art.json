@@ -1,38 +1,298 @@
-[
-  {
-    "title": "Artwork Title",
-    "medium": "Medium",
-    "year": "20XX",
-    "image": ""
+{
+  "intro": "Art is where I find my voice. I paint the quiet moments we often miss, from the light on an ancient temple wall to the unguarded look on a face, in watercolour, graphite, ink and pastel.",
+  "artist": {
+    "skills": [
+      "Watercolor painting",
+      "Graphite & charcoal shading",
+      "Anatomical figure drawing",
+      "Architectural perspective drawing",
+      "Fine-liner ink sketching",
+      "Pastel colour painting"
+    ],
+    "bio": [
+      "Hey, I’m Abrar Abir. I grew up in a coastal village in Bagerhat, Bangladesh, where the rhythms of nature and tradition shaped my worldview. While I am often defined by my work in science research and leadership, art is where I truly find my voice. Deeply influenced by Sanatani traditions and the rich history of South Asian artistry, I strive to capture the fleeting moments we often miss—the way light hits an ancient temple wall or the quiet, unguarded look on a person’s face.",
+      "My work is a dialogue between the past and the future. I explore my heritage through paintings of divine figures and architecture, yet I also drift into the imaginary, designing futuristic characters that blur the line between human and machine. Whether I am studying the weight of a pose in a sketch or the shadows on a simple piece of fruit, my goal is always the same: to tell an honest story, be it a calm river scene or a gritty vision of the future."
+    ],
+    "email": "abrar.abir.eng@gmail.com"
   },
-  {
-    "title": "Artwork Title",
-    "medium": "Medium",
-    "year": "20XX",
-    "image": ""
-  },
-  {
-    "title": "Artwork Title",
-    "medium": "Medium",
-    "year": "20XX",
-    "image": ""
-  },
-  {
-    "title": "Artwork Title",
-    "medium": "Medium",
-    "year": "20XX",
-    "image": ""
-  },
-  {
-    "title": "Artwork Title",
-    "medium": "Medium",
-    "year": "20XX",
-    "image": ""
-  },
-  {
-    "title": "Artwork Title",
-    "medium": "Medium",
-    "year": "20XX",
-    "image": ""
-  }
-]
+  "artworks": [
+    {
+      "slug": "the-potters-hands",
+      "title": "The Potter’s Hands",
+      "medium": "Acrylic on Canvas",
+      "theme": "Tradition in Motion",
+      "date": "25/12/24",
+      "description": "This painting is about the focus and rhythm of craftsmanship. I chose to use vibrant, warm tones on the potter to show the life and energy he puts into his work. It’s a tribute to the humble beauty of creating something by hand—a skill passed down through generations that still feels vital and alive today.",
+      "images": [
+        "potters-hands"
+      ],
+      "focus": "78% center",
+      "layout": "text-left",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "the-devotee",
+      "title": "The Devotee",
+      "medium": "Watercolor and Ink",
+      "theme": "Sacred Reflection",
+      "date": "12/07/24",
+      "description": "A study of the intimate bond between the mortal and the divine. By juxtaposing the vivid, iconic presence of Goddess Durga with the quiet, earthly posture of the seated woman, the work explores how faith provides a sanctuary of inner peace amidst cultural vibrancy.",
+      "images": [
+        "the-devotee"
+      ],
+      "focus": "center",
+      "layout": "text-right",
+      "collection": "portfolio",
+      "featured": true,
+      "fit": "cover"
+    },
+    {
+      "slug": "life-on-the-water",
+      "title": "Life on the Water",
+      "medium": "Watercolor on Textured Paper",
+      "theme": "Aquatic Rhythm",
+      "date": "13/10/25",
+      "description": "A bird’s-eye perspective of traditional river boats, capturing the organized chaos of river life. The composition emphasizes the geometric beauty of the vessels, symbolizing the flow of commerce, community, and the persistent current of daily survival.",
+      "images": [
+        "life-on-the-water"
+      ],
+      "focus": "center",
+      "layout": "text-left",
+      "collection": "portfolio",
+      "featured": true,
+      "fit": "cover"
+    },
+    {
+      "slug": "steps-of-ancients",
+      "title": "Steps of Ancients",
+      "medium": "Watercolor and Architectural Sketching",
+      "theme": "Heritage and Permanence",
+      "date": "05/02/23",
+      "description": "This piece captures the vertical majesty of temple architecture rising from the ghats. It serves as a tribute to historical endurance, where every brick and spire tells a story of centuries of pilgrimage and the unwavering spirit of the city.",
+      "images": [
+        "steps-of-ancients"
+      ],
+      "focus": "30% center",
+      "layout": "overlay-light",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "sci-fi-characters",
+      "title": "Sci-Fi Characters",
+      "medium": "Fine-liner ink and pen on paper",
+      "theme": "Cybernetic Nomads",
+      "date": "14/09/22",
+      "description": "A collection of speculative character designs blending organic human forms with complex mechanical exoskeletons and tactical gear. These sketches explore a future where technology is scavenged and integrated into daily survival, highlighted by intricate line work and high-contrast shading.",
+      "images": [
+        "scifi-1",
+        "scifi-2",
+        "scifi-3",
+        "scifi-4"
+      ],
+      "focus": "center",
+      "layout": "row",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "whispers-of-buddha",
+      "title": "Whispers of Buddha",
+      "medium": "Soft Pastels and Watercolor",
+      "theme": "Enlightenment",
+      "date": "23/01/24",
+      "description": "A spiritual portrait of the Buddha radiating an ethereal, warm aura. The soft transitions of color symbolize the expansion of consciousness and the transition from the material shadows into the light of ultimate wisdom.",
+      "images": [
+        "whispers-of-buddha"
+      ],
+      "focus": "20% center",
+      "layout": "overlay-dark",
+      "collection": "portfolio",
+      "featured": true,
+      "fit": "contain"
+    },
+    {
+      "slug": "the-tandava-of-lord-shiva",
+      "title": "The Tandava of Lord Shiva",
+      "medium": "Graphite Pencil on Paper",
+      "theme": "Cosmic energy and motion",
+      "date": "15/05/23",
+      "description": "An exploration of divine kinesis, capturing the rhythmic “Tandava” dance of Lord Shiva. The piece utilizes high-energy cross-hatching to represent the vibrating energy of the universe, where creation and destruction exist in a singular, powerful moment of balance.",
+      "images": [
+        "tandava"
+      ],
+      "focus": "center",
+      "layout": "text-right",
+      "collection": "portfolio",
+      "featured": true,
+      "fit": "contain"
+    },
+    {
+      "slug": "the-quiet-table",
+      "title": "The Quiet Table",
+      "medium": "Watercolor on Paper",
+      "theme": "Finding beauty in the ordinary",
+      "date": "25/12/23",
+      "description": "This piece is a study of the simple things that make up a home—a bottle, some fruit, and a glass of wine. I was interested in how light plays across different surfaces, like the shine on an apple versus the soft folds of a cloth. It’s meant to feel like a calm, stolen moment in the middle of a busy day, reminding us to slow down and notice the colors in the objects we use every day.",
+      "images": [
+        "the-quiet-table"
+      ],
+      "focus": "center",
+      "layout": "text-left",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "the-studio-sanctuary",
+      "title": "The Studio Sanctuary",
+      "medium": "Watercolor",
+      "theme": "The Artist’s Perspective",
+      "date": "12/08/24",
+      "description": "A “painting within a painting” that captures a solitary artist at work in a sun-drenched courtyard. It explores the concept of the artist as an observer, documenting the harmony between man-made architecture and the sprawling, untamed beauty of nature.",
+      "images": [
+        "studio-sanctuary"
+      ],
+      "focus": "50% center",
+      "layout": "text-right",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "human-figures",
+      "title": "Human Figures",
+      "medium": "Graphite Pencil on Newsprint",
+      "theme": "Anatomical precision and structure",
+      "date": "17/07/22",
+      "description": "A series of academic figure studies focusing on the seated male form. These sketches utilize triangular compositional framing and structural line-work to explore the physical weight, muscle tension, and quiet dignity of the human body in repose.",
+      "images": [
+        "figure-1",
+        "figure-2",
+        "figure-3"
+      ],
+      "focus": "center",
+      "layout": "mosaic",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "the-pensive-sari",
+      "title": "The Pensive Sari",
+      "medium": "Colored Pencil and Watercolor Wash",
+      "theme": "Silent Contemplation",
+      "date": "22/11/23",
+      "description": "A portrait focusing on the “Bhava” or mood of the subject. The cool blue tones of the saree contrast with the earthy textures of the background, highlighting a moment of deep, personal introspection tucked away in a natural setting.",
+      "images": [
+        "pensive-sari-study",
+        "pensive-sari"
+      ],
+      "focus": "center",
+      "layout": "triptych",
+      "collection": "portfolio",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "indigo-morning",
+      "title": "Indigo Morning",
+      "medium": "Monochrome Watercolor on Paper",
+      "theme": "Mist and Memory",
+      "date": "",
+      "description": "Fishermen setting out through the river fog before the day has fully begun. Working in a single indigo, I let the water carry the pigment and dissolve the far bank into mist, so the boats feel half-remembered, the way mornings by the river felt in the village where I grew up.",
+      "images": [
+        "indigo-morning"
+      ],
+      "focus": "center",
+      "layout": "wide",
+      "collection": "new",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "shade-and-blossom",
+      "title": "Shade and Blossom",
+      "medium": "Watercolor on Textured Paper",
+      "theme": "Rest and Reverie",
+      "date": "",
+      "description": "A woman rests against the trunk of an old tree, flowers woven into her hair and a single white blossom held loosely in her hand. Painted in the soft, muted palette of traditional South Asian miniatures, the piece is about stillness: the private, unhurried moment when the day pauses and the mind is allowed to wander.",
+      "images": [
+        "shade-and-blossom"
+      ],
+      "focus": "center",
+      "layout": "text-left",
+      "collection": "new",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "before-the-monsoon",
+      "title": "Before the Monsoon",
+      "medium": "Wet-on-Wet Watercolor",
+      "theme": "The Weight of the Sky",
+      "date": "",
+      "description": "A study of the sky in the hour before the rain arrives, when clouds gather low over the fields and the light turns strange and bright. I worked wet-on-wet and let the colours bleed freely, so the painting holds the restless, unfinished energy of weather that hasn’t yet made up its mind.",
+      "images": [
+        "before-the-monsoon"
+      ],
+      "focus": "center",
+      "layout": "overlay-light",
+      "collection": "new",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "lines-of-a-lifetime",
+      "title": "Lines of a Lifetime",
+      "medium": "Charcoal on Paper",
+      "theme": "Time Written on the Face",
+      "date": "",
+      "description": "A charcoal portrait of an elderly man set against layered leaves and fallen blossoms. Every crease and shadow on his face was built up slowly, line over line, to read like a record of the years he has lived: weathered, unguarded, and quietly dignified.",
+      "images": [
+        "lines-of-a-lifetime"
+      ],
+      "focus": "center",
+      "layout": "text-right",
+      "collection": "new",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "the-waiting-boat",
+      "title": "The Waiting Boat",
+      "medium": "Watercolor on Textured Paper",
+      "theme": "Stillness on the River",
+      "date": "",
+      "description": "A lone wooden boat rests in the shallows beside a sunlit sandbank, its mooring poles standing in the green water. It is a scene from the riverside life I grew up with: loose, fresh brushwork for the trees, and quiet reflections that make the whole river feel as if it is holding its breath.",
+      "images": [
+        "the-waiting-boat"
+      ],
+      "focus": "62% center",
+      "layout": "text-left",
+      "collection": "new",
+      "featured": false,
+      "fit": "cover"
+    },
+    {
+      "slug": "beneath-the-trees",
+      "title": "Beneath the Trees",
+      "medium": "Graphite Pencil on Paper",
+      "theme": "Shared Silence",
+      "date": "",
+      "description": "Two figures walk together along a tree-lined path, small against the canopy above them. Built entirely from directional hatching, the drawing turns sunlight and shadow into rhythm, and leaves the people at its centre a moment of companionship that needs no words.",
+      "images": [
+        "beneath-the-trees"
+      ],
+      "focus": "center",
+      "layout": "wide",
+      "collection": "new",
+      "featured": false,
+      "fit": "cover"
+    }
+  ]
+}

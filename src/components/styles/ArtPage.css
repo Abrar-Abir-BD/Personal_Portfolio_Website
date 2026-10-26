@@ -1,0 +1,756 @@
+/* The PDF's type: DM Sans (heavy titles, italic body), DM Serif Display
+   italic (cover), and script faces standing in for Amoresa and Brittany
+   Signature, which aren't freely available */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..800&family=DM+Serif+Display:ital@1&family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap");
+
+/* ── Exhibition tokens (from the PDF) ── */
+.art-page {
+  --art-paper: #f7f4ec;
+  --art-ink: #141210;
+  --art-muted: #4a443b;
+  --art-gold: #9b7a2e;
+  --art-gold-deep: #7e6223;
+  --art-sans: "DM Sans", system-ui, sans-serif;
+  --art-display: "DM Serif Display", Georgia, serif;
+  --art-script: "Great Vibes", cursive;
+  --art-signature: "Mrs Saint Delafield", "Great Vibes", cursive;
+  --art-gutter: clamp(20px, 6vw, 110px);
+
+  position: relative;
+  /* Covers the site's dark atmosphere layer: this page is a white gallery */
+  background: radial-gradient(
+      120% 80% at 50% 0%,
+      #fbf9f3 0%,
+      var(--art-paper) 60%,
+      #efeadd 100%
+    )
+    fixed;
+  color: var(--art-ink);
+  font-family: var(--art-sans);
+  overflow-x: clip;
+  user-select: text;
+  -webkit-user-select: text;
+}
+/* Paper grain over everything, like printed stock. Fixed, so it costs
+   nothing while scrolling; never catches clicks. */
+.art-page *,
+.art-page *::before,
+.art-page *::after {
+  box-sizing: border-box;
+}
+.art-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  opacity: 0.13;
+  mix-blend-mode: multiply;
+}
+/* The site's themes set a font on every heading; on this page DM Sans and
+   DM Serif Display take over (":root" lifts these above those rules) */
+:root .art-page h1,
+:root .art-page h2,
+:root .art-page h3 {
+  font-family: var(--art-sans);
+}
+:root .art-page .art-cover-title,
+:root .art-page .art-closing-inner h2 {
+  font-family: var(--art-display);
+}
+.art-page a {
+  color: inherit;
+}
+.art-page a:hover {
+  color: inherit;
+}
+
+/* ── Top bar & progress ── */
+.art-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 70;
+  background: var(--art-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.art-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 65;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--art-gutter);
+  pointer-events: none;
+}
+/* Small dark glass pills: readable over pale paper and busy paintings */
+.art-page .art-bar > * {
+  pointer-events: auto;
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #fff;
+  background: rgba(20, 17, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.art-page .art-bar-back:hover {
+  color: #fff;
+  background: var(--art-gold);
+}
+.art-bar-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+.art-bar-title {
+  font-family: var(--art-display);
+  font-style: italic;
+  font-size: 17px;
+}
+
+/* ── Cover ── */
+.art-cover,
+.art-closing {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.art-cover > img,
+.art-closing > img {
+  position: absolute;
+  inset: -6% 0;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+}
+.art-cover-inner,
+.art-closing-inner {
+  position: relative;
+  z-index: 1;
+  padding: 0px 20px;
+}
+/* White italic serif with a hard black offset shadow, as on the PDF cover */
+.art-cover-title,
+.art-closing-inner h2 {
+  margin: 0;
+  font-family: var(--art-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(56px, 10vw, 168px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: -0.045em 0.045em 0px #000;
+}
+.art-cover-title {
+  overflow: hidden;
+  padding: 0.05em 0.1em 0.12em;
+}
+.art-cover-title > span {
+  display: block;
+}
+.art-cover-by {
+  margin: -0.15em 0px 0px;
+  font-family: var(--art-script);
+  font-size: clamp(36px, 5.4vw, 92px);
+  line-height: 1;
+  color: #000;
+  text-shadow: 0px 0px 2px #fff, 0px 0px 1px #fff, 0px 0px 14px rgba(255, 255, 255, 0.7);
+}
+.art-cover-cue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0px 1px 8px rgba(0, 0, 0, 0.6);
+}
+.art-cover-cue svg {
+  animation: artCue 1.8s ease-in-out infinite;
+}
+@keyframes artCue {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ── The artist: B&W portrait beside the mustard panel ── */
+.art-artist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+/* The portrait stays one screen tall and pinned while a long bio scrolls */
+.art-artist-photo {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+}
+.art-artist-panel {
+  background: var(--art-gold);
+  color: #fff;
+  padding: clamp(60px, 9vh, 110px) clamp(28px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.art-artist-title {
+  position: relative;
+  margin: 0px 0px 48px;
+  font-size: clamp(54px, 6.6vw, 112px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+/* The signature scrawled across the heading */
+.art-signature {
+  position: absolute;
+  left: 18%;
+  bottom: -0.7em;
+  font-family: var(--art-signature);
+  font-weight: 400;
+  font-size: 0.78em;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #000;
+  white-space: nowrap;
+  transform: rotate(-4deg);
+}
+.art-artist-label {
+  margin: 0px 0px 8px;
+  font-size: 19px;
+  font-weight: 800;
+  font-style: italic;
+}
+.art-skills {
+  margin: 0px 0px 28px;
+  padding-left: 22px;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.art-bio,
+.art-contact {
+  margin: 0px 0px 20px;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: justify;
+  hyphens: auto;
+}
+.art-contact {
+  margin: 8px 0px 0px;
+  font-weight: 700;
+}
+.art-contact a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Artwork pictures (shared) ── */
+.art-pic {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0%);
+}
+.art-pic img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Headroom for the parallax drift */
+  scale: 1.12;
+}
+/* Whole-painting mode: nothing is cropped; a blurred, dimmed copy of the
+   same painting fills the spare space like a soft gallery backdrop */
+.art-pic-contain {
+  background: #1c1813;
+}
+.art-pic-contain img {
+  object-fit: contain;
+  scale: 1;
+}
+.art-pic-contain .art-pic-backdrop {
+  object-fit: cover;
+  scale: 1.25;
+  filter: blur(28px) brightness(0.55) saturate(1.15);
+}
+/* Bold italic date stamp, as on the PDF slides */
+.art-date {
+  position: absolute;
+  top: 84px;
+  right: 28px;
+  z-index: 2;
+  font-size: clamp(18px, 1.8vw, 28px);
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.55);
+}
+
+/* ── Captions (shared) ── */
+.art-caption {
+  max-width: 620px;
+}
+.art-no {
+  margin: 0px 0px clamp(10px, 2vh, 18px);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--art-gold);
+}
+.art-no span {
+  color: var(--art-muted);
+  opacity: 0.7;
+}
+/* Heavy, tightly packed gold capitals */
+.art-title {
+  margin: 0px 0px clamp(18px, 3.4vh, 34px);
+  font-size: clamp(40px, min(6vw, 9.5vh), 104px);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  color: var(--art-gold);
+}
+.art-title-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.art-title-line {
+  display: block;
+}
+.art-meta {
+  margin: 0;
+  font-size: clamp(15px, min(1.25vw, 2.2vh), 20px);
+  font-style: italic;
+  line-height: 1.5;
+}
+.art-meta > div {
+  margin-bottom: clamp(10px, 2vh, 18px);
+}
+.art-meta dt {
+  display: inline;
+  font-weight: 800;
+}
+.art-meta dd {
+  display: inline;
+  margin: 0;
+  font-weight: 400;
+}
+.art-meta > div:last-child {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ── Slides ── */
+.art-slide {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Text beside a full-height artwork (PDF slides 3, 4, 5, 9, 10, 11) */
+.art-text-left,
+.art-text-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.art-text-left,
+.art-text-right,
+.art-triptych,
+.art-overlay-dark,
+.art-overlay-light {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.art-text-left .art-caption,
+.art-text-right .art-caption {
+  padding: 8vh var(--art-gutter);
+  justify-self: center;
+}
+.art-pic-half {
+  align-self: stretch;
+}
+.art-text-right .art-pic-half {
+  order: -1;
+}
+.art-text-right .art-date {
+  right: auto;
+  left: 24px;
+  top: auto;
+  bottom: 24px;
+}
+
+/* Full-bleed artwork with text on a veil (PDF slides 6 and 8) */
+.art-overlay-dark,
+.art-overlay-light {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.art-pic-bleed {
+  position: absolute;
+  inset: 0;
+}
+.art-veil {
+  position: relative;
+  z-index: 1;
+  width: min(48%, 680px);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 8vh var(--art-gutter) 8vh clamp(28px, 4vw, 70px);
+}
+.art-overlay-light .art-veil {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 244, 236, 0) 0%,
+    rgba(247, 244, 236, 0.82) 16%,
+    rgba(247, 244, 236, 0.9) 100%
+  );
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.art-overlay-light .art-title {
+  color: var(--art-ink);
+}
+.art-overlay-dark .art-veil {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 8, 6, 0) 0%,
+    rgba(10, 8, 6, 0.42) 22%,
+    rgba(10, 8, 6, 0.55) 100%
+  );
+  color: #fff;
+}
+.art-overlay-dark .art-title {
+  color: #fff;
+}
+.art-overlay-dark .art-no,
+.art-overlay-dark .art-no span {
+  color: #fff;
+}
+.art-overlay-light .art-date,
+.art-overlay-dark .art-date {
+  top: auto;
+  right: auto;
+  left: 28px;
+  bottom: 28px;
+}
+.art-overlay-dark .art-date {
+  left: auto;
+  right: 28px;
+}
+
+/* A row of studies with the text beneath (PDF slide 7) */
+.art-row-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 2.6vw, 44px);
+  padding: 12vh var(--art-gutter) 6vh;
+  align-items: start;
+}
+.art-pic-row {
+  aspect-ratio: 3 / 4;
+  max-height: 52vh;
+  width: 100%;
+  justify-self: center;
+  box-shadow: 0px 24px 40px -26px rgba(40, 30, 10, 0.55);
+}
+.art-pic-row:nth-child(even) {
+  margin-top: 48px;
+}
+.art-row .art-date {
+  right: auto;
+  left: 18px;
+  color: var(--art-ink);
+  text-shadow: none;
+}
+.art-row-grid + .art-caption {
+  max-width: none;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  column-gap: 5vw;
+  align-items: end;
+  padding: 0px var(--art-gutter) 12vh;
+}
+.art-row-grid + .art-caption .art-no {
+  grid-column: 1 / -1;
+}
+
+/* Three studies in a staggered checker beside the text (PDF slide 12) */
+.art-slide.art-mosaic {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  column-gap: 4vw;
+  padding: 10vh var(--art-gutter);
+}
+.art-mosaic .art-caption {
+  justify-self: center;
+}
+.art-mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+}
+.art-pic-mosaic {
+  height: 42vh;
+  aspect-ratio: 2 / 3;
+}
+.art-pic-mosaic:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+.art-pic-mosaic:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 12vh;
+}
+.art-pic-mosaic:nth-child(3) {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: center;
+  margin-top: -12vh;
+}
+.art-mosaic .art-date {
+  color: var(--art-ink);
+  text-shadow: none;
+}
+
+/* Artwork | text | artwork (PDF slide 13) */
+.art-triptych {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr 1fr;
+  align-items: center;
+}
+.art-pic-side {
+  align-self: stretch;
+}
+.art-triptych .art-caption {
+  padding: 10vh clamp(20px, 2.6vw, 44px);
+  text-align: center;
+}
+.art-triptych .art-title {
+  font-size: clamp(42px, 4.6vw, 88px);
+}
+.art-triptych .art-meta > div:last-child {
+  text-align: center;
+}
+.art-triptych .art-date {
+  top: auto;
+  bottom: 24px;
+}
+
+/* One landscape artwork framed large, text beneath */
+.art-wide {
+  display: grid;
+  padding: 14vh var(--art-gutter) 12vh;
+  row-gap: 7vh;
+}
+.art-pic-wide {
+  aspect-ratio: 4 / 3;
+  height: min(72vh, calc((100vw - 2 * var(--art-gutter)) * 0.75));
+  justify-self: center;
+  box-shadow: 0px 40px 70px -40px rgba(40, 30, 10, 0.6);
+  /* A thin paper mat around the painting */
+  outline: 14px solid #fff;
+  outline-offset: -1px;
+}
+.art-wide .art-caption {
+  max-width: none;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  column-gap: 5vw;
+  align-items: end;
+}
+.art-wide .art-no {
+  grid-column: 1 / -1;
+}
+
+/* ── Closing ── */
+.art-closing-inner .art-cover-by {
+  margin-top: 0;
+}
+.art-page .art-closing-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 34px;
+  padding: 13px 26px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background 0.3s;
+}
+.art-page .art-closing-button:hover {
+  color: #fff;
+  background: var(--art-gold);
+}
+
+/* ── Tablets and phones: everything stacks, artwork first ── */
+@media only screen and (max-width: 900px) {
+  .art-artist,
+  .art-text-left,
+  .art-text-right,
+  .art-triptych,
+  .art-slide.art-mosaic {
+    grid-template-columns: 1fr;
+  }
+  .art-artist-photo {
+    position: relative;
+    height: auto;
+  }
+  .art-artist-photo,
+  .art-pic-half,
+  .art-pic-side {
+    aspect-ratio: 4 / 5;
+    max-height: 80vh;
+  }
+  .art-text-left,
+  .art-text-right,
+  .art-triptych,
+  .art-overlay-dark,
+  .art-overlay-light,
+  .art-artist {
+    min-height: 0;
+  }
+  .art-pic-mosaic {
+    height: auto;
+    width: 38vw;
+  }
+  .art-pic-mosaic:nth-child(2) {
+    margin-top: 16vw;
+  }
+  .art-pic-mosaic:nth-child(3) {
+    margin-top: -16vw;
+  }
+  .art-pic-row {
+    max-height: none;
+  }
+  .art-text-left .art-pic-half {
+    order: -1;
+  }
+  .art-text-left .art-caption,
+  .art-text-right .art-caption,
+  .art-triptych .art-caption {
+    padding: 8vh var(--art-gutter) 10vh;
+  }
+  .art-slide {
+    min-height: 0;
+  }
+  .art-overlay-dark,
+  .art-overlay-light {
+    display: block;
+  }
+  .art-pic-bleed {
+    position: relative;
+    aspect-ratio: 4 / 5;
+  }
+  .art-veil {
+    width: auto;
+    min-height: 0;
+    padding: 8vh var(--art-gutter) 10vh;
+  }
+  .art-overlay-light .art-veil {
+    background: none;
+    backdrop-filter: none;
+  }
+  .art-overlay-dark .art-veil {
+    background: #17120d;
+  }
+  .art-row-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 8vh;
+  }
+  .art-row-grid + .art-caption,
+  .art-wide .art-caption {
+    display: block;
+    padding-bottom: 10vh;
+  }
+  .art-slide.art-mosaic {
+    padding: 8vh var(--art-gutter) 10vh;
+    row-gap: 6vh;
+  }
+  .art-mosaic-grid {
+    order: -1;
+  }
+  .art-triptych .art-pic-side:first-child {
+    display: none;
+  }
+  .art-triptych .art-caption {
+    text-align: left;
+  }
+  .art-triptych .art-meta > div:last-child,
+  .art-meta > div:last-child,
+  .art-bio {
+    text-align: left;
+  }
+  .art-wide {
+    padding: 8vh var(--art-gutter);
+    row-gap: 5vh;
+  }
+  .art-pic-wide {
+    width: 100%;
+    height: auto;
+    outline-width: 8px;
+  }
+  .art-artist-title {
+    margin-bottom: 56px;
+  }
+  .art-bar {
+    padding: 16px var(--art-gutter);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-cover-cue svg {
+    animation: none;
+  }
+}

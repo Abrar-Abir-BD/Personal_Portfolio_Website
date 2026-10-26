@@ -485,6 +485,70 @@
   max-width: 760px;
 }
 
+/* Art Portfolio teaser on the main page: four works, staggered like a
+   gallery wall, each linking to its place on the /art page */
+.art-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.art-preview-item {
+  display: block;
+  position: relative;
+}
+.art-preview-item:nth-child(even) {
+  margin-top: 70px;
+}
+.art-preview-frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0px 30px 50px -28px rgba(0, 0, 0, 0.7);
+}
+.art-preview-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s;
+}
+.art-preview-item:hover .art-preview-frame img {
+  transform: scale(1.06);
+}
+.art-preview-no {
+  display: block;
+  margin: 16px 0px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--accentColor);
+}
+.art-preview-item h3 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+  transition: color 0.3s;
+}
+.art-preview-item:hover h3 {
+  color: var(--accentColor);
+}
+.art-preview-item p {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mutedColor);
+  margin: 4px 0px 0px;
+}
+@media only screen and (max-width: 900px) {
+  .art-preview {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .art-preview-item:nth-child(even) {
+    margin-top: 40px;
+  }
+}
+
 /* Art Portfolio */
 .art-grid {
   display: grid;

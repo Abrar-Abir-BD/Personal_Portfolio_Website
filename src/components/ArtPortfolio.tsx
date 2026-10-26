@@ -1,6 +1,10 @@
-import { GlassCard, GlassImage, GlassSection } from "./Glass";
-import { artworks } from "../data/portfolioContent";
+import { MdArrowForward } from "react-icons/md";
+import { GlassSection } from "./Glass";
+import { art, artImage } from "../data/portfolioContent";
 import "./styles/Sections.css";
+
+// A few selected pieces; the full collection lives on its own page (/art)
+const featured = art.artworks.filter((work) => work.featured).slice(0, 4);
 
 const ArtPortfolio = () => {
   return (
@@ -11,20 +15,35 @@ const ArtPortfolio = () => {
           Art <span>Portfolio</span>
         </>
       }
-      subtitle="A gallery of my creative work."
+      subtitle={art.intro}
     >
-      <div className="art-grid">
-        {artworks.map((art, index) => (
-          <GlassCard className="art-card" key={index}>
-            <GlassImage src={art.image} alt={art.title} />
-            <div className="art-info">
-              <h3>{art.title}</h3>
-              <p>
-                {art.medium} · {art.year}
-              </p>
+      <div className="art-preview">
+        {featured.map((work, index) => (
+          <a
+            href={`/art#${work.slug}`}
+            className="art-preview-item"
+            data-cursor="disable"
+            key={work.slug}
+          >
+            <div className="art-preview-frame">
+              <img
+                src={artImage(work.images[0], "thumb")}
+                alt={work.title}
+                loading="lazy"
+              />
             </div>
-          </GlassCard>
+            <span className="art-preview-no">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3>{work.title}</h3>
+            <p>{work.medium}</p>
+          </a>
         ))}
+      </div>
+      <div className="projects-more">
+        <a href="/art" className="glass-button" data-cursor="disable">
+          Explore the full collection <MdArrowForward />
+        </a>
       </div>
     </GlassSection>
   );
