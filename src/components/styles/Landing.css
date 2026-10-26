@@ -162,6 +162,7 @@
   line-height: 40px;
   font-weight: 600;
   white-space: nowrap;
+  text-transform: uppercase;
   font-family: "Geist", sans-serif;
 }
 

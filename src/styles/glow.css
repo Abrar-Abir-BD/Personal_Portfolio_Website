@@ -1,0 +1,215 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   "Glow" design: muted navy light, film grain and editorial type, based on
+   the "glow effect screen" reference video.
+
+   Every rule here is scoped to :root[data-design="glow"], so it does nothing
+   unless that attribute is on <html>. The original design underneath is
+   untouched:
+     - turn this design on:  <html lang="en" data-design="glow">  (index.html)
+     - back to the original: remove data-design="glow"
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root[data-design="glow"] {
+  --backgroundColor: #050913;
+  --textColor: #f2f2f2;
+  --mutedColor: #a0a6b2;
+  --accentWarm: #ffa800;
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --tracking-tight: -0.03em;
+
+  /* Fine film grain: high-contrast SVG noise, tiled small so it stays cheap */
+  --grain-page: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.6' intercept='-0.8'/%3E%3CfeFuncG type='linear' slope='2.6' intercept='-0.8'/%3E%3CfeFuncB type='linear' slope='2.6' intercept='-0.8'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-surface: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.14'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-opacity: 0.5;
+
+  font-family: var(--font-sans);
+  color: var(--textColor);
+}
+:root[data-design="glow"][data-theme="light"] {
+  --backgroundColor: #e9edf4;
+  --textColor: #0d1422;
+  --mutedColor: #4f5868;
+  --accentWarm: #b86e00;
+  --grain-opacity: 0.3;
+}
+:root[data-design="glow"] h1,
+:root[data-design="glow"] h2,
+:root[data-design="glow"] h3,
+:root[data-design="glow"] h4,
+:root[data-design="glow"] h5,
+:root[data-design="glow"] h6 {
+  font-family: var(--font-sans);
+}
+
+/* ── Atmosphere & grain ──
+   Two fixed layers behind all content (z-index -1), so they never cover
+   text or catch clicks. Body goes transparent so they show through. */
+:root[data-design="glow"] body {
+  background-color: transparent;
+}
+:root[data-design="glow"] body::before,
+:root[data-design="glow"] body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+/* Muted navy light as in the video: soft steel-blue upper left and lower
+   right, black bottom-left corner, darker right edge. Blurred heavily so the
+   glows melt together; static, so the blur is rendered once. */
+:root[data-design="glow"] body::before {
+  inset: -140px;
+  filter: blur(70px);
+  background:
+    radial-gradient(34% 30% at 22% 30%, rgba(34, 74, 128, 0.85), transparent 75%),
+    radial-gradient(38% 32% at 74% 74%, rgba(52, 82, 130, 0.9), transparent 75%),
+    radial-gradient(42% 34% at 50% 50%, rgba(22, 44, 78, 0.8), transparent 78%),
+    radial-gradient(30% 30% at 88% 22%, rgba(18, 36, 66, 0.7), transparent 75%),
+    radial-gradient(34% 36% at 0% 100%, rgba(1, 2, 5, 0.95), transparent 75%),
+    radial-gradient(22% 40% at 100% 50%, rgba(3, 6, 12, 0.7), transparent 75%),
+    var(--backgroundColor);
+}
+:root[data-design="glow"] body::after {
+  inset: 0;
+  background-image: var(--grain-page);
+  background-size: 200px 200px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: soft-light;
+}
+:root[data-design="glow"][data-theme="light"] body::before {
+  background:
+    radial-gradient(34% 30% at 22% 30%, rgba(150, 180, 225, 0.6), transparent 75%),
+    radial-gradient(38% 32% at 74% 74%, rgba(160, 185, 225, 0.6), transparent 75%),
+    var(--backgroundColor);
+}
+
+/* Corner light blooms: softer, so they sit inside the navy light */
+:root[data-design="glow"] .landing-circle1,
+:root[data-design="glow"] .landing-circle2 {
+  background: radial-gradient(
+    circle,
+    rgba(90, 140, 220, 0.45) 0%,
+    rgba(40, 80, 150, 0.15) 45%,
+    transparent 70%
+  );
+  box-shadow: none;
+}
+
+/* ── Hero ── */
+/* Small labels, like "WEB & MOBILE / UX&UI" in the video */
+:root[data-design="glow"] .landing-intro h2,
+:root[data-design="glow"] .landing-info h3 {
+  margin: 0px 0px 10px;
+  font-size: clamp(12px, 0.85vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--textColor);
+}
+/* Big grotesque name in sentence case; the surname in amber italic serif */
+:root[data-design="glow"] .landing-intro h1 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  text-transform: none;
+}
+:root[data-design="glow"] .landing-intro h1 span {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.12em;
+  letter-spacing: 0;
+  color: var(--accentWarm);
+}
+:root[data-design="glow"] .landing-info h2 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  text-transform: none;
+}
+
+/* ── Section headings: big regular sans, one amber italic serif word ── */
+:root[data-design="glow"] .glass-section-head h2,
+:root[data-design="glow"] .career-section h2,
+:root[data-design="glow"] .what-box h2 {
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+}
+:root[data-design="glow"] .glass-section-head h2 > span,
+:root[data-design="glow"] .career-section h2 > span,
+:root[data-design="glow"] .contact-box h2 > span,
+:root[data-design="glow"] .hat-h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--accentWarm);
+}
+:root[data-design="glow"] .glass-section-head h2 > span {
+  font-size: 1.08em;
+}
+/* Experience heading: solid type instead of the gradient fill */
+:root[data-design="glow"] .career-section h2 {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--textColor);
+}
+:root[data-design="glow"] .what-content-in h5 {
+  font-family: var(--font-sans);
+}
+:root[data-design="glow"] .about-me h3 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--textColor);
+}
+:root[data-design="glow"] .about-me p {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+:root[data-design="glow"] .glass-section-head p,
+:root[data-design="glow"] .projects-desc,
+:root[data-design="glow"] .awards-desc,
+:root[data-design="glow"] .research-overview {
+  font-weight: 400;
+}
+:root[data-design="glow"] .projects-info h3,
+:root[data-design="glow"] .awards-card h3,
+:root[data-design="glow"] .research-body h3 {
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+/* Years in italic serif, like page numbers in print */
+:root[data-design="glow"] .research-year {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 46px;
+}
+
+/* ── Surfaces: dark tonal cards with their own fine grain ── */
+:root[data-design="glow"] .glass {
+  background: var(--grain-surface),
+    linear-gradient(
+      160deg,
+      rgba(16, 26, 44, 0.66) 0%,
+      rgba(10, 16, 30, 0.4) 100%
+    );
+  background-size: 160px 160px, auto;
+  border-color: rgba(242, 242, 242, 0.09);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.06),
+    0px 30px 60px -30px rgba(0, 0, 0, 0.75);
+}
+:root[data-design="glow"][data-theme="light"] .glass {
+  background: var(--grain-surface),
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 255, 255, 0.55) 100%
+    );
+  background-size: 160px 160px, auto;
+  border-color: rgba(13, 20, 34, 0.1);
+  box-shadow: 0px 24px 50px -28px rgba(13, 27, 42, 0.3);
+}
