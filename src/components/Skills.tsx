@@ -11,7 +11,7 @@ const Skills = () => {
           Skills & <span>Expertise</span>
         </>
       }
-      subtitle="A short introduction to the areas you work in."
+      subtitle="A short introduction to the areas I work in."
     >
       <div className="skills-grid">
         {skills.map((group, index) => (

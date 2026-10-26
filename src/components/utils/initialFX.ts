@@ -5,6 +5,15 @@ import { smoother } from "../Navbar";
 export function initialFX() {
   document.body.style.overflowY = "auto";
   smoother.paused(false);
+  // Arriving from a project page (/#projects): jump back to that section
+  if (window.location.hash) {
+    const target = window.location.hash;
+    setTimeout(() => {
+      if (document.querySelector(target)) {
+        smoother.scrollTo(target, false, "top 90px");
+      }
+    }, 100);
+  }
   document.getElementsByTagName("main")[0].classList.add("main-active");
 
   var landingText = new SplitText(

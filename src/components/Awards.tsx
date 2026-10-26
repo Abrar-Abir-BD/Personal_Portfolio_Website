@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MdArrowOutward, MdExpandLess, MdExpandMore } from "react-icons/md";
-import { GlassCard, GlassImage, GlassSection } from "./Glass";
+import {
+  MdExpandLess,
+  MdExpandMore,
+  MdOpenInNew,
+  MdOutlinePlace,
+} from "react-icons/md";
+import { GlassCard, GlassSection } from "./Glass";
 import { Award, awards } from "../data/portfolioContent";
 import { smoother } from "./Navbar";
 import "./styles/Sections.css";
@@ -10,8 +15,102 @@ import "./styles/Sections.css";
 const PREVIEW_COUNT = 6;
 
 // "Location · Year", skipping any left blank
-const metaOf = (award: Award) =>
+const placeOf = (award: Award) =>
   [award.location, award.year].filter(Boolean).join(" · ");
+
+const AwardCard = ({ award, isNew }: { award: Award; isNew: boolean }) => {
+  const [open, setOpen] = useState(false);
+  // Only offer "Read more" when the clamped text is actually cut off
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const [clamped, setClamped] = useState(false);
+  useEffect(() => {
+    const measure = () => {
+      const el = descRef.current;
+      if (el && !open) setClamped(el.scrollHeight > el.clientHeight + 1);
+    };
+    measure();
+    // Web fonts can change the text height once they load
+    document.fonts?.ready.then(measure);
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [open]);
+
+  const toggle = () => {
+    setOpen(!open);
+    // The card changed height: let smooth scrolling re-measure the page
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  };
+
+  return (
+    <GlassCard
+      className={`awards-card ${isNew ? "awards-card-new" : ""}`}
+      as="article"
+    >
+      <div className="awards-photo">
+        {award.image ? (
+          <img src={award.image} alt={award.title} loading="lazy" />
+        ) : (
+          <span>Add image</span>
+        )}
+      </div>
+      <div className="awards-body">
+        <div className="awards-badges">
+          <span
+            className={`awards-level ${
+              award.level === "International" ? "awards-level-intl" : ""
+            }`}
+          >
+            {award.level}
+          </span>
+          {placeOf(award) && (
+            <span className="awards-pill">
+              <MdOutlinePlace /> {placeOf(award)}
+            </span>
+          )}
+        </div>
+        <h3>
+          {award.title} at {award.event}
+        </h3>
+        <p
+          ref={descRef}
+          className={`awards-desc ${open ? "awards-desc-open" : ""}`}
+        >
+          {award.highlight && `${award.highlight}. `}
+          {award.description}
+        </p>
+        {(clamped || open) && (
+          <button
+            type="button"
+            className="awards-more"
+            onClick={toggle}
+            aria-expanded={open}
+            data-cursor="disable"
+          >
+            {open ? "Read less" : "Read more"}
+          </button>
+        )}
+        {award.links.length > 0 && (
+          <div className="awards-media">
+            <p className="awards-media-label">Media & Verification</p>
+            <div className="awards-links">
+              {award.links.map((link, i) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="disable"
+                  key={i}
+                >
+                  {link.name} <MdOpenInNew />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </GlassCard>
+  );
+};
 
 const Awards = () => {
   const [expanded, setExpanded] = useState(false);
@@ -38,58 +137,21 @@ const Awards = () => {
   return (
     <GlassSection
       id="awards"
+      className="awards-section"
       title={
         <>
           Awards & <span>Recognition</span>
         </>
       }
-      subtitle="International medals, national titles and the teams Abrar has led and mentored."
+      subtitle="International medals, national titles and the teams I've led and mentored."
     >
       <div className="awards-grid">
         {shown.map((award, index) => (
-          <GlassCard
-            className={`awards-card ${
-              index >= PREVIEW_COUNT ? "awards-card-new" : ""
-            }`}
-            as="article"
+          <AwardCard
+            award={award}
+            isNew={index >= PREVIEW_COUNT}
             key={index}
-          >
-            <div className="awards-media">
-              <GlassImage src={award.image} alt={award.title} />
-              <span
-                className={`awards-level ${
-                  award.level === "International" ? "awards-level-intl" : ""
-                }`}
-              >
-                {award.level}
-              </span>
-            </div>
-            <div className="awards-body">
-              {metaOf(award) && <p className="awards-meta">{metaOf(award)}</p>}
-              <h3>{award.title}</h3>
-              <h4>{award.event}</h4>
-              <p className="awards-highlight">{award.highlight}</p>
-              <p className="awards-desc">{award.description}</p>
-              <div className="awards-foot">
-                <span className="awards-role">{award.role}</span>
-                {award.links.length > 0 && (
-                  <div className="awards-links">
-                    {award.links.map((link, i) => (
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        data-cursor="disable"
-                        key={i}
-                      >
-                        {link.name} <MdArrowOutward />
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </GlassCard>
+          />
         ))}
       </div>
       {awards.length > PREVIEW_COUNT && (
@@ -107,7 +169,7 @@ const Awards = () => {
               </>
             ) : (
               <>
-                View all awards ({awards.length}) <MdExpandMore />
+                View all awards <MdExpandMore />
               </>
             )}
           </button>

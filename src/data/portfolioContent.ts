@@ -125,11 +125,17 @@ export type Publication = {
   type: string;
   // Abrar's part, e.g. "First Author" ("" hides it)
   role: string;
-  // One headline takeaway, shown emphasised
-  highlight: string;
   overview: string;
+  // Photo beside the text ("" shows a placeholder)
+  image: string;
+  // "contain": a cut-out floating on a glow (whole image shown)
+  // "cover": a photograph filling a taller frame (edges may be trimmed)
+  imageFit: "contain" | "cover";
+  // Main button
   link: string;
   linkLabel: string;
+  // Extra buttons, e.g. { "name": "Event page", "url": "..." }
+  moreLinks: ProjectLink[];
 };
 
 export type Artwork = {
@@ -157,7 +163,11 @@ export const landing: Landing = landingJson;
 export const about: About = aboutJson;
 export const whatIDo: WhatIDoCard[] = whatIDoJson;
 export const projects: Project[] = projectsJson;
-export const publications: Publication[] = publicationsJson;
+// JSON gives `imageFit` as plain text; narrow just that field
+export const publications: Publication[] = publicationsJson.map((pub) => ({
+  ...pub,
+  imageFit: pub.imageFit as Publication["imageFit"],
+}));
 // JSON gives `level` as plain text; narrow just that field so every other
 // field is still type-checked
 export const awards: Award[] = awardsJson.map((award) => ({

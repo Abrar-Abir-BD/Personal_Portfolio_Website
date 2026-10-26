@@ -107,20 +107,36 @@
   text-transform: uppercase;
   color: var(--textColor);
 }
-/* Big grotesque name in sentence case; the surname in amber italic serif */
+/* The whole name in amber italic serif, sentence case. Serif italics run
+   small next to the sans text, so the name is set ~12% larger than the
+   original design's size at each breakpoint. */
 :root[data-design="glow"] .landing-intro h1 {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  letter-spacing: var(--tracking-tight);
-  text-transform: none;
-}
-:root[data-design="glow"] .landing-intro h1 span {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 1.12em;
   letter-spacing: 0;
+  text-transform: none;
   color: var(--accentWarm);
+  font-size: 36px;
+  line-height: 44px;
+}
+@media screen and (min-width: 500px) {
+  :root[data-design="glow"] .landing-intro h1 {
+    font-size: 39px;
+    line-height: 44px;
+  }
+}
+@media screen and (min-width: 768px) {
+  :root[data-design="glow"] .landing-intro h1 {
+    font-size: 50px;
+    line-height: 48px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  :root[data-design="glow"] .landing-intro h1 {
+    font-size: 73px;
+    line-height: 70px;
+  }
 }
 :root[data-design="glow"] .landing-info h2 {
   font-family: var(--font-sans);
@@ -176,17 +192,9 @@
   font-weight: 400;
 }
 :root[data-design="glow"] .projects-info h3,
-:root[data-design="glow"] .awards-card h3,
 :root[data-design="glow"] .research-body h3 {
   font-weight: 500;
   letter-spacing: -0.015em;
-}
-/* Years in italic serif, like page numbers in print */
-:root[data-design="glow"] .research-year {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 46px;
 }
 
 /* ── Surfaces: dark tonal cards with their own fine grain ── */

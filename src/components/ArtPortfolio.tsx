@@ -11,7 +11,7 @@ const ArtPortfolio = () => {
           Art <span>Portfolio</span>
         </>
       }
-      subtitle="A gallery of your creative work."
+      subtitle="A gallery of my creative work."
     >
       <div className="art-grid">
         {artworks.map((art, index) => (

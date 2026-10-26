@@ -57,7 +57,8 @@
   color: var(--accentColor);
 }
 
-/* Awards & Recognition */
+/* Awards & Recognition: photo on top, badges, title, expandable text,
+   then the press links under "Media & Verification" */
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -66,111 +67,152 @@
 .awards-card {
   display: flex;
   flex-direction: column;
-  padding: 14px;
+  padding: 0;
 }
-.awards-media {
-  position: relative;
+/* Photo fills the top of the card, edge to edge */
+.awards-photo {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--line-rgb), 0.05);
 }
-.awards-media .glass-image {
-  aspect-ratio: 16 / 10;
-  border-radius: 14px;
+.awards-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
 }
-/* International / National badge over the photo */
-.awards-level {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 4px 11px;
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 600;
+.awards-card:hover .awards-photo img {
+  transform: scale(1.03);
+}
+.awards-photo span {
+  font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #eaf3fa;
-  background: rgba(4, 7, 13, 0.6);
-  border: 1px solid rgba(234, 243, 250, 0.25);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.awards-level-intl {
-  color: #04070d;
-  background: linear-gradient(180deg, #d4f1fa, #6fb4f0);
-  border-color: #d4f1fa;
+  color: rgba(var(--line-rgb), 0.5);
 }
 .awards-body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 18px 10px 8px;
+  padding: 22px 24px 24px;
 }
-.awards-meta {
+.awards-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.awards-level {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  border-radius: 50px;
   font-size: 12px;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--mutedColor);
-  margin: 0px 0px 8px;
+  color: #eaf3fa;
+  background: rgba(27, 104, 207, 0.5);
+}
+/* International: warm amber, like a medal */
+.awards-level-intl {
+  color: #2a1a00;
+  background: #ffd56b;
+}
+.awards-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--textColor);
+  background: rgba(var(--line-rgb), 0.08);
+}
+.awards-pill svg {
+  font-size: 15px;
+  opacity: 0.8;
 }
 .awards-card h3 {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.25;
-  font-weight: 600;
-  margin: 0;
-}
-.awards-card h4 {
-  font-size: 15px;
-  line-height: 1.4;
-  font-weight: 400;
-  color: var(--accentColor);
-  margin: 6px 0px 14px;
-}
-/* The headline fact: the first thing to read after the title */
-.awards-highlight {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--textColor);
-  margin: 0px 0px 10px;
-  padding-left: 12px;
-  border-left: 2px solid var(--accentColor);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0px 0px 12px;
 }
 .awards-desc {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   line-height: 1.6;
   color: var(--mutedColor);
-  margin: 0px 0px 18px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.awards-foot {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.awards-desc-open {
+  display: block;
+  overflow: visible;
 }
-.awards-role {
+.awards-more {
   align-self: flex-start;
-  padding: 4px 11px;
-  border-radius: 50px;
+  margin: 12px 0px 0px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accentColor);
+  cursor: pointer;
+}
+.awards-more:hover {
+  text-decoration: underline;
+}
+.awards-media {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.awards-media::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-bottom: 20px;
+  background: rgba(var(--line-rgb), 0.12);
+}
+.awards-media-label {
   font-size: 12px;
-  font-weight: 500;
-  color: var(--chipText);
-  background: rgba(27, 104, 207, 0.16);
-  border: 1px solid rgba(111, 180, 240, 0.3);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mutedColor);
+  margin: 0px 0px 12px;
 }
 .awards-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 16px;
+  gap: 8px;
 }
 .awards-links a {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--chipText);
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--textColor);
+  background: rgba(var(--line-rgb), 0.08);
+  transition: background 0.3s, color 0.3s;
 }
 .awards-links a:hover {
-  color: var(--accentColor);
+  color: var(--textColor);
+  background: rgba(111, 180, 240, 0.22);
 }
 .awards-card-new {
   animation: projectReveal 0.6s ease-out both;
@@ -258,12 +300,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.projects-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
-}
 .projects-links {
   display: flex;
   flex-wrap: wrap;
@@ -325,16 +361,12 @@
   gap: 20px;
 }
 .research-card {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  /* Same photo column on every card, so photos and text line up */
+  grid-template-columns: minmax(260px, 40%) 1fr;
+  align-items: center;
   gap: 40px;
-  padding: 36px 40px;
-}
-.research-year {
-  font-size: 40px;
-  font-weight: 500;
-  color: rgba(var(--line-rgb), 0.35);
-  flex-shrink: 0;
+  padding: 40px 44px;
 }
 .research-body {
   flex: 1;
@@ -359,9 +391,64 @@
   color: var(--accentColor);
   margin: 4px 0px 0px;
 }
-.research-card .glass-button {
-  flex-shrink: 0;
-  align-self: flex-end;
+.research-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+/* Photo on the left of the text (and above it on phones); every card uses
+   the same 3:2 frame so the photos line up */
+.research-photo {
+  order: -1;
+  position: relative;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Soft glow the photo floats on */
+.research-photo::before {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(111, 180, 240, 0.28) 0%,
+    rgba(27, 104, 207, 0.12) 45%,
+    rgba(27, 104, 207, 0) 72%
+  );
+  filter: blur(20px);
+}
+.research-photo img {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* rounds photos like the talk still; cut-outs are unaffected */
+  border-radius: 14px;
+  filter: drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.55));
+}
+/* Photographs (e.g. a talk still) fill the frame instead of floating; a
+   wide 16:9 still keeps both the speaker (left) and the stage sign (right)
+   in view at 3:2 */
+.research-card-photo .research-photo::before {
+  display: none;
+}
+.research-card-photo .research-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% center;
+  border-radius: 16px;
+}
+.research-photo span {
+  position: relative;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(var(--line-rgb), 0.5);
 }
 .research-chips {
   display: flex;
@@ -389,21 +476,12 @@
   font-style: normal;
   color: var(--mutedColor);
 }
-.research-highlight {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--textColor);
-  margin: 18px 0px 8px;
-  padding-left: 12px;
-  border-left: 2px solid var(--accentColor);
-}
 .research-overview {
   font-size: 15px;
   font-weight: 300;
   line-height: 1.65;
   color: var(--mutedColor);
-  margin: 0;
+  margin: 16px 0px 0px;
   max-width: 760px;
 }
 
@@ -505,16 +583,12 @@
   .projects-info h3 {
     font-size: 24px;
   }
-  .awards-grid,
   .media-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .research-card {
     gap: 25px;
     padding: 28px 32px;
-  }
-  .research-year {
-    font-size: 30px;
   }
   .research-body h3 {
     font-size: 20px;
@@ -546,15 +620,6 @@
   }
   .career-info-box .experience-glass p {
     padding-left: 0;
-  }
-  .research-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 26px;
-  }
-  .research-year {
-    font-size: 24px;
   }
   .art-grid .art-card:nth-child(3n + 2) .glass-image {
     aspect-ratio: 4 / 5;
@@ -595,7 +660,8 @@
    to stack image over text. Give this section the wider area and keep image
    and text side by side, with slightly smaller type. */
 @media only screen and (min-width: 1150px) and (max-width: 1400px) {
-  .projects-section .section-container {
+  .projects-section .section-container,
+  .awards-section .section-container {
     width: 1200px;
     max-width: calc(100% - 160px);
   }
@@ -621,5 +687,23 @@
   .projects-links a,
   .projects-link-disabled {
     font-size: 14px;
+  }
+}
+/* Between tablet and laptop, three award cards get too narrow: two across */
+@media only screen and (min-width: 901px) and (max-width: 1149px) {
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Publications on tablets and phones: photo above the text */
+@media only screen and (max-width: 900px) {
+  .research-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 26px;
+  }
+  .research-photo {
+    order: -1;
+    aspect-ratio: 4 / 3;
   }
 }

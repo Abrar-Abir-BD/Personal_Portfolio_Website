@@ -3,9 +3,23 @@ import "./App.css";
 
 const CharacterModel = lazy(() => import("./components/Character"));
 const MainContainer = lazy(() => import("./components/MainContainer"));
+const ProjectPage = lazy(() => import("./components/ProjectPage"));
 import { LoadingProvider } from "./context/LoadingProvider";
 
+// /projects/<slug> opens that project's own page (a full page load, so the
+// 3D scene and smooth scrolling never need tearing down)
+const projectSlug = window.location.pathname.match(
+  /^\/projects\/([^/]+)\/?$/
+)?.[1];
+
 const App = () => {
+  if (projectSlug) {
+    return (
+      <Suspense>
+        <ProjectPage slug={decodeURIComponent(projectSlug)} />
+      </Suspense>
+    );
+  }
   return (
     <>
       <LoadingProvider>

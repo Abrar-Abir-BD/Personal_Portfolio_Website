@@ -14,9 +14,34 @@
     "year": "2026",
     "type": "Conference Paper",
     "role": "First Author",
-    "highlight": "Real-time detection of micro-pollutants in place of slow, costly lab tests",
     "overview": "Combines IoT sensors with a machine learning detection model to monitor water quality continuously and identify micro-pollutants on the spot, a rapid-prototyping answer to safe water access in developing regions like Bangladesh.",
     "link": "https://ieeexplore.ieee.org/document/11715493",
-    "linkLabel": "Read on IEEE Xplore"
+    "linkLabel": "Read on IEEE Xplore",
+    "image": "/images/projects/water_detect.webp",
+    "moreLinks": [],
+    "imageFit": "contain"
+  },
+  {
+    "title": "The Architect Or The Inhabitant?",
+    "authors": [
+      "Abrar Abir"
+    ],
+    "venue": "TEDxDRMC Youth: The Human Algorithm",
+    "location": "Dhaka, Bangladesh",
+    "publisher": "TEDx",
+    "year": "2025",
+    "type": "TEDx Talk",
+    "role": "Speaker",
+    "overview": "A talk on shaping the future of robotics into a dynamic world where humans and machines co-exist together, delivered at an event that asked how technology can amplify humanity instead of replacing it.",
+    "image": "/images/publications/tedx-the-architect-or-the-inhabitant.jpg",
+    "link": "https://youtu.be/RL6ycI0I66k",
+    "linkLabel": "Watch the talk",
+    "moreLinks": [
+      {
+        "name": "Event page",
+        "url": "https://www.ted.com/tedx/events/64710"
+      }
+    ],
+    "imageFit": "cover"
   }
 ]

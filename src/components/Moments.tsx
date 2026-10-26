@@ -11,7 +11,7 @@ const Moments = () => {
           Moments from <span>Life</span>
         </>
       }
-      subtitle="Snapshots from the people, places and events along the way."
+      subtitle="Snapshots of the people, places and events along my way."
     >
       <div className="art-grid moments-grid">
         {moments.map((moment, index) => (

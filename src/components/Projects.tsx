@@ -49,7 +49,7 @@ const Projects = () => {
           My <span>Projects</span>
         </>
       }
-      subtitle="Selected work you have built, designed or contributed to."
+      subtitle="Selected work I've built, designed or contributed to."
     >
       <div className="projects-grid">
         {shown.map((project, index) => (
@@ -73,14 +73,14 @@ const Projects = () => {
               )}
               <h3>{project.title}</h3>
               <p className="projects-desc">{project.summary}</p>
-              <div className="projects-tags">
-                {project.tags.map((tag, i) => (
-                  <span className="glass-chip" key={i}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
               <div className="projects-links">
+                <a
+                  href={`/projects/${project.slug}`}
+                  className="projects-learn"
+                  data-cursor="disable"
+                >
+                  Learn more <MdArrowForward />
+                </a>
                 {project.links.map((link, i) => (
                   <a
                     href={link.url}
@@ -131,7 +131,7 @@ const Projects = () => {
               </>
             ) : (
               <>
-                View all projects ({projects.length}) <MdExpandMore />
+                View all projects <MdExpandMore />
               </>
             )}
           </button>

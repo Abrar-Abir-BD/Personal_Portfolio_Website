@@ -15,12 +15,17 @@ const Research = () => {
           Publications & <span>Talks</span>
         </>
       }
-      subtitle="Peer-reviewed research Abrar has authored, turning his engineering work into published findings."
+      subtitle="Research I've published and talks I've given on the future of robotics and AI."
     >
       <div className="research-list">
         {publications.map((paper, index) => (
-          <GlassCard className="research-card" as="article" key={index}>
-            <span className="research-year">{paper.year}</span>
+          <GlassCard
+            className={`research-card ${
+              paper.imageFit === "cover" ? "research-card-photo" : ""
+            }`}
+            as="article"
+            key={index}
+          >
             <div className="research-body">
               <div className="research-chips">
                 <span className="glass-chip glass-chip-accent">
@@ -28,6 +33,9 @@ const Research = () => {
                 </span>
                 {paper.role && (
                   <span className="research-role">{paper.role}</span>
+                )}
+                {paper.year && (
+                  <span className="glass-chip">{paper.year}</span>
                 )}
               </div>
               <h3>{paper.title}</h3>
@@ -49,24 +57,45 @@ const Research = () => {
                   <span className="research-where"> · {paper.location}</span>
                 )}
               </p>
-              {paper.highlight && (
-                <p className="research-highlight">{paper.highlight}</p>
-              )}
               {paper.overview && (
                 <p className="research-overview">{paper.overview}</p>
               )}
+              {(paper.link || paper.moreLinks.length > 0) && (
+                <div className="research-links">
+                  {paper.link && (
+                    <a
+                      className="glass-button"
+                      href={paper.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="disable"
+                    >
+                      {paper.linkLabel || "Read"} <MdArrowOutward />
+                    </a>
+                  )}
+                  {paper.moreLinks.map((link, i) => (
+                    <a
+                      className="glass-button"
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="disable"
+                      key={i}
+                    >
+                      {link.name} <MdArrowOutward />
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
-            {paper.link && (
-              <a
-                className="glass-button"
-                href={paper.link}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="disable"
-              >
-                {paper.linkLabel || "Read"} <MdArrowOutward />
-              </a>
-            )}
+            {/* Floating photo on a soft glow, like the project photos */}
+            <div className="research-photo">
+              {paper.image ? (
+                <img src={paper.image} alt={paper.title} loading="lazy" />
+              ) : (
+                <span>Add image</span>
+              )}
+            </div>
           </GlassCard>
         ))}
       </div>
