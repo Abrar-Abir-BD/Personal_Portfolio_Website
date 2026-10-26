@@ -64,49 +64,116 @@
   gap: 24px;
 }
 .awards-card {
-  padding: 32px;
-}
-.awards-top {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+  flex-direction: column;
+  padding: 14px;
 }
-.awards-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.awards-media {
+  position: relative;
+}
+.awards-media .glass-image {
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+}
+/* International / National badge over the photo */
+.awards-level {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 11px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #eaf3fa;
+  background: rgba(4, 7, 13, 0.6);
+  border: 1px solid rgba(234, 243, 250, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.awards-level-intl {
+  color: #04070d;
+  background: linear-gradient(180deg, #d4f1fa, #6fb4f0);
+  border-color: #d4f1fa;
+}
+.awards-body {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: var(--chipText);
-  background: rgba(27, 104, 207, 0.25);
-  border: 1px solid rgba(111, 180, 240, 0.35);
-  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.3),
-    0px 0px 25px 0px rgba(111, 180, 240, 0.25);
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 10px 8px;
 }
-.awards-year {
-  font-size: 30px;
-  font-weight: 500;
-  color: rgba(var(--line-rgb), 0.35);
+.awards-meta {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--mutedColor);
+  margin: 0px 0px 8px;
 }
 .awards-card h3 {
   font-size: 22px;
-  font-weight: 500;
+  line-height: 1.25;
+  font-weight: 600;
   margin: 0;
 }
 .awards-card h4 {
   font-size: 15px;
+  line-height: 1.4;
   font-weight: 400;
   color: var(--accentColor);
-  margin: 6px 0px 12px;
+  margin: 6px 0px 14px;
 }
-.awards-card p {
+/* The headline fact: the first thing to read after the title */
+.awards-highlight {
   font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--textColor);
+  margin: 0px 0px 10px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accentColor);
+}
+.awards-desc {
+  font-size: 14px;
   font-weight: 300;
+  line-height: 1.6;
   color: var(--mutedColor);
-  margin: 0;
+  margin: 0px 0px 18px;
+}
+.awards-foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.awards-role {
+  align-self: flex-start;
+  padding: 4px 11px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--chipText);
+  background: rgba(27, 104, 207, 0.16);
+  border: 1px solid rgba(111, 180, 240, 0.3);
+}
+.awards-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+.awards-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--chipText);
+}
+.awards-links a:hover {
+  color: var(--accentColor);
+}
+.awards-card-new {
+  animation: projectReveal 0.6s ease-out both;
 }
 
 /* Projects: floating image beside text, no card */
@@ -259,9 +326,9 @@
 }
 .research-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 40px;
-  padding: 32px 40px;
+  padding: 36px 40px;
 }
 .research-year {
   font-size: 40px;
@@ -281,6 +348,8 @@
 .research-authors {
   font-size: 15px;
   font-weight: 300;
+  line-height: 1.5;
+  color: var(--mutedColor);
   margin: 0;
 }
 .research-venue {
@@ -292,6 +361,50 @@
 }
 .research-card .glass-button {
   flex-shrink: 0;
+  align-self: flex-end;
+}
+.research-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* Abrar's part (e.g. First Author): the bright badge */
+.research-role {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #04070d;
+  background: linear-gradient(180deg, #d4f1fa, #6fb4f0);
+  border: 1px solid #d4f1fa;
+}
+.research-me {
+  font-weight: 600;
+  color: var(--textColor);
+}
+.research-where {
+  font-style: normal;
+  color: var(--mutedColor);
+}
+.research-highlight {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--textColor);
+  margin: 18px 0px 8px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accentColor);
+}
+.research-overview {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--mutedColor);
+  margin: 0;
+  max-width: 760px;
 }
 
 /* Art Portfolio */
@@ -423,7 +536,6 @@
     grid-template-columns: 1fr;
   }
   .skills-card,
-  .awards-card,
   .media-card {
     padding: 26px;
   }
@@ -474,7 +586,8 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .projects-item-new {
+  .projects-item-new,
+  .awards-card-new {
     animation: none;
   }
 }

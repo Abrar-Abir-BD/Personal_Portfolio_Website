@@ -1,26 +1,22 @@
 [
   {
-    "title": "Title of the Paper or Article",
-    "authors": "Your Name, Co-author Name, Co-author Name",
-    "venue": "Journal or Conference Name",
-    "year": "20XX",
-    "type": "Journal",
-    "link": "#"
-  },
-  {
-    "title": "Title of the Paper or Article",
-    "authors": "Your Name, Co-author Name",
-    "venue": "Journal or Conference Name",
-    "year": "20XX",
-    "type": "Conference",
-    "link": "#"
-  },
-  {
-    "title": "Title of the Paper or Article",
-    "authors": "Your Name",
-    "venue": "Journal or Conference Name",
-    "year": "20XX",
-    "type": "Preprint",
-    "link": "#"
+    "title": "Low-Cost and Real-Time Water Contamination Detection in Bangladesh: A Sensor and Machine Learning Approach",
+    "authors": [
+      "Abrar Abir",
+      "A Z M Emtenan Kabir",
+      "Musarrat Mahjabin",
+      "Sirazum Munira",
+      "A Z M Tahmidul Kabir"
+    ],
+    "venue": "13th International Conference on ICT for Smart Society (ICISS)",
+    "location": "Bandung, Indonesia",
+    "publisher": "IEEE Xplore",
+    "year": "2026",
+    "type": "Conference Paper",
+    "role": "First Author",
+    "highlight": "Real-time detection of micro-pollutants in place of slow, costly lab tests",
+    "overview": "Combines IoT sensors with a machine learning detection model to monitor water quality continuously and identify micro-pollutants on the spot, a rapid-prototyping answer to safe water access in developing regions like Bangladesh.",
+    "link": "https://ieeexplore.ieee.org/document/11715493",
+    "linkLabel": "Read on IEEE Xplore"
   }
 ]

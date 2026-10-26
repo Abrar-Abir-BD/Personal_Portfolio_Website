@@ -3,12 +3,6 @@
   padding-bottom: 100px;
   margin-top: 100px;
 }
-.contact-section h3 {
-  font-size: 60px;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin: 0;
-}
 .contact-flex {
   display: flex;
   justify-content: space-between;
@@ -47,9 +41,6 @@ a.contact-social {
   opacity: 0.5;
 }
 @media only screen and (max-width: 1600px) {
-  .contact-section h3 {
-    font-size: 50px;
-  }
   .contact-box h2 {
     font-size: 20px;
   }
@@ -58,9 +49,6 @@ a.contact-social {
   }
 }
 @media only screen and (max-width: 1300px) {
-  .contact-section h3 {
-    font-size: 40px;
-  }
   .contact-box h2 {
     font-size: 18px;
   }

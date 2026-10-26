@@ -1,38 +1,275 @@
 [
   {
-    "title": "Award Title",
-    "issuer": "Awarding Organization",
-    "year": "20XX",
-    "description": "One sentence on what this award recognizes."
+    "title": "Silver & Bronze Medals",
+    "event": "26th International Robot Olympiad",
+    "level": "International",
+    "location": "Busan, South Korea",
+    "year": "",
+    "role": "Medalist · Team SAPH.Ai",
+    "highlight": "35,000+ participants from 90+ countries",
+    "description": "Designed robotic systems to clean urban waste and reduce marine pollution in Busan. The solution was formally recognised by the Mayor of Busan and considered for future implementation.",
+    "image": "/images/achievements/silver-bronze-medals-at-international-robot-olympiad.webp",
+    "links": [
+      {
+        "name": "The Daily Star",
+        "url": "https://www.thedailystar.net/tech-startup/news/team-bangladesh-wins-10-medals-intl-robot-olympiad-2025-3808396"
+      },
+      {
+        "name": "Jago News 24",
+        "url": "https://www.jagonews24.com/en/sci-tech/news/79960"
+      }
+    ]
   },
   {
-    "title": "Award Title",
-    "issuer": "Awarding Organization",
-    "year": "20XX",
-    "description": "One sentence on what this award recognizes."
+    "title": "Startup Idea Award",
+    "event": "World Robot Olympiad Open Championship – Asia & Pacific",
+    "level": "International",
+    "location": "Manila, Philippines",
+    "year": "",
+    "role": "Co-lead · Team SAPH.Ai",
+    "highlight": "Top innovators among 70,000+ competitors from 95 nations",
+    "description": "Researched and engineered a pneumatic soft robot for rescue missions and underground exploration. Bangladesh's highest honour to date in this World Robot Olympiad category.",
+    "image": "/images/achievements/best-startup-award-at-the-world-robot-olympiad.webp",
+    "links": [
+      {
+        "name": "WRO official results",
+        "url": "https://scoring.wro-association.org/en/event/scoring/272"
+      },
+      {
+        "name": "The Business Standard",
+        "url": "https://www.tbsnews.net/economy/corporates/bangladesh-runners-world-robot-olympiad-asia-pacific-open-1241906"
+      }
+    ]
   },
   {
-    "title": "Award Title",
-    "issuer": "Awarding Organization",
-    "year": "20XX",
-    "description": "One sentence on what this award recognizes."
+    "title": "Seed Fund Winner",
+    "event": "Stockholm Junior Water Prize",
+    "level": "International",
+    "location": "",
+    "year": "",
+    "role": "Co-lead · Team SAPH.Ai",
+    "highlight": "Polluted water tested and treated in 20 coastal villages",
+    "description": "Developed a modular AI device that tests water contamination instantly and cheaply, then treats it on the spot. Selected among participants from 60+ countries for a prize backed by the Swedish Government and WaterAid.",
+    "image": "/images/achievements/fund-winner-at-the-stockholm-junior-water-prize.webp",
+    "links": [
+      {
+        "name": "The Business Standard",
+        "url": "https://www.tbsnews.net/bangladesh/hov-bangladesh-holds-bangladesh-stockholm-junior-water-prize-ceremony-2024-847726"
+      },
+      {
+        "name": "Dhaka Mirror",
+        "url": "https://dhakamirror.com/stockholm-junior-water-prize-bangladesh-award-ceremony-held/"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/photo/?fbid=952590103538970&set=a.461829055948413"
+      }
+    ]
   },
   {
-    "title": "Award Title",
-    "issuer": "Awarding Organization",
-    "year": "20XX",
-    "description": "One sentence on what this award recognizes."
+    "title": "3rd Prize as Mentor",
+    "event": "16th e-ICON World Contest",
+    "level": "International",
+    "location": "Seoul, South Korea",
+    "year": "",
+    "role": "Mentor",
+    "highlight": "Stood out among 252 international teams",
+    "description": "Mentored Team MonAndo to a fully funded place in the international final with MonAndo, an AI-powered VR exposure-therapy app for underprivileged youth. Hosted by the Ministry of Education, Republic of Korea.",
+    "image": "/images/achievements/winner-at-the-e-icon-world-contest.webp",
+    "links": [
+      {
+        "name": "e-ICON official results",
+        "url": "https://e-icon.or.kr/en/2026%eb%85%84-%ec%a0%9c16%ed%9a%8c-%ea%b3%a0%eb%93%b1%eb%b6%80-3%eb%93%b1-%ed%95%9c%ea%b5%ad%ea%b5%90%ec%9c%a1%ed%95%99%ec%88%a0%ec%a0%95%eb%b3%b4%ec%9b%90%ec%9e%a5%ec%83%81/"
+      }
+    ]
   },
   {
-    "title": "Award Title",
-    "issuer": "Awarding Organization",
-    "year": "20XX",
-    "description": "One sentence on what this award recognizes."
+    "title": "Bronze Medal as Mentor",
+    "event": "International Robot Olympiad",
+    "level": "International",
+    "location": "Gold Coast, Australia",
+    "year": "",
+    "role": "Mentor",
+    "highlight": "Aerospace robotics on the global stage",
+    "description": "Mentored a SAPH.Ai student to a Bronze Medal for Bangladesh with a satellite-maintenance robot that floats and works in outer space using AI computer vision.",
+    "image": "/images/achievements/bronze-medal-at-international-robot-olympiad.webp",
+    "links": []
   },
   {
-    "title": "Award Title",
-    "issuer": "Awarding Organization",
-    "year": "20XX",
-    "description": "One sentence on what this award recognizes."
+    "title": "National Winner",
+    "event": "World Robot Olympiad Bangladesh Open Championship",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "2025",
+    "role": "Team Leader · Mechanical & Technical Lead",
+    "highlight": "Earned Bangladesh's place at WRO Asia & Pacific",
+    "description": "Led Team SAPH.Ai to win the national round after first taking the winner's medal at the Dhaka Regional Round.",
+    "image": "/images/achievements/winner-at-the-world-robot-olympiad-bangladesh-open.webp",
+    "links": [
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/photo/?fbid=1128428415974531&set=a.452112803606099"
+      }
+    ]
+  },
+  {
+    "title": "National Winner",
+    "event": "7th Bangladesh Robot Olympiad",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Co-lead · Team SAPH.Ai",
+    "highlight": "Crowned winners of the national round",
+    "description": "Won the national round with Team SAPH.Ai, recognised for exceptional technical mastery.",
+    "image": "/images/achievements/winners-at-the-bangladesh-robot-olympiad.webp",
+    "links": [
+      {
+        "name": "BdRO official results",
+        "url": "https://bdro.org/results/bdro_results_2024#:~:text=Technical"
+      }
+    ]
+  },
+  {
+    "title": "Gold Medal",
+    "event": "Codeavour: AI & Coding Competition",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Co-developer · Team SAPH.Ai",
+    "highlight": "Went on to represent Bangladesh in Dubai",
+    "description": "Built a 6-wheel-drive AI robot that navigates dangerous sewage pipelines to find blockages, detect explosive gases like methane and clean them without risking human lives.",
+    "image": "/images/achievements/gold-medal-at-the-codeavour-ai-coding-competition.webp",
+    "links": [
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/photo/?fbid=763592325922407&set=a.510170777931231"
+      }
+    ]
+  },
+  {
+    "title": "Honour of Recognition",
+    "event": "Ministry of Posts, Telecommunications and Information Technology",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Founder, SAPH.Ai",
+    "highlight": "Recognised by the Government of Bangladesh",
+    "description": "SAPH.Ai, the robotics and AI team Abrar founded, received formal government recognition for its contributions to Bangladesh's growing tech sector.",
+    "image": "/images/achievements/honour-of-recognition-award-at-the-ministry-of-posts-telecommunications-and-information-technology.webp",
+    "links": []
+  },
+  {
+    "title": "2nd Runner-Up",
+    "event": "National STEAM Olympiad",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Co-developer · Team SAPH.Ai",
+    "highlight": "AI sewer robot built with OpenCV and TensorFlow",
+    "description": "Designed an AI-assisted drainage and sewage robot that navigates sewers, detects debris and mitigates dangerous gases, replacing hazardous manual labour.",
+    "image": "/images/achievements/2nd-runner-up-at-bangladesh-s-national-steam-olympiad.webp",
+    "links": [
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/photo/?fbid=436998295793788&set=a.163958686431085"
+      }
+    ]
+  },
+  {
+    "title": "Top 20 Teams",
+    "event": "BCSIR National Science and Industrial Technology Fair",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "2024",
+    "role": "Founder, SAPH.Ai",
+    "highlight": "Wide media coverage in the national round",
+    "description": "Presented the AI-assisted drainage and sewage robot, an autonomous answer to Bangladesh's sanitation crisis and an end to hazardous manual cleaning.",
+    "image": "/images/achievements/top-20-teams-recognition-at-the-bcsir-national-science-and-industrial-technology-fair.webp",
+    "links": [
+      {
+        "name": "Reel 1",
+        "url": "https://www.facebook.com/reel/704536791861110"
+      },
+      {
+        "name": "Reel 2",
+        "url": "https://www.facebook.com/reel/893838592440978"
+      },
+      {
+        "name": "Reel 3",
+        "url": "https://www.facebook.com/reel/416880814095799"
+      }
+    ]
+  },
+  {
+    "title": "3rd Place & Championships as Mentor",
+    "event": "47th National Science and Technology Week",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Mentor · Founder, SAPH.Ai",
+    "highlight": "Champions at Upazila, District and Division levels",
+    "description": "Guided a SAPH.Ai student team representing Bagerhat with a disaster-response robot that crosses hazardous terrain, detects dangers and collects real-time data. They also took 3rd place at the BAFSD Science Fair.",
+    "image": "/images/achievements/3rd-place-championship-titles-at-the-national-science-and-technology-week.webp",
+    "links": []
+  },
+  {
+    "title": "Champion, IT Project Display",
+    "event": "15th DRMC National Science & Codeavour International Carnival",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "2024",
+    "role": "Co-developer · Team SAPH.Ai",
+    "highlight": "Champion in the IT Project Display segment",
+    "description": "Exhibited the 6-wheel-drive pipeline inspection robot that finds blockages, detects methane and performs targeted cleaning underground.",
+    "image": "/images/achievements/champion-at-the-drmc-national-science-codeavour-international-carnival.webp",
+    "links": []
+  },
+  {
+    "title": "First Position, Research Paper",
+    "event": "7th Rajshahi College National Science Fest",
+    "level": "National",
+    "location": "Rajshahi, Bangladesh",
+    "year": "",
+    "role": "Co-author · Team SAPH.Ai",
+    "highlight": "Best research paper of the fest",
+    "description": "The team's paper on the AI-assisted drainage and sewage robot, engineered with OpenCV and TensorFlow, took first position.",
+    "image": "/images/achievements/first-position-at-the-rajshahi-college-national-science-fest.webp",
+    "links": []
+  },
+  {
+    "title": "Champion",
+    "event": "TCSC Science Fiesta 1.0",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Co-developer · Team SAPH.Ai",
+    "highlight": "Hosted by the Tejgaon College Science Club",
+    "description": "Presented the 6-wheel-drive pipeline inspection robot that clears blockages and detects explosive methane in underground pipelines.",
+    "image": "/images/achievements/champion-at-the-tcsc-science-fiesta.webp",
+    "links": []
+  },
+  {
+    "title": "1st Runner-Up",
+    "event": "Astro Boishakhi Mela 1431",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Co-developer · Team SAPH.Ai",
+    "highlight": "Hosted by the Bangabandhu Sheikh Mujibur Rahman Novotheatre",
+    "description": "Awarded for the AI-assisted drainage and sewage robot, a safe alternative to inhuman manual cleaning.",
+    "image": "/images/achievements/1st-runner-up-at-the-astro-boishakhi-mela.webp",
+    "links": []
+  },
+  {
+    "title": "Champion, Project Display",
+    "event": "5th BAFSD National Science Festival",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "2023",
+    "role": "Co-developer · Team SAPH.Ai",
+    "highlight": "SAPH.Ai's very first championship",
+    "description": "Debuted the AI-assisted drainage and sewage robot, replacing dangerous manual labour with a safer, more efficient solution.",
+    "image": "/images/achievements/champion-in-project-display-at-the-bafsd-national-science-festival.webp",
+    "links": []
   }
 ]

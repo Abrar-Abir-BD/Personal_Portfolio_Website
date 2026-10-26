@@ -75,9 +75,19 @@ export type Experience = {
 
 export type Award = {
   title: string;
-  issuer: string;
+  // Competition, event or organisation that gave the award
+  event: string;
+  level: "International" | "National";
+  location: string;
+  // "" hides it
   year: string;
+  // Abrar's part in it, e.g. "Team Leader" or "Mentor"
+  role: string;
+  // One headline fact, shown emphasised
+  highlight: string;
   description: string;
+  image: string;
+  links: ProjectLink[];
 };
 
 export type ProjectLink = {
@@ -105,11 +115,21 @@ export type Project = {
 
 export type Publication = {
   title: string;
-  authors: string;
+  // In author order; Abrar's name is highlighted automatically
+  authors: string[];
   venue: string;
+  location: string;
+  publisher: string;
   year: string;
+  // e.g. "Conference Paper", "Journal Article", "Talk"
   type: string;
+  // Abrar's part, e.g. "First Author" ("" hides it)
+  role: string;
+  // One headline takeaway, shown emphasised
+  highlight: string;
+  overview: string;
   link: string;
+  linkLabel: string;
 };
 
 export type Artwork = {
@@ -138,7 +158,12 @@ export const about: About = aboutJson;
 export const whatIDo: WhatIDoCard[] = whatIDoJson;
 export const projects: Project[] = projectsJson;
 export const publications: Publication[] = publicationsJson;
-export const awards: Award[] = awardsJson;
+// JSON gives `level` as plain text; narrow just that field so every other
+// field is still type-checked
+export const awards: Award[] = awardsJson.map((award) => ({
+  ...award,
+  level: award.level as Award["level"],
+}));
 export const experience: Experience[] = experienceJson;
 export const skills: SkillGroup[] = skillsJson;
 export const artworks: Artwork[] = artJson;
