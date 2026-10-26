@@ -1,8 +1,14 @@
-import { useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MdArrowBack, MdArrowDownward } from "react-icons/md";
-import { Artwork, art, artImage, landing } from "../data/portfolioContent";
+import { MdArrowBack, MdArrowDownward, MdCopyright } from "react-icons/md";
+import {
+  Artwork,
+  art,
+  artImage,
+  contact,
+  landing,
+} from "../data/portfolioContent";
 import "./styles/ArtPage.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -57,7 +63,8 @@ const Picture = ({
       alt={work.title}
       loading="lazy"
       style={{ objectPosition: work.focus }}
-      data-parallax
+      // A painting sized to its own shape has no spare edge to drift into
+      data-parallax={work.ratio ? undefined : true}
     />
     {showDate && work.date && (
       <span className="art-date" data-reveal="pop">
@@ -101,15 +108,25 @@ const Slide = ({ work, index }: { work: Artwork; index: number }) => {
         work={work}
         file={file}
         className={cls}
-        showDate={i === 0}
+        // As in the PDF, the mosaic's date sits on its last (lower) study
+        showDate={
+          work.layout === "mosaic" ? i === work.images.length - 1 : i === 0
+        }
         key={file}
       />
     ));
 
   return (
     <section
-      className={`art-slide art-${work.layout}`}
+      className={`art-slide art-${work.layout} ${
+        work.ratio ? "art-fit-ratio" : ""
+      }`}
       id={work.slug}
+      style={
+        work.ratio
+          ? ({ "--pic-ratio": work.ratio } as CSSProperties)
+          : undefined
+      }
       data-slide
     >
       {work.layout === "row" && (
@@ -150,6 +167,12 @@ const Slide = ({ work, index }: { work: Artwork; index: number }) => {
           <div className="art-veil">
             <Caption work={work} index={index} />
           </div>
+        </>
+      )}
+      {work.layout === "framed" && (
+        <>
+          <Caption work={work} index={index} />
+          <Picture work={work} file={first} className="art-pic-framed" showDate />
         </>
       )}
       {work.layout === "wide" && (
@@ -332,7 +355,7 @@ const ArtPage = () => {
       <div className="art-progress" aria-hidden="true"></div>
       <header className="art-bar">
         <a href="/#art" className="art-bar-back" data-cursor="disable">
-          <MdArrowBack /> Portfolio
+          <MdArrowBack /> Main Portfolio
         </a>
         <span className="art-bar-title">Art Portfolio</span>
       </header>
@@ -353,16 +376,7 @@ const ArtPage = () => {
 
       {/* The artist */}
       <section className="art-artist">
-        <figure
-          className="art-pic art-pic-contain art-artist-photo"
-          data-reveal="pic"
-        >
-          <img
-            src={artImage("artist", "thumb")}
-            alt=""
-            aria-hidden="true"
-            className="art-pic-backdrop"
-          />
+        <figure className="art-pic art-artist-photo" data-reveal="pic">
           <img
             src={artImage("artist")}
             alt={`${signature} painting at an easel`}
@@ -407,8 +421,34 @@ const ArtPage = () => {
           <h2>Thank you</h2>
           <p className="art-cover-by">{signature}</p>
           <a href="/#art" className="art-closing-button" data-cursor="disable">
-            <MdArrowBack /> Back to portfolio
+            <MdArrowBack /> Back to main portfolio
           </a>
+        </div>
+        {/* Contact details, as in the main Contact section (without socials) */}
+        <div className="art-closing-contact">
+          <div>
+            <p className="art-contact-label">Email</p>
+            <a href={`mailto:${contact.email}`} data-cursor="disable">
+              {contact.email}
+            </a>
+          </div>
+          <div>
+            <p className="art-contact-label">Phone</p>
+            <a
+              href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}
+              data-cursor="disable"
+            >
+              {contact.phone}
+            </a>
+          </div>
+          <div className="art-closing-credit">
+            <p>
+              Designed and Developed by <span>{signature}</span>
+            </p>
+            <p className="art-closing-year">
+              <MdCopyright /> {contact.copyrightYear}
+            </p>
+          </div>
         </div>
       </section>
     </div>

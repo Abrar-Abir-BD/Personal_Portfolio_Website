@@ -1,43 +1,58 @@
 [
   {
-    "category": "Category Name",
-    "description": "A short line about this area of expertise.",
+    "category": "AI & Software",
+    "icon": "cat-ai",
+    "description": "Building and training models, from computer vision to AI that runs on real devices.",
     "skills": [
-      "Skill One",
-      "Skill Two",
-      "Skill Three",
-      "Skill Four",
-      "Skill Five"
+      { "name": "Python", "icon": "python" },
+      { "name": "C++", "icon": "cpp" },
+      { "name": "C", "icon": "c" },
+      { "name": "PyTorch", "icon": "pytorch" },
+      { "name": "TensorFlow", "icon": "tensorflow" },
+      { "name": "OpenCV", "icon": "opencv" },
+      { "name": "YOLO", "icon": "yolo" },
+      { "name": "Jupyter", "icon": "jupyter" },
+      { "name": "Git", "icon": "git" }
     ]
   },
   {
-    "category": "Category Name",
-    "description": "A short line about this area of expertise.",
+    "category": "Robotics & Hardware",
+    "icon": "cat-robotics",
+    "description": "Embedded boards and robot software that bring my machines to life.",
     "skills": [
-      "Skill One",
-      "Skill Two",
-      "Skill Three",
-      "Skill Four"
+      { "name": "NVIDIA Jetson Nano", "icon": "jetson" },
+      { "name": "Raspberry Pi", "icon": "raspberrypi" },
+      { "name": "STM32", "icon": "stm32" },
+      { "name": "ESP32", "icon": "esp32" },
+      { "name": "Arduino", "icon": "arduino" },
+      { "name": "ROS (Robot Operating System)", "icon": "ros" }
     ]
   },
   {
-    "category": "Category Name",
-    "description": "A short line about this area of expertise.",
+    "category": "CAD & Simulation",
+    "icon": "cat-cad",
+    "description": "Designing, modelling and testing systems before a single part is built.",
     "skills": [
-      "Skill One",
-      "Skill Two",
-      "Skill Three",
-      "Skill Four",
-      "Skill Five"
+      { "name": "Autodesk Fusion", "icon": "fusion" },
+      { "name": "SolidWorks", "icon": "solidworks" },
+      { "name": "MATLAB", "icon": "matlab" },
+      { "name": "Simulink", "icon": "simulink" },
+      { "name": "Unity", "icon": "unity" }
     ]
   },
   {
-    "category": "Category Name",
-    "description": "A short line about this area of expertise.",
+    "category": "UI/UX, Media & Web",
+    "icon": "cat-design",
+    "description": "Interfaces, visuals and video, from first sketch to the web.",
     "skills": [
-      "Skill One",
-      "Skill Two",
-      "Skill Three"
+      { "name": "Figma", "icon": "figma" },
+      { "name": "Adobe Illustrator", "icon": "illustrator" },
+      { "name": "Adobe Photoshop", "icon": "photoshop" },
+      { "name": "Adobe After Effects", "icon": "aftereffects" },
+      { "name": "DaVinci Resolve", "icon": "davinci" },
+      { "name": "JavaScript", "icon": "javascript" },
+      { "name": "React", "icon": "react" },
+      { "name": "Microsoft Office", "icon": "office" }
     ]
   }
 ]

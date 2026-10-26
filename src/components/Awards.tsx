@@ -143,7 +143,6 @@ const Awards = () => {
           Awards & <span>Recognition</span>
         </>
       }
-      subtitle="International medals, national titles and the teams I've led and mentored."
     >
       <div className="awards-grid">
         {shown.map((award, index) => (

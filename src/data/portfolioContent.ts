@@ -58,10 +58,19 @@ export type Contact = {
   copyrightYear: string;
 };
 
+export type Skill = {
+  name: string;
+  // Logo key, see src/components/skillIcons.tsx ("" shows no logo)
+  icon: string;
+};
+
 export type SkillGroup = {
   category: string;
+  // Header icon key, see src/components/skillIcons.tsx
+  icon: string;
+  // Not shown at the moment (the cards only show the title and skills)
   description: string;
-  skills: string[];
+  skills: Skill[];
 };
 
 export type Experience = {
@@ -146,7 +155,8 @@ export type ArtLayout =
   | "row" // several artworks in a row, text below
   | "mosaic" // three studies in a staggered grid beside the text
   | "triptych" // artwork | text | artwork
-  | "wide"; // one landscape artwork framed large, text below
+  | "wide" // one landscape artwork framed large, text below
+  | "framed"; // text beside a whole artwork in a white mat (needs "ratio")
 
 export type Artwork = {
   slug: string;
@@ -164,6 +174,10 @@ export type Artwork = {
   // "cover" fills the frame (may crop); "contain" shows the whole painting,
   // with a soft blurred copy filling the spare space
   fit: "cover" | "contain";
+  // Side-by-side layouts only: the painting's width / height (e.g. 0.74).
+  // When set, its column is sized to the painting so it shows complete with
+  // no cropping and no bands; 0 keeps the usual half-and-half split
+  ratio: number;
   layout: ArtLayout;
   // "portfolio": the PDF collection; "new": the New Works chapter
   collection: "portfolio" | "new";

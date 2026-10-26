@@ -45,10 +45,7 @@ const Navbar = () => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      // Seconds the page keeps gliding after you stop scrolling. The 3D
-      // character's scroll animation follows this glide, so a long glide makes
-      // it drift before settling in About / What I Do; keep it short.
-      smooth: 0.8,
+      smooth: 1.7,
       speed: 1.7,
       effects: true,
       autoResize: true,

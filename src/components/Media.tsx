@@ -12,7 +12,6 @@ const Media = () => {
           Featured in <span>Media</span>
         </>
       }
-      subtitle="Articles, interviews and features about me and my work."
     >
       <div className="media-grid">
         {media.map((item, index) => (

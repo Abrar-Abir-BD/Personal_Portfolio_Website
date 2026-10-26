@@ -15,7 +15,6 @@ const Research = () => {
           Publications & <span>Talks</span>
         </>
       }
-      subtitle="Research I've published and talks I've given on the future of robotics and AI."
     >
       <div className="research-list">
         {publications.map((paper, index) => (

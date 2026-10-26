@@ -49,7 +49,6 @@ const Projects = () => {
           My <span>Projects</span>
         </>
       }
-      subtitle="Selected work I've built, designed or contributed to."
     >
       <div className="projects-grid">
         {shown.map((project, index) => (

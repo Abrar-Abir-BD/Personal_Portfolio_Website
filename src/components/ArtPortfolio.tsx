@@ -15,13 +15,23 @@ const ArtPortfolio = () => {
           Art <span>Portfolio</span>
         </>
       }
-      subtitle={art.intro}
     >
+      <a
+        href="/art"
+        className="glass-button art-visit"
+        target="_blank"
+        rel="noopener"
+        data-cursor="disable"
+      >
+        Visit Art Portfolio <MdArrowForward />
+      </a>
       <div className="art-preview">
         {featured.map((work, index) => (
           <a
             href={`/art#${work.slug}`}
             className="art-preview-item"
+            target="_blank"
+            rel="noopener"
             data-cursor="disable"
             key={work.slug}
           >
@@ -41,7 +51,13 @@ const ArtPortfolio = () => {
         ))}
       </div>
       <div className="projects-more">
-        <a href="/art" className="glass-button" data-cursor="disable">
+        <a
+          href="/art"
+          className="glass-button"
+          target="_blank"
+          rel="noopener"
+          data-cursor="disable"
+        >
           Explore the full collection <MdArrowForward />
         </a>
       </div>

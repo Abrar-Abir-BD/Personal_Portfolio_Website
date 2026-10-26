@@ -202,9 +202,13 @@
 }
 
 /* ── The artist: B&W portrait beside the mustard panel ── */
+/* The photo column is exactly as wide as the portrait at full screen height
+   (1358 x 2048), so the whole photo shows with no bands; the gold panel
+   takes the rest */
 .art-artist {
+  --artist-ratio: 0.663;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: min(calc(100svh * var(--artist-ratio)), 50%) 1fr;
   min-height: 100vh;
   min-height: 100svh;
 }
@@ -214,6 +218,10 @@
   top: 0;
   height: 100vh;
   height: 100svh;
+}
+.art-artist-photo img {
+  /* Keep the painter and the flower in view if a narrow window trims it */
+  object-position: 60% center;
 }
 .art-artist-panel {
   background: var(--art-gold);
@@ -412,6 +420,21 @@
 .art-text-right .art-pic-half {
   order: -1;
 }
+/* Painting column sized to the painting itself (see "ratio" in art.json):
+   shown complete at full screen height, the text takes the rest */
+.art-fit-ratio.art-text-left {
+  grid-template-columns: 1fr min(calc(100svh * var(--pic-ratio)), 50%);
+}
+.art-fit-ratio.art-text-right {
+  grid-template-columns: min(calc(100svh * var(--pic-ratio)), 50%) 1fr;
+}
+.art-fit-ratio .art-pic-half {
+  height: 100vh;
+  height: 100svh;
+}
+.art-fit-ratio .art-pic img {
+  scale: 1;
+}
 .art-text-right .art-date {
   right: auto;
   left: 24px;
@@ -453,6 +476,20 @@
 .art-overlay-light .art-title {
   color: var(--art-ink);
 }
+/* Steps of Ancients: a lighter veil so more of the painting shows through;
+   a soft paper-coloured glow keeps the text readable */
+#steps-of-ancients .art-veil {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 244, 236, 0) 0%,
+    rgba(247, 244, 236, 0.5) 16%,
+    rgba(247, 244, 236, 0.6) 100%
+  );
+}
+#steps-of-ancients .art-caption {
+  text-shadow: 0px 0px 18px rgba(247, 244, 236, 0.9),
+    0px 0px 4px rgba(247, 244, 236, 0.8);
+}
 .art-overlay-dark .art-veil {
   background: linear-gradient(
     90deg,
@@ -476,10 +513,6 @@
   left: 28px;
   bottom: 28px;
 }
-.art-overlay-dark .art-date {
-  left: auto;
-  right: 28px;
-}
 
 /* A row of studies with the text beneath (PDF slide 7) */
 .art-row-grid {
@@ -499,11 +532,15 @@
 .art-pic-row:nth-child(even) {
   margin-top: 48px;
 }
+/* In the corner of the first sketch, as in the PDF (these pictures sit
+   below the top bar, so no extra clearance is needed) */
 .art-row .art-date {
+  top: 14px;
   right: auto;
-  left: 18px;
+  left: 16px;
+  font-size: clamp(16px, 1.4vw, 22px);
   color: var(--art-ink);
-  text-shadow: none;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
 }
 .art-row-grid + .art-caption {
   max-width: none;
@@ -552,9 +589,16 @@
   justify-self: center;
   margin-top: -12vh;
 }
+/* Bottom centre of the lower study, as in the PDF */
 .art-mosaic .art-date {
+  top: auto;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: clamp(16px, 1.4vw, 22px);
   color: var(--art-ink);
-  text-shadow: none;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
 }
 
 /* Artwork | text | artwork (PDF slide 13) */
@@ -607,6 +651,45 @@
   grid-column: 1 / -1;
 }
 
+/* Text beside a whole artwork in a white mat; the frame takes the
+   painting's own shape (see "ratio" in art.json), so nothing is cropped */
+.art-framed {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  column-gap: 5vw;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 10vh var(--art-gutter);
+}
+/* The white mat is drawn inside the frame (the reveal's clip mask would
+   hide an outline or shadow drawn outside it) */
+.art-pic-framed {
+  --mat: 14px;
+  aspect-ratio: auto;
+  width: min(100%, calc(76svh * var(--pic-ratio)));
+  padding: var(--mat);
+  background: #fff;
+  justify-self: center;
+  border: 1px solid rgba(40, 30, 10, 0.12);
+}
+.art-pic-framed::before {
+  content: "";
+  display: block;
+  aspect-ratio: var(--pic-ratio);
+}
+.art-pic-framed img {
+  inset: var(--mat);
+  width: calc(100% - 2 * var(--mat));
+  height: calc(100% - 2 * var(--mat));
+}
+.art-framed .art-date {
+  top: auto;
+  bottom: 22px;
+  left: 24px;
+  right: auto;
+}
+
 /* ── Closing ── */
 .art-closing-inner .art-cover-by {
   margin-top: 0;
@@ -634,6 +717,73 @@
   background: var(--art-gold);
 }
 
+/* Contact details along the bottom of the closing painting, each in its
+   own glass chip */
+.art-closing-contact {
+  position: absolute;
+  left: var(--art-gutter);
+  right: var(--art-gutter);
+  bottom: 28px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 14px;
+  color: #fff;
+  text-align: left;
+}
+.art-closing-contact > div {
+  padding: 16px 24px;
+  border-radius: 18px;
+  background: rgba(20, 17, 12, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.art-contact-label {
+  margin: 0px 0px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+.art-closing-contact a {
+  font-size: clamp(16px, 1.4vw, 21px);
+  font-weight: 500;
+  font-style: italic;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  transition: border-color 0.3s;
+}
+.art-page .art-closing-contact a:hover {
+  color: #fff;
+  border-color: var(--art-gold);
+}
+.art-closing-credit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.art-closing-credit p {
+  margin: 0;
+  font-size: clamp(15px, 1.25vw, 19px);
+  font-weight: 500;
+}
+.art-closing-credit span {
+  white-space: nowrap;
+  font-family: var(--art-script);
+  font-size: 1.6em;
+  font-weight: 400;
+  color: #f1d58a;
+}
+.art-closing-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.65;
+}
+
 /* ── Tablets and phones: everything stacks, artwork first ── */
 @media only screen and (max-width: 900px) {
   .art-artist,
@@ -646,6 +796,8 @@
   .art-artist-photo {
     position: relative;
     height: auto;
+    aspect-ratio: 1358 / 2048 !important;
+    max-height: none !important;
   }
   .art-artist-photo,
   .art-pic-half,
@@ -676,6 +828,11 @@
   }
   .art-text-left .art-pic-half {
     order: -1;
+  }
+  .art-fit-ratio .art-pic-half {
+    height: auto;
+    aspect-ratio: var(--pic-ratio) !important;
+    max-height: none;
   }
   .art-text-left .art-caption,
   .art-text-right .art-caption,
@@ -736,6 +893,17 @@
     padding: 8vh var(--art-gutter);
     row-gap: 5vh;
   }
+  .art-framed {
+    grid-template-columns: 1fr;
+    row-gap: 5vh;
+    min-height: 0;
+    padding: 8vh var(--art-gutter);
+  }
+  .art-pic-framed {
+    --mat: 8px;
+    order: -1;
+    width: 100%;
+  }
   .art-pic-wide {
     width: 100%;
     height: auto;
@@ -746,6 +914,24 @@
   }
   .art-bar {
     padding: 16px var(--art-gutter);
+  }
+  /* The closing grows to fit; the contact strip sits below the message */
+  .art-closing {
+    height: auto;
+    min-height: 100svh;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14vh 0px 28px;
+    gap: 8vh;
+  }
+  .art-closing-contact {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 0px var(--art-gutter);
+    flex-direction: column;
+    gap: 10px;
   }
 }
 

@@ -30,7 +30,8 @@
       "layout": "text-left",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "the-devotee",
@@ -46,7 +47,8 @@
       "layout": "text-right",
       "collection": "portfolio",
       "featured": true,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "life-on-the-water",
@@ -62,7 +64,8 @@
       "layout": "text-left",
       "collection": "portfolio",
       "featured": true,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0.7397
     },
     {
       "slug": "steps-of-ancients",
@@ -78,7 +81,8 @@
       "layout": "overlay-light",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "sci-fi-characters",
@@ -97,7 +101,8 @@
       "layout": "row",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "whispers-of-buddha",
@@ -113,7 +118,8 @@
       "layout": "overlay-dark",
       "collection": "portfolio",
       "featured": true,
-      "fit": "contain"
+      "fit": "contain",
+      "ratio": 0
     },
     {
       "slug": "the-tandava-of-lord-shiva",
@@ -129,7 +135,8 @@
       "layout": "text-right",
       "collection": "portfolio",
       "featured": true,
-      "fit": "contain"
+      "fit": "cover",
+      "ratio": 0.695
     },
     {
       "slug": "the-quiet-table",
@@ -145,7 +152,8 @@
       "layout": "text-left",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0.7378
     },
     {
       "slug": "the-studio-sanctuary",
@@ -161,7 +169,8 @@
       "layout": "text-right",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "human-figures",
@@ -179,7 +188,8 @@
       "layout": "mosaic",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "the-pensive-sari",
@@ -196,30 +206,32 @@
       "layout": "triptych",
       "collection": "portfolio",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "indigo-morning",
       "title": "Indigo Morning",
       "medium": "Monochrome Watercolor on Paper",
       "theme": "Mist and Memory",
-      "date": "",
+      "date": "16/01/25",
       "description": "Fishermen setting out through the river fog before the day has fully begun. Working in a single indigo, I let the water carry the pigment and dissolve the far bank into mist, so the boats feel half-remembered, the way mornings by the river felt in the village where I grew up.",
       "images": [
         "indigo-morning"
       ],
       "focus": "center",
-      "layout": "wide",
+      "layout": "framed",
       "collection": "new",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 1.3611
     },
     {
       "slug": "shade-and-blossom",
       "title": "Shade and Blossom",
       "medium": "Watercolor on Textured Paper",
       "theme": "Rest and Reverie",
-      "date": "",
+      "date": "18/03/24",
       "description": "A woman rests against the trunk of an old tree, flowers woven into her hair and a single white blossom held loosely in her hand. Painted in the soft, muted palette of traditional South Asian miniatures, the piece is about stillness: the private, unhurried moment when the day pauses and the mind is allowed to wander.",
       "images": [
         "shade-and-blossom"
@@ -228,30 +240,15 @@
       "layout": "text-left",
       "collection": "new",
       "featured": false,
-      "fit": "cover"
-    },
-    {
-      "slug": "before-the-monsoon",
-      "title": "Before the Monsoon",
-      "medium": "Wet-on-Wet Watercolor",
-      "theme": "The Weight of the Sky",
-      "date": "",
-      "description": "A study of the sky in the hour before the rain arrives, when clouds gather low over the fields and the light turns strange and bright. I worked wet-on-wet and let the colours bleed freely, so the painting holds the restless, unfinished energy of weather that hasn’t yet made up its mind.",
-      "images": [
-        "before-the-monsoon"
-      ],
-      "focus": "center",
-      "layout": "overlay-light",
-      "collection": "new",
-      "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "lines-of-a-lifetime",
       "title": "Lines of a Lifetime",
       "medium": "Charcoal on Paper",
       "theme": "Time Written on the Face",
-      "date": "",
+      "date": "09/06/23",
       "description": "A charcoal portrait of an elderly man set against layered leaves and fallen blossoms. Every crease and shadow on his face was built up slowly, line over line, to read like a record of the years he has lived: weathered, unguarded, and quietly dignified.",
       "images": [
         "lines-of-a-lifetime"
@@ -260,14 +257,15 @@
       "layout": "text-right",
       "collection": "new",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "the-waiting-boat",
       "title": "The Waiting Boat",
       "medium": "Watercolor on Textured Paper",
       "theme": "Stillness on the River",
-      "date": "",
+      "date": "27/02/25",
       "description": "A lone wooden boat rests in the shallows beside a sunlit sandbank, its mooring poles standing in the green water. It is a scene from the riverside life I grew up with: loose, fresh brushwork for the trees, and quiet reflections that make the whole river feel as if it is holding its breath.",
       "images": [
         "the-waiting-boat"
@@ -276,23 +274,25 @@
       "layout": "text-left",
       "collection": "new",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 0
     },
     {
       "slug": "beneath-the-trees",
       "title": "Beneath the Trees",
       "medium": "Graphite Pencil on Paper",
       "theme": "Shared Silence",
-      "date": "",
+      "date": "04/11/22",
       "description": "Two figures walk together along a tree-lined path, small against the canopy above them. Built entirely from directional hatching, the drawing turns sunlight and shadow into rhythm, and leaves the people at its centre a moment of companionship that needs no words.",
       "images": [
         "beneath-the-trees"
       ],
       "focus": "center",
-      "layout": "wide",
+      "layout": "framed",
       "collection": "new",
       "featured": false,
-      "fit": "cover"
+      "fit": "cover",
+      "ratio": 1.3196
     }
   ]
 }

@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import gsap from "gsap";
-import setSectionSnap from "./sectionSnap";
 
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
@@ -62,8 +61,6 @@ export function setCharTimeline(
     }
   });
   let neckBone = character?.getObjectByName("spine005");
-  // Snap to the character's resting poses (desktop; no-op on smaller screens)
-  setSectionSnap();
   if (window.innerWidth > 1024) {
     if (character) {
       tl1

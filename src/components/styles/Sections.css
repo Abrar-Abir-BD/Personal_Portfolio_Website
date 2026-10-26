@@ -5,23 +5,84 @@
   gap: 24px;
 }
 .skills-card {
-  padding: 40px;
+  padding: 36px;
+}
+/* Header: a tinted icon tile beside a bold title */
+.skills-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+.skills-head-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: linear-gradient(
+    145deg,
+    rgba(var(--glass-rgb), 0.1),
+    rgba(var(--glass-rgb), 0.03)
+  );
+  border: 1px solid rgba(var(--line-rgb), 0.1);
 }
 .skills-card h3 {
-  font-size: 28px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin: 0;
 }
-.skills-card > p {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--mutedColor);
-  margin: 10px 0px 25px;
+/* Skills: a grid of tiles, logo in a rounded square, name beneath */
+.skills-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.skills-chips {
+.skills-tile {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 8px 14px;
+  border-radius: 16px;
+  text-align: center;
+  background: rgba(var(--glass-rgb), 0.04);
+  border: 1px solid rgba(var(--line-rgb), 0.06);
+  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+.skills-tile:hover {
+  transform: translateY(-3px);
+  background: rgba(var(--glass-rgb), 0.08);
+  border-color: rgba(111, 180, 240, 0.35);
+}
+.skills-tile-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--textColor);
+  background: rgba(4, 7, 13, 0.55);
+}
+:root[data-theme="light"] .skills-tile-logo {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0px 6px 14px -8px rgba(13, 27, 42, 0.3);
+}
+.skills-tile-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--textColor);
+  opacity: 0.85;
 }
 
 /* Experience & Leadership (uses the career timeline layout from Career.css) */
@@ -487,6 +548,31 @@
 
 /* Art Portfolio teaser on the main page: four works, staggered like a
    gallery wall, each linking to its place on the /art page */
+/* "Visit Art Portfolio", right under the section title */
+/* Shaded yellow-gold, echoing the art portfolio's gold */
+.art-visit,
+:root[data-theme="light"] .art-visit {
+  margin: 0px 0px 48px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 24px;
+  color: #2a1a00;
+  background: linear-gradient(180deg, #ffe28f 0%, #f2b93b 55%, #d99a1e 100%);
+  border-color: #ffe9a8;
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.6),
+    0px 10px 26px -10px rgba(242, 185, 59, 0.6);
+}
+.art-visit:hover,
+:root[data-theme="light"] .art-visit:hover {
+  color: #2a1a00;
+  background: linear-gradient(180deg, #fff0b8 0%, #f7c552 55%, #e3a52a 100%);
+  border-color: #fff3c4;
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.7),
+    0px 12px 30px -8px rgba(242, 185, 59, 0.75);
+}
+.art-visit svg {
+  font-size: 18px;
+}
 .art-preview {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -769,5 +855,39 @@
   .research-photo {
     order: -1;
     aspect-ratio: 4 / 3;
+  }
+}
+/* Skill tiles: four across on wide cards, three on laptops, back to four
+   once the cards stack, three on phones */
+@media only screen and (max-width: 1400px) {
+  .skills-tiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 900px) {
+  .skills-tiles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media only screen and (max-width: 560px) {
+  .skills-tiles {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .skills-head-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+  }
+  .skills-card h3 {
+    font-size: 21px;
+  }
+  .skills-tile-logo {
+    width: 48px;
+    height: 48px;
+    font-size: 26px;
+  }
+  .skills-tile-name {
+    font-size: 12px;
   }
 }
