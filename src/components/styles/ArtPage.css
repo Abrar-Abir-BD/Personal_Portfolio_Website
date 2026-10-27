@@ -210,12 +210,12 @@
   min-height: 100vh;
   min-height: 100svh;
 }
-/* The portrait stays one screen tall and pinned while a long bio scrolls */
+/* The portrait runs the full height of the panel beside it, so a long bio
+   never leaves an empty strip under the photo */
 .art-artist-photo {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
+  align-self: stretch;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 .art-artist-photo img {
   /* Keep the painter and the flower in view if a narrow window trims it */
@@ -651,7 +651,8 @@
 
 /* Text beside a whole artwork in a white mat; the frame takes the
    painting's own shape (see "ratio" in art.json), so nothing is cropped */
-.art-framed {
+.art-framed,
+.art-framed-right {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   align-items: center;
@@ -681,7 +682,11 @@
   width: calc(100% - 2 * var(--mat));
   height: calc(100% - 2 * var(--mat));
 }
-.art-framed .art-date {
+.art-framed-right {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+.art-framed .art-date,
+.art-framed-right .art-date {
   top: auto;
   bottom: 22px;
   left: 24px;
@@ -692,15 +697,74 @@
 .art-closing-inner .art-cover-by {
   margin-top: 0;
 }
-.art-page .art-closing-button {
+/* A plain footer across the bottom of the closing painting: columns spaced
+   out as in the main site's Contact section, over a dark fade for contrast */
+.art-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 90px var(--art-gutter) 36px;
+  color: #fff;
+  text-align: left;
+  background: linear-gradient(
+    to top,
+    rgba(10, 8, 5, 0.88) 0%,
+    rgba(10, 8, 5, 0.7) 60%,
+    rgba(10, 8, 5, 0) 100%
+  );
+}
+.art-footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+.art-contact-label {
+  margin: 0px 0px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+/* Same type as the "Designed and Developed" credit */
+.art-footer-heading {
+  margin: 0px 0px 16px;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.4;
+}
+.art-footer-col a + .art-contact-label {
+  margin-top: 20px;
+}
+.art-footer a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 34px;
+  font-size: clamp(16px, 1.4vw, 21px);
+  font-weight: 500;
+  font-style: italic;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  transition: border-color 0.3s;
+}
+.art-page .art-footer a:hover {
+  color: #fff;
+  border-color: var(--art-gold);
+}
+/* The back link keeps its pill button look inside the footer */
+.art-page .art-footer .art-closing-button {
+  gap: 8px;
+  margin-top: 4px;
   padding: 13px 26px;
   border-radius: 50px;
   font-size: 14px;
   font-weight: 700;
+  font-style: normal;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
@@ -710,63 +774,21 @@
   backdrop-filter: blur(6px);
   transition: background 0.3s;
 }
-.art-page .art-closing-button:hover {
+.art-page .art-footer .art-closing-button:hover {
   color: #fff;
   background: var(--art-gold);
+  border-color: rgba(255, 255, 255, 0.35);
 }
-
-/* Contact details along the bottom of the closing painting, each in its
-   own glass chip */
-.art-closing-contact {
-  position: absolute;
-  left: var(--art-gutter);
-  right: var(--art-gutter);
-  bottom: 28px;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 14px;
-  color: #fff;
-  text-align: left;
-}
-.art-closing-contact > div {
-  padding: 16px 24px;
-  border-radius: 18px;
-  background: rgba(20, 17, 12, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-.art-contact-label {
-  margin: 0px 0px 6px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.65;
-}
-.art-closing-contact a {
-  font-size: clamp(16px, 1.4vw, 21px);
-  font-weight: 500;
-  font-style: italic;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-  transition: border-color 0.3s;
-}
-.art-page .art-closing-contact a:hover {
-  color: #fff;
-  border-color: var(--art-gold);
-}
-.art-closing-credit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* The credit sits flush with the right edge, mirroring the email on the left */
+.art-footer .art-closing-credit {
+  align-items: flex-end;
+  text-align: right;
 }
 .art-closing-credit p {
   margin: 0;
-  font-size: clamp(15px, 1.25vw, 19px);
-  font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.4;
 }
 .art-closing-credit span {
   white-space: nowrap;
@@ -796,6 +818,7 @@
     height: auto;
     aspect-ratio: 1358 / 2048 !important;
     max-height: none !important;
+    min-height: 0;
   }
   .art-artist-photo,
   .art-pic-half,
@@ -891,7 +914,8 @@
     padding: 8vh var(--art-gutter);
     row-gap: 5vh;
   }
-  .art-framed {
+  .art-framed,
+  .art-framed-right {
     grid-template-columns: 1fr;
     row-gap: 5vh;
     min-height: 0;
@@ -913,23 +937,28 @@
   .art-bar {
     padding: 16px var(--art-gutter);
   }
-  /* The closing grows to fit; the contact strip sits below the message */
+  /* The closing grows to fit; the footer stacks below the message */
   .art-closing {
     height: auto;
     min-height: 100svh;
     flex-direction: column;
-    justify-content: center;
-    padding: 14vh 0px 28px;
-    gap: 8vh;
+    justify-content: space-between;
+    padding-top: 22vh;
+    gap: 12vh;
   }
-  .art-closing-contact {
+  .art-footer {
     position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin: 0px var(--art-gutter);
     flex-direction: column;
-    gap: 10px;
+    gap: 28px;
+    padding-top: 60px;
+    width: 100%;
+  }
+  .art-footer-col {
+    flex: none;
+  }
+  .art-footer .art-closing-credit {
+    align-items: flex-start;
+    text-align: left;
   }
 }
 

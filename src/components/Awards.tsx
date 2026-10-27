@@ -8,7 +8,7 @@ import {
 } from "react-icons/md";
 import { GlassCard, GlassSection } from "./Glass";
 import { Award, awards } from "../data/portfolioContent";
-import { smoother } from "./Navbar";
+import { scrollToSection } from "./Navbar";
 import "./styles/Sections.css";
 
 // How many awards show before "View all"
@@ -75,7 +75,6 @@ const AwardCard = ({ award, isNew }: { award: Award; isNew: boolean }) => {
           ref={descRef}
           className={`awards-desc ${open ? "awards-desc-open" : ""}`}
         >
-          {award.highlight && `${award.highlight}. `}
           {award.description}
         </p>
         {(clamped || open) && (
@@ -125,11 +124,7 @@ const Awards = () => {
       ScrollTrigger.refresh();
       // After collapsing, bring the section back into view
       if (!next) {
-        if (window.innerWidth > 1024 && smoother) {
-          smoother.scrollTo("#awards", true, "top 90px");
-        } else {
-          document.getElementById("awards")?.scrollIntoView();
-        }
+        scrollToSection("#awards");
       }
     });
   };

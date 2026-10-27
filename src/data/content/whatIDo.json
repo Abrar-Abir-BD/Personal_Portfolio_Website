@@ -1,12 +1,32 @@
 [
   {
-    "title": "DEVELOP",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia aliquid laboriosam ducimus sit molestiae.",
-    "tools": ["JavaScript", "TypeScript", "Three.js", "React", "Css", "Node.js", "Next.js", "Express.js", "PHP", "MySql"]
+    "title": "BUILD",
+    "description": "I research and engineer AI and robotic systems, from water-testing devices to rescue robots and prosthetics.",
+    "tools": [
+      "Python",
+      "PyTorch",
+      "TensorFlow",
+      "OpenCV",
+      "ROS",
+      "Jetson Nano",
+      "ESP32",
+      "Arduino",
+      "SolidWorks",
+      "Autodesk Fusion"
+    ]
   },
   {
-    "title": "DESIGN",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia aliquid laboriosam ducimus sit molestiae",
-    "tools": ["Blender", "Zbrush", "UI Design", "Motion", "Rigging", "3D Animation", "Character Design", "Modelling"]
+    "title": "LEAD",
+    "description": "I found and lead teams: mentoring young roboticists, training debaters and campaigning for children's rights.",
+    "tools": [
+      "Team Leadership",
+      "Mentoring",
+      "Research Writing",
+      "Public Speaking",
+      "Debate Coaching",
+      "Community Building",
+      "Figma",
+      "Adobe Suite"
+    ]
   }
 ]

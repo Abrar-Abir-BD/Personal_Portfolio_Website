@@ -5,24 +5,24 @@
   gap: 24px;
 }
 .skills-card {
-  padding: 36px;
+  padding: 28px;
 }
 /* Header: a tinted icon tile beside a bold title */
 .skills-head {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-bottom: 26px;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 .skills-head-icon {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 24px;
   background: linear-gradient(
     145deg,
     rgba(var(--glass-rgb), 0.1),
@@ -31,7 +31,7 @@
   border: 1px solid rgba(var(--line-rgb), 0.1);
 }
 .skills-card h3 {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0;
@@ -39,8 +39,8 @@
 /* Skills: a grid of tiles, logo in a rounded square, name beneath */
 .skills-tiles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -49,9 +49,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 16px 8px 14px;
-  border-radius: 16px;
+  gap: 6px;
+  padding: 8px 4px 7px;
+  border-radius: 12px;
   text-align: center;
   background: rgba(var(--glass-rgb), 0.04);
   border: 1px solid rgba(var(--line-rgb), 0.06);
@@ -63,13 +63,13 @@
   border-color: rgba(111, 180, 240, 0.35);
 }
 .skills-tile-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 24px;
   color: var(--textColor);
   background: rgba(4, 7, 13, 0.55);
 }
@@ -78,44 +78,129 @@
   box-shadow: 0px 6px 14px -8px rgba(13, 27, 42, 0.3);
 }
 .skills-tile-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.25;
   color: var(--textColor);
   opacity: 0.85;
 }
 
-/* Experience & Leadership (uses the career timeline layout from Career.css) */
-.experience-section .career-container {
-  position: relative;
-  z-index: 1;
+/* Experience & Leadership: a glass card per role, two across */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
-.experience-location {
-  display: block;
+.experience-card {
+  padding: 22px 24px 24px;
+}
+.experience-card-new {
+  animation: projectReveal 0.6s ease-out both;
+}
+.experience-top {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+/* Logos sit on a white tile so every brand colour reads in both themes */
+.experience-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.experience-logo img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+.experience-logo-initials {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #eaf3fa;
+  background: linear-gradient(145deg, #1b68cf, #0e3f80);
+}
+.experience-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.experience-head h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.experience-year {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accentColor);
+}
+.experience-org {
+  margin: 2px 0px 0px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.experience-org span {
+  font-weight: 300;
+  color: var(--mutedColor);
+}
+/* Website, or a page about the organization when it has none */
+.experience-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accentColor);
+}
+.experience-link svg {
+  font-size: 13px;
+}
+.experience-link:hover {
+  text-decoration: underline;
+}
+.experience-desc {
+  margin: 16px 0px 0px;
   font-size: 14px;
   font-weight: 300;
+  line-height: 1.6;
   color: var(--mutedColor);
 }
-.career-info-box .experience-glass {
-  width: 40%;
-  padding: 24px 28px;
-  box-sizing: border-box;
+/* Results, each with a small accent dot */
+.experience-points {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 16px 0px 0px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.45;
 }
-.career-info-box .experience-glass p {
-  width: 100%;
+.experience-points li {
+  position: relative;
+  padding-left: 14px;
 }
-.experience-glass ul {
-  margin: 12px 0px 0px;
-  padding-left: 18px;
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--mutedColor);
-}
-.experience-glass li {
-  margin-bottom: 4px;
-}
-.experience-glass li::marker {
-  color: var(--accentColor);
+.experience-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentColor);
 }
 
 /* Awards & Recognition: photo on top, badges, title, expandable text,
@@ -123,7 +208,7 @@
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 18px;
 }
 .awards-card {
   display: flex;
@@ -132,7 +217,7 @@
 }
 /* Photo fills the top of the card, edge to edge */
 .awards-photo {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -158,20 +243,20 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 22px 24px 24px;
+  padding: 16px 18px 18px;
 }
 .awards-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 .awards-level {
   display: inline-flex;
   align-items: center;
-  padding: 5px 13px;
+  padding: 4px 10px;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -186,33 +271,33 @@
 .awards-pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
+  gap: 4px;
+  padding: 4px 10px;
   border-radius: 50px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--textColor);
   background: rgba(var(--line-rgb), 0.08);
 }
 .awards-pill svg {
-  font-size: 15px;
+  font-size: 14px;
   opacity: 0.8;
 }
 .awards-card h3 {
-  font-size: 20px;
-  line-height: 1.25;
+  font-size: 17px;
+  line-height: 1.3;
   font-weight: 700;
   letter-spacing: -0.01em;
-  margin: 0px 0px 12px;
+  margin: 0px 0px 8px;
 }
 .awards-desc {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--mutedColor);
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -222,12 +307,12 @@
 }
 .awards-more {
   align-self: flex-start;
-  margin: 12px 0px 0px;
+  margin: 8px 0px 0px;
   padding: 0;
   border: none;
   background: none;
   font: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--accentColor);
   cursor: pointer;
@@ -237,35 +322,35 @@
 }
 .awards-media {
   margin-top: auto;
-  padding-top: 22px;
+  padding-top: 14px;
 }
 .awards-media::before {
   content: "";
   display: block;
   height: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   background: rgba(var(--line-rgb), 0.12);
 }
 .awards-media-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--mutedColor);
-  margin: 0px 0px 12px;
+  margin: 0px 0px 8px;
 }
 .awards-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 .awards-links a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
+  gap: 5px;
+  padding: 5px 11px;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--textColor);
   background: rgba(var(--line-rgb), 0.08);
@@ -417,36 +502,36 @@
 
 /* Research & Publications */
 .research-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
+/* Side-by-side cards, a short photo across the top of each */
 .research-card {
   display: grid;
-  /* Same photo column on every card, so photos and text line up */
-  grid-template-columns: minmax(260px, 40%) 1fr;
-  align-items: center;
-  gap: 40px;
-  padding: 40px 44px;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 16px;
+  padding: 18px 20px 22px;
 }
 .research-body {
   flex: 1;
 }
 .research-body h3 {
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 1.3;
   font-weight: 500;
-  margin: 12px 0px 8px;
+  margin: 10px 0px 6px;
 }
 .research-authors {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.5;
   color: var(--mutedColor);
   margin: 0;
 }
 .research-venue {
-  font-size: 15px;
+  font-size: 14px;
   font-style: italic;
   font-weight: 300;
   color: var(--accentColor);
@@ -455,15 +540,19 @@
 .research-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 8px;
+  margin-top: 16px;
 }
-/* Photo on the left of the text (and above it on phones); every card uses
-   the same 3:2 frame so the photos line up */
+.research-links .glass-button {
+  font-size: 13px;
+  padding: 8px 16px;
+}
+/* Photo above the text; every card uses the same short 2:1 frame so the
+   photos line up */
 .research-photo {
   order: -1;
   position: relative;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -514,15 +603,19 @@
 .research-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
+}
+.research-chips .glass-chip {
+  padding: 4px 11px;
+  font-size: 12px;
 }
 /* Abrar's part (e.g. First Author): the bright badge */
 .research-role {
   display: inline-flex;
   align-items: center;
-  padding: 6px 14px;
+  padding: 4px 11px;
   border-radius: 50px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.4px;
   color: #04070d;
@@ -538,11 +631,11 @@
   color: var(--mutedColor);
 }
 .research-overview {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 1.65;
+  line-height: 1.6;
   color: var(--mutedColor);
-  margin: 16px 0px 0px;
+  margin: 10px 0px 0px;
   max-width: 760px;
 }
 
@@ -671,54 +764,177 @@
   margin: 4px 0px 0px;
 }
 
-/* Featured in Media */
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+/* Featured in Media: one row that slides sideways, LinkedIn style */
+.media-slider {
+  position: relative;
+}
+/* Arrows straddle the row's edges, centred on the cards' height (the
+   track's padding is 6px above and 24px below, hence the 9px offset) */
+.media-arrow {
+  position: absolute;
+  top: calc(50% - 9px);
+  z-index: 3;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--textColor);
+  background: rgba(12, 21, 34, 0.75);
+  border: 1px solid rgba(var(--line-rgb), 0.18);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 10px 24px -10px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, opacity 0.3s;
+}
+:root[data-theme="light"] .media-arrow {
+  background: rgba(255, 255, 255, 0.85);
+}
+.media-arrow-prev {
+  left: -23px;
+}
+.media-arrow-next {
+  right: -23px;
+}
+.media-arrow:hover:not(:disabled) {
+  background: rgba(111, 180, 240, 0.18);
+  border-color: rgba(111, 180, 240, 0.5);
+}
+.media-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+/* Soft fade on whichever edge still has cards beyond it */
+.media-more-right .media-track {
+  -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+  mask-image: linear-gradient(to right, #000 85%, transparent);
+}
+.media-more-left .media-track {
+  -webkit-mask-image: linear-gradient(to left, #000 85%, transparent);
+  mask-image: linear-gradient(to left, #000 85%, transparent);
+}
+.media-more-left.media-more-right .media-track {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 85%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 85%,
+    transparent
+  );
+}
+.media-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* Room for the cards' hover lift and shadow */
+  padding: 6px 2px 24px;
+}
+.media-track::-webkit-scrollbar {
+  display: none;
 }
 .media-card {
-  padding: 32px;
+  flex: 0 0 calc((100% - 60px) / 3.4);
+  scroll-snap-align: start;
+  border-radius: 18px;
+}
+.media-card > a {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  height: 100%;
+  color: inherit;
 }
-.media-top {
+.media-thumb {
+  aspect-ratio: 1.91 / 1;
+  overflow: hidden;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(27, 104, 207, 0.35),
+    rgba(111, 180, 240, 0.12)
+  );
+  border-bottom: 1px solid rgba(var(--line-rgb), 0.1);
+}
+.media-thumb img {
   width: 100%;
-  margin-bottom: 25px;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
 }
-.media-date {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--mutedColor);
+.media-card:hover .media-thumb img {
+  transform: scale(1.04);
 }
-.media-card h4 {
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 1px;
+.media-thumb span {
+  padding: 0px 16px;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: 26px;
+  text-align: center;
+  color: var(--textColor);
+}
+.media-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 14px 16px 16px;
+}
+.media-type {
+  margin: 0px 0px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accentColor);
-  margin: 0;
+}
+.media-type span {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--mutedColor);
 }
 .media-card h3 {
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 400;
-  margin: 10px 0px 25px;
+  margin: 0px 0px 12px;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.media-card .glass-button {
-  margin-top: auto;
+.media-card:hover h3 {
+  color: var(--accentColor);
+}
+.media-source {
+  margin: auto 0px 0px;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 500;
+}
+.media-source span {
+  font-weight: 400;
+  color: var(--mutedColor);
 }
 
 @media only screen and (max-width: 1400px) {
   .skills-card {
-    padding: 32px;
-  }
-  .career-info-box .experience-glass {
-    width: 45%;
+    padding: 24px;
   }
   .projects-item {
     grid-template-columns: 1fr;
@@ -733,16 +949,8 @@
   .projects-info h3 {
     font-size: 24px;
   }
-  .media-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .research-card {
-    gap: 25px;
-    padding: 28px 32px;
-  }
   .research-body h3 {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 18px;
   }
 }
 @media only screen and (max-width: 900px) {
@@ -755,21 +963,26 @@
   .skills-grid,
   .awards-grid,
   .projects-grid,
-  .media-grid,
   .art-grid {
     grid-template-columns: 1fr;
   }
-  .skills-card,
-  .media-card {
-    padding: 26px;
+  .skills-card {
+    padding: 22px;
   }
-  .career-info-box .experience-glass {
-    width: 90%;
-    margin-left: 10%;
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+  .experience-card {
     padding: 20px;
   }
-  .career-info-box .experience-glass p {
-    padding-left: 0;
+  .experience-top {
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+  }
+  .experience-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
   }
   .art-grid .art-card:nth-child(3n + 2) .glass-image {
     aspect-ratio: 4 / 5;
@@ -781,20 +994,6 @@
   }
 }
 
-/* Career.css pulls its section up under "What I Do" on tablets/phones;
-   Experience follows Skills instead, so keep normal spacing there. */
-@media only screen and (max-width: 1025px) {
-  .experience-section.career-section {
-    margin-top: 0;
-    padding-top: 80px;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .career-info-box .experience-glass {
-    width: 95%;
-    margin-left: 5%;
-  }
-}
 @media only screen and (max-width: 600px) {
   .projects-item {
     grid-template-columns: 1fr;
@@ -802,19 +1001,38 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .projects-item-new,
-  .awards-card-new {
+  .awards-card-new,
+  .experience-card-new {
     animation: none;
   }
 }
-/* Laptops (1150-1400px wide): the shared 900px content width forces projects
-   to stack image over text. Give this section the wider area and keep image
-   and text side by side, with slightly smaller type. */
-@media only screen and (min-width: 1150px) and (max-width: 1400px) {
-  .projects-section .section-container,
-  .awards-section .section-container {
-    width: 1200px;
-    max-width: calc(100% - 160px);
+/* Laptops (1150-1400px wide): keep project image and text side by side in
+   the wide content area, with slightly smaller type. */
+/* Media row: always part of the next card in view, inviting a slide.
+   About 3.4 cards on desktops, 2.4 on small laptops, 1.3 once the content
+   narrows; on phones the arrows tuck inside the edges */
+@media only screen and (max-width: 1149px) {
+  .media-card {
+    flex-basis: calc((100% - 40px) / 2.4);
   }
+}
+@media only screen and (max-width: 900px) {
+  .media-card {
+    flex-basis: calc((100% - 20px) / 1.3);
+  }
+  .media-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  .media-arrow-prev {
+    left: 6px;
+  }
+  .media-arrow-next {
+    right: 6px;
+  }
+}
+@media only screen and (min-width: 1150px) and (max-width: 1400px) {
   .projects-grid {
     column-gap: 48px;
   }
@@ -847,24 +1065,13 @@
 }
 /* Publications on tablets and phones: photo above the text */
 @media only screen and (max-width: 900px) {
-  .research-card {
+  .research-list {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 26px;
-  }
-  .research-photo {
-    order: -1;
-    aspect-ratio: 4 / 3;
   }
 }
-/* Skill tiles: four across on wide cards, three on laptops, back to four
-   once the cards stack, three on phones */
-@media only screen and (max-width: 1400px) {
-  .skills-tiles {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media only screen and (max-width: 900px) {
+/* Skill tiles: six across on desktops and laptops, four on small laptops
+   and once the cards stack, three on phones */
+@media only screen and (max-width: 1149px) {
   .skills-tiles {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -875,19 +1082,140 @@
     gap: 10px;
   }
   .skills-head-icon {
-    width: 52px;
-    height: 52px;
-    font-size: 26px;
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
   }
   .skills-card h3 {
-    font-size: 21px;
+    font-size: 20px;
   }
   .skills-tile-logo {
-    width: 48px;
-    height: 48px;
-    font-size: 26px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
   }
   .skills-tile-name {
     font-size: 12px;
+  }
+}
+
+/* Phones: two cards side by side in Projects, Awards and Moments (the
+   text-heavy Experience and Publications stay one per row) */
+@media only screen and (max-width: 600px) {
+  .projects-grid,
+  .awards-grid,
+  .art-grid.moments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 12px;
+  }
+  /* Projects: image above a compact text block */
+  .projects-grid {
+    row-gap: 36px;
+  }
+  .projects-item {
+    gap: 10px;
+    align-items: start;
+  }
+  .projects-meta {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+  .projects-info h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .projects-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    -webkit-line-clamp: 3;
+  }
+  .projects-links {
+    gap: 6px 14px;
+  }
+  .projects-links a,
+  .projects-link-disabled {
+    font-size: 12px;
+  }
+  .projects-more {
+    margin-top: 40px;
+  }
+  /* Awards */
+  .awards-grid {
+    row-gap: 12px;
+  }
+  .awards-card {
+    border-radius: 18px;
+  }
+  .awards-body {
+    padding: 10px 11px 12px;
+  }
+  .awards-badges {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .awards-level,
+  .awards-pill {
+    padding: 3px 7px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+  .awards-pill svg {
+    font-size: 11px;
+  }
+  .awards-card h3 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .awards-desc {
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+  .awards-more {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .awards-media {
+    padding-top: 10px;
+  }
+  .awards-media::before {
+    margin-bottom: 8px;
+  }
+  .awards-media-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .awards-links {
+    gap: 4px;
+  }
+  .awards-links a {
+    padding: 4px 8px;
+    font-size: 10.5px;
+  }
+  /* Moments */
+  .moments-grid .art-card {
+    padding: 8px;
+    border-radius: 16px;
+  }
+  .moments-grid .art-card .glass-image {
+    border-radius: 11px;
+  }
+  .moments-grid .art-info {
+    padding: 10px 4px 2px;
+  }
+  .moments-grid .art-info h3 {
+    font-size: 13px;
+  }
+  .moments-grid .art-info p {
+    font-size: 11px;
+  }
+  /* Skills: four tiles across */
+  .skills-tiles {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .skills-tile-name {
+    font-size: 10.5px;
   }
 }

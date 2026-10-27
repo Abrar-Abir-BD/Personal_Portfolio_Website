@@ -1,18 +1,57 @@
 .loading-screen {
+  /* Raised surface for the pill, a step up from the page background */
+  --loader-surface: #0c1522;
   position: fixed;
   width: 100vw;
   height: var(--vh);
-  /* background-image: linear-gradient(#9fd2f0, #b5e3ef); */
-  background-color: #eaf3fa;
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
   z-index: 999999999;
   display: flex;
   place-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+:root[data-theme="light"] .loading-screen {
+  --loader-surface: #ffffff;
+}
+/* The same soft blue lights that sit behind the main site's sections */
+.loading-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.55;
+  animation: loadingDrift 18s ease-in-out infinite alternate;
+}
+.loading-orb-1 {
+  width: 480px;
+  height: 480px;
+  top: 8%;
+  left: -6%;
+  background: radial-gradient(circle, #1b68cf 0%, rgba(27, 104, 207, 0) 70%);
+}
+.loading-orb-2 {
+  width: 400px;
+  height: 400px;
+  bottom: 4%;
+  right: -4%;
+  background: radial-gradient(circle, #6fb4f0 0%, rgba(111, 180, 240, 0) 70%);
+  animation-duration: 22s;
+  animation-direction: alternate-reverse;
+}
+@keyframes loadingDrift {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  100% {
+    transform: translate(60px, -40px) scale(1.15);
+  }
 }
 .loading-button {
   padding: 20px 50px;
   border-radius: 100px;
-  background-color: #000;
+  background-color: var(--loader-surface);
   overflow: hidden;
   font-size: 18px;
   font-weight: 500;
@@ -48,26 +87,38 @@
   min-width: 0px;
   min-height: 0px;
   border-radius: 100px;
-  background-color: #000;
+  background-color: var(--loader-surface);
+  border: 1px solid rgba(var(--line-rgb), 0.14);
   overflow: hidden;
-  transition: 0.8s ease-in-out;
-  transition-delay: 0.2s;
-  box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.2);
+  /* Only transform animates on exit, so the growth runs on the GPU
+     without re-laying out the page each frame */
+  will-change: transform;
+  transition: transform 0.9s cubic-bezier(0.7, 0, 0.25, 1),
+    box-shadow 0.3s;
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.25),
+    0px 20px 50px -20px rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+/* Exit, part one: the pill swells until it covers the screen, its label
+   fading out first so the text never blows up */
 .loading-clicked {
-  transition-delay: 0ms;
-  transition-timing-function: cubic-bezier(0.33, 0.11, 1, 0.72);
-  transform: scale(1);
-  min-width: calc(100vw + 5000px);
-  border-radius: 5000px;
-  min-height: calc(100vh + 500px);
+  transform: scale(45);
   box-shadow: none;
 }
-.loading-clicked .loading-button {
-  overflow: visible;
+.loading-clicked .loading-button > * {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+/* Part two: the whole loader fades away over the landing page */
+.loading-screen,
+.loading-header {
+  transition: opacity 0.6s ease;
+}
+.loading-out {
+  opacity: 0;
+  pointer-events: none;
 }
 .loading-hover {
   background-color: #1b68cf;
@@ -92,7 +143,7 @@
 }
 .loading-content {
   position: relative;
-  background-color: #000;
+  background-color: var(--loader-surface);
   width: 100%;
   overflow: hidden;
   transition: 0.6s;
@@ -117,10 +168,6 @@
   transition: 1s;
   max-width: var(--Lsize);
 }
-.loading-clicked .loading-content2 {
-  opacity: 0;
-  transition: 0.5s;
-}
 
 .loading-content span {
   font-weight: 300;
@@ -137,7 +184,7 @@
   transform: translate(100%, -50%);
   width: 15px;
   height: 25px;
-  background-color: white;
+  background-color: var(--accentColor);
   animation: blink 1s linear infinite;
 }
 .loading-icon {
@@ -155,14 +202,6 @@
   transition-delay: 0s;
   transition: 1s;
   transform: translateX(200px);
-}
-.loading-clicked .loading-content2 {
-  overflow: visible;
-}
-.loading-clicked .loading-content2 span {
-  transition: 1s;
-  transform: translateY(100px);
-  opacity: 0;
 }
 .loading-container {
   position: absolute;
@@ -187,15 +226,18 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 20px 0px;
+  padding: 14px 0px;
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  color: var(--backgroundColor);
+  color: var(--textColor);
 }
 .loader-title {
-  font-weight: 700;
-  font-size: 14px;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1;
   letter-spacing: 0.2px;
 }
 @keyframes blink {
@@ -257,7 +299,7 @@
   position: relative;
   width: 10px;
   height: 60px;
-  background-color: #000;
+  background-color: rgba(var(--line-rgb), 0.45);
   display: block;
 }
 .loaderGame-line:nth-child(2n) {
@@ -272,7 +314,7 @@
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: #1b68cf;
+  background-color: var(--accentColor);
   animation: ball25 7s infinite;
   transform: translateY(10px);
   animation-timing-function: cubic-bezier(0.3, 1.18, 0.63, 1.28);
@@ -283,7 +325,7 @@
   left: 0;
   width: 100%;
   transform: translateY(-50%);
-  color: var(--backgroundColor);
+  color: rgba(var(--line-rgb), 0.07);
   font-size: 60px;
   font-weight: 600;
   text-transform: uppercase;
@@ -296,7 +338,7 @@
   content: "";
   width: 20px;
   height: 20px;
-  background-color: var(--backgroundColor);
+  background-color: rgba(111, 180, 240, 0.35);
   position: absolute;
   top: 50%;
   border-radius: 50px;
@@ -346,18 +388,20 @@
   }
 }
 @media only screen and (min-width: 500px) {
-  .loading-header {
-    padding: 20px 0px;
-  }
   .loader-title {
-    font-size: 16px;
+    font-size: 23px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .loading-header {
-    padding: 35px 0px;
+    padding: 20px 0px;
   }
   .loader-title {
-    font-size: 18px;
+    font-size: 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loading-orb {
+    animation: none;
   }
 }

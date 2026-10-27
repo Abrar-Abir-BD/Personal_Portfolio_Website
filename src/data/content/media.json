@@ -1,23 +1,58 @@
 [
   {
-    "outlet": "Publication / Outlet",
-    "headline": "Headline of the article, interview or feature",
-    "date": "Month 20XX",
-    "type": "Article",
-    "link": "#"
+    "outlet": "The Daily Star",
+    "headline": "Team Bangladesh wins 10 medals at Int'l Robot Olympiad 2025",
+    "date": "January 2025",
+    "type": "News",
+    "link": "https://www.thedailystar.net/tech-startup/news/team-bangladesh-wins-10-medals-intl-robot-olympiad-2025-3808396",
+    "image": "/images/media/daily-star-iro-2025.webp"
   },
   {
-    "outlet": "Publication / Outlet",
-    "headline": "Headline of the article, interview or feature",
-    "date": "Month 20XX",
-    "type": "Interview",
-    "link": "#"
+    "outlet": "The Business Standard",
+    "headline": "Bangladesh runners-up at World Robot Olympiad Asia-Pacific Open",
+    "date": "September 2025",
+    "type": "Press Release",
+    "link": "https://www.tbsnews.net/economy/corporates/bangladesh-runners-world-robot-olympiad-asia-pacific-open-1241906",
+    "image": "/images/media/tbs-wro-apac-2025.jpg"
   },
   {
-    "outlet": "Publication / Outlet",
-    "headline": "Headline of the article, interview or feature",
-    "date": "Month 20XX",
-    "type": "Podcast",
-    "link": "#"
+    "outlet": "The Business Standard",
+    "headline": "3 students win Bangladesh Stockholm Junior Water Prize-2024",
+    "date": "May 2024",
+    "type": "News",
+    "link": "https://www.tbsnews.net/bangladesh/hov-bangladesh-holds-bangladesh-stockholm-junior-water-prize-ceremony-2024-847726",
+    "image": "/images/media/tbs-sjwp-2024.jpg"
+  },
+  {
+    "outlet": "The Daily Ittefaq",
+    "headline": "First DRMC International Adventure Odyssey concluded",
+    "date": "November 2024",
+    "type": "News",
+    "link": "https://www.ittefaq.com.bd/706273/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE-%E0%A6%A1%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%8F%E0%A6%AE%E0%A6%B8%E0%A6%BF-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B2-%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A1%E0%A6%AD%E0%A7%87%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF",
+    "image": "/images/media/ittefaq-drmc-odyssey.jpg"
+  },
+  {
+    "outlet": "Banglanews24",
+    "headline": "Featured on Banglanews24",
+    "date": "",
+    "type": "News",
+    "link": "https://www.banglanews24.com/national/news/bd/581485.details",
+    "image": ""
+  },
+  {
+    "outlet": "NewsG24",
+    "headline": "DCBD spreading the light of debate online",
+    "date": "July 2023",
+    "type": "Feature",
+    "link": "https://www.newsg24.com/education-news/8146/",
+    "image": ""
+  },
+  {
+    "outlet": "Hello (bdnews24.com)",
+    "headline": "Not idle, but preparing: Abir's difficult time",
+    "date": "June 2020",
+    "type": "Feature",
+    "link": "https://hello.bdnews24.com/news/article21032.bdnews",
+    "image": "/images/media/hello-bdnews24-abir.jpg"
   }
 ]

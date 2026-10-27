@@ -175,6 +175,12 @@ const Slide = ({ work, index }: { work: Artwork; index: number }) => {
           <Picture work={work} file={first} className="art-pic-framed" showDate />
         </>
       )}
+      {work.layout === "framed-right" && (
+        <>
+          <Picture work={work} file={first} className="art-pic-framed" showDate />
+          <Caption work={work} index={index} />
+        </>
+      )}
       {work.layout === "wide" && (
         <>
           <Picture work={work} file={first} className="art-pic-wide" showDate />
@@ -232,14 +238,15 @@ const ArtPage = () => {
           scrollTrigger: { trigger: ".art-cover", start: "top top", end: "70% top", scrub: true },
         });
 
-        // One sequence per artwork, in order: the photo is revealed like a
-        // curtain lifting (easing down from a slight zoom), and only then do
-        // the number, title and details slide down into place one by one
+        // One sequence per artwork: the photo is revealed like a curtain
+        // lifting (easing down from a slight zoom) while the number, title
+        // and details slide into place, so the text is already there by the
+        // time the painting fills the screen
         const reveal = (slide: HTMLElement, details: string) => {
           const pics = slide.querySelectorAll<HTMLElement>("[data-reveal='pic']");
           const tl = gsap.timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: slide, start: "top 72%" },
+            scrollTrigger: { trigger: slide, start: "top 85%" },
           });
           tl.from(pics, {
             clipPath: "inset(100% 0% 0% 0%)",
@@ -254,24 +261,24 @@ const ArtPage = () => {
             )
             .from(
               slide.querySelectorAll("[data-reveal='pop']"),
-              { scale: 0.5, opacity: 0, duration: 0.8, ease: "back.out(1.8)" },
-              "-=0.9"
+              { scale: 0.5, opacity: 0, duration: 0.6, ease: "back.out(1.8)" },
+              0.6
             )
-            // Details only start once the photo is mostly revealed
+            // The text starts while the curtain is still lifting
             .from(
               slide.querySelectorAll(".art-no"),
-              { y: -24, opacity: 0, duration: 0.8 },
-              "-=0.7"
+              { y: -24, opacity: 0, duration: 0.7 },
+              0.35
             )
             .from(
               slide.querySelectorAll(".art-title-line"),
-              { yPercent: -110, duration: 1.1, ease: "power4.out", stagger: 0.12 },
-              "-=0.5"
+              { yPercent: -110, duration: 0.95, ease: "power4.out", stagger: 0.1 },
+              0.5
             )
             .from(
               slide.querySelectorAll(details),
-              { y: -28, opacity: 0, duration: 0.9, stagger: 0.14 },
-              "-=0.6"
+              { y: -28, opacity: 0, duration: 0.75, stagger: 0.12 },
+              0.8
             );
         };
         gsap.utils
@@ -333,9 +340,14 @@ const ArtPage = () => {
       });
     }, root);
 
-    // Images load lazily and change the page height: re-measure as they do
+    // Images load lazily and change the page height: re-measure as they do,
+    // once per burst of loads (a full re-measure per image stutters scrolling)
     const imgs = root.current?.querySelectorAll("img") ?? [];
-    const refresh = () => ScrollTrigger.refresh();
+    let refreshTimer: number | undefined;
+    const refresh = () => {
+      clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 250);
+    };
     imgs.forEach((img) => img.addEventListener("load", refresh, { once: true }));
 
     // Arriving from the main page with #slug: go straight to that artwork
@@ -346,6 +358,7 @@ const ArtPage = () => {
 
     return () => {
       imgs.forEach((img) => img.removeEventListener("load", refresh));
+      clearTimeout(refreshTimer);
       ctx.revert();
     };
   }, []);
@@ -420,19 +433,15 @@ const ArtPage = () => {
         <div className="art-closing-inner">
           <h2>Thank you</h2>
           <p className="art-cover-by">{signature}</p>
-          <a href="/#art" className="art-closing-button" data-cursor="disable">
-            <MdArrowBack /> Back to main portfolio
-          </a>
         </div>
-        {/* Contact details, as in the main Contact section (without socials) */}
-        <div className="art-closing-contact">
-          <div>
+        {/* Footer laid out like the main site's Contact section */}
+        <footer className="art-footer">
+          <div className="art-footer-col">
+            <p className="art-footer-heading">Contact</p>
             <p className="art-contact-label">Email</p>
             <a href={`mailto:${contact.email}`} data-cursor="disable">
               {contact.email}
             </a>
-          </div>
-          <div>
             <p className="art-contact-label">Phone</p>
             <a
               href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}
@@ -441,15 +450,21 @@ const ArtPage = () => {
               {contact.phone}
             </a>
           </div>
-          <div className="art-closing-credit">
+          <div className="art-footer-col">
+            <p className="art-contact-label">Navigate</p>
+            <a href="/#art" className="art-closing-button" data-cursor="disable">
+              <MdArrowBack /> Back to main portfolio
+            </a>
+          </div>
+          <div className="art-footer-col art-closing-credit">
             <p>
-              Designed and Developed by <span>{signature}</span>
+              Designed and Developed <br /> by <span>{signature}</span>
             </p>
             <p className="art-closing-year">
               <MdCopyright /> {contact.copyrightYear}
             </p>
           </div>
-        </div>
+        </footer>
       </section>
     </div>
   );

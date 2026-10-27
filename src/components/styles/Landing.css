@@ -16,6 +16,8 @@
   top: 0%;
   left: 0%;
   z-index: 15;
+  /* Decoration only: it sits over the page corner and must not catch clicks */
+  pointer-events: none;
   position: fixed;
   width: 300px;
   height: 300px;
@@ -31,6 +33,7 @@
 .landing-circle2 {
   top: 50%;
   right: 0%;
+  pointer-events: none;
   transform: translate(calc(100% - 2px), -50%);
   z-index: 9;
   position: fixed;

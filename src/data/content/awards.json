@@ -4,10 +4,10 @@
     "event": "26th International Robot Olympiad",
     "level": "International",
     "location": "Busan, South Korea",
-    "year": "",
+    "year": "2025",
     "role": "Medalist · Team SAPH.Ai",
     "highlight": "35,000+ participants from 90+ countries",
-    "description": "Designed robotic systems to clean urban waste and reduce marine pollution in Busan. The solution was formally recognised by the Mayor of Busan and considered for future implementation.",
+    "description": "With my teammate Emtenan Kabir of Team SAPH.Ai, I earned Silver and Bronze Medals at the 26th International Robot Olympiad in Busan, South Korea, for tackling local water infrastructure challenges. In a field of over 35,000 participants from 90+ countries, we designed and built robotic systems to clean urban waste and reduce marine pollution in Busan. Our solution received formal recognition from the Mayor of Busan and was considered for future implementation.",
     "image": "/images/achievements/silver-bronze-medals-at-international-robot-olympiad.webp",
     "links": [
       {
@@ -21,14 +21,14 @@
     ]
   },
   {
-    "title": "Startup Idea Award",
-    "event": "World Robot Olympiad Open Championship – Asia & Pacific",
+    "title": "Best Startup Award",
+    "event": "World Robot Olympiad OC",
     "level": "International",
     "location": "Manila, Philippines",
-    "year": "",
+    "year": "2025",
     "role": "Co-lead · Team SAPH.Ai",
     "highlight": "Top innovators among 70,000+ competitors from 95 nations",
-    "description": "Researched and engineered a pneumatic soft robot for rescue missions and underground exploration. Bangladesh's highest honour to date in this World Robot Olympiad category.",
+    "description": "I co-led Team SAPH.Ai with A Z M Emtenan Kabir to win the Best Startup Award at the World Robot Olympiad OC in Manila, Philippines. Among 70,000+ competitors from 95 nations, our team was recognised for researching and engineering a pneumatic soft robot with real-world potential for rescue missions and underground exploration. It is the highest honour Bangladesh has received to date in this category at the World Robot Olympiad, and it reflects SAPH.Ai's mission of turning creative ideas into real impact.",
     "image": "/images/achievements/best-startup-award-at-the-world-robot-olympiad.webp",
     "links": [
       {
@@ -42,14 +42,26 @@
     ]
   },
   {
-    "title": "Seed Fund Winner",
+    "title": "Global Top 10",
+    "event": "NASA Human Exploration Rover Challenge",
+    "level": "International",
+    "location": "Houston, USA",
+    "year": "",
+    "role": "Rover Designer & Pilot",
+    "highlight": "Top 10 of 75 global teams",
+    "description": "I ranked in the Top 10 among 75 international teams at the NASA Human Exploration Rover Challenge, an Artemis-affiliated competition. I designed, presented and piloted a lunar rover, working through the mechanical design and problem solving that space exploration demands.",
+    "image": "/images/achievements/global-top-10-at-the-nasa-human-exploration-rover-challenge.webp",
+    "links": []
+  },
+  {
+    "title": "Research Seed Fund Winner",
     "event": "Stockholm Junior Water Prize",
     "level": "International",
-    "location": "",
-    "year": "",
+    "location": "Based in Sweden",
+    "year": "2024",
     "role": "Co-lead · Team SAPH.Ai",
     "highlight": "Polluted water tested and treated in 20 coastal villages",
-    "description": "Developed a modular AI device that tests water contamination instantly and cheaply, then treats it on the spot. Selected among participants from 60+ countries for a prize backed by the Swedish Government and WaterAid.",
+    "description": "Leading SAPH.Ai with Emtenan Kabir, I was selected as a Seed Fund Winner at the Stockholm Junior Water Prize, among participants from 60+ countries. Supported by the Swedish Government and organisations such as WaterAid, we developed a research project on detecting water pollution. We engineered an AI model inside a modular device that tests water for contamination cheaply and instantly and treats it on the spot, and used it to test and treat polluted water across 20 coastal villages.",
     "image": "/images/achievements/fund-winner-at-the-stockholm-junior-water-prize.webp",
     "links": [
       {
@@ -67,14 +79,26 @@
     ]
   },
   {
-    "title": "3rd Prize as Mentor",
+    "title": "Gold Medal",
+    "event": "National Mathematical Olympiad (IMO Selection)",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Individual Competitor",
+    "highlight": "Top among 45K+ competitors nationwide",
+    "description": "I won a Gold Medal at the Bangladesh National Mathematical Olympiad, the selection round for the International Mathematical Olympiad (IMO), ranking first nationally among 45,000+ competitors.",
+    "image": "/images/achievements/gold-medal-at-the-national-mathematical-olympiad.webp",
+    "links": []
+  },
+  {
+    "title": "Mentored - 3rd Prize",
     "event": "16th e-ICON World Contest",
     "level": "International",
     "location": "Seoul, South Korea",
-    "year": "",
-    "role": "Mentor",
+    "year": "2026",
+    "role": "Mentor & Idea Lead · SAPH.Ai",
     "highlight": "Stood out among 252 international teams",
-    "description": "Mentored Team MonAndo to a fully funded place in the international final with MonAndo, an AI-powered VR exposure-therapy app for underprivileged youth. Hosted by the Ministry of Education, Republic of Korea.",
+    "description": "I mentored SAPH.Ai members Musarrat Mahjabin and Turabi Meherin Sokal and shaped the core idea behind their project, which won 3rd Prize at the 16th e-ICON World Contest in Seoul, South Korea. Hosted by the Ministry of Education of the Republic of Korea, this global AI and software competition challenges young innovators to build web apps that address the UN Sustainable Development Goals (SDGs). Standing out among 252 international teams, Team MonAndo earned a fully funded place representing Bangladesh in the international final with MonAndo, an AI-powered mental wellness web app offering free, localised Virtual Reality Exposure Therapy (VRET) for underprivileged youth.",
     "image": "/images/achievements/winner-at-the-e-icon-world-contest.webp",
     "links": [
       {
@@ -84,14 +108,14 @@
     ]
   },
   {
-    "title": "Bronze Medal as Mentor",
+    "title": "Mentored - Bronze Medal",
     "event": "International Robot Olympiad",
     "level": "International",
     "location": "Gold Coast, Australia",
     "year": "",
-    "role": "Mentor",
+    "role": "Mentor & Idea Lead · SAPH.Ai",
     "highlight": "Aerospace robotics on the global stage",
-    "description": "Mentored a SAPH.Ai student to a Bronze Medal for Bangladesh with a satellite-maintenance robot that floats and works in outer space using AI computer vision.",
+    "description": "I mentored SAPH.Ai member Khondokar Mushfiqul Islam, whose project was built on my concept, as he represented Bangladesh and brought home a Bronze Medal at the International Robot Olympiad (IRO) in Gold Coast, Australia. Competing in aerospace robotics, he designed and built a satellite maintenance robot that floats and carries out tasks in outer space using AI computer vision.",
     "image": "/images/achievements/bronze-medal-at-international-robot-olympiad.webp",
     "links": []
   },
@@ -103,7 +127,7 @@
     "year": "2025",
     "role": "Team Leader · Mechanical & Technical Lead",
     "highlight": "Earned Bangladesh's place at WRO Asia & Pacific",
-    "description": "Led Team SAPH.Ai to win the national round after first taking the winner's medal at the Dhaka Regional Round.",
+    "description": "As Team Leader and Mechanical & Technical Lead of Team SAPH.Ai, alongside Emtenan Kabir (Programming & Software Lead), I won the National Round of the WRO Bangladesh Open Championship 2025, earning the chance to represent Bangladesh at the World Robot Olympiad Open Championship – Asia & Pacific in the Philippines. Before this, I won the winner's medal at the Dhaka Regional Round, which first earned our team its place at the WRO Bangladesh Nationals.",
     "image": "/images/achievements/winner-at-the-world-robot-olympiad-bangladesh-open.webp",
     "links": [
       {
@@ -117,10 +141,10 @@
     "event": "7th Bangladesh Robot Olympiad",
     "level": "National",
     "location": "Bangladesh",
-    "year": "",
+    "year": "2024",
     "role": "Co-lead · Team SAPH.Ai",
     "highlight": "Crowned winners of the national round",
-    "description": "Won the national round with Team SAPH.Ai, recognised for exceptional technical mastery.",
+    "description": "With Emtenan Kabir, my partner in leading Team SAPH.Ai, I was named a Winner at the 7th Bangladesh Robot Olympiad National Round.",
     "image": "/images/achievements/winners-at-the-bangladesh-robot-olympiad.webp",
     "links": [
       {
@@ -137,7 +161,7 @@
     "year": "",
     "role": "Co-developer · Team SAPH.Ai",
     "highlight": "Went on to represent Bangladesh in Dubai",
-    "description": "Built a 6-wheel-drive AI robot that navigates dangerous sewage pipelines to find blockages, detect explosive gases like methane and clean them without risking human lives.",
+    "description": "With Emtenan Kabir, I won a Gold Medal in the National Round of the Codeavour: AI & Coding Competition, earning the chance to represent Bangladesh internationally in Dubai. We developed a 6-Wheeler Pipeline Inspection Robot, a subsystem of our AI-Assisted Drainage & Sewage Maintenance project. Using AI and a rugged 6-wheel drive, the robot navigates dangerous underground sewage pipelines on its own to find blockages, detect explosive gases such as methane (CH4) and carry out targeted cleaning without risking human lives.",
     "image": "/images/achievements/gold-medal-at-the-codeavour-ai-coding-competition.webp",
     "links": [
       {
@@ -154,8 +178,20 @@
     "year": "",
     "role": "Founder, SAPH.Ai",
     "highlight": "Recognised by the Government of Bangladesh",
-    "description": "SAPH.Ai, the robotics and AI team Abrar founded, received formal government recognition for its contributions to Bangladesh's growing tech sector.",
+    "description": "SAPH.Ai, which I founded and lead, received the Honour of Recognition Award from the Government's Ministry of Posts, Telecommunications and Information Technology in recognition of our contributions to the country's growing tech sector.",
     "image": "/images/achievements/honour-of-recognition-award-at-the-ministry-of-posts-telecommunications-and-information-technology.webp",
+    "links": []
+  },
+  {
+    "title": "Mentored - Honour of Excellence",
+    "event": "Bangladesh Bank",
+    "level": "National",
+    "location": "Bangladesh",
+    "year": "",
+    "role": "Mentor & Idea Lead · SAPH.Ai",
+    "highlight": "Presented by Governor Dr. Ahsan H. Mansur",
+    "description": "My teammate Emtenan Kabir of SAPH.Ai was honoured for excellence by Dr. Ahsan H. Mansur, Governor of Bangladesh Bank. The recognition celebrated work I mentored as SAPH.Ai's founder and that was built on ideas I originated, a proud moment for the whole SAPH.Ai team.",
+    "image": "",
     "links": []
   },
   {
@@ -166,7 +202,7 @@
     "year": "",
     "role": "Co-developer · Team SAPH.Ai",
     "highlight": "AI sewer robot built with OpenCV and TensorFlow",
-    "description": "Designed an AI-assisted drainage and sewage robot that navigates sewers, detects debris and mitigates dangerous gases, replacing hazardous manual labour.",
+    "description": "With Emtenan Kabir and Sonoth Amin of SAPH.Ai, I won 2nd Runner-Up at Bangladesh's National STEAM Olympiad with our project Subterranean Sanitizers. To tackle Bangladesh's sanitation crisis and end hazardous manual labour, we designed an AI-Assisted Drainage and Sewage Maintenance Bot using OpenCV and TensorFlow. The robot navigates sewers on its own, detects debris and mitigates dangerous gases, offering a safer, more efficient alternative to inhumane working conditions.",
     "image": "/images/achievements/2nd-runner-up-at-bangladesh-s-national-steam-olympiad.webp",
     "links": [
       {
@@ -183,7 +219,7 @@
     "year": "2024",
     "role": "Founder, SAPH.Ai",
     "highlight": "Wide media coverage in the national round",
-    "description": "Presented the AI-assisted drainage and sewage robot, an autonomous answer to Bangladesh's sanitation crisis and an end to hazardous manual cleaning.",
+    "description": "As SAPH.Ai's founder, with co-founder Emtenan Kabir, I was recognised among the Top 20 teams at the BCSIR National Science and Industrial Technology Fair 2024, where our project drew wide media attention in the National Round. We showcased our AI-Assisted Drainage and Sewage Maintenance Bot, built with OpenCV and TensorFlow: an autonomous robot that navigates sewers, detects debris and mitigates dangerous gases to help end hazardous manual cleaning in Bangladesh.",
     "image": "/images/achievements/top-20-teams-recognition-at-the-bcsir-national-science-and-industrial-technology-fair.webp",
     "links": [
       {
@@ -206,9 +242,9 @@
     "level": "National",
     "location": "Bangladesh",
     "year": "",
-    "role": "Mentor · Founder, SAPH.Ai",
+    "role": "Mentor & Idea Lead · SAPH.Ai",
     "highlight": "Champions at Upazila, District and Division levels",
-    "description": "Guided a SAPH.Ai student team representing Bagerhat with a disaster-response robot that crosses hazardous terrain, detects dangers and collects real-time data. They also took 3rd place at the BAFSD Science Fair.",
+    "description": "I mentored the SAPH.Ai team that represented Bagerhat at the 47th National Science and Technology Week and originated the project's core idea, and Emtenan Kabir and I guided the team as SAPH.Ai's founders. The team won championship titles at the Upazila, District and Division levels, and also took 3rd Place in the Project Presentation category at the BAFSD Science Fair. Talukdar Ahanaf Nafi, Ahmad Al Abid, Talukder Mahir Aronno and Talukder Tanzim Sayad, supervised by their teacher Biddut Kumar Mondol Sir, showcased Symmetrical Holonomic Locomotion for Isotropic Hazard Traversal: a disaster-response robot that navigates hazardous environments, detects dangers and collects real-time data from unsafe areas, showing how locally built robotics can make emergency rescue in Bangladesh faster and safer.",
     "image": "/images/achievements/3rd-place-championship-titles-at-the-national-science-and-technology-week.webp",
     "links": []
   },
@@ -220,7 +256,7 @@
     "year": "2024",
     "role": "Co-developer · Team SAPH.Ai",
     "highlight": "Champion in the IT Project Display segment",
-    "description": "Exhibited the 6-wheel-drive pipeline inspection robot that finds blockages, detects methane and performs targeted cleaning underground.",
+    "description": "With Emtenan Kabir, I was named Champion in the IT Project Display segment at the 15th DRMC National Science & Codeavour 1.0 International Carnival 2024. We exhibited our 6-Wheeler Pipeline Inspection Robot, an AI-driven robot with a rugged 6-wheel drive that navigates dangerous underground sewage lines on its own to find blockages, detect explosive gases such as methane (CH4) and perform targeted cleaning.",
     "image": "/images/achievements/champion-at-the-drmc-national-science-codeavour-international-carnival.webp",
     "links": []
   },
@@ -232,7 +268,7 @@
     "year": "",
     "role": "Co-author · Team SAPH.Ai",
     "highlight": "Best research paper of the fest",
-    "description": "The team's paper on the AI-assisted drainage and sewage robot, engineered with OpenCV and TensorFlow, took first position.",
+    "description": "My research paper with Team SAPH.Ai took First Position at the 7th Rajshahi College National Science Fest. It detailed our AI-Assisted Drainage and Sewage Maintenance Bot, built with OpenCV and TensorFlow to tackle Bangladesh's sanitation crisis by navigating sewers on its own, detecting debris and mitigating dangerous gases.",
     "image": "/images/achievements/first-position-at-the-rajshahi-college-national-science-fest.webp",
     "links": []
   },
@@ -244,7 +280,7 @@
     "year": "",
     "role": "Co-developer · Team SAPH.Ai",
     "highlight": "Hosted by the Tejgaon College Science Club",
-    "description": "Presented the 6-wheel-drive pipeline inspection robot that clears blockages and detects explosive methane in underground pipelines.",
+    "description": "With Emtenan and Siam of Team SAPH.Ai, I won Champion at TCSC Science Fiesta 1.0, hosted by the Tejgaon College Science Club. We presented our 6-Wheeler Pipeline Inspection Robot, which uses AI and a rugged 6-wheel drive to navigate hazardous underground pipelines, clear blockages and detect explosive methane (CH4) gas.",
     "image": "/images/achievements/champion-at-the-tcsc-science-fiesta.webp",
     "links": []
   },
@@ -253,10 +289,10 @@
     "event": "Astro Boishakhi Mela 1431",
     "level": "National",
     "location": "Bangladesh",
-    "year": "",
+    "year": "2024",
     "role": "Co-developer · Team SAPH.Ai",
     "highlight": "Hosted by the Bangabandhu Sheikh Mujibur Rahman Novotheatre",
-    "description": "Awarded for the AI-assisted drainage and sewage robot, a safe alternative to inhuman manual cleaning.",
+    "description": "With Emtenan Kabir, I won 1st Runner-Up at Astro Boishakhi Mela 1431, hosted by the Bangabandhu Sheikh Mujibur Rahman Novotheatre to celebrate Bangla New Year 1431. We were recognised for our AI-Assisted Drainage and Sewage Maintenance Bot, an OpenCV and TensorFlow-powered robot that navigates sewers to detect debris and mitigate dangerous gases, a safe alternative to inhumane manual cleaning.",
     "image": "/images/achievements/1st-runner-up-at-the-astro-boishakhi-mela.webp",
     "links": []
   },
@@ -268,7 +304,7 @@
     "year": "2023",
     "role": "Co-developer · Team SAPH.Ai",
     "highlight": "SAPH.Ai's very first championship",
-    "description": "Debuted the AI-assisted drainage and sewage robot, replacing dangerous manual labour with a safer, more efficient solution.",
+    "description": "With Emtenan Kabir, I won Team SAPH.Ai's very first championship, in the Project Display category at the 5th BAFSD National Science Festival 2023. We designed an AI-Assisted Drainage and Sewage Maintenance Bot using OpenCV and TensorFlow that navigates sewers, detects debris and mitigates dangerous gases, replacing dangerous manual labour with a safer, more efficient answer to the local sanitation crisis.",
     "image": "/images/achievements/champion-in-project-display-at-the-bafsd-national-science-festival.webp",
     "links": []
   }

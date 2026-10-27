@@ -22,16 +22,15 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
-    const resizeHandler = () => {
-      setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
-    };
-    resizeHandler();
+    // Split once here; after that ScrollTrigger's own (debounced) refresh on
+    // resize re-splits the text, so a resize event only checks the layout
+    setSplitText();
+    const resizeHandler = () => setIsDesktopView(window.innerWidth > 1024);
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
     <div className="container-main">

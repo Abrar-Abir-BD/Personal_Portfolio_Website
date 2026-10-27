@@ -1,12 +1,31 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
+// Everything setCharTimeline creates, so a resize can tear down exactly
+// these (and nothing else on the page) before rebuilding them
+let owned: gsap.core.Timeline[] = [];
+let flicker: number | undefined;
+
+export function killCharTimeline() {
+  owned.forEach((tl) => {
+    // Revert first, so the rebuilt timelines record the original pose
+    tl.scrollTrigger?.kill(true);
+    tl.kill();
+  });
+  owned = [];
+  clearInterval(flicker);
+}
+
+// The character timelines record their start values once, when created at
+// the top of the page. They must not re-record on ScrollTrigger.refresh():
+// "View all"/"Read more" buttons refresh while scrolled down, and the
+// figure's moved pose would become its new starting pose.
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera
 ) {
   let intensity: number = 0;
-  setInterval(() => {
+  flicker = setInterval(() => {
     intensity = Math.random();
   }, 200);
   const tl1 = gsap.timeline({
@@ -15,7 +34,6 @@ export function setCharTimeline(
       start: "top top",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true,
     },
   });
   const tl2 = gsap.timeline({
@@ -24,7 +42,6 @@ export function setCharTimeline(
       start: "center 55%",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true,
     },
   });
   const tl3 = gsap.timeline({
@@ -33,9 +50,9 @@ export function setCharTimeline(
       start: "top top",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true,
     },
   });
+  owned.push(tl1, tl2, tl3);
   let screenLight: any, monitor: any;
   character?.children.forEach((object: any) => {
     if (object.name === "Plane004") {
@@ -52,11 +69,13 @@ export function setCharTimeline(
       object.material.transparent = true;
       object.material.opacity = 0;
       object.material.emissive.set("#BFE3FF");
-      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-        emissiveIntensity: () => intensity * 8,
-        duration: () => Math.random() * 0.6,
-        delay: () => Math.random() * 0.1,
-      });
+      owned.push(
+        gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
+          emissiveIntensity: () => intensity * 8,
+          duration: () => Math.random() * 0.6,
+          delay: () => Math.random() * 0.1,
+        })
+      );
       screenLight = object;
     }
   });
@@ -67,8 +86,11 @@ export function setCharTimeline(
         .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
         .to(camera.position, { z: 22 }, 0)
         .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
-        .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
-        .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
+        // Explicit start values: a .to() would capture whatever state the
+        // page is in when it first renders, e.g. already faded out after
+        // arriving at /#projects, and the text would never come back
+        .fromTo(".landing-container", { opacity: 1 }, { opacity: 0, duration: 0.4 }, 0)
+        .fromTo(".landing-container", { y: "0%" }, { y: "40%", duration: 0.8 }, 0)
         .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
       tl2
@@ -77,8 +99,13 @@ export function setCharTimeline(
           { z: 75, y: 8.4, duration: 6, delay: 2, ease: "power3.inOut" },
           0
         )
-        .to(".about-section", { y: "30%", duration: 6 }, 0)
-        .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
+        .fromTo(".about-section", { y: "0%" }, { y: "30%", duration: 6 }, 0)
+        .fromTo(
+          ".about-section",
+          { opacity: 1 },
+          { opacity: 0, delay: 3, duration: 2 },
+          0
+        )
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },
@@ -128,64 +155,7 @@ export function setCharTimeline(
         },
       });
       tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
+      owned.push(tM2);
     }
-  }
-}
-
-export function setAllTimeline() {
-  const careerTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".career-section",
-      start: "top 30%",
-      end: "100% center",
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  });
-  careerTimeline
-    .fromTo(
-      ".career-timeline",
-      { maxHeight: "10%" },
-      { maxHeight: "100%", duration: 0.5 },
-      0
-    )
-
-    .fromTo(
-      ".career-timeline",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.1 },
-      0
-    )
-    .fromTo(
-      ".career-info-box",
-      { opacity: 0 },
-      { opacity: 1, stagger: 0.1, duration: 0.5 },
-      0
-    )
-    .fromTo(
-      ".career-dot",
-      { animationIterationCount: "infinite" },
-      {
-        animationIterationCount: "1",
-        delay: 0.3,
-        duration: 0.1,
-      },
-      0
-    );
-
-  if (window.innerWidth > 1024) {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: "20%", duration: 0.5, delay: 0.2 },
-      0
-    );
-  } else {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: 0, duration: 0.5, delay: 0.2 },
-      0
-    );
   }
 }

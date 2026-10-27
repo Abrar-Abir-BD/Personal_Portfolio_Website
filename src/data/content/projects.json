@@ -9,21 +9,12 @@
     "summary": "A pneumatically driven soft-growing robotic platform designed to navigate fragile or narrow environments where traditional rigid robots fail. It utilizes AI-based object detection and real-time FPV video for disaster response and exploration.",
     "description": [],
     "image": "/images/projects/flexi_grow.webp",
-    "tags": ["Soft Robotics", "AI", "Disaster Relief", "Pneumatics"],
-    "links": [],
-    "code": ""
-  },
-  {
-    "slug": "monando",
-    "title": "MonAndo: A Mental Wellness App",
-    "category": "",
-    "status": "",
-    "year": "",
-    "featured": false,
-    "summary": "A free, AI-powered web app that turns ordinary smartphones into Virtual Reality Exposure Therapy (VRET) devices. Designed for underprivileged youth, it provides immersive therapy scenarios, non-judgmental AI reflection, and emergency SOS tools.",
-    "description": [],
-    "image": "/images/projects/monando.webp",
-    "tags": ["AI", "VR", "Mental Health", "Therapy"],
+    "tags": [
+      "Soft Robotics",
+      "AI",
+      "Disaster Relief",
+      "Pneumatics"
+    ],
     "links": [],
     "code": ""
   },
@@ -41,7 +32,30 @@
       "The robot demonstrates the potential of symmetrical mechanisms in developing versatile robotic systems."
     ],
     "image": "/images/projects/new.webp",
-    "tags": ["Robotics", "Disaster Relief", "Exploration"],
+    "tags": [
+      "Robotics",
+      "Disaster Relief",
+      "Exploration"
+    ],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "nasa-herc-rover",
+    "title": "Lunar Rover for NASA's Human Exploration Rover Challenge",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "A six-wheeled, remote-operated lunar rover I designed and piloted for NASA's Human Exploration Rover Challenge, finishing in the Top 10 of 75 global teams. Inspired by UIU's award-winning Mars rovers, it combines rocker-style suspension, spring-damped wheels and corner steering to cross boulders, ruts and crevasses on a simulated planetary course.",
+    "description": [],
+    "image": "/images/projects/nasa-herc-rover.webp",
+    "tags": [
+      "Space Robotics",
+      "Rover Design",
+      "Mechanical Design",
+      "NASA HERC"
+    ],
     "links": [],
     "code": ""
   },
@@ -55,7 +69,12 @@
     "summary": "An ultra-low-cost, handheld device that uses a macro camera and edge AI to inspect water samples. It provides real-time detection of microplastics, microfibers, and iron particles with ~90% accuracy.",
     "description": [],
     "image": "/images/projects/water_detect.webp",
-    "tags": ["Water", "Computer Vision", "AI", "Sanitation"],
+    "tags": [
+      "Water",
+      "Computer Vision",
+      "AI",
+      "Sanitation"
+    ],
     "links": [],
     "code": ""
   },
@@ -69,7 +88,12 @@
     "summary": "This custom AUV submerges to navigate and explore various underwater environments. It inspects water quality in real-time using sensors while detecting contaminants via computer vision. All gathered environmental and visual data is then transmitted back to the surface for analysis.",
     "description": [],
     "image": "/images/projects/auto.webp",
-    "tags": ["Robotics", "AI", "Underwater", "Computer Vision"],
+    "tags": [
+      "Robotics",
+      "AI",
+      "Underwater",
+      "Computer Vision"
+    ],
     "links": [],
     "code": ""
   },
@@ -83,7 +107,31 @@
     "summary": "A system of specialized robots utilizing AI and computer vision to autonomously detect blockages, identify toxic gases, and clean urban drainage systems. It performs these tasks without risking human lives in hazardous environments.",
     "description": [],
     "image": "/images/projects/ai-drainage.webp",
-    "tags": ["Robotics", "AI", "Sanitation", "Computer Vision"],
+    "tags": [
+      "Robotics",
+      "AI",
+      "Sanitation",
+      "Computer Vision"
+    ],
+    "links": [],
+    "code": ""
+  },
+  {
+    "slug": "monando",
+    "title": "MonAndo: A Mental Wellness App",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "A free, AI-powered web app that turns ordinary smartphones into Virtual Reality Exposure Therapy (VRET) devices. Designed for underprivileged youth, it provides immersive therapy scenarios, non-judgmental AI reflection, and emergency SOS tools.",
+    "description": [],
+    "image": "/images/projects/monando.webp",
+    "tags": [
+      "AI",
+      "VR",
+      "Mental Health",
+      "Therapy"
+    ],
     "links": [],
     "code": ""
   },
@@ -97,7 +145,12 @@
     "summary": "A rugged, 6-wheel drive robot that autonomously navigates underground sewage lines to identify blockages and detect explosive gases like methane. It features a robotic arm for debris removal and automatic chemical mitigation.",
     "description": [],
     "image": "/images/projects/pipeline_robot.webp",
-    "tags": ["Robotics", "AI", "Sensors", "Safety"],
+    "tags": [
+      "Robotics",
+      "AI",
+      "Sensors",
+      "Safety"
+    ],
     "links": [],
     "code": ""
   },
@@ -111,7 +164,11 @@
     "summary": "An ultra-lightweight, biologically enhanced coco peat substrate designed to replace traditional soil for rooftop and urban farming. It features superior aeration, retains up to 10x its weight in water, and utilizes Trichoderma fungi for disease resistance.",
     "description": [],
     "image": "/images/projects/soil.webp",
-    "tags": ["Agriculture", "Bioengineering", "Urban Farming"],
+    "tags": [
+      "Agriculture",
+      "Bioengineering",
+      "Urban Farming"
+    ],
     "links": [
       {
         "name": "Project Video",

@@ -1,5 +1,5 @@
 .section-container {
-  width: 1300px;
+  width: 1260px;
 }
 .title,
 .para {
@@ -11,11 +11,12 @@
 }
 @media only screen and (max-width: 1600px) {
   .section-container {
-    width: 1200px;
-    max-width: calc(100% - 160px);
+    width: 1160px;
+    max-width: calc(100% - 190px);
   }
 }
-@media only screen and (max-width: 1400px) {
+/* Laptops keep the wide 1160px area; only smaller screens drop to 900px */
+@media only screen and (max-width: 1149px) {
   .section-container {
     width: 900px;
   }

@@ -7,6 +7,7 @@ const Skills = () => {
   return (
     <GlassSection
       id="skills"
+      className="skills-section"
       title={
         <>
           Skills & <span>Expertise</span>

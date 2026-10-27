@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const SocialIcons = () => {
   useEffect(() => {
     const social = document.getElementById("social") as HTMLElement;
+    const cleanups: (() => void)[] = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
@@ -16,7 +17,9 @@ const SocialIcons = () => {
       let mouseY = rect.height / 2;
       let currentX = 0;
       let currentY = 0;
+      let frame = 0;
 
+      // Eases the icon towards the pointer, then rests until it moves again
       const updatePosition = () => {
         currentX += (mouseX - currentX) * 0.1;
         currentY += (mouseY - currentY) * 0.1;
@@ -24,7 +27,9 @@ const SocialIcons = () => {
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        requestAnimationFrame(updatePosition);
+        const moving =
+          Math.abs(mouseX - currentX) + Math.abs(mouseY - currentY) > 0.1;
+        frame = moving ? requestAnimationFrame(updatePosition) : 0;
       };
 
       const onMouseMove = (e: MouseEvent) => {
@@ -38,16 +43,18 @@ const SocialIcons = () => {
           mouseX = rect.width / 2;
           mouseY = rect.height / 2;
         }
+        if (!frame) frame = requestAnimationFrame(updatePosition);
       };
 
       document.addEventListener("mousemove", onMouseMove);
-
       updatePosition();
 
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      cleanups.push(() => {
+        cancelAnimationFrame(frame);
+        document.removeEventListener("mousemove", onMouseMove);
+      });
     });
+    return () => cleanups.forEach((cleanup) => cleanup());
   }, []);
 
   return (

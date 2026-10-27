@@ -9,27 +9,30 @@ const Loading = ({ percent }: { percent: number }) => {
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [leaving, setLeaving] = useState(false);
 
-  if (percent >= 100) {
-    setTimeout(() => {
-      setLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(true);
-      }, 1000);
-    }, 600);
-  }
-
+  const done = percent >= 100;
   useEffect(() => {
+    if (!done) return;
+    const t1 = setTimeout(() => setLoaded(true), 400);
+    const t2 = setTimeout(() => setIsLoaded(true), 1100);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [done]);
+
+  // The pill grows to fill the screen; as it lands, the loader fades away
+  // over the landing page, which animates in underneath. Removed once gone.
+  useEffect(() => {
+    if (!isLoaded) return;
     import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
-        setTimeout(() => {
-          if (module.initialFX) {
-            module.initialFX();
-          }
-          setIsLoading(false);
-        }, 900);
-      }
+      setClicked(true);
+      setTimeout(() => {
+        setLeaving(true);
+        module.initialFX?.();
+        setTimeout(() => setIsLoading(false), 600);
+      }, 850);
     });
   }, [isLoaded]);
 
@@ -44,7 +47,7 @@ const Loading = ({ percent }: { percent: number }) => {
 
   return (
     <>
-      <div className="loading-header">
+      <div className={`loading-header ${leaving ? "loading-out" : ""}`}>
         <a href="/#" className="loader-title" data-cursor="disable">
           Abrar Abir
         </a>
@@ -59,7 +62,9 @@ const Loading = ({ percent }: { percent: number }) => {
           </div>
         </div>
       </div>
-      <div className="loading-screen">
+      <div className={`loading-screen ${leaving ? "loading-out" : ""}`}>
+        <div className="loading-orb loading-orb-1"></div>
+        <div className="loading-orb loading-orb-2"></div>
         <div className="loading-marquee">
           <Marquee>
             <span> Abrar Abir</span> <span> Abrar Abir</span>
@@ -131,5 +136,9 @@ export const setProgress = (setLoading: (value: number) => void) => {
       }, 2);
     });
   }
-  return { loaded, percent, clear };
+  // Abandons this counter (the scene that started it was torn down)
+  function stop() {
+    clearInterval(interval);
+  }
+  return { loaded, percent, clear, stop };
 };
