@@ -420,19 +420,14 @@ const ArtPage = () => {
         <div className="art-closing-inner">
           <h2>Thank you</h2>
           <p className="art-cover-by">{signature}</p>
-          <a href="/#art" className="art-closing-button" data-cursor="disable">
-            <MdArrowBack /> Back to main portfolio
-          </a>
         </div>
-        {/* Contact details, as in the main Contact section (without socials) */}
-        <div className="art-closing-contact">
-          <div>
+        {/* Footer laid out like the main site's Contact section */}
+        <footer className="art-footer">
+          <div className="art-footer-col">
             <p className="art-contact-label">Email</p>
             <a href={`mailto:${contact.email}`} data-cursor="disable">
               {contact.email}
             </a>
-          </div>
-          <div>
             <p className="art-contact-label">Phone</p>
             <a
               href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}
@@ -441,15 +436,21 @@ const ArtPage = () => {
               {contact.phone}
             </a>
           </div>
-          <div className="art-closing-credit">
+          <div className="art-footer-col">
+            <p className="art-contact-label">Navigate</p>
+            <a href="/#art" data-cursor="disable">
+              <MdArrowBack /> Back to main portfolio
+            </a>
+          </div>
+          <div className="art-footer-col art-closing-credit">
             <p>
-              Designed and Developed by <span>{signature}</span>
+              Designed and Developed <br /> by <span>{signature}</span>
             </p>
             <p className="art-closing-year">
               <MdCopyright /> {contact.copyrightYear}
             </p>
           </div>
-        </div>
+        </footer>
       </section>
     </div>
   );
