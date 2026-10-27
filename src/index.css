@@ -15,9 +15,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   --accentColor: #6fb4f0;
   --backgroundColor: #04070d;
   --textColor: #eaf3fa;
@@ -111,4 +108,46 @@ body {
   body {
     --cWidth: 94%;
   }
+}
+
+/* Slow devices (set automatically by the 3D scene's performance check):
+   drop the costliest effects. Frosted-glass blur re-blurs everything
+   behind it on every scroll frame, and the grain and atmosphere layers are
+   full-screen; slightly more solid surfaces take their place. */
+.low-power *,
+.low-power *::before,
+.low-power *::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.low-power .glass,
+.low-power .header ul a,
+.low-power .theme-chip {
+  background-color: rgba(16, 24, 39, 0.82);
+}
+:root.low-power[data-theme="light"] .glass,
+:root.low-power[data-theme="light"] .header ul a,
+:root.low-power[data-theme="light"] .theme-chip {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+.low-power body::after {
+  display: none;
+}
+.low-power body::before {
+  filter: none !important;
+}
+.low-power .glass-orb,
+.low-power .landing-circle1,
+.low-power .landing-circle2 {
+  filter: none;
+}
+
+/* Text can be selected and copied anywhere, except on controls, where a
+   click or drag would otherwise highlight the label */
+.header,
+button,
+.glass-button,
+.theme-chip {
+  user-select: none;
+  -webkit-user-select: none;
 }

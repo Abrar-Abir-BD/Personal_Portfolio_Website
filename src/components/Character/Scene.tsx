@@ -32,7 +32,9 @@ const Scene = () => {
         antialias: true,
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      // Sharp on Retina, but never more than 2x: on high-DPI Windows laptops
+      // (250-300% scaling) full density means 6-9x the pixels every frame
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -106,8 +108,43 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      // Only draw while the character is on screen; once it has scrolled away
+      // the GPU is free for the rest of the page
+      let onScreen = true;
+      // (a sliver must actually be visible: when the character slides away it
+      // stops exactly at the screen edge, which still counts as "touching")
+      const visibility = new IntersectionObserver(
+        ([entry]) => (onScreen = entry.intersectionRatio > 0.005),
+        { threshold: [0, 0.01, 0.1] }
+      );
+      visibility.observe(canvasDiv.current);
+
+      // Slow device check: time the first frames after the character
+      // appears; if the machine can't keep up, render the 3D at standard
+      // resolution and switch the page to its lighter effects (low-power
+      // class, see index.css). Fast machines never trigger this.
+      let checkFrames = 0,
+        checkTime = 0,
+        checkDone = false;
+      const checkPerformance = (delta: number) => {
+        if (checkDone || !headBone || document.hidden) return;
+        // skip the first second while the intro and shaders settle
+        if ((checkFrames += 1) <= 60) return;
+        checkTime += delta;
+        if (checkFrames < 150) return;
+        checkDone = true;
+        const msPerFrame = (checkTime / 90) * 1000;
+        if (msPerFrame > 26) {
+          renderer.setPixelRatio(1);
+          document.documentElement.classList.add("low-power");
+        }
+      };
+
       const animate = () => {
         requestAnimationFrame(animate);
+        const delta = clock.getDelta();
+        if (!onScreen) return;
+        checkPerformance(delta);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -119,7 +156,6 @@ const Scene = () => {
           );
           light.setPointLight(screenLight);
         }
-        const delta = clock.getDelta();
         if (mixer) {
           mixer.update(delta);
         }
@@ -128,6 +164,7 @@ const Scene = () => {
       animate();
       return () => {
         clearTimeout(debounce);
+        visibility.disconnect();
         scene.clear();
         renderer.dispose();
         window.removeEventListener("resize", () =>

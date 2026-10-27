@@ -28,8 +28,6 @@
   color: var(--art-ink);
   font-family: var(--art-sans);
   overflow-x: clip;
-  user-select: text;
-  -webkit-user-select: text;
 }
 /* Paper grain over everything, like printed stock. Fixed, so it costs
    nothing while scrolling; never catches clicks. */

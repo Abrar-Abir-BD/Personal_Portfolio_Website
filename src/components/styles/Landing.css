@@ -23,15 +23,9 @@
   box-shadow: inset -50px 40px 50px rgba(27, 104, 207, 0.6);
   filter: blur(60px);
   border-radius: 50%;
-  animation: loadingCircle 5s linear infinite;
-}
-@keyframes loadingCircle {
-  0% {
-    transform: translate(-95%, -75%) rotateZ(0deg);
-  }
-  100% {
-    transform: translate(-95%, -75%) rotateZ(360deg);
-  }
+  /* Static: spinning a perfectly round glow looks identical but repaints a
+     large blurred area every frame */
+  transform: translate(-95%, -75%);
 }
 
 .landing-circle2 {
@@ -47,12 +41,6 @@
   box-shadow: inset -50px 40px 50px rgba(27, 104, 207, 0.6);
   filter: blur(50px);
   border-radius: 50%;
-  animation: loadingCircle2 5s linear infinite;
-}
-@keyframes loadingCircle2 {
-  100% {
-    transform: translate(calc(100% - 2px), -50%) rotate(360deg);
-  }
 }
 .landing-video,
 .landing-image {
