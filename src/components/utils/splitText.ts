@@ -30,6 +30,11 @@ export default function setSplitText() {
   if (!listening) {
     listening = true;
     ScrollTrigger.addEventListener("refresh", () => setSplitText());
+    // Lines split before the web font arrives were measured in the narrower
+    // fallback font; with the real one a line no longer fits and its last
+    // word drops onto a line of its own. Split again once fonts are in
+    document.fonts?.ready.then(() => setSplitText());
+    document.fonts?.addEventListener("loadingdone", () => setSplitText());
   }
   if (window.innerWidth < 900) return;
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
