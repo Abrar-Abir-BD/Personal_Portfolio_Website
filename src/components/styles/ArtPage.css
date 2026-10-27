@@ -221,18 +221,20 @@
   /* Keep the painter and the flower in view if a narrow window trims it */
   object-position: 60% center;
 }
+/* The panel's type scales with the screen height so it fits in one screen:
+   then the portrait beside it keeps its own shape and shows in full */
 .art-artist-panel {
   background: var(--art-gold);
   color: #fff;
-  padding: clamp(60px, 9vh, 110px) clamp(28px, 5vw, 80px);
+  padding: clamp(36px, 7vh, 100px) clamp(28px, 5vw, 80px);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .art-artist-title {
   position: relative;
-  margin: 0px 0px 48px;
-  font-size: clamp(54px, 6.6vw, 112px);
+  margin: 0px 0px clamp(30px, 5.5vh, 48px);
+  font-size: clamp(44px, min(6.6vw, 10vh), 112px);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -254,36 +256,27 @@
   transform: rotate(-4deg);
 }
 .art-artist-label {
-  margin: 0px 0px 8px;
-  font-size: 19px;
+  margin: 0px 0px 6px;
+  font-size: clamp(15px, 2.1vh, 18px);
   font-weight: 800;
   font-style: italic;
 }
 .art-skills {
-  margin: 0px 0px 28px;
+  margin: 0px 0px clamp(14px, 2.6vh, 26px);
   padding-left: 22px;
-  font-size: 17px;
+  font-size: clamp(13px, 1.9vh, 16px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.art-bio {
+  margin: 0px 0px clamp(10px, 1.8vh, 18px);
+  font-size: clamp(13px, 1.9vh, 16px);
   font-style: italic;
   font-weight: 500;
   line-height: 1.5;
-}
-.art-bio,
-.art-contact {
-  margin: 0px 0px 20px;
-  font-size: 17px;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.55;
   text-align: justify;
   hyphens: auto;
-}
-.art-contact {
-  margin: 8px 0px 0px;
-  font-weight: 700;
-}
-.art-contact a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 /* ── Artwork pictures (shared) ── */
@@ -779,6 +772,11 @@
   background: var(--art-gold);
   border-color: rgba(255, 255, 255, 0.35);
 }
+/* Navigate sits in the middle, between the contact details and the credit */
+.art-footer .art-footer-nav {
+  align-items: center;
+  text-align: center;
+}
 /* The credit sits flush with the right edge, mirroring the email on the left */
 .art-footer .art-closing-credit {
   align-items: flex-end;
@@ -956,7 +954,8 @@
   .art-footer-col {
     flex: none;
   }
-  .art-footer .art-closing-credit {
+  .art-footer .art-closing-credit,
+  .art-footer .art-footer-nav {
     align-items: flex-start;
     text-align: left;
   }

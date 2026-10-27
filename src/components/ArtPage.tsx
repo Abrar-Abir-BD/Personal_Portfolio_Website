@@ -412,12 +412,6 @@ const ArtPage = () => {
               {paragraph}
             </p>
           ))}
-          <p className="art-contact">
-            Contact me:{" "}
-            <a href={`mailto:${art.artist.email}`} data-cursor="disable">
-              {art.artist.email}
-            </a>
-          </p>
         </div>
       </section>
 
@@ -450,7 +444,7 @@ const ArtPage = () => {
               {contact.phone}
             </a>
           </div>
-          <div className="art-footer-col">
+          <div className="art-footer-col art-footer-nav">
             <p className="art-contact-label">Navigate</p>
             <a href="/#art" className="art-closing-button" data-cursor="disable">
               <MdArrowBack /> Back to main portfolio

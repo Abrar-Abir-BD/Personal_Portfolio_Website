@@ -192,7 +192,7 @@ export type Artwork = {
 
 export type ArtPortfolio = {
   intro: string;
-  artist: { skills: string[]; bio: string[]; email: string };
+  artist: { skills: string[]; bio: string[] };
   artworks: Artwork[];
 };
 
