@@ -39,8 +39,8 @@
 /* Skills: a grid of tiles, logo in a rounded square, name beneath */
 .skills-tiles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -49,9 +49,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 16px 8px 14px;
-  border-radius: 16px;
+  gap: 8px;
+  padding: 10px 4px 9px;
+  border-radius: 14px;
   text-align: center;
   background: rgba(var(--glass-rgb), 0.04);
   border: 1px solid rgba(var(--line-rgb), 0.06);
@@ -857,14 +857,22 @@
     aspect-ratio: 4 / 3;
   }
 }
-/* Skill tiles: four across on wide cards, three on laptops, back to four
-   once the cards stack, three on phones */
-@media only screen and (max-width: 1400px) {
-  .skills-tiles {
-    grid-template-columns: repeat(3, 1fr);
+/* Skills gets a wider area than the shared content width so the cards
+   spread out instead of growing tall */
+@media only screen and (min-width: 901px) {
+  .skills-section .section-container {
+    width: 1500px;
+    max-width: calc(100% - 120px);
   }
 }
-@media only screen and (max-width: 900px) {
+/* Skill tiles: six across on wide cards, five on laptops, four on small
+   laptops and once the cards stack, three on phones */
+@media only screen and (max-width: 1600px) {
+  .skills-tiles {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media only screen and (max-width: 1149px) {
   .skills-tiles {
     grid-template-columns: repeat(4, 1fr);
   }
