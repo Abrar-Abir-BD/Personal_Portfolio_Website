@@ -9,6 +9,65 @@ import "./styles/Navbar.css";
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
+// Where a section's content (below its top padding) lands: just under the
+// floating bar
+const CONTENT_TOP = 110;
+// ScrollSmoother's speed: the page moves this many pixels per pixel of
+// native scroll (touch devices scroll natively, at 1)
+const SCROLL_SPEED = 1.7;
+let settleCheck: (() => void) | undefined;
+
+const currentScroll = () => (smoother ? smoother.scrollTop() : window.scrollY);
+const stopSectionJump = () => {
+  if (settleCheck) gsap.ticker.remove(settleCheck);
+  settleCheck = undefined;
+};
+
+// Scrolls to a section with the smooth scroller's own glide. Once the glide
+// settles, it re-measures and glides again if anything above changed height
+// on the way (scroll animations, late images, fonts), so the page never
+// stops short with the previous section filling the top of the screen
+export const scrollToSection = (selector: string, smooth = true) => {
+  const el = document.querySelector<HTMLElement>(selector);
+  if (!el) return;
+  const target = () => {
+    const padding = parseFloat(getComputedStyle(el).paddingTop) || 0;
+    const content = document.getElementById("smooth-content");
+    const max = content ? content.clientHeight - window.innerHeight : Infinity;
+    const y =
+      currentScroll() + el.getBoundingClientRect().top + padding - CONTENT_TOP;
+    return Math.max(0, Math.min(y, max));
+  };
+  stopSectionJump();
+  if (!smoother || !smoother.smooth()) {
+    window.scrollTo({ top: target(), behavior: smooth ? "smooth" : "auto" });
+    return;
+  }
+  if (!smooth) {
+    smoother.scrollTop(target());
+    return;
+  }
+  // A number passed to scrollTo is a native scroll position
+  const aim = () => smoother.scrollTo(target() / SCROLL_SPEED, true);
+  aim();
+  let last = currentScroll();
+  let stillFrames = 0;
+  let retries = 2;
+  settleCheck = () => {
+    const now = currentScroll();
+    stillFrames = Math.abs(now - last) < 0.5 ? stillFrames + 1 : 0;
+    last = now;
+    if (stillFrames < 6) return;
+    if (Math.abs(target() - now) > 2 && retries-- > 0) {
+      aim();
+      stillFrames = 0;
+    } else {
+      stopSectionJump();
+    }
+  };
+  gsap.ticker.add(settleCheck);
+};
+
 const navLinks = [
   // The hero section's id
   { id: "landingDiv", label: "HOME" },
@@ -62,7 +121,7 @@ const Navbar = () => {
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.7,
-      speed: 1.7,
+      speed: SCROLL_SPEED,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
@@ -71,19 +130,10 @@ const Navbar = () => {
     smoother.scrollTop(0);
     smoother.paused(true);
 
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          // Land just below the floating bar instead of under it
-          smoother.scrollTo(section, true, "top 90px");
-        }
-      });
-    });
+    // Scrolling by hand takes over from a nav jump in progress
+    const stopJump = () => stopSectionJump();
+    window.addEventListener("wheel", stopJump, { passive: true });
+    window.addEventListener("touchstart", stopJump, { passive: true });
 
     // Highlight the link of the section currently in view
     const triggers = navLinks.map(({ id }) =>
@@ -99,10 +149,11 @@ const Navbar = () => {
       })
     );
 
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
-    });
-    return () => triggers.forEach((trigger) => trigger.kill());
+    return () => {
+      triggers.forEach((trigger) => trigger.kill());
+      window.removeEventListener("wheel", stopJump);
+      window.removeEventListener("touchstart", stopJump);
+    };
   }, []);
   return (
     <>
@@ -117,7 +168,13 @@ const Navbar = () => {
                 <a
                   data-href={`#${id}`}
                   href={`#${id}`}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    // A plain anchor jump fights the smooth scroller at
+                    // every width, so all clicks go through it
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    scrollToSection(`#${id}`);
+                  }}
                 >
                   <HoverLinks text={label} />
                 </a>

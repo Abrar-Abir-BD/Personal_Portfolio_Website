@@ -1,6 +1,21 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
+// Everything setCharTimeline creates, so a resize can tear down exactly
+// these (and nothing else on the page) before rebuilding them
+let owned: gsap.core.Timeline[] = [];
+let flicker: number | undefined;
+
+export function killCharTimeline() {
+  owned.forEach((tl) => {
+    // Revert first, so the rebuilt timelines record the original pose
+    tl.scrollTrigger?.kill(true);
+    tl.kill();
+  });
+  owned = [];
+  clearInterval(flicker);
+}
+
 // The character timelines record their start values once, when created at
 // the top of the page. They must not re-record on ScrollTrigger.refresh():
 // "View all"/"Read more" buttons refresh while scrolled down, and the
@@ -10,7 +25,7 @@ export function setCharTimeline(
   camera: THREE.PerspectiveCamera
 ) {
   let intensity: number = 0;
-  setInterval(() => {
+  flicker = setInterval(() => {
     intensity = Math.random();
   }, 200);
   const tl1 = gsap.timeline({
@@ -37,6 +52,7 @@ export function setCharTimeline(
       scrub: true,
     },
   });
+  owned.push(tl1, tl2, tl3);
   let screenLight: any, monitor: any;
   character?.children.forEach((object: any) => {
     if (object.name === "Plane004") {
@@ -53,11 +69,13 @@ export function setCharTimeline(
       object.material.transparent = true;
       object.material.opacity = 0;
       object.material.emissive.set("#BFE3FF");
-      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-        emissiveIntensity: () => intensity * 8,
-        duration: () => Math.random() * 0.6,
-        delay: () => Math.random() * 0.1,
-      });
+      owned.push(
+        gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
+          emissiveIntensity: () => intensity * 8,
+          duration: () => Math.random() * 0.6,
+          delay: () => Math.random() * 0.1,
+        })
+      );
       screenLight = object;
     }
   });
@@ -137,66 +155,7 @@ export function setCharTimeline(
         },
       });
       tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
+      owned.push(tM2);
     }
-  }
-}
-
-export function setAllTimeline() {
-  // The career timeline layout isn't on the page (Experience is a list)
-  if (!document.querySelector(".career-section")) return;
-  const careerTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".career-section",
-      start: "top 30%",
-      end: "100% center",
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  });
-  careerTimeline
-    .fromTo(
-      ".career-timeline",
-      { maxHeight: "10%" },
-      { maxHeight: "100%", duration: 0.5 },
-      0
-    )
-
-    .fromTo(
-      ".career-timeline",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.1 },
-      0
-    )
-    .fromTo(
-      ".career-info-box",
-      { opacity: 0 },
-      { opacity: 1, stagger: 0.1, duration: 0.5 },
-      0
-    )
-    .fromTo(
-      ".career-dot",
-      { animationIterationCount: "infinite" },
-      {
-        animationIterationCount: "1",
-        delay: 0.3,
-        duration: 0.1,
-      },
-      0
-    );
-
-  if (window.innerWidth > 1024) {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: "20%", duration: 0.5, delay: 0.2 },
-      0
-    );
-  } else {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: 0, duration: 0.5, delay: 0.2 },
-      0
-    );
   }
 }

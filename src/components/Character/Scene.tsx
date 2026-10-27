@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
@@ -12,27 +12,31 @@ import {
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
+import { killCharTimeline, setCharTimeline } from "../utils/GsapScroll";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef(new THREE.Scene());
   const { setLoading } = useLoading();
 
-  const [character, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
       const aspect = container.width / container.height;
-      const scene = sceneRef.current;
+      // A fresh scene per run. React runs this effect twice in development;
+      // with a shared scene, the first run's model (loaded after that run
+      // was cleaned up) stayed in it as a second, frozen character
+      const scene = new THREE.Scene();
+      let disposed = false;
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
         antialias: true,
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      // Beyond 2x the extra pixels cost a lot of GPU time for no visible gain
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -50,16 +54,16 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
+      const progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
       loadCharacter().then((gltf) => {
-        if (gltf) {
+        if (gltf && !disposed) {
+          setCharTimeline(gltf.scene, camera);
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
-          let character = gltf.scene;
-          setChar(character);
+          const character = gltf.scene;
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
@@ -67,13 +71,23 @@ const Scene = () => {
             setTimeout(() => {
               light.turnOnLights();
               animations.startIntro();
-            }, 2500);
+              // Lands as the loader leaves (see the timers in Loading.tsx)
+            }, 2000);
           });
-          window.addEventListener("resize", () =>
-            handleResize(renderer, camera, canvasDiv, character)
-          );
+          onResize = () => {
+            clearTimeout(resizeTimer);
+            // Rebuilding the scroll timelines is heavy: once the drag ends
+            resizeTimer = setTimeout(
+              () => handleResize(renderer, camera, canvasDiv, character),
+              200
+            );
+          };
+          window.addEventListener("resize", onResize);
         }
       });
+
+      let onResize: (() => void) | undefined;
+      let resizeTimer: number | undefined;
 
       let mouse = { x: 0, y: 0 },
         interpolation = { x: 0.1, y: 0.2 };
@@ -82,12 +96,15 @@ const Scene = () => {
         handleMouseMove(event, (x, y) => (mouse = { x, y }));
       };
       let debounce: number | undefined;
+      // One shared handler: adding the same function again is a no-op, so
+      // repeated touches don't pile up listeners
+      const onTouchMove = (e: TouchEvent) =>
+        handleTouchMove(e, (x, y) => (mouse = { x, y }));
       const onTouchStart = (event: TouchEvent) => {
         const element = event.target as HTMLElement;
+        clearTimeout(debounce);
         debounce = setTimeout(() => {
-          element?.addEventListener("touchmove", (e: TouchEvent) =>
-            handleTouchMove(e, (x, y) => (mouse = { x, y }))
-          );
+          element?.addEventListener("touchmove", onTouchMove, { passive: true });
         }, 200);
       };
 
@@ -98,16 +115,27 @@ const Scene = () => {
         });
       };
 
-      document.addEventListener("mousemove", (event) => {
-        onMouseMove(event);
-      });
+      document.addEventListener("mousemove", onMouseMove);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      // Only draw while the character is on screen; past the "What I do"
+      // section it's scrolled away and rendering it would just eat frames
+      let visible = true;
+      const observer = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+      });
+      observer.observe(canvasDiv.current);
+
+      let frame = 0;
       const animate = () => {
-        requestAnimationFrame(animate);
+        frame = requestAnimationFrame(animate);
+        if (!visible) {
+          clock.getDelta();
+          return;
+        }
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -127,17 +155,21 @@ const Scene = () => {
       };
       animate();
       return () => {
+        disposed = true;
+        progress.stop();
+        killCharTimeline();
+        cancelAnimationFrame(frame);
+        observer.disconnect();
         clearTimeout(debounce);
+        clearTimeout(resizeTimer);
         scene.clear();
         renderer.dispose();
-        window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
-        );
-        if (canvasDiv.current) {
+        if (onResize) window.removeEventListener("resize", onResize);
+        if (canvasDiv.current?.contains(renderer.domElement)) {
           canvasDiv.current.removeChild(renderer.domElement);
         }
+        document.removeEventListener("mousemove", onMouseMove);
         if (landingDiv) {
-          document.removeEventListener("mousemove", onMouseMove);
           landingDiv.removeEventListener("touchstart", onTouchStart);
           landingDiv.removeEventListener("touchend", onTouchEnd);
         }

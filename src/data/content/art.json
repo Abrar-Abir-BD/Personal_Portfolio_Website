@@ -220,7 +220,7 @@
         "indigo-morning"
       ],
       "focus": "center",
-      "layout": "framed",
+      "layout": "framed-right",
       "collection": "new",
       "featured": false,
       "fit": "cover",
@@ -288,7 +288,7 @@
         "beneath-the-trees"
       ],
       "focus": "center",
-      "layout": "framed",
+      "layout": "framed-right",
       "collection": "new",
       "featured": false,
       "fit": "cover",

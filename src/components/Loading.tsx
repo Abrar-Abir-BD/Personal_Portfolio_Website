@@ -14,8 +14,8 @@ const Loading = ({ percent }: { percent: number }) => {
   const done = percent >= 100;
   useEffect(() => {
     if (!done) return;
-    const t1 = setTimeout(() => setLoaded(true), 600);
-    const t2 = setTimeout(() => setIsLoaded(true), 1600);
+    const t1 = setTimeout(() => setLoaded(true), 400);
+    const t2 = setTimeout(() => setIsLoaded(true), 1100);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -136,5 +136,9 @@ export const setProgress = (setLoading: (value: number) => void) => {
       }, 2);
     });
   }
-  return { loaded, percent, clear };
+  // Abandons this counter (the scene that started it was torn down)
+  function stop() {
+    clearInterval(interval);
+  }
+  return { loaded, percent, clear, stop };
 };

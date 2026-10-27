@@ -94,6 +94,12 @@
     transparent 70%
   );
   box-shadow: none;
+  /* Spinning a round, even glow changes nothing visible; the resting
+     transforms below are the ones the spin kept them at */
+  animation: none;
+}
+:root[data-design="glow"] .landing-circle1 {
+  transform: translate(-95%, -75%);
 }
 
 /* ── Hero ── */
@@ -207,6 +213,10 @@
       rgba(10, 16, 30, 0.4) 100%
     );
   background-size: 160px 160px, auto;
+  /* These cards are near-opaque over a soft, already-blurred backdrop, so a
+     backdrop blur is invisible here but re-renders on every scroll frame */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   border-color: rgba(242, 242, 242, 0.09);
   box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.06),
     0px 30px 60px -30px rgba(0, 0, 0, 0.75);

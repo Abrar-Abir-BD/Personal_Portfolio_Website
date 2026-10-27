@@ -8,6 +8,7 @@ const Contact = () => {
       <div className="contact-container">
         <div className="contact-flex">
           <div className="contact-box">
+            <h2 className="contact-heading">Contact</h2>
             <h4>Email</h4>
             <p>
               <a href={`mailto:${contact.email}`} data-cursor="disable">

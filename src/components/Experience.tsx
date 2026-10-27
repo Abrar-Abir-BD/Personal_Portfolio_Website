@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdExpandLess, MdExpandMore, MdOpenInNew } from "react-icons/md";
 import { GlassCard, GlassSection } from "./Glass";
 import { Experience as Role, experience } from "../data/portfolioContent";
-import { smoother } from "./Navbar";
+import { scrollToSection } from "./Navbar";
 import "./styles/Sections.css";
 
 // How many roles show before "View all"
@@ -45,11 +45,7 @@ const Experience = () => {
       ScrollTrigger.refresh();
       // After collapsing, bring the section back into view
       if (!next) {
-        if (window.innerWidth > 1024 && smoother) {
-          smoother.scrollTo("#experience", true, "top 90px");
-        } else {
-          document.getElementById("experience")?.scrollIntoView();
-        }
+        scrollToSection("#experience");
       }
     });
   };

@@ -2,7 +2,12 @@ import { GlassCard, GlassImage, GlassSection } from "./Glass";
 import { moments } from "../data/portfolioContent";
 import "./styles/Sections.css";
 
+// Only moments with a photo are shown, and the section stays hidden until
+// moments.json has at least one
+const shown = moments.filter((moment) => moment.image);
+
 const Moments = () => {
+  if (!shown.length) return null;
   return (
     <GlassSection
       id="moments"
@@ -13,7 +18,7 @@ const Moments = () => {
       }
     >
       <div className="art-grid moments-grid">
-        {moments.map((moment, index) => (
+        {shown.map((moment, index) => (
           <GlassCard className="art-card" key={index}>
             <GlassImage src={moment.image} alt={moment.caption} />
             <div className="art-info">

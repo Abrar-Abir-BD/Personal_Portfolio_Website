@@ -212,12 +212,12 @@
   min-height: 100vh;
   min-height: 100svh;
 }
-/* The portrait stays one screen tall and pinned while a long bio scrolls */
+/* The portrait runs the full height of the panel beside it, so a long bio
+   never leaves an empty strip under the photo */
 .art-artist-photo {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
+  align-self: stretch;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 .art-artist-photo img {
   /* Keep the painter and the flower in view if a narrow window trims it */
@@ -653,7 +653,8 @@
 
 /* Text beside a whole artwork in a white mat; the frame takes the
    painting's own shape (see "ratio" in art.json), so nothing is cropped */
-.art-framed {
+.art-framed,
+.art-framed-right {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   align-items: center;
@@ -683,7 +684,11 @@
   width: calc(100% - 2 * var(--mat));
   height: calc(100% - 2 * var(--mat));
 }
-.art-framed .art-date {
+.art-framed-right {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+.art-framed .art-date,
+.art-framed-right .art-date {
   top: auto;
   bottom: 22px;
   left: 24px;
@@ -728,6 +733,13 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   opacity: 0.6;
+}
+/* Same type as the "Designed and Developed" credit */
+.art-footer-heading {
+  margin: 0px 0px 16px;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.4;
 }
 .art-footer-col a + .art-contact-label {
   margin-top: 20px;
@@ -808,6 +820,7 @@
     height: auto;
     aspect-ratio: 1358 / 2048 !important;
     max-height: none !important;
+    min-height: 0;
   }
   .art-artist-photo,
   .art-pic-half,
@@ -903,7 +916,8 @@
     padding: 8vh var(--art-gutter);
     row-gap: 5vh;
   }
-  .art-framed {
+  .art-framed,
+  .art-framed-right {
     grid-template-columns: 1fr;
     row-gap: 5vh;
     min-height: 0;

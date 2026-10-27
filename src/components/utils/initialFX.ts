@@ -1,6 +1,6 @@
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-import { smoother } from "../Navbar";
+import { scrollToSection, smoother } from "../Navbar";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
@@ -10,7 +10,7 @@ export function initialFX() {
     const target = window.location.hash;
     setTimeout(() => {
       if (document.querySelector(target)) {
-        smoother.scrollTo(target, false, "top 90px");
+        scrollToSection(target, false);
       }
     }, 100);
   }

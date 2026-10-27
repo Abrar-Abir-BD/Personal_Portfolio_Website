@@ -9,20 +9,32 @@ const Cursor = () => {
     const cursor = cursorRef.current!;
     const mousePos = { x: 0, y: 0 };
     const cursorPos = { x: 0, y: 0 };
-    document.addEventListener("mousemove", (e) => {
+    // Setting the position directly each frame; a new tween per frame piled
+    // up work for nothing
+    const setX = gsap.quickSetter(cursor, "x", "px");
+    const setY = gsap.quickSetter(cursor, "y", "px");
+    let frame = 0;
+    const loop = () => {
+      const dx = mousePos.x - cursorPos.x;
+      const dy = mousePos.y - cursorPos.y;
+      if (hover) {
+        frame = 0;
+        return;
+      }
+      cursorPos.x += dx / 6;
+      cursorPos.y += dy / 6;
+      setX(cursorPos.x);
+      setY(cursorPos.y);
+      // Rest once caught up; the next mouse move starts it again
+      frame =
+        Math.abs(dx) + Math.abs(dy) > 0.5 ? requestAnimationFrame(loop) : 0;
+    };
+    const onMouseMove = (e: MouseEvent) => {
       mousePos.x = e.clientX;
       mousePos.y = e.clientY;
-    });
-    requestAnimationFrame(function loop() {
-      if (!hover) {
-        const delay = 6;
-        cursorPos.x += (mousePos.x - cursorPos.x) / delay;
-        cursorPos.y += (mousePos.y - cursorPos.y) / delay;
-        gsap.to(cursor, { x: cursorPos.x, y: cursorPos.y, duration: 0.1 });
-        // cursor.style.transform = `translate(${cursorPos.x}px, ${cursorPos.y}px)`;
-      }
-      requestAnimationFrame(loop);
-    });
+      if (!frame) frame = requestAnimationFrame(loop);
+    };
+    document.addEventListener("mousemove", onMouseMove);
     document.querySelectorAll("[data-cursor]").forEach((item) => {
       const element = item as HTMLElement;
       element.addEventListener("mouseover", (e: MouseEvent) => {
@@ -46,6 +58,10 @@ const Cursor = () => {
         hover = false;
       });
     });
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("mousemove", onMouseMove);
+    };
   }, []);
 
   return <div className="cursor-main" ref={cursorRef}></div>;

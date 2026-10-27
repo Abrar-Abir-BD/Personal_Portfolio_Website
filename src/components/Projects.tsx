@@ -4,7 +4,7 @@ import { MdArrowForward, MdExpandLess, MdExpandMore } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import { GlassSection } from "./Glass";
 import { Project, projects } from "../data/portfolioContent";
-import { smoother } from "./Navbar";
+import { scrollToSection } from "./Navbar";
 import "./styles/Sections.css";
 
 // How many projects show before "View all projects"
@@ -31,11 +31,7 @@ const Projects = () => {
       // After collapsing, bring the section back into view instead of
       // leaving the reader stranded further down the page
       if (!next) {
-        if (window.innerWidth > 1024 && smoother) {
-          smoother.scrollTo("#projects", true, "top 90px");
-        } else {
-          document.getElementById("projects")?.scrollIntoView();
-        }
+        scrollToSection("#projects");
       }
     });
   };

@@ -160,7 +160,8 @@ export type ArtLayout =
   | "mosaic" // three studies in a staggered grid beside the text
   | "triptych" // artwork | text | artwork
   | "wide" // one landscape artwork framed large, text below
-  | "framed"; // text beside a whole artwork in a white mat (needs "ratio")
+  | "framed" // text beside a whole artwork in a white mat (needs "ratio")
+  | "framed-right"; // the same, with the artwork left and the text right
 
 export type Artwork = {
   slug: string;
@@ -170,7 +171,7 @@ export type Artwork = {
   // As written on the piece, e.g. "25/12/24" ("" hides it)
   date: string;
   description: string;
-  // File names in /public/images/art/gallery (without .jpg); the 760px
+  // File names in /public/images/art/gallery (without .webp); the 760px
   // previews are in gallery/thumb
   images: string[];
   // Which part of the artwork to keep when it's cropped, e.g. "70% center"
@@ -240,7 +241,7 @@ export const art: ArtPortfolio = {
 };
 export const artworks = art.artworks;
 export const artImage = (name: string, size: "full" | "thumb" = "full") =>
-  `/images/art/gallery/${size === "thumb" ? "thumb/" : ""}${name}.jpg`;
+  `/images/art/gallery/${size === "thumb" ? "thumb/" : ""}${name}.webp`;
 export const media: MediaFeature[] = mediaJson;
 export const moments: Moment[] = momentsJson;
 export const contact: Contact = contactJson;

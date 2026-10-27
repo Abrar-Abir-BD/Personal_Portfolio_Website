@@ -42,8 +42,6 @@ export const GlassSection = ({
 }: GlassSectionProps) => {
   return (
     <section className={`glass-section ${className}`} id={id}>
-      <div className="glass-orb glass-orb-1"></div>
-      <div className="glass-orb glass-orb-2"></div>
       <div className="glass-section-in section-container">
         <div className="glass-section-head">
           <h2>{title}</h2>
