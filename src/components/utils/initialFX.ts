@@ -25,15 +25,14 @@ export function initialFX() {
   );
   gsap.fromTo(
     landingText.chars,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
+    { opacity: 0, y: 40 },
     {
       opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
+      duration: 1,
+      ease: "power3.out",
       y: 0,
-      stagger: 0.025,
-      delay: 0.3,
+      stagger: 0.02,
+      delay: 0.2,
     }
   );
 
@@ -49,15 +48,14 @@ export function initialFX() {
 
   gsap.fromTo(
     roles[0].chars,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
+    { opacity: 0, y: 40 },
     {
       opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
+      duration: 1,
+      ease: "power3.out",
       y: 0,
-      stagger: 0.025,
-      delay: 0.3,
+      stagger: 0.02,
+      delay: 0.2,
     }
   );
 

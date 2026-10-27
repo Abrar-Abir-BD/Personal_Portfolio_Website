@@ -438,7 +438,7 @@ const ArtPage = () => {
           </div>
           <div className="art-footer-col">
             <p className="art-contact-label">Navigate</p>
-            <a href="/#art" data-cursor="disable">
+            <a href="/#art" className="art-closing-button" data-cursor="disable">
               <MdArrowBack /> Back to main portfolio
             </a>
           </div>

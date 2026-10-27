@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { MdClose, MdDarkMode, MdLightMode, MdMenu } from "react-icons/md";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -19,7 +19,6 @@ const navLinks = [
   { id: "experience", label: "EXPERIENCE" },
   { id: "skills", label: "SKILLS" },
   { id: "art", label: "ART" },
-  { id: "media", label: "MEDIA" },
   { id: "contact", label: "CONTACT" },
 ];
 
@@ -40,6 +39,23 @@ const Navbar = () => {
     }
     setTheme(next);
   };
+
+  // Phones: the links live in a dropdown opened by the menu button
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const close = (e: Event) => {
+      if (e instanceof KeyboardEvent && e.key !== "Escape") return;
+      if (e.target instanceof Element && e.target.closest(".nav-glass")) return;
+      setMenuOpen(false);
+    };
+    document.addEventListener("pointerdown", close);
+    document.addEventListener("keydown", close);
+    return () => {
+      document.removeEventListener("pointerdown", close);
+      document.removeEventListener("keydown", close);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     smoother = ScrollSmoother.create({
@@ -95,10 +111,14 @@ const Navbar = () => {
           <a href="/#" className="navbar-title" data-cursor="disable">
             Abrar Abir
           </a>
-          <ul>
+          <ul id="nav-links" className={menuOpen ? "nav-open" : ""}>
             {navLinks.map(({ id, label }) => (
               <li key={id}>
-                <a data-href={`#${id}`} href={`#${id}`}>
+                <a
+                  data-href={`#${id}`}
+                  href={`#${id}`}
+                  onClick={() => setMenuOpen(false)}
+                >
                   <HoverLinks text={label} />
                 </a>
               </li>
@@ -126,6 +146,17 @@ const Navbar = () => {
             <MdLightMode
               className={`theme-icon ${theme === "light" ? "theme-icon-on" : ""}`}
             />
+          </button>
+          <button
+            type="button"
+            className="nav-burger"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="nav-links"
+            onClick={() => setMenuOpen(!menuOpen)}
+            data-cursor="disable"
+          >
+            {menuOpen ? <MdClose /> : <MdMenu />}
           </button>
         </nav>
       </div>

@@ -719,8 +719,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
   flex: 1;
 }
 .art-contact-label {
@@ -747,6 +745,34 @@
 .art-page .art-footer a:hover {
   color: #fff;
   border-color: var(--art-gold);
+}
+/* The back link keeps its pill button look inside the footer */
+.art-page .art-footer .art-closing-button {
+  gap: 8px;
+  margin-top: 4px;
+  padding: 13px 26px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background 0.3s;
+}
+.art-page .art-footer .art-closing-button:hover {
+  color: #fff;
+  background: var(--art-gold);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+/* The credit sits flush with the right edge, mirroring the email on the left */
+.art-footer .art-closing-credit {
+  align-items: flex-end;
+  text-align: right;
 }
 .art-closing-credit p {
   margin: 0;
@@ -918,9 +944,9 @@
   .art-footer-col {
     flex: none;
   }
-  .art-footer-col + .art-footer-col {
-    border-top: none;
-    padding-top: 0;
+  .art-footer .art-closing-credit {
+    align-items: flex-start;
+    text-align: left;
   }
 }
 

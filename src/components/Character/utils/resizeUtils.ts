@@ -16,9 +16,15 @@ export default function handleResize(
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   const workTrigger = ScrollTrigger.getById("work");
+  // The character's own timelines (see setCharTimeline)
+  const charSections = [".landing-section", ".about-section", ".whatIDO"].map(
+    (selector) => document.querySelector(selector)
+  );
   ScrollTrigger.getAll().forEach((trigger) => {
     if (trigger != workTrigger) {
-      trigger.kill();
+      // Reset the character's animations to their start first, so the
+      // rebuilt timelines record its original pose, not wherever it is now
+      trigger.kill(charSections.includes(trigger.trigger as Element));
     }
   });
   setCharTimeline(character, camera);

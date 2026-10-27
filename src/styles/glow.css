@@ -155,14 +155,15 @@
 :root[data-design="glow"] .glass-section-head h2 > span,
 :root[data-design="glow"] .career-section h2 > span,
 :root[data-design="glow"] .contact-box h2 > span,
-:root[data-design="glow"] .hat-h2 {
+:root[data-design="glow"] .do-h2 {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
   color: var(--accentWarm);
 }
-:root[data-design="glow"] .glass-section-head h2 > span {
+:root[data-design="glow"] .glass-section-head h2 > span,
+:root[data-design="glow"] .do-h2 {
   font-size: 1.08em;
 }
 /* Experience heading: solid type instead of the gradient fill */

@@ -78,8 +78,12 @@ export type Experience = {
   organization: string;
   year: string;
   location: string;
+  // Website or, failing that, a page about the organization; blank url hides it
+  link: ProjectLink;
   description: string;
   highlights: string[];
+  // Logo under public/; blank shows the organization's initials instead
+  logo: string;
 };
 
 export type Award = {
@@ -203,6 +207,8 @@ export type MediaFeature = {
   date: string;
   type: string;
   link: string;
+  // Preview image under public/; blank shows the outlet name instead
+  image: string;
 };
 
 export const landing: Landing = landingJson;

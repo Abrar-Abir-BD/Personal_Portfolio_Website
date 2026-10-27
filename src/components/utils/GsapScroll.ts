@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
+// The character timelines record their start values once, when created at
+// the top of the page. They must not re-record on ScrollTrigger.refresh():
+// "View all"/"Read more" buttons refresh while scrolled down, and the
+// figure's moved pose would become its new starting pose.
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera
@@ -15,7 +19,6 @@ export function setCharTimeline(
       start: "top top",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true,
     },
   });
   const tl2 = gsap.timeline({
@@ -24,7 +27,6 @@ export function setCharTimeline(
       start: "center 55%",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true,
     },
   });
   const tl3 = gsap.timeline({
@@ -33,7 +35,6 @@ export function setCharTimeline(
       start: "top top",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true,
     },
   });
   let screenLight: any, monitor: any;
@@ -67,8 +68,11 @@ export function setCharTimeline(
         .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
         .to(camera.position, { z: 22 }, 0)
         .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
-        .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
-        .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
+        // Explicit start values: a .to() would capture whatever state the
+        // page is in when it first renders, e.g. already faded out after
+        // arriving at /#projects, and the text would never come back
+        .fromTo(".landing-container", { opacity: 1 }, { opacity: 0, duration: 0.4 }, 0)
+        .fromTo(".landing-container", { y: "0%" }, { y: "40%", duration: 0.8 }, 0)
         .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
       tl2
@@ -77,8 +81,13 @@ export function setCharTimeline(
           { z: 75, y: 8.4, duration: 6, delay: 2, ease: "power3.inOut" },
           0
         )
-        .to(".about-section", { y: "30%", duration: 6 }, 0)
-        .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
+        .fromTo(".about-section", { y: "0%" }, { y: "30%", duration: 6 }, 0)
+        .fromTo(
+          ".about-section",
+          { opacity: 1 },
+          { opacity: 0, delay: 3, duration: 2 },
+          0
+        )
         .fromTo(
           ".character-model",
           { pointerEvents: "inherit" },
@@ -133,6 +142,8 @@ export function setCharTimeline(
 }
 
 export function setAllTimeline() {
+  // The career timeline layout isn't on the page (Experience is a list)
+  if (!document.querySelector(".career-section")) return;
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",

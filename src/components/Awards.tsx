@@ -75,7 +75,6 @@ const AwardCard = ({ award, isNew }: { award: Award; isNew: boolean }) => {
           ref={descRef}
           className={`awards-desc ${open ? "awards-desc-open" : ""}`}
         >
-          {award.highlight && `${award.highlight}. `}
           {award.description}
         </p>
         {(clamped || open) && (

@@ -1,35 +1,226 @@
 [
   {
-    "role": "Role / Position Title",
-    "organization": "Organization Name",
-    "year": "20XX",
-    "location": "City, Country",
-    "description": "Describe your responsibilities and the impact you had in this role in one or two sentences.",
+    "role": "Founder & CEO",
+    "organization": "SAPH.Ai",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "Website",
+      "url": "https://saph-ai-website.vercel.app/"
+    },
+    "description": "",
     "highlights": [
-      "Key achievement or initiative",
-      "Another notable result"
-    ]
+      "Founded a youth-led AI water-tech and robotics venture funded by the Swedish Government and WaterAid",
+      "Engineered an AI device that tests water for contamination on the spot and purifies it, with ~90% accuracy",
+      "Raised $10K to deploy the device in 20 coastal villages",
+      "Published research on the device; patent pending"
+    ],
+    "logo": "/images/experience/saph-ai.webp"
   },
   {
-    "role": "Role / Position Title",
-    "organization": "Organization Name",
-    "year": "20XX",
-    "location": "City, Country",
-    "description": "Describe your responsibilities and the impact you had in this role in one or two sentences.",
+    "role": "Electrical Research & Development Lead",
+    "organization": "Robolife Technologies",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "Website",
+      "url": "https://www.robolifetechnologies.tech/"
+    },
+    "description": "",
     "highlights": [
-      "Key achievement or initiative",
-      "Another notable result"
-    ]
+      "Led EMG muscle-signal control R&D for 30 low-cost prosthetic arm prototypes at the country's only robotic prosthetic arm maker",
+      "Analyzed 1.5K muscle-signal trials to make arm control more reliable for users",
+      "Helped secure $18K in grants and scale exports to 4 nations, serving 100+ amputees"
+    ],
+    "logo": "/images/experience/robolife.webp"
   },
   {
-    "role": "Role / Position Title",
-    "organization": "Organization Name",
-    "year": "NOW",
-    "location": "City, Country",
-    "description": "Describe your responsibilities and the impact you had in this role in one or two sentences.",
+    "role": "Robotics Researcher, Robotics & Autonomous Systems",
+    "organization": "UIU Center for AI & Robotics",
+    "year": "",
+    "location": "Dhaka, Bangladesh",
+    "link": {
+      "name": "UIU website",
+      "url": "https://www.uiu.ac.bd"
+    },
+    "description": "",
     "highlights": [
-      "Key achievement or initiative",
-      "Another notable result"
-    ]
+      "Engineered 25+ pneumatic extension mechanisms that reach into collapsed and underground spaces for rescue",
+      "Mechanisms deployed by the Fire Department in 30+ rescues and to map 25 km of sewage lines",
+      "Authored research on the work at the lab of Asia's #1 and world #3 University Rover Challenge team"
+    ],
+    "logo": "/images/experience/uiu-cair.webp"
+  },
+  {
+    "role": "Assistant Coordinator & Academic Mentor",
+    "organization": "International Robot Olympiad Committee - Bangladesh",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "IROC website",
+      "url": "https://www.iroc.org"
+    },
+    "description": "",
+    "highlights": [
+      "Trained 4K students in robotics across 40 schools",
+      "Created the study materials and tutorials used in training",
+      "Mentored the Gold-winning national team in aerospace robotics for the International Robot Olympiad"
+    ],
+    "logo": "/images/experience/iroc.webp"
+  },
+  {
+    "role": "Chief Technology Officer",
+    "organization": "Bots Bangla",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/p/Bots-Bangla-100093528040920/"
+    },
+    "description": "",
+    "highlights": [
+      "Built a sensor-to-cloud smart irrigation system for a government agricultural project",
+      "Deployed 1K sensors across 310 rural farms through a $16K+ Government ICT Ministry Innovation Fund",
+      "Engineered edge automation that waters crops only when needed, cutting cost by 60% and time by 54%"
+    ],
+    "logo": "/images/experience/bots-bangla.webp"
+  },
+  {
+    "role": "AI Reliability Intern",
+    "organization": "Sarvam AI",
+    "year": "",
+    "location": "India",
+    "link": {
+      "name": "Website",
+      "url": "https://www.sarvam.ai"
+    },
+    "description": "",
+    "highlights": [
+      "Stress-tested large language models across 300K+ prompts at a $1.5B frontier-AI company serving 10M+ API calls a day",
+      "Built automated evaluation pipelines to test models continuously",
+      "Identified 1K+ reasoning, retrieval and safety failures, giving the team evidence to improve its decisions"
+    ],
+    "logo": "/images/experience/sarvam-ai.svg"
+  },
+  {
+    "role": "Research Assistant, Battery Foundation Models",
+    "organization": "Intelligent Battery Lab, HKUST(GZ)",
+    "year": "",
+    "location": "Guangzhou, China",
+    "link": {
+      "name": "HKUST(GZ) website",
+      "url": "https://www.hkust-gz.edu.cn"
+    },
+    "description": "",
+    "highlights": [
+      "Trained transformer models on 500K battery cycles for battery foundation-model research",
+      "Fused voltage, temperature and aging signals to forecast how cells degrade",
+      "Detected early cell-failure patterns before they show up in normal use"
+    ],
+    "logo": "/images/experience/hkust-gz.png"
+  },
+  {
+    "role": "AI Systems & Automation Developer",
+    "organization": "MAANS Investments",
+    "year": "",
+    "location": "",
+    "link": {
+      "name": "",
+      "url": ""
+    },
+    "description": "",
+    "highlights": [
+      "Engineered an AI stack that automated 16 investment workflows at a $7M+ AUM firm",
+      "Set up continuous monitoring of 500 client assets",
+      "Tripled client capacity, helping bring in $2M+ in new AUM without new staff"
+    ],
+    "logo": ""
+  },
+  {
+    "role": "Co-founder & National Advisor",
+    "organization": "Debaters Community of Bangladesh",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/DCBDofficial"
+    },
+    "description": "",
+    "highlights": [
+      "Co-founded the country's largest online debating platform, spanning 48 regions",
+      "Built a national debate pipeline that trained 3K+ debaters and led 600+ online and offline sessions",
+      "Authored training material, including LGBTQ+ rights case studies",
+      "Coached 100+ debaters to national and international placements"
+    ],
+    "logo": "/images/experience/dcbd.webp"
+  },
+  {
+    "role": "Joint General Secretary",
+    "organization": "National Children's Task Force",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "About NCTF",
+      "url": "https://www.savethechildren.net/news/priyanka-%E2%80%93-defender-children%E2%80%99s-rights"
+    },
+    "description": "",
+    "highlights": [
+      "Educated 40+ children from a red-light zone in math, English and sanitation awareness",
+      "Informed authorities to stop 25 child marriages and campaigned against child labor",
+      "Trained 3K teens in online safety with the Bangladesh Police's Cyber Branch"
+    ],
+    "logo": "/images/experience/nctf.webp"
+  },
+  {
+    "role": "Deputy Executive & Management Officer",
+    "organization": "Cultural Classicists",
+    "year": "",
+    "location": "Bangladesh",
+    "link": {
+      "name": "Facebook group",
+      "url": "https://www.facebook.com/groups/culturalclassicists.official"
+    },
+    "description": "",
+    "highlights": [
+      "Scaled 100 digital cultural competitions reaching 1M youth across a ~1M-member national community",
+      "Coordinated 50 artists and organizers",
+      "Represented Bangladeshi music, art and heritage to an international audience"
+    ],
+    "logo": "/images/experience/cultural-classicists.webp"
+  },
+  {
+    "role": "Senior Patrol Leader",
+    "organization": "Bagerhat Govt. High School Scout Unit",
+    "year": "",
+    "location": "Bagerhat, Bangladesh",
+    "link": {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/shaikhnayeemmahmud"
+    },
+    "description": "",
+    "highlights": [
+      "Led the troop to #1 of 1.2K teams at 7 national camps",
+      "Directed a 15-country Scout collaboration bringing internet education to 2K Ugandan youth",
+      "Managed 250 COVID vaccinations with a local hospital for underprivileged villagers"
+    ],
+    "logo": "/images/experience/bagerhat-scouts.webp"
+  },
+  {
+    "role": "President & Founder",
+    "organization": "DRMC Adventure & Tour Club",
+    "year": "",
+    "location": "Dhaka, Bangladesh",
+    "link": {
+      "name": "Website",
+      "url": "https://atc.drmc.club/"
+    },
+    "description": "",
+    "highlights": [
+      "Founded and led a student-led survival education, tourism and relief organization",
+      "Led 6 study tours to historical sites for 500+ students",
+      "Co-hosted a government tourism campaign with the Tourism Ministry",
+      "Raised $6.4K to support 300+ flood-affected families"
+    ],
+    "logo": "/images/experience/drmc-adventure.webp"
   }
 ]
