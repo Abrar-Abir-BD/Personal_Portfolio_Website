@@ -12,6 +12,30 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 let listening = false;
 
+// Lines are measured once, so they must be re-split whenever their column
+// changes width. Not every change fires a resize event: the scrollbar
+// appearing when the loader unlocks scrolling narrows the page by ~15px, and
+// the last word of a full line then dropped onto a line of its own
+const widths = new WeakMap<Element, number>();
+let resplit = 0;
+const widthWatcher =
+  typeof ResizeObserver !== "undefined"
+    ? new ResizeObserver((entries) => {
+        const changed = entries.some((entry) => {
+          const width = Math.round(entry.contentRect.width);
+          const before = widths.get(entry.target);
+          widths.set(entry.target, width);
+          return before !== undefined && before !== width;
+        });
+        if (changed && !resplit) {
+          resplit = requestAnimationFrame(() => {
+            resplit = 0;
+            setSplitText();
+          });
+        }
+      })
+    : null;
+
 // A rebuilt reveal starts hidden and only plays on the next scroll. When the
 // page is re-measured while already past its start (e.g. sitting on About
 // after the nav jump, as lazy images load), show it right away instead of
@@ -39,6 +63,8 @@ export default function setSplitText() {
   if (window.innerWidth < 900) return;
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
+
+  [...paras, ...titles].forEach((el) => widthWatcher?.observe(el));
 
   const TriggerStart = window.innerWidth <= 1024 ? "top 60%" : "20% 60%";
   const ToggleAction = "play pause resume reverse";
