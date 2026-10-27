@@ -12,6 +12,15 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 let listening = false;
 
+// A rebuilt reveal starts hidden and only plays on the next scroll. When the
+// page is re-measured while already past its start (e.g. sitting on About
+// after the nav jump, as lazy images load), show it right away instead of
+// leaving the text invisible until the reader scrolls again
+const showIfPassed = (anim: gsap.core.Animation) => {
+  const st = anim.scrollTrigger;
+  if (st && st.scroll() >= st.start) anim.progress(1);
+};
+
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   // Once only: adding it on every call doubled the listeners (and the
@@ -57,6 +66,7 @@ export default function setSplitText() {
         stagger: 0.02,
       }
     );
+    showIfPassed(para.anim);
   });
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
@@ -84,5 +94,6 @@ export default function setSplitText() {
         stagger: 0.03,
       }
     );
+    showIfPassed(title.anim);
   });
 }
