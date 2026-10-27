@@ -35,12 +35,8 @@ const Scene = () => {
         antialias: true,
       });
       renderer.setSize(container.width, container.height);
-<<<<<<< HEAD
       // Sharp on Retina, but never more than 2x: on high-DPI Windows laptops
       // (250-300% scaling) full density means 6-9x the pixels every frame
-=======
-      // Beyond 2x the extra pixels cost a lot of GPU time for no visible gain
->>>>>>> 5bf947b6c36b1b7a5a142340ddd1cfaaeb37c4f9
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
@@ -126,17 +122,16 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
-<<<<<<< HEAD
       // Only draw while the character is on screen; once it has scrolled away
       // the GPU is free for the rest of the page
-      let onScreen = true;
+      let visible = true;
       // (a sliver must actually be visible: when the character slides away it
       // stops exactly at the screen edge, which still counts as "touching")
-      const visibility = new IntersectionObserver(
-        ([entry]) => (onScreen = entry.intersectionRatio > 0.005),
+      const observer = new IntersectionObserver(
+        ([entry]) => (visible = entry.intersectionRatio > 0.005),
         { threshold: [0, 0.01, 0.1] }
       );
-      visibility.observe(canvasDiv.current);
+      observer.observe(canvasDiv.current);
 
       // Slow device check: time the first frames after the character
       // appears; if the machine can't keep up, render the 3D at standard
@@ -159,28 +154,12 @@ const Scene = () => {
         }
       };
 
-      const animate = () => {
-        requestAnimationFrame(animate);
-        const delta = clock.getDelta();
-        if (!onScreen) return;
-        checkPerformance(delta);
-=======
-      // Only draw while the character is on screen; past the "What I do"
-      // section it's scrolled away and rendering it would just eat frames
-      let visible = true;
-      const observer = new IntersectionObserver(([entry]) => {
-        visible = entry.isIntersecting;
-      });
-      observer.observe(canvasDiv.current);
-
       let frame = 0;
       const animate = () => {
         frame = requestAnimationFrame(animate);
-        if (!visible) {
-          clock.getDelta();
-          return;
-        }
->>>>>>> 5bf947b6c36b1b7a5a142340ddd1cfaaeb37c4f9
+        const delta = clock.getDelta();
+        if (!visible) return;
+        checkPerformance(delta);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -205,11 +184,7 @@ const Scene = () => {
         cancelAnimationFrame(frame);
         observer.disconnect();
         clearTimeout(debounce);
-<<<<<<< HEAD
-        visibility.disconnect();
-=======
         clearTimeout(resizeTimer);
->>>>>>> 5bf947b6c36b1b7a5a142340ddd1cfaaeb37c4f9
         scene.clear();
         renderer.dispose();
         if (onResize) window.removeEventListener("resize", onResize);

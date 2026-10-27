@@ -136,7 +136,6 @@ body {
 .low-power body::before {
   filter: none !important;
 }
-.low-power .glass-orb,
 .low-power .landing-circle1,
 .low-power .landing-circle2 {
   filter: none;

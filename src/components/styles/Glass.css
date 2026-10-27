@@ -28,34 +28,6 @@
   max-width: 560px;
 }
 
-<<<<<<< HEAD
-/* Soft blue light behind each section, so the glass has something to refract.
-   Static on purpose: animating large blurred shapes repaints every frame */
-.glass-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-}
-.glass-orb-1 {
-  width: 420px;
-  height: 420px;
-  top: 10%;
-  left: -6%;
-  background: radial-gradient(circle, #1b68cf 0%, rgba(27, 104, 207, 0) 70%);
-}
-.glass-orb-2 {
-  width: 360px;
-  height: 360px;
-  bottom: 5%;
-  right: -4%;
-  background: radial-gradient(circle, #6fb4f0 0%, rgba(111, 180, 240, 0) 70%);
-}
-
-=======
->>>>>>> 5bf947b6c36b1b7a5a142340ddd1cfaaeb37c4f9
 /* Liquid glass surface */
 .glass {
   --mx: 50%;
