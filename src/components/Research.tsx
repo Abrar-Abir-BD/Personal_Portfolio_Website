@@ -89,7 +89,18 @@ const Research = () => {
             </div>
             {/* Floating photo on a soft glow, like the project photos */}
             <div className="research-photo">
-              {paper.image ? (
+              {paper.video ? (
+                <video
+                  src={paper.video}
+                  poster={paper.image || undefined}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label={paper.title}
+                />
+              ) : paper.image ? (
                 <img src={paper.image} alt={paper.title} loading="lazy" />
               ) : (
                 <span>Add image</span>

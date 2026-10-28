@@ -141,6 +141,9 @@ export type Publication = {
   overview: string;
   // Photo beside the text ("" shows a placeholder)
   image: string;
+  // Muted looping clip shown in place of the photo, which becomes its
+  // poster ("" shows the photo only)
+  video: string;
   // "contain": a cut-out floating on a glow (whole image shown)
   // "cover": a photograph filling a taller frame (edges may be trimmed)
   imageFit: "contain" | "cover";
