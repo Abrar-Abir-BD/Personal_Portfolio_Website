@@ -30,12 +30,16 @@ const stopSectionJump = () => {
 export const scrollToSection = (selector: string, smooth = true) => {
   const el = document.querySelector<HTMLElement>(selector);
   if (!el) return;
+  // On desktop About is one screen tall with its text centred, so it fills
+  // the screen exactly; the bar offset would push the text below centre
+  const fillsScreen =
+    el.classList.contains("about-section") && window.innerWidth > 1024;
   const target = () => {
     const padding = parseFloat(getComputedStyle(el).paddingTop) || 0;
     const content = document.getElementById("smooth-content");
     const max = content ? content.clientHeight - window.innerHeight : Infinity;
-    const y =
-      currentScroll() + el.getBoundingClientRect().top + padding - CONTENT_TOP;
+    const offset = fillsScreen ? 0 : padding - CONTENT_TOP;
+    const y = currentScroll() + el.getBoundingClientRect().top + offset;
     return Math.max(0, Math.min(y, max));
   };
   stopSectionJump();

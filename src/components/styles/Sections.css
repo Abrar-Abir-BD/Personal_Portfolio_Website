@@ -2,27 +2,27 @@
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 16px;
 }
 .skills-card {
-  padding: 28px;
+  padding: 18px 20px 20px;
 }
 /* Header: a tinted icon tile beside a bold title */
 .skills-head {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 .skills-head-icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   background: linear-gradient(
     145deg,
     rgba(var(--glass-rgb), 0.1),
@@ -31,7 +31,7 @@
   border: 1px solid rgba(var(--line-rgb), 0.1);
 }
 .skills-card h3 {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0;
@@ -39,8 +39,8 @@
 /* Skills: a grid of tiles, logo in a rounded square, name beneath */
 .skills-tiles {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -49,27 +49,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 8px 4px 7px;
-  border-radius: 12px;
+  gap: 4px;
+  padding: 6px 3px 5px;
+  border-radius: 10px;
   text-align: center;
   background: rgba(var(--glass-rgb), 0.04);
   border: 1px solid rgba(var(--line-rgb), 0.06);
   transition: transform 0.3s, background 0.3s, border-color 0.3s;
 }
 .skills-tile:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   background: rgba(var(--glass-rgb), 0.08);
   border-color: rgba(111, 180, 240, 0.35);
 }
 .skills-tile-logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 11px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 21px;
   color: var(--textColor);
   background: rgba(4, 7, 13, 0.55);
 }
@@ -78,7 +78,7 @@
   box-shadow: 0px 6px 14px -8px rgba(13, 27, 42, 0.3);
 }
 .skills-tile-name {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   line-height: 1.25;
   color: var(--textColor);
@@ -936,7 +936,7 @@
 
 @media only screen and (max-width: 1400px) {
   .skills-card {
-    padding: 24px;
+    padding: 16px 18px 18px;
   }
   .projects-item {
     grid-template-columns: 1fr;
@@ -969,7 +969,7 @@
     grid-template-columns: 1fr;
   }
   .skills-card {
-    padding: 22px;
+    padding: 16px;
   }
   .experience-grid {
     grid-template-columns: 1fr;
@@ -1071,33 +1071,38 @@
     grid-template-columns: 1fr;
   }
 }
-/* Skill tiles: six across on desktops and laptops, four on small laptops
-   and once the cards stack, three on phones */
+/* Skill tiles: seven across on desktops and laptops, five on small laptops,
+   eight once the cards stack, four on phones */
 @media only screen and (max-width: 1149px) {
   .skills-tiles {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media only screen and (max-width: 900px) {
+  .skills-tiles {
+    grid-template-columns: repeat(8, 1fr);
   }
 }
 @media only screen and (max-width: 560px) {
   .skills-tiles {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
   }
   .skills-head-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 22px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
   }
   .skills-card h3 {
-    font-size: 20px;
+    font-size: 17px;
   }
   .skills-tile-logo {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
   }
   .skills-tile-name {
-    font-size: 12px;
+    font-size: 11.5px;
   }
 }
 
@@ -1215,9 +1220,9 @@
   /* Skills: four tiles across */
   .skills-tiles {
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
   .skills-tile-name {
-    font-size: 10.5px;
+    font-size: 11px;
   }
 }

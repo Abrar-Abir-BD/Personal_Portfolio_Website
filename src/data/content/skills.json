@@ -9,6 +9,10 @@
       { "name": "C", "icon": "c" },
       { "name": "PyTorch", "icon": "pytorch" },
       { "name": "TensorFlow", "icon": "tensorflow" },
+      { "name": "Hugging Face", "icon": "huggingface" },
+      { "name": "scikit-learn", "icon": "scikitlearn" },
+      { "name": "NumPy", "icon": "numpy" },
+      { "name": "Pandas", "icon": "pandas" },
       { "name": "OpenCV", "icon": "opencv" },
       { "name": "YOLO", "icon": "yolo" },
       { "name": "Jupyter", "icon": "jupyter" },
@@ -20,12 +24,14 @@
     "icon": "cat-robotics",
     "description": "Embedded boards and robot software that bring my machines to life.",
     "skills": [
-      { "name": "NVIDIA Jetson Nano", "icon": "jetson" },
+      { "name": "Jetson Nano", "icon": "jetson" },
       { "name": "Raspberry Pi", "icon": "raspberrypi" },
       { "name": "STM32", "icon": "stm32" },
       { "name": "ESP32", "icon": "esp32" },
       { "name": "Arduino", "icon": "arduino" },
-      { "name": "ROS (Robot Operating System)", "icon": "ros" }
+      { "name": "ROS", "icon": "ros" },
+      { "name": "Linux", "icon": "linux" },
+      { "name": "EasyEDA", "icon": "easyeda" }
     ]
   },
   {
@@ -33,7 +39,7 @@
     "icon": "cat-cad",
     "description": "Designing, modelling and testing systems before a single part is built.",
     "skills": [
-      { "name": "Autodesk Fusion", "icon": "fusion" },
+      { "name": "Fusion 360", "icon": "fusion" },
       { "name": "SolidWorks", "icon": "solidworks" },
       { "name": "MATLAB", "icon": "matlab" },
       { "name": "Simulink", "icon": "simulink" },
@@ -46,13 +52,13 @@
     "description": "Interfaces, visuals and video, from first sketch to the web.",
     "skills": [
       { "name": "Figma", "icon": "figma" },
-      { "name": "Adobe Illustrator", "icon": "illustrator" },
-      { "name": "Adobe Photoshop", "icon": "photoshop" },
-      { "name": "Adobe After Effects", "icon": "aftereffects" },
-      { "name": "DaVinci Resolve", "icon": "davinci" },
+      { "name": "Illustrator", "icon": "illustrator" },
+      { "name": "Photoshop", "icon": "photoshop" },
+      { "name": "After Effects", "icon": "aftereffects" },
+      { "name": "DaVinci", "icon": "davinci" },
       { "name": "JavaScript", "icon": "javascript" },
       { "name": "React", "icon": "react" },
-      { "name": "Microsoft Office", "icon": "office" }
+      { "name": "MS Office", "icon": "office" }
     ]
   }
 ]
