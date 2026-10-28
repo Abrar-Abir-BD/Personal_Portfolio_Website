@@ -9,6 +9,7 @@
       "A Z M Tahmidul Kabir"
     ],
     "venue": "13th International Conference on ICT for Smart Society (ICISS)",
+    "venueLabel": "Conference",
     "location": "Bandung, Indonesia",
     "publisher": "IEEE Xplore",
     "year": "2026",
@@ -23,13 +24,14 @@
     "imageFit": "cover"
   },
   {
-    "title": "The Architect Or The Inhabitant?",
+    "title": "TEDx: The Architect Or The Inhabitant?",
     "authors": [
       "Abrar Abir"
     ],
     "venue": "TEDxDRMC Youth: The Human Algorithm",
+    "venueLabel": "",
     "location": "Dhaka, Bangladesh",
-    "publisher": "TEDx",
+    "publisher": "",
     "year": "2025",
     "type": "TEDx Talk",
     "role": "Speaker",

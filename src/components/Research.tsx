@@ -1,10 +1,7 @@
 import { MdArrowOutward } from "react-icons/md";
 import { GlassCard, GlassSection } from "./Glass";
-import { landing, publications } from "../data/portfolioContent";
+import { publications } from "../data/portfolioContent";
 import "./styles/Sections.css";
-
-// Abrar's own name is emphasised in each author list
-const ownName = `${landing.firstName} ${landing.lastName}`.toLowerCase();
 
 const Research = () => {
   return (
@@ -38,24 +35,21 @@ const Research = () => {
                 )}
               </div>
               <h3>{paper.title}</h3>
-              <p className="research-authors">
-                {paper.authors.map((author, i) => (
-                  <span key={i}>
-                    {i > 0 && ", "}
-                    {author.toLowerCase() === ownName ? (
-                      <strong className="research-me">{author}</strong>
-                    ) : (
-                      author
-                    )}
-                  </span>
-                ))}
-              </p>
               <p className="research-venue">
+                {paper.venueLabel && (
+                  <span className="research-label">{paper.venueLabel}: </span>
+                )}
                 {paper.venue}
                 {paper.location && (
                   <span className="research-where"> · {paper.location}</span>
                 )}
               </p>
+              {paper.publisher && (
+                <p className="research-venue">
+                  <span className="research-label">Publisher: </span>
+                  {paper.publisher}
+                </p>
+              )}
               {paper.overview && (
                 <p className="research-overview">{paper.overview}</p>
               )}

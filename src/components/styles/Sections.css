@@ -523,13 +523,6 @@
   font-weight: 500;
   margin: 10px 0px 6px;
 }
-.research-authors {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.5;
-  color: var(--mutedColor);
-  margin: 0;
-}
 .research-venue {
   font-size: 14px;
   font-style: italic;
@@ -624,10 +617,7 @@
   background: linear-gradient(180deg, #d4f1fa, #6fb4f0);
   border: 1px solid #d4f1fa;
 }
-.research-me {
-  font-weight: 600;
-  color: var(--textColor);
-}
+.research-label,
 .research-where {
   font-style: normal;
   color: var(--mutedColor);

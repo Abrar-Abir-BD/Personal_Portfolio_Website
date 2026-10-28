@@ -128,10 +128,13 @@ export type Project = {
 
 export type Publication = {
   title: string;
-  // In author order; Abrar's name is highlighted automatically
+  // In author order (kept for reference; not shown on the page)
   authors: string[];
   venue: string;
+  // Shown before the venue, e.g. "Conference" ("" shows the venue alone)
+  venueLabel: string;
   location: string;
+  // Shown on its own line as "Publisher: ..." ("" hides it)
   publisher: string;
   year: string;
   // e.g. "Conference Paper", "Journal Article", "Talk"
