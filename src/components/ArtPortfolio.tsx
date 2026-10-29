@@ -19,8 +19,6 @@ const ArtPortfolio = () => {
       <a
         href="/art"
         className="glass-button art-visit"
-        target="_blank"
-        rel="noopener"
         data-cursor="disable"
       >
         Visit Art Portfolio <MdArrowForward />
@@ -30,8 +28,6 @@ const ArtPortfolio = () => {
           <a
             href={`/art#${work.slug}`}
             className="art-preview-item"
-            target="_blank"
-            rel="noopener"
             data-cursor="disable"
             key={work.slug}
           >
@@ -54,8 +50,6 @@ const ArtPortfolio = () => {
         <a
           href="/art"
           className="glass-button"
-          target="_blank"
-          rel="noopener"
           data-cursor="disable"
         >
           Explore the full collection <MdArrowForward />

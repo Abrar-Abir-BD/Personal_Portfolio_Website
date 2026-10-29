@@ -15,16 +15,22 @@
     "year": "2026",
     "type": "Conference Paper",
     "role": "First Author",
-    "overview": "Combines IoT sensors with a machine learning detection model to monitor water quality continuously and identify micro-pollutants on the spot, a rapid-prototyping answer to safe water access in developing regions like Bangladesh.",
+    "logo": "ieee",
+    "overview": "IoT sensors and a machine learning model that detect water micro-pollutants in real time, at low cost.",
     "link": "https://ieeexplore.ieee.org/document/11715493",
-    "linkLabel": "Read on IEEE Xplore",
+    "linkLabel": "Read Paper on IEEE",
     "image": "/images/projects/water_detect.webp",
     "video": "/images/publications/conference-presentation.mp4",
-    "moreLinks": [],
+    "moreLinks": [
+      {
+        "name": "Certificate",
+        "url": "/certificates#iciss-2026-presenter"
+      }
+    ],
     "imageFit": "cover"
   },
   {
-    "title": "TEDx: The Architect Or The Inhabitant?",
+    "title": "The Architect Or The Inhabitant?",
     "authors": [
       "Abrar Abir"
     ],
@@ -35,7 +41,8 @@
     "year": "2025",
     "type": "TEDx Talk",
     "role": "Speaker",
-    "overview": "A talk on shaping the future of robotics into a dynamic world where humans and machines co-exist together, delivered at an event that asked how technology can amplify humanity instead of replacing it.",
+    "logo": "tedx",
+    "overview": "On shaping robotics for a world where humans and machines co-exist.",
     "image": "/images/publications/tedx-the-architect-or-the-inhabitant.jpg",
     "video": "/images/publications/tedx-the-architect-or-the-inhabitant.mp4",
     "link": "https://youtu.be/RL6ycI0I66k",
@@ -44,6 +51,10 @@
       {
         "name": "Event page",
         "url": "https://www.ted.com/tedx/events/64710"
+      },
+      {
+        "name": "Certificate",
+        "url": "/certificates#tedx-drmc-youth-speaker"
       }
     ],
     "imageFit": "cover"

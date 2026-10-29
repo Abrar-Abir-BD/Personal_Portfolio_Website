@@ -2,16 +2,18 @@
   "intro": "Art is where I find my voice. I paint the quiet moments we often miss, from the light on an ancient temple wall to the unguarded look on a face, in watercolour, graphite, ink and pastel.",
   "artist": {
     "skills": [
-      "Watercolor painting",
-      "Graphite & charcoal shading",
-      "Anatomical figure drawing",
-      "Architectural perspective drawing",
-      "Fine-liner ink sketching",
-      "Pastel colour painting"
+      "Watercolor",
+      "Graphite & charcoal",
+      "Figure drawing",
+      "Architectural sketching",
+      "Pen and ink",
+      "Pastels"
     ],
     "bio": [
-      "Hey, I’m Abrar Abir. I grew up in a coastal village in Bagerhat, Bangladesh, where the rhythms of nature and tradition shaped my worldview. While I am often defined by my work in science research and leadership, art is where I truly find my voice. Deeply influenced by Sanatani traditions and the rich history of South Asian artistry, I strive to capture the fleeting moments we often miss—the way light hits an ancient temple wall or the quiet, unguarded look on a person’s face.",
-      "My work is a dialogue between the past and the future. I explore my heritage through paintings of divine figures and architecture, yet I also drift into the imaginary, designing futuristic characters that blur the line between human and machine. Whether I am studying the weight of a pose in a sketch or the shadows on a simple piece of fruit, my goal is always the same: to tell an honest story, be it a calm river scene or a gritty vision of the future."
+      "I grew up in a coastal village in Bagerhat, Bangladesh, where the tides and old traditions first taught me how to pay attention. My days are mostly consumed by engineering, building AI systems and robotics, but painting is my native language.",
+      "Heavily influenced by Sanatani heritage and South Asian art, I paint the quiet moments people usually walk right past: the weight of the light on a temple wall, a face caught entirely off guard.",
+      "My canvases live somewhere between the ancient and the automated. I find myself returning to divine figures and old architecture to ground myself, and then drifting forward to sketch imagined worlds of machines and the people intertwined with them. To me, a river at dawn or a quick concept sketch of a mechanical joint are just different ways of telling the truth.",
+      "Over the years, this work has earned more than 40 awards, including recognition from the Bangladesh Shishu Academy and the Bangladesh Shilpakala Academy. My pieces have been shown in three exhibitions, one of which allowed me to share the art of my hometown with delegates from the United Nations."
     ]
   },
   "artworks": [
@@ -21,7 +23,7 @@
       "medium": "Acrylic on Canvas",
       "theme": "Tradition in Motion",
       "date": "25/12/24",
-      "description": "This painting is about the focus and rhythm of craftsmanship. I chose to use vibrant, warm tones on the potter to show the life and energy he puts into his work. It’s a tribute to the humble beauty of creating something by hand—a skill passed down through generations that still feels vital and alive today.",
+      "description": "Haripada never looks at the wheel; his gaze wanders past the doorway of his shed in Kagajipara while his thumbs patiently interrogate the obedient clay. Every true craft, I suspect, is a colloquy with a substance far older than ourselves, and mastery is merely the hard-won humility to stop interrupting it.",
       "images": [
         "potters-hands"
       ],
@@ -38,7 +40,7 @@
       "medium": "Watercolor and Ink",
       "theme": "Sacred Reflection",
       "date": "12/07/24",
-      "description": "A study of the intimate bond between the mortal and the divine. By juxtaposing the vivid, iconic presence of Goddess Durga with the quiet, earthly posture of the seated woman, the work explores how faith provides a sanctuary of inner peace amidst cultural vibrancy.",
+      "description": "Devotion, I believe, is less supplication than sanctuary. Amid the clamour of drums and incense, the faithful are not petitioning the divine so much as hollowing out a numinous quietude within themselves, a cloister where the world's din is finally rendered small.",
       "images": [
         "the-devotee"
       ],
@@ -55,7 +57,7 @@
       "medium": "Watercolor on Textured Paper",
       "theme": "Aquatic Rhythm",
       "date": "13/10/25",
-      "description": "A bird’s-eye perspective of traditional river boats, capturing the organized chaos of river life. The composition emphasizes the geometric beauty of the vessels, symbolizing the flow of commerce, community, and the persistent current of daily survival.",
+      "description": "At Sadarghat no vessel ever truly arrives; each merely jostles the next aside. A river city, I came to realise, is not founded upon land at all, but upon ten thousand ephemeral covenants struck between strangers, hour after hour, across restless water.",
       "images": [
         "life-on-the-water"
       ],
@@ -72,7 +74,7 @@
       "medium": "Watercolor and Architectural Sketching",
       "theme": "Heritage and Permanence",
       "date": "05/02/23",
-      "description": "This piece captures the vertical majesty of temple architecture rising from the ghats. It serves as a tribute to historical endurance, where every brick and spire tells a story of centuries of pilgrimage and the unwavering spirit of the city.",
+      "description": "On the Dashashwamedh steps, every stone is hollowed at its centre by countless bare feet. Faith resides not in the spires but in that slow erosion, the palimpsest a single footfall, repeated across a millennium, inscribes upon unyielding stone.",
       "images": [
         "steps-of-ancients"
       ],
@@ -89,7 +91,7 @@
       "medium": "Fine-liner ink and pen on paper",
       "theme": "Cybernetic Nomads",
       "date": "14/09/22",
-      "description": "A collection of speculative character designs blending organic human forms with complex mechanical exoskeletons and tactical gear. These sketches explore a future where technology is scavenged and integrated into daily survival, highlighted by intricate line work and high-contrast shading.",
+      "description": "I distrust visions of a gleaming, immaculate tomorrow. The future, I suspect, will be a bricolage of salvage: patched, cannibalised, inherited, held together by the obstinate ingenuity of people too stubborn to await deliverance. These ragged wanderers are my small heresy against utopia.",
       "images": [
         "scifi-1",
         "scifi-2",
@@ -109,7 +111,7 @@
       "medium": "Soft Pastels and Watercolor",
       "theme": "Enlightenment",
       "date": "23/01/24",
-      "description": "A spiritual portrait of the Buddha radiating an ethereal, warm aura. The soft transitions of color symbolize the expansion of consciousness and the transition from the material shadows into the light of ultimate wisdom.",
+      "description": "Perhaps, after all, enlightenment is not an illumination that descends upon us, but a shadow that finally ceases to follow us home, the quiet dissolution of the self until even one's own name grows faint and evanescent.",
       "images": [
         "whispers-of-buddha"
       ],
@@ -126,7 +128,7 @@
       "medium": "Graphite Pencil on Paper",
       "theme": "Cosmic energy and motion",
       "date": "15/05/23",
-      "description": "An exploration of divine kinesis, capturing the rhythmic “Tandava” dance of Lord Shiva. The piece utilizes high-energy cross-hatching to represent the vibrating energy of the universe, where creation and destruction exist in a singular, powerful moment of balance.",
+      "description": "In the Tandava, annihilation and genesis are a single choreography; the very step that unmakes one cosmos inaugurates the next. Nothing, I think, is ever truly obliterated. It is merely transfigured, danced, with terrible tenderness, into another incarnation of form.",
       "images": [
         "tandava"
       ],
@@ -143,7 +145,7 @@
       "medium": "Watercolor on Paper",
       "theme": "Finding beauty in the ordinary",
       "date": "25/12/23",
-      "description": "This piece is a study of the simple things that make up a home—a bottle, some fruit, and a glass of wine. I was interested in how light plays across different surfaces, like the shine on an apple versus the soft folds of a cloth. It’s meant to feel like a calm, stolen moment in the middle of a busy day, reminding us to slow down and notice the colors in the objects we use every day.",
+      "description": "The fruit will be devoured by dusk and the wine drained before the light shifts, which is precisely why it deserves preserving. A still life is a quiet insurrection against transience, an insistence that the ordinary once warranted unhurried attention. Most of existence unfolds in such unremarkable interludes, too mundane for anyone to notice, and evanescent before we think to look.",
       "images": [
         "the-quiet-table"
       ],
@@ -160,7 +162,7 @@
       "medium": "Watercolor",
       "theme": "The Artist’s Perspective",
       "date": "12/08/24",
-      "description": "A “painting within a painting” that captures a solitary artist at work in a sun-drenched courtyard. It explores the concept of the artist as an observer, documenting the harmony between man-made architecture and the sprawling, untamed beauty of nature.",
+      "description": "The artist presumes himself the sole observer, yet the courtyard is forever composing its own canvas, vine by vine, across crumbling masonry. Every painter is watched in return by something more patient than himself, something sure to outlast the work.",
       "images": [
         "studio-sanctuary"
       ],
@@ -177,7 +179,7 @@
       "medium": "Graphite Pencil on Newsprint",
       "theme": "Anatomical precision and structure",
       "date": "17/07/22",
-      "description": "A series of academic figure studies focusing on the seated male form. These sketches utilize triangular compositional framing and structural line-work to explore the physical weight, muscle tension, and quiet dignity of the human body in repose.",
+      "description": "The body is never truly still. Even in repose it labours beneath its own gravity, negotiating weight and strain with a stoic, unheralded grace. To draw the figure is to witness that silent exertion, the dignity concealed within mere existence.",
       "images": [
         "figure-1",
         "figure-2",
@@ -196,7 +198,7 @@
       "medium": "Colored Pencil and Watercolor Wash",
       "theme": "Silent Contemplation",
       "date": "22/11/23",
-      "description": "A portrait focusing on the “Bhava” or mood of the subject. The cool blue tones of the saree contrast with the earthy textures of the background, highlighting a moment of deep, personal introspection tucked away in a natural setting.",
+      "description": "The most sequestered chamber a person possesses has no threshold at all. We simply recede into it mid-sentence, amid a garden or a crowd, and quietly vanish. Portraiture, at its finest, is the futile and beautiful attempt to follow.",
       "images": [
         "pensive-sari-study",
         "pensive-sari"
@@ -214,7 +216,7 @@
       "medium": "Monochrome Watercolor on Paper",
       "theme": "Mist and Memory",
       "date": "16/01/25",
-      "description": "Fishermen setting out through the river fog before the day has fully begun. Working in a single indigo, I let the water carry the pigment and dissolve the far bank into mist, so the boats feel half-remembered, the way mornings by the river felt in the village where I grew up.",
+      "description": "Before dawn on the Bhairab, the fishermen of Bagerhat keep silent, for voices travel too far across still water. As a child, I imagined the fog concealed the far bank. Now I believe it was merciful, allowing each new day to commence before we could reckon how far still remained.",
       "images": [
         "indigo-morning"
       ],
@@ -231,7 +233,7 @@
       "medium": "Watercolor on Textured Paper",
       "theme": "Rest and Reverie",
       "date": "18/03/24",
-      "description": "A woman rests against the trunk of an old tree, flowers woven into her hair and a single white blossom held loosely in her hand. Painted in the soft, muted palette of traditional South Asian miniatures, the piece is about stillness: the private, unhurried moment when the day pauses and the mind is allowed to wander.",
+      "description": "In the old miniatures, a woman beneath a tree is never merely at rest; she awaits something that the painter deliberately withholds. I have long cherished that reticence. An image that refuses its denouement compels us to linger a while longer, to supply the ending ourselves, and so to become accomplices in its making.",
       "images": [
         "shade-and-blossom"
       ],
@@ -248,7 +250,7 @@
       "medium": "Charcoal on Paper",
       "theme": "Time Written on the Face",
       "date": "09/06/23",
-      "description": "A charcoal portrait of an elderly man set against layered leaves and fallen blossoms. Every crease and shadow on his face was built up slowly, line over line, to read like a record of the years he has lived: weathered, unguarded, and quietly dignified.",
+      "description": "Abdul Karim planted every tree in his village twice: once in youth, and once after the cyclone of 1991. I did not draw wrinkles. I drew the attrition of rebuilding, the years inscribed line upon line until his countenance could no longer tell them apart.",
       "images": [
         "lines-of-a-lifetime"
       ],
@@ -265,7 +267,7 @@
       "medium": "Watercolor on Textured Paper",
       "theme": "Stillness on the River",
       "date": "27/02/25",
-      "description": "A lone wooden boat rests in the shallows beside a sunlit sandbank, its mooring poles standing in the green water. It is a scene from the riverside life I grew up with: loose, fresh brushwork for the trees, and quiet reflections that make the whole river feel as if it is holding its breath.",
+      "description": "Boats, I think, understand patience better than we do. They are fashioned to idle between voyages, and nobody condemns their waiting as squandered. Perhaps we owe ourselves that same tender clemency on our fallow days, when nothing arrives and the river merely continues to hold its breath.",
       "images": [
         "the-waiting-boat"
       ],
@@ -282,7 +284,7 @@
       "medium": "Graphite Pencil on Paper",
       "theme": "Shared Silence",
       "date": "04/11/22",
-      "description": "Two figures walk together along a tree-lined path, small against the canopy above them. Built entirely from directional hatching, the drawing turns sunlight and shadow into rhythm, and leaves the people at its centre a moment of companionship that needs no words.",
+      "description": "Certain friendships grow so burnished by the years that conversation would only scratch their surface. Companionship at its most profound is a shared, unspoken cadence, like the ancient trees that have known one another for centuries and confer in nothing but shade.",
       "images": [
         "beneath-the-trees"
       ],

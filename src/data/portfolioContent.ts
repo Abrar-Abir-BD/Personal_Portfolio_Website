@@ -8,6 +8,7 @@
 //   experience.json    Experience & Leadership
 //   skills.json        Skills & Expertise
 //   art.json           Art Portfolio
+//   certificates.json  Certificates (main-page carousel and the /certificates page)
 //   media.json         Featured in Media
 //   moments.json       Moments from Life
 //   contact.json       email, phone, GitHub, LinkedIn (also used by the side icons)
@@ -27,6 +28,7 @@ import awardsJson from "./content/awards.json";
 import experienceJson from "./content/experience.json";
 import skillsJson from "./content/skills.json";
 import artJson from "./content/art.json";
+import certificatesJson from "./content/certificates.json";
 import mediaJson from "./content/media.json";
 import momentsJson from "./content/moments.json";
 import contactJson from "./content/contact.json";
@@ -131,16 +133,18 @@ export type Publication = {
   // In author order (kept for reference; not shown on the page)
   authors: string[];
   venue: string;
-  // Shown before the venue, e.g. "Conference" ("" shows the venue alone)
+  // e.g. "Conference" (kept for reference; not shown on the page)
   venueLabel: string;
   location: string;
-  // Shown on its own line as "Publisher: ..." ("" hides it)
+  // e.g. "IEEE Xplore", shown in the line under the role ("" hides it)
   publisher: string;
   year: string;
   // e.g. "Conference Paper", "Journal Article", "Talk"
   type: string;
   // Abrar's part, e.g. "First Author" ("" hides it)
   role: string;
+  // Brand shown beside the role: "ieee", "tedx" ("" shows none)
+  logo: string;
   overview: string;
   // Photo beside the text ("" shows a placeholder)
   image: string;
@@ -208,6 +212,21 @@ export type Moment = {
   image: string;
 };
 
+export type Certificate = {
+  title: string;
+  issuer: string;
+  // "" hides it
+  date: string;
+  // "Award", "Appreciation", "Participation" or "Course"
+  type: string;
+  // Full image, opened in the viewer, and a small one for the cards
+  image: string;
+  thumb: string;
+  orientation: "portrait" | "landscape";
+  // Shown in the main page's carousel; every certificate is on /certificates
+  featured: boolean;
+};
+
 export type MediaFeature = {
   outlet: string;
   headline: string;
@@ -248,6 +267,14 @@ export const art: ArtPortfolio = {
 export const artworks = art.artworks;
 export const artImage = (name: string, size: "full" | "thumb" = "full") =>
   `/images/art/gallery/${size === "thumb" ? "thumb/" : ""}${name}.webp`;
+// JSON gives `orientation` as plain text; narrow just that field
+export const certificates: Certificate[] = certificatesJson.map((cert) => ({
+  ...cert,
+  orientation: cert.orientation as Certificate["orientation"],
+}));
+// "/images/certs/iro-2025-silver.webp" -> "iro-2025-silver", used in links
+export const certificateSlug = (cert: Certificate) =>
+  cert.image.split("/").pop()?.replace(/\.[^.]+$/, "") ?? "";
 export const media: MediaFeature[] = mediaJson;
 export const moments: Moment[] = momentsJson;
 export const contact: Contact = contactJson;

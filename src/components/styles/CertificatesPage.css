@@ -1,0 +1,161 @@
+/* /certificates: every certificate, grouped by type, with a full-size
+   viewer. The page shell (bar, title, summary) comes from ProjectPage.css */
+.certs-page .project-page-summary {
+  margin-bottom: 20px;
+}
+.certs-group {
+  margin-top: 56px;
+}
+.certs-group h2 {
+  margin: 0px 0px 22px;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 32px;
+}
+/* The certificates themselves use the main page's framed style
+   (.cert-item in Sections.css); this only turns the button back into a
+   plain block */
+.certs-item {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Full-size viewer over a dimmed, blurred page */
+.certs-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 90px;
+  background: rgba(3, 6, 14, 0.82);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.certs-viewer figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+  max-height: 100%;
+}
+.certs-viewer img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 150px);
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0px 30px 70px -20px rgba(0, 0, 0, 0.8);
+}
+.certs-viewer figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+  color: #eaf3fa;
+}
+.certs-viewer figcaption strong {
+  font-size: 17px;
+  font-weight: 600;
+}
+.certs-viewer figcaption .certs-issuer {
+  font-size: 13px;
+  color: rgba(234, 243, 250, 0.7);
+}
+.certs-viewer figcaption .certs-date {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6fb4f0;
+}
+.certs-viewer-close,
+.certs-viewer-arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 21, 34, 0.75);
+  color: #eaf3fa;
+  font-size: 26px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+.certs-viewer-close:hover,
+.certs-viewer-arrow:hover {
+  background: rgba(111, 180, 240, 0.18);
+  border-color: rgba(111, 180, 240, 0.5);
+}
+.certs-viewer-close {
+  top: 20px;
+  right: 20px;
+}
+.certs-viewer-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.certs-viewer-prev {
+  left: 22px;
+}
+.certs-viewer-next {
+  right: 22px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .certs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 760px) {
+  .certs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .certs-group {
+    margin-top: 40px;
+  }
+  .certs-group h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .certs-grid {
+    gap: 32px 18px;
+  }
+  /* Phones: the arrows sit under the certificate, not beside it */
+  .certs-viewer {
+    padding: 70px 16px 90px;
+  }
+  .certs-viewer img {
+    max-height: calc(100vh - 230px);
+  }
+  .certs-viewer-arrow {
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
+  .certs-viewer-prev {
+    left: calc(50% - 56px);
+  }
+  .certs-viewer-next {
+    right: calc(50% - 56px);
+  }
+}

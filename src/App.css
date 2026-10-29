@@ -27,3 +27,41 @@
     max-width: var(--cWidth);
   }
 }
+
+/* A project, the art portfolio or the certificates open over the portfolio
+   (see router.ts). The portfolio stays loaded underneath, hidden and unable
+   to scroll, so going back to it is instant */
+.subpage-open body {
+  overflow: hidden !important;
+}
+.subpage-open .main-body,
+.subpage-open .intro-veil {
+  visibility: hidden;
+  /* <main> transitions everything (index.css), which would keep it showing
+     through the new page for a moment */
+  transition: none;
+}
+.subpage-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Opacity only: a transform here would pin the page's fixed bars to the
+     scrolling layer while it plays */
+  animation: subpage-in 0.4s ease-out;
+}
+@keyframes subpage-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .subpage-layer {
+    animation: none;
+  }
+}
+.subpage-layer:focus {
+  outline: none;
+}

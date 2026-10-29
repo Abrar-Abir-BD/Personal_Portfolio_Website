@@ -20,19 +20,42 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+/* Email and phone: plain text that lights up on hover */
+.contact-flex p a {
+  font-size: 18px;
+  transition: color 0.3s;
+}
+.contact-flex p a:hover {
+  color: var(--accentColor);
+}
+/* Social: text links with an arrow, like the project links */
 a.contact-social {
-  font-size: 25px;
-  border-bottom: 1px solid #b5c4d1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--chipText);
+  transition: gap 0.3s, color 0.3s;
+}
+a.contact-social:hover {
+  gap: 12px;
+  color: var(--accentColor);
 }
 .contact-box h2 {
   font-weight: 400;
   font-size: 23px;
   margin: 0;
 }
-/* Same type as the "Designed and Developed" credit */
-.contact-box h2.contact-heading {
-  margin-bottom: 20px;
+/* Same size as every other section heading */
+.contact-heading {
+  font-size: 70px;
+  line-height: 75px;
+  font-weight: 500;
+  margin: 0px 0px 48px;
 }
+.contact-heading > span,
 .contact-box h2 > span {
   color: var(--accentColor);
 }
@@ -48,8 +71,18 @@ a.contact-social {
   .contact-box h2 {
     font-size: 20px;
   }
+  .contact-heading {
+    font-size: 60px;
+    line-height: 65px;
+  }
   a.contact-social {
-    font-size: 22px;
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .contact-heading {
+    font-size: 50px;
+    line-height: 55px;
   }
 }
 @media only screen and (max-width: 1300px) {
@@ -57,7 +90,7 @@ a.contact-social {
     font-size: 18px;
   }
   a.contact-social {
-    font-size: 20px;
+    font-size: 18px;
   }
   .contact-flex p {
     margin-top: 0px;
@@ -67,6 +100,11 @@ a.contact-social {
   .contact-flex {
     flex-direction: column;
     gap: 40px;
+  }
+  .contact-heading {
+    font-size: 40px;
+    line-height: 45px;
+    margin-bottom: 12px;
   }
   .contact-flex p {
     margin-bottom: 0px;

@@ -13,11 +13,7 @@ const ProjectPage = ({ slug }: { slug: string }) => {
   const name = `${landing.firstName} ${landing.lastName}`;
 
   useEffect(() => {
-    // The portfolio locks body scrolling until its intro runs; this page has
-    // no intro, so scroll normally
-    document.body.style.overflowY = "auto";
     document.title = project ? `${project.title} | ${name}` : name;
-    window.scrollTo(0, 0);
   }, [project, name]);
 
   return (

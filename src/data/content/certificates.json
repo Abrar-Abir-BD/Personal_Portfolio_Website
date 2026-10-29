@@ -1,0 +1,192 @@
+[
+  {
+    "title": "Silver Medal, 26th International Robot Olympiad",
+    "issuer": "International Robot Olympiad Committee",
+    "date": "January 2025",
+    "type": "Award",
+    "image": "/images/certs/iro-2025-silver.webp",
+    "thumb": "/images/certs/thumb/iro-2025-silver.webp",
+    "orientation": "portrait",
+    "featured": true
+  },
+  {
+    "title": "Start-Up Idea Award, WRO Asia Pacific Open Championship",
+    "issuer": "World Robot Olympiad Philippines",
+    "date": "September 2025",
+    "type": "Award",
+    "image": "/images/certs/wro-2025-startup-idea.webp",
+    "thumb": "/images/certs/thumb/wro-2025-startup-idea.webp",
+    "orientation": "landscape",
+    "featured": true
+  },
+  {
+    "title": "Human Exploration Rover Challenge 2025",
+    "issuer": "NASA",
+    "date": "April 2025",
+    "type": "Participation",
+    "image": "/images/certs/nasa-herc-2025.webp",
+    "thumb": "/images/certs/thumb/nasa-herc-2025.webp",
+    "orientation": "landscape",
+    "featured": true
+  },
+  {
+    "title": "Seed Fund for Field-level Demonstration",
+    "issuer": "Bangladesh Stockholm Junior Water Prize",
+    "date": "2024",
+    "type": "Award",
+    "image": "/images/certs/sjwp-2024-seed-fund.webp",
+    "thumb": "/images/certs/thumb/sjwp-2024-seed-fund.webp",
+    "orientation": "landscape",
+    "featured": true
+  },
+  {
+    "title": "Bronze Medal, 26th International Robot Olympiad",
+    "issuer": "International Robot Olympiad Committee",
+    "date": "January 2025",
+    "type": "Award",
+    "image": "/images/certs/iro-2025-bronze.webp",
+    "thumb": "/images/certs/thumb/iro-2025-bronze.webp",
+    "orientation": "portrait",
+    "featured": false
+  },
+  {
+    "title": "Champion, National Mathematical Olympiad",
+    "issuer": "Bangladesh Mathematical Olympiad",
+    "date": "February 2024",
+    "type": "Award",
+    "image": "/images/certs/bdmo-2024-champion.webp",
+    "thumb": "/images/certs/thumb/bdmo-2024-champion.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Presenter, International Conference on ICT for Smart Society 2026",
+    "issuer": "ICISS 2026, Institut Teknologi Bandung",
+    "date": "August 2026",
+    "type": "Appreciation",
+    "image": "/images/certs/iciss-2026-presenter.webp",
+    "thumb": "/images/certs/thumb/iciss-2026-presenter.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Speaker, TEDxDRMC Youth",
+    "issuer": "TEDxDRMC Youth",
+    "date": "November 2025",
+    "type": "Appreciation",
+    "image": "/images/certs/tedx-drmc-youth-speaker.webp",
+    "thumb": "/images/certs/thumb/tedx-drmc-youth-speaker.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "WRO Asia Pacific Open Championship",
+    "issuer": "World Robot Olympiad Philippines",
+    "date": "September 2025",
+    "type": "Participation",
+    "image": "/images/certs/wro-2025-participation.webp",
+    "thumb": "/images/certs/thumb/wro-2025-participation.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Final Round, Bangladesh Stockholm Junior Water Prize",
+    "issuer": "House of Volunteers Foundation Bangladesh",
+    "date": "May 2024",
+    "type": "Participation",
+    "image": "/images/certs/sjwp-2024-final-round.webp",
+    "thumb": "/images/certs/thumb/sjwp-2024-final-round.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "President, DRMC Adventure & Tour Club",
+    "issuer": "Ministry of Civil Aviation and Tourism",
+    "date": "October 2024",
+    "type": "Appreciation",
+    "image": "/images/certs/drmc-adventure-club-president.webp",
+    "thumb": "/images/certs/thumb/drmc-adventure-club-president.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Cyber Awareness Online Course",
+    "issuer": "National Children's Task Force & Cyber Life",
+    "date": "April 2021",
+    "type": "Course",
+    "image": "/images/certs/nctf-cyber-awareness.webp",
+    "thumb": "/images/certs/thumb/nctf-cyber-awareness.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Jamboree On The Air / On The Internet 2021",
+    "issuer": "World Organization of the Scout Movement",
+    "date": "2021",
+    "type": "Participation",
+    "image": "/images/certs/jota-joti-2021.webp",
+    "thumb": "/images/certs/thumb/jota-joti-2021.webp",
+    "orientation": "portrait",
+    "featured": false
+  },
+  {
+    "title": "Jamboree On The Air / On The Internet 2020",
+    "issuer": "World Organization of the Scout Movement",
+    "date": "2020",
+    "type": "Participation",
+    "image": "/images/certs/jota-joti-2020.webp",
+    "thumb": "/images/certs/thumb/jota-joti-2020.webp",
+    "orientation": "portrait",
+    "featured": false
+  },
+  {
+    "title": "Jamboree on the SMS (JOTS) 2020",
+    "issuer": "Bangladesh Scouts",
+    "date": "October 2020",
+    "type": "Course",
+    "image": "/images/certs/jamboree-on-the-sms-2020.webp",
+    "thumb": "/images/certs/thumb/jamboree-on-the-sms-2020.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Be Safe Online (JOTI Special Edition)",
+    "issuer": "World Organization of the Scout Movement",
+    "date": "April 2020",
+    "type": "Course",
+    "image": "/images/certs/joti-be-safe-online.webp",
+    "thumb": "/images/certs/thumb/joti-be-safe-online.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "Jamboree On The Internet 2019",
+    "issuer": "World Organization of the Scout Movement",
+    "date": "2019",
+    "type": "Participation",
+    "image": "/images/certs/jota-joti-2019.webp",
+    "thumb": "/images/certs/thumb/jota-joti-2019.webp",
+    "orientation": "portrait",
+    "featured": false
+  },
+  {
+    "title": "61st JOTA & 22nd JOTI",
+    "issuer": "Bangladesh Scouts",
+    "date": "October 2018",
+    "type": "Participation",
+    "image": "/images/certs/jota-joti-2018.webp",
+    "thumb": "/images/certs/thumb/jota-joti-2018.webp",
+    "orientation": "landscape",
+    "featured": false
+  },
+  {
+    "title": "60th JOTA & 21st JOTI",
+    "issuer": "World Organization of the Scout Movement",
+    "date": "October 2017",
+    "type": "Participation",
+    "image": "/images/certs/jota-joti-2017.webp",
+    "thumb": "/images/certs/thumb/jota-joti-2017.webp",
+    "orientation": "portrait",
+    "featured": false
+  }
+]

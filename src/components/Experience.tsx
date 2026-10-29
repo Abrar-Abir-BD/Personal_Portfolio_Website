@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MdExpandLess, MdExpandMore, MdOpenInNew } from "react-icons/md";
+import { MdExpandLess, MdExpandMore, MdArrowOutward } from "react-icons/md";
 import { GlassCard, GlassSection } from "./Glass";
 import { Experience as Role, experience } from "../data/portfolioContent";
 import { scrollToSection } from "./Navbar";
+import { countryOf, flags } from "./utils/flags";
 import "./styles/Sections.css";
 
 // How many roles show before "View all"
@@ -18,6 +19,25 @@ const initialsOf = (name: string) =>
     .slice(0, 2)
     .map((word) => word[0])
     .join("");
+
+// "Dhaka, Bangladesh" with the flag before it
+const Place = ({ location }: { location: string }) => {
+  const country = countryOf(location);
+  const Flag = flags[country];
+  return (
+    <span>
+      {" · "}
+      <span className="awards-place-name">
+        {Flag && (
+          <span className="awards-flag">
+            <Flag title={country} />
+          </span>
+        )}
+        {location}
+      </span>
+    </span>
+  );
+};
 
 const Logo = ({ role }: { role: Role }) =>
   role.logo ? (
@@ -80,7 +100,7 @@ const Experience = () => {
                 </div>
                 <p className="experience-org">
                   {item.organization}
-                  {item.location && <span> · {item.location}</span>}
+                  {item.location && <Place location={item.location} />}
                 </p>
                 {item.link.url && (
                   <a
@@ -90,7 +110,7 @@ const Experience = () => {
                     rel="noreferrer"
                     data-cursor="disable"
                   >
-                    {item.link.name || "Website"} <MdOpenInNew />
+                    {item.link.name || "Website"} <MdArrowOutward />
                   </a>
                 )}
               </div>

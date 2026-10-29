@@ -1,7 +1,43 @@
+import { ReactNode } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { SiIeee, SiTed } from "react-icons/si";
 import { GlassCard, GlassSection } from "./Glass";
 import { publications } from "../data/portfolioContent";
+import { countryOf, flags } from "./utils/flags";
 import "./styles/Sections.css";
+
+// Brand marks at the start of the credit line
+const logos: Record<string, { label: string; mark: ReactNode }> = {
+  ieee: { label: "IEEE", mark: <SiIeee /> },
+  tedx: {
+    label: "TEDx",
+    mark: (
+      <>
+        <SiTed />
+        <span className="research-logo-x">x</span>
+      </>
+    ),
+  },
+};
+
+// "Bandung, Indonesia" with the flag before it
+const Place = ({ location }: { location: string }) => {
+  const country = countryOf(location);
+  const Flag = flags[country];
+  return (
+    <span className="research-where">
+      {" · "}
+      <span className="awards-place-name">
+        {Flag && (
+          <span className="awards-flag">
+            <Flag title={country} />
+          </span>
+        )}
+        {location}
+      </span>
+    </span>
+  );
+};
 
 const Research = () => {
   return (
@@ -23,26 +59,32 @@ const Research = () => {
             key={index}
           >
             <div className="research-body">
-              <div className="research-chips">
-                <span className="glass-chip glass-chip-accent">
-                  {paper.type}
-                </span>
+              {/* Plain text, like the awards: "IEEE First Author" then
+                  "Conference Paper · 2026" */}
+              <p className="research-credit">
+                {logos[paper.logo] && (
+                  <span
+                    className={`research-logo research-logo-${paper.logo}`}
+                    role="img"
+                    aria-label={logos[paper.logo].label}
+                  >
+                    {logos[paper.logo].mark}
+                  </span>
+                )}
                 {paper.role && (
                   <span className="research-role">{paper.role}</span>
                 )}
-                {paper.year && (
-                  <span className="glass-chip">{paper.year}</span>
-                )}
-              </div>
+                <span className="research-type">
+                  {[paper.type, paper.year].filter(Boolean).join(" · ")}
+                </span>
+              </p>
               <h3>{paper.title}</h3>
               <p className="research-venue">
                 {paper.venueLabel && (
                   <span className="research-label">{paper.venueLabel}: </span>
                 )}
                 {paper.venue}
-                {paper.location && (
-                  <span className="research-where"> · {paper.location}</span>
-                )}
+                {paper.location && <Place location={paper.location} />}
               </p>
               {paper.publisher && (
                 <p className="research-venue">
@@ -57,7 +99,6 @@ const Research = () => {
                 <div className="research-links">
                   {paper.link && (
                     <a
-                      className="glass-button"
                       href={paper.link}
                       target="_blank"
                       rel="noreferrer"
@@ -68,7 +109,6 @@ const Research = () => {
                   )}
                   {paper.moreLinks.map((link, i) => (
                     <a
-                      className="glass-button"
                       href={link.url}
                       target="_blank"
                       rel="noreferrer"

@@ -11,6 +11,14 @@
     "image": "/images/achievements/silver-bronze-medals-at-international-robot-olympiad.webp",
     "links": [
       {
+        "name": "Certificate 1",
+        "url": "/certificates#iro-2025-silver"
+      },
+      {
+        "name": "Certificate 2",
+        "url": "/certificates#iro-2025-bronze"
+      },
+      {
         "name": "The Daily Star",
         "url": "https://www.thedailystar.net/tech-startup/news/team-bangladesh-wins-10-medals-intl-robot-olympiad-2025-3808396"
       },
@@ -32,6 +40,10 @@
     "image": "/images/achievements/best-startup-award-at-the-world-robot-olympiad.webp",
     "links": [
       {
+        "name": "Certificate",
+        "url": "/certificates#wro-2025-startup-idea"
+      },
+      {
         "name": "WRO official results",
         "url": "https://scoring.wro-association.org/en/event/scoring/272"
       },
@@ -51,7 +63,12 @@
     "highlight": "Top 10 of 75 global teams",
     "description": "I ranked in the Top 10 among 75 international teams at the NASA Human Exploration Rover Challenge, an Artemis-affiliated competition. I designed, presented and piloted a lunar rover, working through the mechanical design and problem solving that space exploration demands.",
     "image": "/images/achievements/global-top-10-at-the-nasa-human-exploration-rover-challenge.webp",
-    "links": []
+    "links": [
+      {
+        "name": "Certificate",
+        "url": "/certificates#nasa-herc-2025"
+      }
+    ]
   },
   {
     "title": "Research Seed Fund Winner",
@@ -64,6 +81,10 @@
     "description": "Leading SAPH.Ai with Emtenan Kabir, I was selected as a Seed Fund Winner at the Stockholm Junior Water Prize, among participants from 60+ countries. Supported by the Swedish Government and organisations such as WaterAid, we developed a research project on detecting water pollution. We engineered an AI model inside a modular device that tests water for contamination cheaply and instantly and treats it on the spot, and used it to test and treat polluted water across 20 coastal villages.",
     "image": "/images/achievements/fund-winner-at-the-stockholm-junior-water-prize.webp",
     "links": [
+      {
+        "name": "Certificate",
+        "url": "/certificates#sjwp-2024-seed-fund"
+      },
       {
         "name": "The Business Standard",
         "url": "https://www.tbsnews.net/bangladesh/hov-bangladesh-holds-bangladesh-stockholm-junior-water-prize-ceremony-2024-847726"
@@ -88,7 +109,12 @@
     "highlight": "Top among 45K+ competitors nationwide",
     "description": "I won a Gold Medal at the Bangladesh National Mathematical Olympiad, the selection round for the International Mathematical Olympiad (IMO), ranking first nationally among 45,000+ competitors.",
     "image": "/images/achievements/gold-medal-at-the-national-mathematical-olympiad.webp",
-    "links": []
+    "links": [
+      {
+        "name": "Certificate",
+        "url": "/certificates#bdmo-2024-champion"
+      }
+    ]
   },
   {
     "title": "Mentored - 3rd Prize",
@@ -96,7 +122,7 @@
     "level": "International",
     "location": "Seoul, South Korea",
     "year": "2026",
-    "role": "Mentor & Idea Lead · SAPH.Ai",
+    "role": "Founder & Team Lead · SAPH.Ai",
     "highlight": "Stood out among 252 international teams",
     "description": "I mentored SAPH.Ai members Musarrat Mahjabin and Turabi Meherin Sokal and shaped the core idea behind their project, which won 3rd Prize at the 16th e-ICON World Contest in Seoul, South Korea. Hosted by the Ministry of Education of the Republic of Korea, this global AI and software competition challenges young innovators to build web apps that address the UN Sustainable Development Goals (SDGs). Standing out among 252 international teams, Team MonAndo earned a fully funded place representing Bangladesh in the international final with MonAndo, an AI-powered mental wellness web app offering free, localised Virtual Reality Exposure Therapy (VRET) for underprivileged youth.",
     "image": "/images/achievements/winner-at-the-e-icon-world-contest.webp",
@@ -183,14 +209,14 @@
     "links": []
   },
   {
-    "title": "Mentored - Honour of Excellence",
+    "title": "Honour of Excellence",
     "event": "Bangladesh Bank",
     "level": "National",
     "location": "Bangladesh",
     "year": "",
     "role": "Mentor & Idea Lead · SAPH.Ai",
     "highlight": "Presented by Governor Dr. Ahsan H. Mansur",
-    "description": "My teammate Emtenan Kabir of SAPH.Ai was honoured for excellence by Dr. Ahsan H. Mansur, Governor of Bangladesh Bank. The recognition celebrated work I mentored as SAPH.Ai's founder and that was built on ideas I originated, a proud moment for the whole SAPH.Ai team.",
+    "description": "Team SAPH.Ai, which I founded and lead, was honoured for excellence by Dr. Ahsan H. Mansur, Governor of Bangladesh Bank. My teammate Emtenan Kabir received the honour on behalf of the whole team.",
     "image": "",
     "links": []
   },

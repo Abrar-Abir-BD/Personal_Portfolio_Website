@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
-import { useLoading } from "../../context/LoadingProvider";
+import { revealed } from "../../context/LoadingProvider";
+import { isAway } from "../../router";
 import handleResize from "./utils/resizeUtils";
 import {
   handleMouseMove,
@@ -11,13 +12,11 @@ import {
   handleTouchMove,
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
-import { setProgress } from "../Loading";
 import { killCharTimeline, setCharTimeline } from "../utils/GsapScroll";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
-  const { setLoading } = useLoading();
 
   useEffect(() => {
     if (canvasDiv.current) {
@@ -55,7 +54,6 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      const progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
       loadCharacter().then((gltf) => {
@@ -68,12 +66,12 @@ const Scene = () => {
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-              // Lands as the loader leaves (see the timers in Loading.tsx)
-            }, 2000);
+          // Loaded in the background; its intro (rising out of the dark as
+          // the lights come up) waits until the page is showing
+          revealed.then(() => {
+            if (disposed) return;
+            light.turnOnLights();
+            animations.startIntro();
           });
           onResize = () => {
             clearTimeout(resizeTimer);
@@ -158,7 +156,8 @@ const Scene = () => {
       const animate = () => {
         frame = requestAnimationFrame(animate);
         const delta = clock.getDelta();
-        if (!visible) return;
+        // Nothing to draw while another page covers the portfolio
+        if (!visible || isAway()) return;
         checkPerformance(delta);
         if (headBone) {
           handleHeadRotation(
@@ -179,7 +178,6 @@ const Scene = () => {
       animate();
       return () => {
         disposed = true;
-        progress.stop();
         killCharTimeline();
         cancelAnimationFrame(frame);
         observer.disconnect();

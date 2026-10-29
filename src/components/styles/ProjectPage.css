@@ -3,13 +3,25 @@
   width: var(--cWidth);
   max-width: 1100px;
   margin: auto;
+  /* Room for the bar above, which sits outside this narrower column */
+  padding-top: 68px;
   padding-bottom: 120px;
 }
+/* The same box and padding as the main site's navbar (.header in
+   Navbar.css), so the name sits in exactly the same spot on every page */
 .project-page-bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 0px;
+  /* 1px less on top: the back button is a touch taller than the nav pills */
+  padding: 13px 0px 15px;
 }
 /* Same logo as the main site's navbar */
 .project-page-name {
@@ -28,6 +40,12 @@
 @media only screen and (min-width: 1200px) {
   .project-page-name {
     font-size: 26px;
+  }
+  .project-page {
+    padding-top: 80px;
+  }
+  .project-page-bar {
+    padding: 19px 0px 21px;
   }
 }
 .project-page-main {

@@ -154,6 +154,7 @@
 /* ── Section headings: big regular sans, one amber italic serif word ── */
 :root[data-design="glow"] .glass-section-head h2,
 :root[data-design="glow"] .career-section h2,
+:root[data-design="glow"] .contact-heading,
 :root[data-design="glow"] .what-box h2 {
   font-weight: 400;
   letter-spacing: var(--tracking-tight);
@@ -161,6 +162,7 @@
 :root[data-design="glow"] .glass-section-head h2 > span,
 :root[data-design="glow"] .career-section h2 > span,
 :root[data-design="glow"] .contact-box h2 > span,
+:root[data-design="glow"] .contact-heading > span,
 :root[data-design="glow"] .do-h2 {
   font-family: var(--font-serif);
   font-style: italic;
@@ -169,6 +171,7 @@
   color: var(--accentWarm);
 }
 :root[data-design="glow"] .glass-section-head h2 > span,
+:root[data-design="glow"] .contact-heading > span,
 :root[data-design="glow"] .do-h2 {
   font-size: 1.08em;
 }
@@ -199,7 +202,8 @@
   font-weight: 400;
 }
 :root[data-design="glow"] .projects-info h3,
-:root[data-design="glow"] .research-body h3 {
+:root[data-design="glow"] .research-body h3,
+:root[data-design="glow"] .skills-card h3 {
   font-weight: 500;
   letter-spacing: -0.015em;
 }

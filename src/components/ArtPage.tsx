@@ -9,6 +9,7 @@ import {
   contact,
   landing,
 } from "../data/portfolioContent";
+import { subpageScroller } from "../router";
 import "./styles/ArtPage.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -201,10 +202,9 @@ const ArtPage = () => {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // The portfolio locks body scrolling until its intro runs; this page
-    // scrolls normally
-    document.body.style.overflowY = "auto";
     document.title = `Art Portfolio | ${signature}`;
+    // This page scrolls in its own layer over the portfolio, not the window
+    const scroller = subpageScroller() ?? undefined;
 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
@@ -229,13 +229,13 @@ const ArtPage = () => {
         gsap.to(".art-cover img", {
           yPercent: 18,
           ease: "none",
-          scrollTrigger: { trigger: ".art-cover", start: "top top", end: "bottom top", scrub: true },
+          scrollTrigger: { scroller, trigger: ".art-cover", start: "top top", end: "bottom top", scrub: true },
         });
         gsap.to(".art-cover-inner", {
           yPercent: -40,
           opacity: 0,
           ease: "none",
-          scrollTrigger: { trigger: ".art-cover", start: "top top", end: "70% top", scrub: true },
+          scrollTrigger: { scroller, trigger: ".art-cover", start: "top top", end: "70% top", scrub: true },
         });
 
         // One sequence per artwork: the photo is revealed like a curtain
@@ -246,7 +246,7 @@ const ArtPage = () => {
           const pics = slide.querySelectorAll<HTMLElement>("[data-reveal='pic']");
           const tl = gsap.timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: slide, start: "top 85%" },
+            scrollTrigger: { scroller, trigger: slide, start: "top 85%" },
           });
           tl.from(pics, {
             clipPath: "inset(100% 0% 0% 0%)",
@@ -296,6 +296,7 @@ const ArtPage = () => {
               yPercent: 4,
               ease: "none",
               scrollTrigger: {
+                scroller,
                 trigger: img.parentElement,
                 start: "top bottom",
                 end: "bottom top",
@@ -309,7 +310,7 @@ const ArtPage = () => {
         gsap
           .timeline({
             defaults: { ease: "power3.out" },
-            scrollTrigger: { trigger: ".art-artist", start: "top 65%" },
+            scrollTrigger: { scroller, trigger: ".art-artist", start: "top 65%" },
           })
           .from(".art-artist-photo", {
             clipPath: "inset(100% 0% 0% 0%)",
@@ -328,7 +329,7 @@ const ArtPage = () => {
           duration: 1.2,
           ease: "power3.out",
           stagger: 0.15,
-          scrollTrigger: { trigger: ".art-closing", start: "top 55%" },
+          scrollTrigger: { scroller, trigger: ".art-closing", start: "top 55%" },
         });
       });
 
@@ -336,7 +337,7 @@ const ArtPage = () => {
       gsap.to(".art-progress", {
         scaleX: 1,
         ease: "none",
-        scrollTrigger: { trigger: root.current, start: "top top", end: "bottom bottom", scrub: 0.3 },
+        scrollTrigger: { scroller, trigger: root.current, start: "top top", end: "bottom bottom", scrub: 0.3 },
       });
     }, root);
 

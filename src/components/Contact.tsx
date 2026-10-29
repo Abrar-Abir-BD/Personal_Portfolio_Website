@@ -6,9 +6,11 @@ const Contact = () => {
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
+        <h2 className="contact-heading">
+          Get in <span>Touch</span>
+        </h2>
         <div className="contact-flex">
           <div className="contact-box">
-            <h2 className="contact-heading">Contact</h2>
             <h4>Email</h4>
             <p>
               <a href={`mailto:${contact.email}`} data-cursor="disable">

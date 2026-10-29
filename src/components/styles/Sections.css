@@ -1,46 +1,37 @@
-/* Skills & Expertise */
+/* Skills & Expertise: a glass card per group, two across, so each set
+   of logos reads as one group; the logos float like the project images */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 .skills-card {
-  padding: 18px 20px 20px;
+  padding: 22px 24px 26px;
 }
-/* Header: a tinted icon tile beside a bold title */
+/* Header: a coloured icon beside the title */
 .skills-head {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .skills-head-icon {
   flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  background: linear-gradient(
-    145deg,
-    rgba(var(--glass-rgb), 0.1),
-    rgba(var(--glass-rgb), 0.03)
-  );
-  border: 1px solid rgba(var(--line-rgb), 0.1);
+  font-size: 22px;
 }
 .skills-card h3 {
-  font-size: 19px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0;
 }
-/* Skills: a grid of tiles, logo in a rounded square, name beneath */
+/* Skills: each logo floats in a rounded square on a soft shadow, the
+   name beneath */
 .skills-tiles {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 18px 6px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -49,29 +40,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 6px 3px 5px;
-  border-radius: 10px;
+  gap: 8px;
   text-align: center;
-  background: rgba(var(--glass-rgb), 0.04);
-  border: 1px solid rgba(var(--line-rgb), 0.06);
-  transition: transform 0.3s, background 0.3s, border-color 0.3s;
-}
-.skills-tile:hover {
-  transform: translateY(-2px);
-  background: rgba(var(--glass-rgb), 0.08);
-  border-color: rgba(111, 180, 240, 0.35);
 }
 .skills-tile-logo {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 21px;
+  font-size: 23px;
   color: var(--textColor);
   background: rgba(4, 7, 13, 0.55);
+  box-shadow: 0px 16px 24px -12px rgba(0, 0, 0, 0.75),
+    0px 0px 26px -8px rgba(111, 180, 240, 0.35);
+  transition: transform 0.4s;
+}
+.skills-tile:hover .skills-tile-logo {
+  transform: translateY(-5px) scale(1.06);
 }
 :root[data-theme="light"] .skills-tile-logo {
   background: rgba(255, 255, 255, 0.85);
@@ -155,20 +142,20 @@
   color: var(--mutedColor);
 }
 /* Website, or a page about the organization when it has none */
+/* Text link with an angled arrow, as in Publications */
 .experience-link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   margin-top: 4px;
   font-size: 13px;
-  font-weight: 500;
-  color: var(--accentColor);
-}
-.experience-link svg {
-  font-size: 13px;
+  font-weight: 600;
+  color: var(--chipText);
+  transition: gap 0.3s, color 0.3s;
 }
 .experience-link:hover {
-  text-decoration: underline;
+  gap: 7px;
+  color: var(--accentColor);
 }
 .experience-desc {
   margin: 16px 0px 0px;
@@ -244,44 +231,6 @@
   flex-direction: column;
   flex: 1;
   padding: 16px 18px 18px;
-}
-.awards-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-.awards-level {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #eaf3fa;
-  background: rgba(27, 104, 207, 0.5);
-}
-/* International: warm amber, like a medal */
-.awards-level-intl {
-  color: #2a1a00;
-  background: #ffd56b;
-}
-.awards-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: 50px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--textColor);
-  background: rgba(var(--line-rgb), 0.08);
-}
-.awards-pill svg {
-  font-size: 14px;
-  opacity: 0.8;
 }
 .awards-card h3 {
   font-size: 17px;
@@ -364,25 +313,186 @@
   animation: projectReveal 0.6s ease-out both;
 }
 
+/* Country flag: a small rounded flag, used in the award, publication
+   and experience lines */
+.awards-flag {
+  flex-shrink: 0;
+  display: inline-flex;
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+  vertical-align: -1px;
+  box-shadow: 0px 0px 0px 1px rgba(var(--line-rgb), 0.15);
+}
+.awards-flag svg {
+  width: 100%;
+  height: 100%;
+}
+.experience-org .awards-flag,
+.research-where .awards-flag {
+  margin-right: 5px;
+}
+/* The flag never sits apart from its place */
+.awards-place-name {
+  white-space: nowrap;
+}
+/* International / National: a small frosted tag on the photo's corner */
+.awards-photo {
+  position: relative;
+}
+.awards-photo .awards-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #eaf3fa;
+  background: rgba(5, 9, 19, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.awards-tag-intl svg {
+  font-size: 11px;
+  color: #6fb4f0;
+}
+/* Flag, then "Busan, South Korea · 2025", as plain text */
+.awards-place {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0px 0px 10px;
+  font-size: 13px;
+  color: var(--mutedColor);
+}
+/* The position won, then the competition right beneath */
+.awards-head {
+  margin-bottom: 10px;
+}
+.awards-position {
+  margin: 0px 0px 4px;
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+/* The competition, right beneath */
+.awards-card .awards-body h3 {
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--textColor);
+  margin: 0;
+}
+/* "✓ Verified: The Daily Star · Jago News 24", at the foot of the card */
+.awards-proof {
+  margin: auto 0px 0px;
+  padding-top: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--mutedColor);
+}
+.awards-proof::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-bottom: 12px;
+  background: rgba(var(--line-rgb), 0.12);
+}
+.awards-proof-icon {
+  margin-right: 6px;
+  font-size: 14px;
+  vertical-align: -2px;
+  color: var(--accentColor);
+}
+.awards-proof-label {
+  margin-right: 2px;
+}
+/* Links side by side with a little room, no separators */
+.awards-proof a {
+  margin-right: 12px;
+}
+/* A source name never breaks across lines */
+.awards-proof a {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--chipText);
+  transition: gap 0.3s, color 0.3s;
+}
+.awards-proof a svg {
+  font-size: 0.95em;
+}
+.awards-proof a:hover {
+  gap: 5px;
+  color: var(--accentColor);
+}
+/* IEEE / TEDx, straight on the card at the start of the credit line, in
+   the brands' colours (IEEE's blue lightened to read on the dark theme) */
+.research-logo {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  margin-right: 4px;
+  line-height: 1;
+}
+.research-logo svg {
+  display: block;
+}
+.research-logo-ieee {
+  color: #5aa9e6;
+}
+:root[data-theme="light"] .research-logo-ieee {
+  color: #00629b;
+}
+.research-logo-ieee svg {
+  width: 48px;
+  height: 48px;
+}
+/* TEDx: the red TED mark with a lowercase x, as in the TEDx logo */
+.research-logo-tedx {
+  gap: 1px;
+  color: #e62b1e;
+}
+.research-logo-tedx svg {
+  width: 38px;
+  height: 38px;
+}
+.research-logo-x {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: -10px;
+}
+
+
 /* Projects: floating image beside text, no card */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 60px;
-  row-gap: 90px;
+  column-gap: 52px;
+  row-gap: 84px;
 }
 .projects-item {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
 }
 .projects-item-flip .projects-media {
   order: 2;
 }
 .projects-media {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 6 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -433,14 +543,14 @@
   font-size: 28px;
   line-height: 1.2;
   font-weight: 700;
-  margin: 0px 0px 14px;
+  margin: 0px 0px 10px;
 }
 .projects-desc {
   font-size: 16px;
   font-weight: 300;
   line-height: 1.6;
   color: var(--mutedColor);
-  margin: 0px 0px 20px;
+  margin: 0px 0px 16px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -463,7 +573,7 @@
 .projects-more {
   display: flex;
   justify-content: center;
-  margin-top: 70px;
+  margin-top: 52px;
 }
 .projects-more .glass-button {
   font: inherit;
@@ -500,6 +610,23 @@
   color: var(--accentColor);
 }
 
+/* Every section: the title turns the accent colour while its item is
+   hovered, as in Art, Media and Certificates */
+.projects-info h3,
+.research-body h3,
+.awards-position,
+.experience-head h3,
+.art-info h3 {
+  transition: color 0.3s;
+}
+.projects-item:hover .projects-info h3,
+.research-card:hover .research-body h3,
+.awards-card:hover .awards-position,
+.experience-card:hover .experience-head h3,
+.art-card:hover .art-info h3 {
+  color: var(--accentColor);
+}
+
 /* Research & Publications */
 .research-list {
   display: grid;
@@ -530,15 +657,25 @@
   color: var(--accentColor);
   margin: 4px 0px 0px;
 }
+/* Plain text links, like the projects' "Learn more" */
 .research-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px 22px;
   margin-top: 16px;
 }
-.research-links .glass-button {
-  font-size: 13px;
-  padding: 8px 16px;
+.research-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--chipText);
+  transition: gap 0.3s, color 0.3s;
+}
+.research-links a:hover {
+  gap: 9px;
+  color: var(--accentColor);
 }
 /* Photo above the text; every card uses the same short 2:1 frame so the
    photos line up */
@@ -595,27 +732,21 @@
   text-transform: uppercase;
   color: rgba(var(--line-rgb), 0.5);
 }
-.research-chips {
+/* Plain text, like the awards: the IEEE / TEDx logo and Abrar's part
+   (First Author, Speaker) in bold, then the type and year */
+.research-credit {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-}
-.research-chips .glass-chip {
-  padding: 4px 11px;
-  font-size: 12px;
-}
-/* Abrar's part (e.g. First Author): the bright badge */
-.research-role {
-  display: inline-flex;
   align-items: center;
-  padding: 4px 11px;
-  border-radius: 50px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  color: #04070d;
-  background: linear-gradient(180deg, #d4f1fa, #6fb4f0);
-  border: 1px solid #d4f1fa;
+  gap: 4px 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--mutedColor);
+}
+.research-role {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--textColor);
 }
 .research-label,
 .research-where {
@@ -726,18 +857,24 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+/* No card: a rounded photo with its caption beneath */
 .art-card {
-  padding: 16px;
+  margin: 0;
 }
 .art-card .glass-image {
   aspect-ratio: 4 / 5;
-  border-radius: 16px;
+  border-radius: 18px;
+  box-shadow: 0px 30px 50px -28px rgba(0, 0, 0, 0.7);
+  transition: transform 0.5s;
+}
+.art-card:hover .glass-image {
+  transform: translateY(-6px);
 }
 .art-grid .art-card:nth-child(3n + 2) .glass-image {
   aspect-ratio: 1 / 1;
 }
 .art-info {
-  padding: 16px 8px 4px;
+  padding: 16px 2px 0px;
 }
 /* Moments from Life: landscape photos, same card style as the art grid */
 .moments-grid .art-card .glass-image,
@@ -761,10 +898,10 @@
   position: relative;
 }
 /* Arrows straddle the row's edges, centred on the cards' height (the
-   track's padding is 6px above and 24px below, hence the 9px offset) */
+   track's padding is 6px above and 70px below, hence the 32px offset) */
 .media-arrow {
   position: absolute;
-  top: calc(50% - 9px);
+  top: calc(50% - 32px);
   z-index: 3;
   transform: translateY(-50%);
   width: 46px;
@@ -832,8 +969,12 @@
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
-  /* Room for the cards' hover lift and shadow */
-  padding: 6px 2px 24px;
+  /* A scrolling row clips everything at its edges, so it reaches out past
+     the content with room for the cards' hover lift and full shadow, and
+     negative margins put the cards back in line with the page */
+  padding: 6px 30px 70px;
+  margin: 0px -30px -46px;
+  scroll-padding-inline: 30px;
 }
 .media-track::-webkit-scrollbar {
   display: none;
@@ -924,13 +1065,89 @@
   color: var(--mutedColor);
 }
 
+/* Certificates: the top ones framed side by side, each document shown
+   whole and standing on a common base line, portrait or landscape */
+.cert-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.cert-item {
+  display: block;
+  color: inherit;
+}
+.cert-frame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+}
+.cert-frame img {
+  position: absolute;
+  inset: 0;
+  margin: auto auto 0px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 3px;
+  box-shadow: 0px 0px 0px 1px rgba(var(--line-rgb), 0.12),
+    0px 28px 44px -24px rgba(0, 0, 0, 0.8);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.6s;
+}
+.cert-item:hover .cert-frame img {
+  transform: translateY(-6px);
+  box-shadow: 0px 0px 0px 1px rgba(111, 180, 240, 0.35),
+    0px 36px 50px -24px rgba(27, 104, 207, 0.55);
+}
+.cert-item h3 {
+  margin: 22px 0px 6px;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.cert-item:hover h3 {
+  color: var(--accentColor);
+}
+/* Issuing authority, then the date */
+.cert-issuer {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--mutedColor);
+}
+.cert-date {
+  margin: 4px 0px 0px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accentColor);
+}
+@media only screen and (max-width: 900px) {
+  .cert-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .cert-item h3 {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .cert-issuer {
+    font-size: 12px;
+  }
+  .cert-date {
+    font-size: 10.5px;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
-  .skills-card {
-    padding: 16px 18px 18px;
+  .research-body h3 {
+    font-size: 18px;
   }
   .projects-item {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
   .projects-item-flip .projects-media {
     order: 0;
@@ -940,9 +1157,6 @@
   }
   .projects-info h3 {
     font-size: 24px;
-  }
-  .research-body h3 {
-    font-size: 18px;
   }
 }
 @media only screen and (max-width: 900px) {
@@ -958,8 +1172,11 @@
   .art-grid {
     grid-template-columns: 1fr;
   }
+  .skills-grid {
+    gap: 16px;
+  }
   .skills-card {
-    padding: 16px;
+    padding: 18px 16px 20px;
   }
   .experience-grid {
     grid-template-columns: 1fr;
@@ -997,6 +1214,12 @@
   .experience-card-new {
     animation: none;
   }
+  .awards-card:hover .awards-photo,
+  .art-card:hover .glass-image,
+  .experience-card:hover .experience-logo,
+  .skills-tile:hover .skills-tile-logo {
+    transform: none;
+  }
 }
 /* Laptops (1150-1400px wide): keep project image and text side by side in
    the wide content area, with slightly smaller type. */
@@ -1017,6 +1240,12 @@
     height: 40px;
     font-size: 24px;
   }
+  /* Phones: less reach past the narrow page gutter */
+  .media-track {
+    padding-inline: 12px;
+    margin-inline: -12px;
+    scroll-padding-inline: 12px;
+  }
   .media-arrow-prev {
     left: 6px;
   }
@@ -1030,13 +1259,13 @@
   }
   .projects-item {
     grid-template-columns: 1fr 1.15fr;
-    gap: 28px;
+    gap: 22px;
   }
   .projects-item-flip .projects-media {
     order: 2;
   }
   .projects-media {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 6 / 5;
   }
   .projects-info h3 {
     font-size: 24px;
@@ -1076,20 +1305,18 @@
 @media only screen and (max-width: 560px) {
   .skills-tiles {
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 16px 6px;
   }
   .skills-head-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
+    font-size: 19px;
   }
   .skills-card h3 {
-    font-size: 17px;
+    font-size: 19px;
   }
   .skills-tile-logo {
-    width: 34px;
-    height: 34px;
-    font-size: 19px;
+    width: 40px;
+    height: 40px;
+    font-size: 21px;
   }
   .skills-tile-name {
     font-size: 11.5px;
@@ -1147,19 +1374,6 @@
   .awards-body {
     padding: 10px 11px 12px;
   }
-  .awards-badges {
-    gap: 4px;
-    margin-bottom: 8px;
-  }
-  .awards-level,
-  .awards-pill {
-    padding: 3px 7px;
-    font-size: 9px;
-    letter-spacing: 0.5px;
-  }
-  .awards-pill svg {
-    font-size: 11px;
-  }
   .awards-card h3 {
     font-size: 13px;
     margin-bottom: 6px;
@@ -1190,16 +1404,57 @@
     padding: 4px 8px;
     font-size: 10.5px;
   }
-  /* Moments */
-  .moments-grid .art-card {
-    padding: 8px;
-    border-radius: 16px;
+  .awards-proof {
+    padding-top: 10px;
+    font-size: 11px;
   }
+  .awards-proof::before {
+    margin-bottom: 8px;
+  }
+  .awards-proof-icon {
+    margin-right: 4px;
+    font-size: 12px;
+  }
+  .awards-flag {
+    width: 14px;
+    height: 10px;
+  }
+  .awards-photo .awards-tag {
+    top: 6px;
+    left: 6px;
+    padding: 2px 7px;
+    font-size: 8.5px;
+    letter-spacing: 0.4px;
+  }
+  .awards-place {
+    gap: 5px;
+    font-size: 10.5px;
+    margin-bottom: 6px;
+  }
+  .awards-head {
+    margin-bottom: 6px;
+  }
+  .awards-position {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+  .awards-card .awards-body h3 {
+    font-size: 12px;
+  }
+  .research-logo-ieee svg {
+    width: 40px;
+    height: 40px;
+  }
+  .research-logo-tedx svg {
+    width: 32px;
+    height: 32px;
+  }
+  /* Moments */
   .moments-grid .art-card .glass-image {
-    border-radius: 11px;
+    border-radius: 12px;
   }
   .moments-grid .art-info {
-    padding: 10px 4px 2px;
+    padding: 10px 2px 0px;
   }
   .moments-grid .art-info h3 {
     font-size: 13px;
@@ -1207,10 +1462,10 @@
   .moments-grid .art-info p {
     font-size: 11px;
   }
-  /* Skills: four tiles across */
+  /* Skills: four logos across */
   .skills-tiles {
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 16px 6px;
   }
   .skills-tile-name {
     font-size: 11px;

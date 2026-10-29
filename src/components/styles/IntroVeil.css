@@ -1,0 +1,37 @@
+/* The brief cover shown while the fonts load: the page's own background
+   with the name, fading away as the page animates in underneath */
+.intro-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 999999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--backgroundColor);
+  transition: opacity 0.5s ease;
+}
+.intro-veil span {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--textColor);
+  opacity: 0.85;
+  animation: introVeilPulse 1.4s ease-in-out infinite alternate;
+}
+.intro-veil-out {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes introVeilPulse {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-veil span {
+    animation: none;
+  }
+}

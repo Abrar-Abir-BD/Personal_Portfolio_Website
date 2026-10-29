@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MdArrowForward, MdExpandLess, MdExpandMore } from "react-icons/md";
+import { MdArrowOutward, MdExpandLess, MdExpandMore } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import { GlassSection } from "./Glass";
 import { Project, projects } from "../data/portfolioContent";
@@ -74,7 +74,7 @@ const Projects = () => {
                   className="projects-learn"
                   data-cursor="disable"
                 >
-                  Learn more <MdArrowForward />
+                  Learn more <MdArrowOutward />
                 </a>
                 {project.links.map((link, i) => (
                   <a
@@ -84,7 +84,7 @@ const Projects = () => {
                     data-cursor="disable"
                     key={i}
                   >
-                    {link.name} <MdArrowForward />
+                    {link.name} <MdArrowOutward />
                   </a>
                 ))}
                 {project.code ? (
@@ -94,7 +94,7 @@ const Projects = () => {
                     rel="noreferrer"
                     data-cursor="disable"
                   >
-                    <FaGithub /> Code
+                    <FaGithub /> Code <MdArrowOutward />
                   </a>
                 ) : (
                   // No repo yet: show the button greyed out instead of a dead link
