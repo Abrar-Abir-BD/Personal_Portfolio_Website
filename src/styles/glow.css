@@ -10,7 +10,7 @@
    ───────────────────────────────────────────────────────────────────────── */
 
 :root[data-design="glow"] {
-  --backgroundColor: #030405;
+  --backgroundColor: #050913;
   --textColor: #f2f2f2;
   --mutedColor: #a0a6b2;
   --accentWarm: #ffa800;
@@ -21,9 +21,7 @@
   /* Fine film grain: high-contrast SVG noise, tiled small so it stays cheap */
   --grain-page: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.6' intercept='-0.8'/%3E%3CfeFuncG type='linear' slope='2.6' intercept='-0.8'/%3E%3CfeFuncB type='linear' slope='2.6' intercept='-0.8'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --grain-surface: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.14'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --grain-opacity: 0.75;
-  /* how much the background wave is darkened under the content */
-  --wave-dim: 0.5;
+  --grain-opacity: 0.5;
 
   font-family: var(--font-sans);
   color: var(--textColor);
@@ -57,16 +55,19 @@
   z-index: -1;
   pointer-events: none;
 }
-/* Silver wave rising out of black, after public/background.avif (that
-   picture has text baked in, so the wave is redrawn in
-   public/images/background-wave.svg). Fixed and static: drawn once, then it
-   just sits behind the page. A dark wash keeps white text readable on the
-   bright silver. */
+/* Muted navy light as in the video: soft steel-blue upper left and lower
+   right, black bottom-left corner, darker right edge. Blurred heavily so the
+   glows melt together; static, so the blur is rendered once. */
 :root[data-design="glow"] body::before {
-  inset: 0;
+  inset: -140px;
+  filter: blur(70px);
   background:
-    linear-gradient(rgba(2, 3, 5, var(--wave-dim)), rgba(2, 3, 5, var(--wave-dim))),
-    url("/images/background-wave.svg") center / cover no-repeat,
+    radial-gradient(34% 30% at 22% 30%, rgba(34, 74, 128, 0.85), transparent 75%),
+    radial-gradient(38% 32% at 74% 74%, rgba(52, 82, 130, 0.9), transparent 75%),
+    radial-gradient(42% 34% at 50% 50%, rgba(22, 44, 78, 0.8), transparent 78%),
+    radial-gradient(30% 30% at 88% 22%, rgba(18, 36, 66, 0.7), transparent 75%),
+    radial-gradient(34% 36% at 0% 100%, rgba(1, 2, 5, 0.95), transparent 75%),
+    radial-gradient(22% 40% at 100% 50%, rgba(3, 6, 12, 0.7), transparent 75%),
     var(--backgroundColor);
 }
 :root[data-design="glow"] body::after {
@@ -78,8 +79,8 @@
 }
 :root[data-design="glow"][data-theme="light"] body::before {
   background:
-    linear-gradient(rgba(233, 237, 244, 0.55), rgba(233, 237, 244, 0.55)),
-    url("/images/background-wave.svg") center / cover no-repeat,
+    radial-gradient(34% 30% at 22% 30%, rgba(150, 180, 225, 0.6), transparent 75%),
+    radial-gradient(38% 32% at 74% 74%, rgba(160, 185, 225, 0.6), transparent 75%),
     var(--backgroundColor);
 }
 

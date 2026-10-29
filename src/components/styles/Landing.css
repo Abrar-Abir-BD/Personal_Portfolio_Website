@@ -85,19 +85,32 @@
   z-index: 0;
   bottom: 50px;
   pointer-events: inherit;
-  /* Fade the character's lower edge (and its backlight) out to transparent.
-     This used to be done with bands painted in the page colour over it,
-     which showed as solid patches on any gradient background. */
-  -webkit-mask-image: linear-gradient(
+}
+.character-model::after {
+  content: "";
+  width: 100vw;
+  height: 250px;
+  background-image: linear-gradient(
     to bottom,
-    #000 calc(100% - 200px),
-    transparent calc(100% - 25px)
+    transparent,
+    var(--backgroundColor) 70%
   );
-  mask-image: linear-gradient(
-    to bottom,
-    #000 calc(100% - 200px),
-    transparent calc(100% - 25px)
-  );
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  position: absolute;
+}
+.character-model::before {
+  content: "";
+  width: 100vw;
+  height: 700px;
+  background-color: var(--backgroundColor);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  position: absolute;
 }
 .character-loaded .character-rim {
   animation: backlight 3s forwards;
