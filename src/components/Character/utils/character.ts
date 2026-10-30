@@ -47,13 +47,11 @@ const setCharacter = (
             dracoLoader.dispose();
             resolve(gltf);
           } catch (error) {
-            console.error("Error preparing GLTF model:", error);
             reject(error);
           }
         },
         undefined,
         (error) => {
-          console.error("Error loading GLTF model:", error);
           reject(error);
         }
       );

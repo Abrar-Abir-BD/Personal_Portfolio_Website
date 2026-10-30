@@ -60,7 +60,8 @@ const Scene = () => {
       const light = setLighting(scene);
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
-      loadCharacter().then((gltf) => {
+      loadCharacter()
+        .then((gltf) => {
         if (gltf && !disposed) {
           setCharTimeline(gltf.scene, camera);
           const animations = setAnimations(gltf);
@@ -95,7 +96,12 @@ const Scene = () => {
           };
           window.addEventListener("resize", onResize);
         }
-      });
+      })
+        .catch((error) => {
+          if (!disposed) {
+            console.error("Failed to load character:", error);
+          }
+        });
 
       let onResize: (() => void) | undefined;
       let resizeTimer: number | undefined;
