@@ -26,7 +26,7 @@ export function initialFX() {
     return;
   }
 
-  var landingText = new SplitText(
+  const landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
     {
       type: "chars,lines",
@@ -46,7 +46,7 @@ export function initialFX() {
     }
   );
 
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
+  const TextProps = { type: "chars,lines", linesClass: "split-h2" };
 
   const split = (selector: string) =>
     gsap.utils

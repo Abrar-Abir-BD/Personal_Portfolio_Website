@@ -21,8 +21,8 @@ const Scene = () => {
 
   useEffect(() => {
     if (canvasDiv.current) {
-      let rect = canvasDiv.current.getBoundingClientRect();
-      let container = { width: rect.width, height: rect.height };
+      const rect = canvasDiv.current.getBoundingClientRect();
+      const container = { width: rect.width, height: rect.height };
       const aspect = container.width / container.height;
       // A fresh scene per run. React runs this effect twice in development;
       // with a shared scene, the first run's model (loaded after that run
@@ -52,7 +52,7 @@ const Scene = () => {
       camera.updateProjectionMatrix();
 
       let headBone: THREE.Object3D | null = null;
-      let screenLight: any | null = null;
+      let screenLight: THREE.Object3D | null = null;
       let mixer: THREE.AnimationMixer;
 
       const clock = new THREE.Clock();
@@ -64,7 +64,9 @@ const Scene = () => {
         if (gltf && !disposed) {
           setCharTimeline(gltf.scene, camera);
           const animations = setAnimations(gltf);
-          hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
+          if (hoverDivRef.current) {
+            animations.hover(gltf, hoverDivRef.current);
+          }
           mixer = animations.mixer;
           const character = gltf.scene;
           scene.add(character);

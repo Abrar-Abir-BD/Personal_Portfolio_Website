@@ -12,31 +12,33 @@ const setCharacter = (
   loader.setDRACOLoader(dracoLoader);
 
   const loadCharacter = () => {
-    return new Promise<GLTF | null>(async (resolve, reject) => {
-      try {
-        let character: THREE.Object3D;
-        loader.load(
-          "/models/character.glb",
-          async (gltf) => {
-            character = gltf.scene;
+    return new Promise<GLTF | null>((resolve, reject) => {
+      loader.load(
+        "/models/character.glb",
+        async (gltf) => {
+          try {
+            const character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                const mesh = child as THREE.Mesh;
+            character.traverse((child) => {
+              if (child instanceof THREE.Mesh) {
                 child.castShadow = true;
                 child.receiveShadow = true;
-                mesh.frustumCulled = true;
+                child.frustumCulled = true;
                 // See-through parts (glasses lens, stubble): draw after the
                 // solid meshes without hiding what's behind them, and nudge
                 // them forward so they don't flicker against the skin
-                const material = mesh.material as THREE.Material;
-                if (material.transparent && material.opacity < 1) {
+                const { material } = child;
+                if (
+                  !Array.isArray(material) &&
+                  material.transparent &&
+                  material.opacity < 1
+                ) {
                   material.depthWrite = false;
                   material.polygonOffset = true;
                   material.polygonOffsetFactor = -1;
                   material.polygonOffsetUnits = -1;
-                  mesh.renderOrder = 1;
-                  mesh.castShadow = false;
+                  child.renderOrder = 1;
+                  child.castShadow = false;
                 }
               }
             });
@@ -44,17 +46,17 @@ const setCharacter = (
             character.getObjectByName("footL")!.position.y = 3.36;
             dracoLoader.dispose();
             resolve(gltf);
-          },
-          undefined,
-          (error) => {
-            console.error("Error loading GLTF model:", error);
+          } catch (error) {
+            console.error("Error preparing GLTF model:", error);
             reject(error);
           }
-        );
-      } catch (err) {
-        reject(err);
-        console.error(err);
-      }
+        },
+        undefined,
+        (error) => {
+          console.error("Error loading GLTF model:", error);
+          reject(error);
+        }
+      );
     });
   };
 
