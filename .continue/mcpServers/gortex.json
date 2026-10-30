@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "gortex": {
+      "args": [
+        "mcp"
+      ],
+      "command": "gortex"
+    }
+  }
+}
