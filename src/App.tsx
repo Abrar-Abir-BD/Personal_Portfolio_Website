@@ -21,6 +21,7 @@ const loadCertificatesPage = () => import("./components/CertificatesPage");
 const ProjectPage = lazy(loadProjectPage);
 const ArtPage = lazy(loadArtPage);
 const CertificatesPage = lazy(loadCertificatesPage);
+const StatusPage = lazy(() => import("./components/StatusPage"));
 
 // Not read from document.title: a page's own copy of index.html (written at
 // build time) starts with that page's title
@@ -99,8 +100,10 @@ const App = () => {
             <ProjectPage slug={route.slug} />
           ) : route.page === "art" ? (
             <ArtPage />
-          ) : (
+          ) : route.page === "certificates" ? (
             <CertificatesPage />
+          ) : (
+            <StatusPage page={route.page} />
           )}
         </Subpage>
       )}

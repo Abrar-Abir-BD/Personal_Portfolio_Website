@@ -7,14 +7,18 @@ export type Route =
   | { page: "main" }
   | { page: "project"; slug: string }
   | { page: "art" }
-  | { page: "certificates" };
+  | { page: "certificates" }
+  | { page: "deploy-check" }
+  | { page: "not-found" };
 
 export const parseRoute = (pathname: string): Route => {
   const project = pathname.match(/^\/projects\/([^/]+)\/?$/)?.[1];
   if (project) return { page: "project", slug: decodeURIComponent(project) };
   if (/^\/art\/?$/.test(pathname)) return { page: "art" };
   if (/^\/certificates\/?$/.test(pathname)) return { page: "certificates" };
-  return { page: "main" };
+  if (/^\/deploy-check\/?$/.test(pathname)) return { page: "deploy-check" };
+  if (/^\/(index\.html)?$/.test(pathname)) return { page: "main" };
+  return { page: "not-found" };
 };
 
 const isMain = (pathname: string) => parseRoute(pathname).page === "main";
