@@ -4,10 +4,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { prefersReducedMotion } from "./utils/reducedMotion";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-export let smoother: ScrollSmoother;
+// Not created for reduced motion: the page scrolls natively
+export let smoother: ScrollSmoother | undefined;
 
 // Where a section's content (below its top padding) lands: just under the
 // floating bar
@@ -44,7 +46,8 @@ export const scrollToSection = (selector: string, smooth = true) => {
   };
   stopSectionJump();
   if (!smoother || !smoother.smooth()) {
-    window.scrollTo({ top: target(), behavior: smooth ? "smooth" : "auto" });
+    const glide = smooth && !prefersReducedMotion();
+    window.scrollTo({ top: target(), behavior: glide ? "smooth" : "auto" });
     return;
   }
   if (!smooth) {
@@ -52,7 +55,7 @@ export const scrollToSection = (selector: string, smooth = true) => {
     return;
   }
   // A number passed to scrollTo is a native scroll position
-  const aim = () => smoother.scrollTo(target() / SCROLL_SPEED, true);
+  const aim = () => smoother!.scrollTo(target() / SCROLL_SPEED, true);
   aim();
   let last = currentScroll();
   let stillFrames = 0;
@@ -108,7 +111,13 @@ const Navbar = () => {
   useEffect(() => {
     if (!menuOpen) return;
     const close = (e: Event) => {
-      if (e instanceof KeyboardEvent && e.key !== "Escape") return;
+      if (e instanceof KeyboardEvent) {
+        if (e.key !== "Escape") return;
+        setMenuOpen(false);
+        // Focus may sit on a link that's about to hide; hand it back
+        document.querySelector<HTMLButtonElement>(".nav-burger")?.focus();
+        return;
+      }
       if (e.target instanceof Element && e.target.closest(".nav-glass")) return;
       setMenuOpen(false);
     };
@@ -121,18 +130,20 @@ const Navbar = () => {
   }, [menuOpen]);
 
   useEffect(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: SCROLL_SPEED,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
-    });
+    if (!prefersReducedMotion()) {
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.7,
+        speed: SCROLL_SPEED,
+        effects: true,
+        autoResize: true,
+        ignoreMobileResize: true,
+      });
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+      smoother.scrollTop(0);
+      smoother.paused(true);
+    }
 
     // Scrolling by hand takes over from a nav jump in progress
     const stopJump = () => stopSectionJump();

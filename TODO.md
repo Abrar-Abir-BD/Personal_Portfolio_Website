@@ -2,61 +2,7 @@
 
 Build locally, push `dist/` to a `deploy` branch, and let cPanel pull it and copy it into `public_html`.
 
-## Project setup (one-time)
 
-- [ ] Create `public/.cpanel.yml`, replacing `CPUSER` with the cPanel username (change the path if the site is on a subdomain or addon domain):
-  ```yaml
-  ---
-  deployment:
-    tasks:
-      - export DEPLOYPATH=/home/CPUSER/public_html/
-      - /bin/rsync -a --exclude=.git --exclude=.cpanel.yml ./ $DEPLOYPATH
-  ```
-- [ ] Create `public/.htaccess` (only needed if subpages use real URL paths, such as `/projects`):
-  ```apache
-  DirectorySlash Off
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  # Prerendered pages (/projects/x -> projects/x/index.html), no trailing-slash redirect
-  RewriteCond %{REQUEST_FILENAME}/index.html -f
-  RewriteRule ^(.+?)/?$ $1/index.html [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-  ```
-- [ ] Create `deploy.sh` in the project root:
-  ```bash
-  #!/usr/bin/env bash
-  set -e
-  npm ci && npm run build
-  cd dist
-  git init -q -b deploy
-  git add -A
-  git commit -qm "deploy $(date +%F_%T)"
-  git push -f https://github.com/Abrar-Abir-BD/Personal_Portfolio_Website.git deploy
-  rm -rf .git
-  ```
-- [ ] `chmod +x deploy.sh`
-- [ ] Commit `public/.cpanel.yml`, `public/.htaccess` and `deploy.sh` to `main`
-- [ ] Run `./deploy.sh` once so the `deploy` branch exists on GitHub
-
-## cPanel setup (one-time)
-
-- [ ] If the repo is private: in cPanel, go to **SSH Access → Generate Key** and authorize the key, then add the public key on GitHub (repo → Settings → Deploy keys) and use the SSH clone URL below
-- [ ] In **Git™ Version Control → Create**, turn on **Clone a Repository**
-  - Clone URL: `https://github.com/Abrar-Abir-BD/Personal_Portfolio_Website.git`
-  - Repository Path: `/home/CPUSER/repositories/portfolio` (outside `public_html`)
-  - Repository Name: `portfolio`
-- [ ] In **Manage → Basic Information**, switch the checked-out branch to `deploy`
-- [ ] In **Manage → Pull or Deploy**, click **Deploy HEAD Commit** and check the Deploy log
-- [ ] Open the live site and check that the page, 3D model and subpages load
-
-## Every deploy
-
-- [ ] Run `./deploy.sh`
-- [ ] In cPanel, go to **Git Version Control → Manage → Pull or Deploy**
-- [ ] Click **Update from Remote**, then **Deploy HEAD Commit**
 
 ## Maintenance
 
@@ -68,13 +14,13 @@ Build locally, push `dist/` to a `deploy` branch, and let cPanel pull it and cop
 
 ## P1: Accessibility
 
-- [ ] **Navbar: Escape doesn't close the mobile menu when focus is inside it** (`src/components/Navbar.tsx`, `close` in the `menuOpen` effect)
+- [x] **Navbar: Escape doesn't close the mobile menu when focus is inside it** (`src/components/Navbar.tsx`, `close` in the `menuOpen` effect)
   - The `.nav-glass` "inside the menu" check runs for key events too, so Escape from a focused menu link is ignored
   - Fix: close on Escape first, and apply the inside check only to `pointerdown`; move focus back to the menu button after closing
-- [ ] **Certificate viewer: no focus handling** (`src/components/CertificatesPage.tsx`, the `role="dialog"` viewer)
+- [x] **Certificate viewer: no focus handling** (`src/components/CertificatesPage.tsx`, the `role="dialog"` viewer)
   - It has `aria-modal` and Escape, but focus doesn't move in, isn't trapped, and isn't restored on close
   - Fix: on open, focus the close button (or the dialog); keep Tab / Shift+Tab inside it; on close, focus the card that opened it. Consider the native `<dialog>` + `showModal()`, which handles the trap and Escape
-- [ ] **Reduced motion is not respected everywhere** (`src/components/utils/initialFX.ts`, `Landing.tsx`, `Navbar.tsx` ScrollSmoother, `Character/Scene.tsx`)
+- [x] **Reduced motion is not respected everywhere** (`src/components/utils/initialFX.ts`, `Landing.tsx`, `Navbar.tsx` ScrollSmoother, `Character/Scene.tsx`)
   - The art page honours it; the intro timeline, rotating roles, smooth scrolling and 3D motion don't
   - Fix: one shared `prefersReducedMotion` check (`matchMedia("(prefers-reduced-motion: reduce)")`); when set, skip the intro timeline, show one static role, don't create ScrollSmoother, and hold the 3D model still
 

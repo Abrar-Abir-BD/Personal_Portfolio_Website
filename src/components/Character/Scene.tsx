@@ -13,6 +13,7 @@ import {
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
 import { killCharTimeline, setCharTimeline } from "../utils/GsapScroll";
+import { prefersReducedMotion } from "../utils/reducedMotion";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
@@ -28,6 +29,9 @@ const Scene = () => {
       // was cleaned up) stayed in it as a second, frozen character
       const scene = new THREE.Scene();
       let disposed = false;
+      // Reduced motion: the character holds the intro's final pose, with no
+      // idle loops or head tracking (scrolling still moves it, as you scroll)
+      const still = prefersReducedMotion();
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -72,6 +76,12 @@ const Scene = () => {
             if (disposed) return;
             light.turnOnLights();
             animations.startIntro();
+            if (still) {
+              const intro = gltf.animations.find(
+                (clip) => clip.name === "introAnimation"
+              );
+              mixer.update(intro?.duration ?? 0);
+            }
           });
           onResize = () => {
             clearTimeout(resizeTimer);
@@ -160,17 +170,18 @@ const Scene = () => {
         if (!visible || isAway()) return;
         checkPerformance(delta);
         if (headBone) {
-          handleHeadRotation(
-            headBone,
-            mouse.x,
-            mouse.y,
-            interpolation.x,
-            interpolation.y,
-            THREE.MathUtils.lerp
-          );
+          if (!still)
+            handleHeadRotation(
+              headBone,
+              mouse.x,
+              mouse.y,
+              interpolation.x,
+              interpolation.y,
+              THREE.MathUtils.lerp
+            );
           light.setPointLight(screenLight);
         }
-        if (mixer) {
+        if (mixer && !still) {
           mixer.update(delta);
         }
         renderer.render(scene, camera);

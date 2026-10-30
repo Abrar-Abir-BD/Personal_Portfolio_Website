@@ -1,10 +1,11 @@
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 import { scrollToSection, smoother } from "../Navbar";
+import { prefersReducedMotion } from "./reducedMotion";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
+  smoother?.paused(false);
   // Arriving from a project page (/#projects): jump back to that section
   if (window.location.hash) {
     const target = window.location.hash;
@@ -15,6 +16,15 @@ export function initialFX() {
     }, 100);
   }
   document.getElementsByTagName("main")[0].classList.add("main-active");
+
+  // Reduced motion: no intro, and the first role stays put (the roles are
+  // stacked, so the rest are hidden rather than rotated in)
+  if (prefersReducedMotion()) {
+    gsap.set(gsap.utils.toArray(".landing-role").slice(1), {
+      visibility: "hidden",
+    });
+    return;
+  }
 
   var landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],

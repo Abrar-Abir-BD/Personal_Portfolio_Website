@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   MdArrowBack,
   MdChevronLeft,
@@ -45,6 +45,7 @@ const CertificatesPage = () => {
   const name = `${landing.firstName} ${landing.lastName}`;
   // Index into `shown` of the certificate open in the viewer, or null
   const [open, setOpen] = useState<number | null>(null);
+  const viewer = useRef<HTMLDivElement>(null);
 
   const show = useCallback((index: number | null) => {
     setOpen(index);
@@ -62,10 +63,35 @@ const CertificatesPage = () => {
     if (index >= 0) setOpen(index);
   }, [name]);
 
-  // Esc closes the viewer, the arrow keys step through the certificates
+  // Opening moves focus into the viewer; closing hands it back to the card
+  // that opened it (stepping between certificates doesn't count)
+  const isOpen = open !== null;
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement as HTMLElement | null;
+    viewer.current?.querySelector<HTMLElement>(".certs-viewer-close")?.focus();
+    return () => opener?.focus();
+  }, [isOpen]);
+
+  // Esc closes the viewer, the arrow keys step through the certificates,
+  // and Tab cycles through its buttons without leaving it
   useEffect(() => {
     if (open === null) return;
     const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Tab" && viewer.current) {
+        const buttons = viewer.current.querySelectorAll("button");
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        const at = document.activeElement;
+        const inside = viewer.current.contains(at);
+        if (e.shiftKey && (at === first || !inside)) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (at === last || !inside)) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
       if (e.key === "Escape") show(null);
       if (e.key === "ArrowRight") show((open + 1) % shown.length);
       if (e.key === "ArrowLeft") show((open - 1 + shown.length) % shown.length);
@@ -130,6 +156,7 @@ const CertificatesPage = () => {
 
       {current && open !== null && (
         <div
+          ref={viewer}
           className="certs-viewer"
           role="dialog"
           aria-modal="true"
