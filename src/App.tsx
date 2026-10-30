@@ -22,7 +22,9 @@ const ProjectPage = lazy(loadProjectPage);
 const ArtPage = lazy(loadArtPage);
 const CertificatesPage = lazy(loadCertificatesPage);
 
-const mainTitle = document.title;
+// Not read from document.title: a page's own copy of index.html (written at
+// build time) starts with that page's title
+const mainTitle = "Abrar Abir - AI & Robotics Researcher";
 
 // A page shown over the portfolio, scrolling on its own
 const Subpage = ({ children }: PropsWithChildren) => {
