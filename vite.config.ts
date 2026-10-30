@@ -86,8 +86,24 @@ const prerender = (): Plugin => ({
       fileName: "sitemap.xml",
       source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
     });
+    // Stamped fresh on every build, so /deploy-check shows whether the live
+    // site is the latest build. Kept out of the sitemap and search results
+    this.emitFile({
+      type: "asset",
+      fileName: "deploy-check/index.html",
+      source: `<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Deploy check</title>
+<body style="font:16px system-ui;padding:2rem">
+<h1>Deploy check</h1>
+<p>Built: <b>${new Date().toISOString()}</b></p>
+</body>
+`,
+    });
   },
 });
+
 
 // https://vitejs.dev/config/
 export default defineConfig({

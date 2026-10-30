@@ -4,12 +4,6 @@ Build locally, push `dist/` to a `deploy` branch, and let cPanel pull it and cop
 
 
 
-## Maintenance
-
-- [ ] Every so often, clear stale hashed files from `public_html/assets/` (rsync runs without `--delete` so it never removes `.well-known/`, `cgi-bin/` or other server files)
-- [ ] Never edit files inside `~/repositories/portfolio` on the server (cPanel won't deploy if that copy has uncommitted changes)
-- [ ] If the host has no Git Version Control: upload the contents of `dist/` through File Manager or FTP instead
-
 # TODO: Code fixes (from thigns.md review)
 
 ## P1: Accessibility
@@ -29,13 +23,14 @@ Build locally, push `dist/` to a `deploy` branch, and let cPanel pull it and cop
 - [ ] **Model resources are not released on unmount** (`src/components/Character/Scene.tsx`)
   - Cleanup disposes the renderer only; traverse the model and dispose each geometry, material and texture
 - [ ] **Model load failures are unhandled** (`loadCharacter().then(...)` has no `.catch`)
-  - Add `.catch` and show a static fallback image instead of an empty canvas
-- [ ] **The render loop runs when nothing is visible**
+  - [x] Add `.catch` (logs the error)
+  - [ ] Show a static fallback image instead of an empty canvas
+- [x] **The render loop runs when nothing is visible** (render is skipped while off-screen or `isAway()`; rAF still ticks, browsers pause it in hidden tabs)
   - Stop `requestAnimationFrame` while the section is off-screen, the tab is hidden, or a subpage is open (`onAwayChange` in `src/router.ts`); restart when it comes back
 
 ## P3: CI
 
-- [ ] **No CI workflow** (`.github/workflows/ci.yml`)
+- [x] **No CI workflow** (`.github/workflows/ci.yml`)
   - On push/PR: `npm ci`, `npx tsc -b`, `npm run lint`, `npm run build`
   - Fix `npm run lint` first: ESLint currently crashes in `@typescript-eslint/no-unused-expressions` (eslint / typescript-eslint version mismatch, update `typescript-eslint`)
-- [ ] **Smoke test** (optional, after CI): one Playwright test that loads `/`, opens a project page, goes back, and checks there are no console errors
+- [x] **Smoke test** (optional, after CI; `e2e/smoke.e2e.ts`, `npm run test:e2e`): one Playwright test that loads `/`, opens a project page, goes back, and checks there are no console errors
