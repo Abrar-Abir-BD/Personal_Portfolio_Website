@@ -1,6 +1,6 @@
-# TODO: Deploy to cPanel shared hosting via Git
+# Deploy to cPanel shared hosting
 
-Build locally, push `dist/` to a `deploy` branch, and let cPanel pull it and copy it into `public_html`.
+Done automatically by GitHub Actions: every push to `main` that passes CI is uploaded over FTP to `public_html`. One-time setup (FTP secrets) is in `DEPLOY.md`.
 
 
 
