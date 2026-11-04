@@ -46,6 +46,14 @@ const Contact = () => {
               LinkedIn <MdArrowOutward />
             </a>
             <a
+              href={contact.youtube}
+              target="_blank"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              YouTube <MdArrowOutward />
+            </a>
+            <a
               href={`mailto:${contact.email}`}
               data-cursor="disable"
               className="contact-social"

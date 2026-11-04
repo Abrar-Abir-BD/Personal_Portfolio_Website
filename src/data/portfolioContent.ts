@@ -11,7 +11,7 @@
 //   certificates.json  Certificates (main-page carousel and the /certificates page)
 //   media.json         Featured in Media
 //   moments.json       Moments from Life
-//   contact.json       email, phone, GitHub, LinkedIn (also used by the side icons)
+//   contact.json       email, phone, GitHub, LinkedIn, YouTube (also used by the side icons)
 // In the list files, add, remove or reorder items freely.
 // Leave `image` as "" to show the glass placeholder, or set it to a file in
 // /public/images (e.g. "/images/my-project.webp").
@@ -57,6 +57,7 @@ export type Contact = {
   phone: string;
   github: string;
   linkedin: string;
+  youtube: string;
   copyrightYear: string;
 };
 

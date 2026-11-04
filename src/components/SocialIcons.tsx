@@ -1,4 +1,4 @@
-import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { FaEnvelope, FaGithub, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { contact } from "../data/portfolioContent";
 import { useEffect } from "react";
@@ -68,6 +68,11 @@ const SocialIcons = () => {
         <span>
           <a href={contact.linkedin} target="_blank" aria-label="LinkedIn">
             <FaLinkedinIn />
+          </a>
+        </span>
+        <span>
+          <a href={contact.youtube} target="_blank" aria-label="YouTube">
+            <FaYoutube />
           </a>
         </span>
         <span>
