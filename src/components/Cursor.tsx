@@ -29,9 +29,19 @@ const Cursor = () => {
       frame =
         Math.abs(dx) + Math.abs(dy) > 0.5 ? requestAnimationFrame(loop) : 0;
     };
+    // Hidden until the mouse first moves; before that it has no real position
+    // and would sit in the corner of the screen
+    let moved = false;
+    cursor.style.opacity = "0";
     const onMouseMove = (e: MouseEvent) => {
       mousePos.x = e.clientX;
       mousePos.y = e.clientY;
+      if (!moved) {
+        moved = true;
+        cursorPos.x = e.clientX;
+        cursorPos.y = e.clientY;
+        cursor.style.opacity = "";
+      }
       if (!frame) frame = requestAnimationFrame(loop);
     };
     document.addEventListener("mousemove", onMouseMove);

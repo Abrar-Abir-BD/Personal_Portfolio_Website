@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import setCharacter from "./utils/character";
+import setCharacter, { disposeModel } from "./utils/character";
 import setLighting from "./utils/lighting";
 import { revealed } from "../../context/LoadingProvider";
 import { isAway } from "../../router";
@@ -33,10 +33,28 @@ const Scene = () => {
       // idle loops or head tracking (scrolling still moves it, as you scroll)
       const still = prefersReducedMotion();
 
-      const renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true,
-      });
+      // No 3D (no WebGL, or the model failed to load): the page carries on
+      // without the character. The "What I do" cards normally wait for its
+      // scroll timeline to show them
+      const showPageWithoutCharacter = () => {
+        const container = canvasDiv.current?.parentElement;
+        if (container) container.style.display = "none";
+        document
+          .querySelector<HTMLElement>(".what-box-in")
+          ?.style.setProperty("display", "flex");
+      };
+
+      let renderer: THREE.WebGLRenderer;
+      try {
+        renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        });
+      } catch (error) {
+        console.error("WebGL is not available:", error);
+        showPageWithoutCharacter();
+        return;
+      }
       renderer.setSize(container.width, container.height);
       // Sharp on Retina, but never more than 2x: on high-DPI Windows laptops
       // (250-300% scaling) full density means 6-9x the pixels every frame
@@ -62,6 +80,8 @@ const Scene = () => {
 
       loadCharacter()
         .then((gltf) => {
+        // Finished loading after this run was cleaned up
+        if (gltf && disposed) disposeModel(gltf.scene);
         if (gltf && !disposed) {
           setCharTimeline(gltf.scene, camera);
           const animations = setAnimations(gltf);
@@ -100,6 +120,7 @@ const Scene = () => {
         .catch((error) => {
           if (!disposed) {
             console.error("Failed to load character:", error);
+            showPageWithoutCharacter();
           }
         });
 
@@ -202,6 +223,8 @@ const Scene = () => {
         observer.disconnect();
         clearTimeout(debounce);
         clearTimeout(resizeTimer);
+        disposeModel(scene);
+        scene.environment?.dispose();
         scene.clear();
         renderer.dispose();
         if (onResize) window.removeEventListener("resize", onResize);

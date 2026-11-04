@@ -23,3 +23,23 @@ test("home → project page → back, no console errors", async ({ page }) => {
 
   expect(errors).toEqual([]);
 });
+
+test("direct links open their own pages, no console errors", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("console", (msg) => {
+    if (msg.type() === "error") errors.push(msg.text());
+  });
+  page.on("pageerror", (error) => errors.push(error.message));
+
+  for (const path of ["/art", "/certificates", "/deploy-check"]) {
+    await page.goto(path);
+    await expect(page.locator("#subpage")).toBeVisible();
+  }
+
+  expect(errors).toEqual([]);
+});
+
+test("an unknown address shows the not-found page", async ({ page }) => {
+  await page.goto("/no-such-page");
+  await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+});

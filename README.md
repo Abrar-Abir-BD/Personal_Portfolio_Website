@@ -21,3 +21,14 @@ Build your own version — don’t just copy.
 
 
 
+
+---
+
+## Deploying
+
+Pushing to `main` updates both copies of the site:
+
+- **abrarabir.com** (cPanel hosting): a scheduled job on the server, `~/bin/deploy-portfolio`, publishes new commits within a few minutes. The script is not in this repo. `public/.htaccess` holds that server's rules.
+- **abrarabir.vercel.app**: Vercel builds every push. `vercel.json` holds its rules.
+
+To confirm a deploy, open `/deploy-check` on either site. It shows when the running copy was built.

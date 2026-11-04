@@ -32,6 +32,23 @@ const pages: Page[] = [
   },
 ];
 
+const deployCheck: Page = {
+  path: "/deploy-check",
+  title: `Deploy check | ${NAME}`,
+  description: "Shows when the running copy of this site was built.",
+};
+const notFound: Page = {
+  path: "/404",
+  title: `Page not found | ${NAME}`,
+  description: "This page could not be found.",
+};
+
+const noindex = (html: string) =>
+  html.replace(
+    /<link rel="canonical"[^>]*>/,
+    '<meta name="robots" content="noindex" />'
+  );
+
 const escape = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
@@ -78,6 +95,18 @@ const prerender = (): Plugin => ({
         source: pageHtml(html, page),
       });
     }
+    // Real files, but not for search engines. Both hosts serve 404.html, with
+    // a 404 status, for any address that has no file
+    this.emitFile({
+      type: "asset",
+      fileName: "deploy-check/index.html",
+      source: noindex(pageHtml(html, deployCheck)),
+    });
+    this.emitFile({
+      type: "asset",
+      fileName: "404.html",
+      source: noindex(pageHtml(html, notFound)),
+    });
     const urls = ["/", ...pages.map((p) => p.path)]
       .map((p) => `  <url><loc>${SITE}${p}</loc></url>`)
       .join("\n");

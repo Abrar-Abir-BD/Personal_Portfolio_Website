@@ -14,7 +14,7 @@ interface LoadingType {
   finishLoading: () => void;
 }
 
-export const LoadingContext = createContext<LoadingType | null>(null);
+const LoadingContext = createContext<LoadingType | null>(null);
 
 // Settles when the page is revealed. The 3D character loads on its own and
 // waits for this before fading in, so its intro is never played unseen

@@ -61,4 +61,22 @@ const setCharacter = (
   return { loadCharacter };
 };
 
+// Frees what a model holds on the GPU; three.js doesn't do this by itself
+export const disposeModel = (root: THREE.Object3D) => {
+  root.traverse((child) => {
+    if (!(child instanceof THREE.Mesh)) return;
+    child.geometry.dispose();
+    if (child instanceof THREE.SkinnedMesh) child.skeleton.dispose();
+    const materials = Array.isArray(child.material)
+      ? child.material
+      : [child.material];
+    materials.forEach((material: THREE.Material) => {
+      Object.values(material).forEach((value) => {
+        if (value instanceof THREE.Texture) value.dispose();
+      });
+      material.dispose();
+    });
+  });
+};
+
 export default setCharacter;

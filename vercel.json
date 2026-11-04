@@ -1,9 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/projects/:slug", "destination": "/index.html" },
-    { "source": "/art", "destination": "/index.html" },
-    { "source": "/certificates", "destination": "/index.html" }
-  ],
   "headers": [
     {
       "source": "/assets/(.*)",

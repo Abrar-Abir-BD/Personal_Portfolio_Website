@@ -264,7 +264,6 @@ export const art: ArtPortfolio = {
     collection: work.collection as Artwork["collection"],
   })),
 };
-export const artworks = art.artworks;
 export const artImage = (name: string, size: "full" | "thumb" = "full") =>
   `/images/art/gallery/${size === "thumb" ? "thumb/" : ""}${name}.webp`;
 // JSON gives `orientation` as plain text; narrow just that field
