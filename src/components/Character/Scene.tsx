@@ -97,6 +97,7 @@ const Scene = () => {
           // the lights come up) waits until the page is showing
           revealed.then(() => {
             if (disposed) return;
+            pageShowing = true;
             light.turnOnLights();
             animations.startIntro();
             if (still) {
@@ -170,21 +171,25 @@ const Scene = () => {
       );
       observer.observe(canvasDiv.current);
 
-      // Slow device check: time the first frames after the character
-      // appears; if the machine can't keep up, render the 3D at standard
-      // resolution and switch the page to its lighter effects (low-power
-      // class, see index.css). Fast machines never trigger this.
-      let checkFrames = 0,
-        checkTime = 0,
+      // Slow device check: time the first frames after the page is revealed;
+      // if the machine can't keep up, render the 3D at standard resolution
+      // and switch the page to its lighter effects (low-power class, see
+      // index.css). Fast machines never trigger this.
+      let pageShowing = false,
+        checkFrames = 0,
         checkDone = false;
+      const frameTimes: number[] = [];
       const checkPerformance = (delta: number) => {
-        if (checkDone || !headBone || document.hidden) return;
+        if (checkDone || !pageShowing || document.hidden) return;
         // skip the first second while the intro and shaders settle
         if ((checkFrames += 1) <= 60) return;
-        checkTime += delta;
-        if (checkFrames < 150) return;
+        frameTimes.push(delta);
+        if (frameTimes.length < 90) return;
         checkDone = true;
-        const msPerFrame = (checkTime / 90) * 1000;
+        // The typical frame, not the average: a few long startup hitches on
+        // an otherwise smooth machine pushed the average over the limit
+        frameTimes.sort((a, b) => a - b);
+        const msPerFrame = frameTimes[45] * 1000;
         if (msPerFrame > 26) {
           renderer.setPixelRatio(1);
           document.documentElement.classList.add("low-power");

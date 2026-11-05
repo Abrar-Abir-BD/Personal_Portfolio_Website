@@ -111,9 +111,10 @@ body {
 }
 
 /* Slow devices (set automatically by the 3D scene's performance check):
-   drop the costliest effects. Frosted-glass blur re-blurs everything
-   behind it on every scroll frame, and the grain and atmosphere layers are
-   full-screen; slightly more solid surfaces take their place. */
+   drop frosted glass, which re-blurs everything behind it on every scroll
+   frame; slightly more solid surfaces take its place. The background (grain,
+   atmosphere and corner glows) stays as designed: it is static, so it costs
+   little, and removing it visibly changes the page a few seconds after load. */
 .low-power *,
 .low-power *::before,
 .low-power *::after {
@@ -129,16 +130,6 @@ body {
 :root.low-power[data-theme="light"] .header ul a,
 :root.low-power[data-theme="light"] .theme-chip {
   background-color: rgba(255, 255, 255, 0.92);
-}
-.low-power body::after {
-  display: none;
-}
-.low-power body::before {
-  filter: none !important;
-}
-.low-power .landing-circle1,
-.low-power .landing-circle2 {
-  filter: none;
 }
 
 /* Text can be selected and copied anywhere, except on controls, where a
