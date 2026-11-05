@@ -1,0 +1,19 @@
+/* /media: every news item in a grid. The page shell (bar, title, summary)
+   comes from ProjectPage.css, the cards from .media-card in Sections.css */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

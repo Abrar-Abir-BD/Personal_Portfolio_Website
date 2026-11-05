@@ -18,9 +18,11 @@ const MainContainer = lazy(() => import("./components/MainContainer"));
 const loadProjectPage = () => import("./components/ProjectPage");
 const loadArtPage = () => import("./components/ArtPage");
 const loadCertificatesPage = () => import("./components/CertificatesPage");
+const loadMediaPage = () => import("./components/MediaPage");
 const ProjectPage = lazy(loadProjectPage);
 const ArtPage = lazy(loadArtPage);
 const CertificatesPage = lazy(loadCertificatesPage);
+const MediaPage = lazy(loadMediaPage);
 const StatusPage = lazy(() => import("./components/StatusPage"));
 
 // Not read from document.title: a page's own copy of index.html (written at
@@ -70,6 +72,7 @@ const App = () => {
       loadProjectPage();
       loadArtPage();
       loadCertificatesPage();
+      loadMediaPage();
     }, 5000);
     return () => clearTimeout(timer);
   }, []);
@@ -102,6 +105,8 @@ const App = () => {
             <ArtPage />
           ) : route.page === "certificates" ? (
             <CertificatesPage />
+          ) : route.page === "media" ? (
+            <MediaPage />
           ) : (
             <StatusPage page={route.page} />
           )}

@@ -16,12 +16,12 @@
     "image": "/images/media/tbs-wro-apac-2025.jpg"
   },
   {
-    "outlet": "The Business Standard",
-    "headline": "3 students win Bangladesh Stockholm Junior Water Prize-2024",
+    "outlet": "Dhaka Mirror",
+    "headline": "Stockholm Junior Water Prize Bangladesh award ceremony held",
     "date": "May 2024",
     "type": "News",
-    "link": "https://www.tbsnews.net/bangladesh/hov-bangladesh-holds-bangladesh-stockholm-junior-water-prize-ceremony-2024-847726",
-    "image": "/images/media/tbs-sjwp-2024.jpg"
+    "link": "https://dhakamirror.com/stockholm-junior-water-prize-bangladesh-award-ceremony-held/",
+    "image": "/images/media/dhaka-mirror-sjwp-2024.jpg"
   },
   {
     "outlet": "The Daily Ittefaq",
@@ -33,11 +33,11 @@
   },
   {
     "outlet": "Banglanews24",
-    "headline": "Featured on Banglanews24",
+    "headline": "Abrar Abir Has Invented a Method to Detect Artificial Colors in Fruits",
     "date": "",
     "type": "News",
     "link": "https://www.banglanews24.com/national/news/bd/581485.details",
-    "image": ""
+    "image": "/images/media/banglanews24-fruit-colors.jpg"
   },
   {
     "outlet": "NewsG24",
@@ -45,7 +45,7 @@
     "date": "July 2023",
     "type": "Feature",
     "link": "https://www.newsg24.com/education-news/8146/",
-    "image": ""
+    "image": "/images/media/dcbd-story-of-the-journey.jpg"
   },
   {
     "outlet": "Hello (bdnews24.com)",

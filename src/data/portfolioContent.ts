@@ -9,7 +9,7 @@
 //   skills.json        Skills & Expertise
 //   art.json           Art Portfolio
 //   certificates.json  Certificates (main-page carousel and the /certificates page)
-//   media.json         Featured in Media
+//   media.json         Featured in Media (main-page row and the /media page)
 //   moments.json       Moments from Life
 //   contact.json       email, phone, GitHub, LinkedIn, YouTube (also used by the side icons)
 // In the list files, add, remove or reorder items freely.

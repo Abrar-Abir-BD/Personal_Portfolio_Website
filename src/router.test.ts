@@ -7,6 +7,7 @@ test("parseRoute", () => {
   expect(parseRoute("/index.html")).toEqual({ page: "main" });
   expect(parseRoute("/projects/a%20b/")).toEqual({ page: "project", slug: "a b" });
   expect(parseRoute("/certificates")).toEqual({ page: "certificates" });
+  expect(parseRoute("/media")).toEqual({ page: "media" });
   expect(parseRoute("/deploy-check/")).toEqual({ page: "deploy-check" });
   expect(parseRoute("/nope")).toEqual({ page: "not-found" });
   expect(parseRoute("/art/extra")).toEqual({ page: "not-found" });

@@ -8,6 +8,7 @@ export type Route =
   | { page: "project"; slug: string }
   | { page: "art" }
   | { page: "certificates" }
+  | { page: "media" }
   | { page: "deploy-check" }
   | { page: "not-found" };
 
@@ -16,6 +17,7 @@ export const parseRoute = (pathname: string): Route => {
   if (project) return { page: "project", slug: decodeURIComponent(project) };
   if (/^\/art\/?$/.test(pathname)) return { page: "art" };
   if (/^\/certificates\/?$/.test(pathname)) return { page: "certificates" };
+  if (/^\/media\/?$/.test(pathname)) return { page: "media" };
   if (/^\/deploy-check\/?$/.test(pathname)) return { page: "deploy-check" };
   if (/^\/(index\.html)?$/.test(pathname)) return { page: "main" };
   return { page: "not-found" };

@@ -30,6 +30,11 @@ const pages: Page[] = [
     title: `Certificates | ${NAME}`,
     description: `Awards, certificates and recognitions earned by ${NAME} in AI, robotics, research and art.`,
   },
+  {
+    path: "/media",
+    title: `Featured in Media | ${NAME}`,
+    description: `News, press releases and features about ${NAME}.`,
+  },
 ];
 
 const deployCheck: Page = {

@@ -1,20 +1,16 @@
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { GlassCard, GlassSection } from "./Glass";
+import {
+  MdArrowForward,
+  MdChevronLeft,
+  MdChevronRight,
+} from "react-icons/md";
+import { GlassSection } from "./Glass";
+import MediaCard from "./MediaCard";
 import { media } from "../data/portfolioContent";
 import { useSlider } from "./utils/useSlider";
 import "./styles/Sections.css";
 
-// "https://www.tbsnews.net/..." -> "tbsnews.net", shown under each title
-const domainOf = (url: string) => {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return "";
-  }
-};
-
 // Featured items in one row that slides left and right, like LinkedIn's
-// Featured section: preview image on top, then type, title and source
+// Featured section; they are also listed together on their own page (/media)
 const Media = () => {
   const { track, atStart, atEnd, update, slide } = useSlider(".media-card");
 
@@ -54,36 +50,15 @@ const Media = () => {
           <MdChevronRight />
         </button>
         <div className="media-track" ref={track} onScroll={update}>
-          {media.map((item, index) => (
-            <GlassCard className="media-card" as="article" key={index}>
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="disable"
-              >
-                <div className="media-thumb">
-                  {item.image ? (
-                    <img src={item.image} alt="" loading="lazy" />
-                  ) : (
-                    <span>{item.outlet}</span>
-                  )}
-                </div>
-                <div className="media-body">
-                  <p className="media-type">
-                    {item.type}
-                    {item.date && <span> · {item.date}</span>}
-                  </p>
-                  <h3>{item.headline}</h3>
-                  <p className="media-source">
-                    {item.outlet}
-                    <span>{domainOf(item.link)}</span>
-                  </p>
-                </div>
-              </a>
-            </GlassCard>
+          {media.map((item) => (
+            <MediaCard item={item} key={item.link} />
           ))}
         </div>
+      </div>
+      <div className="projects-more">
+        <a href="/media" className="glass-button" data-cursor="disable">
+          View all news <MdArrowForward />
+        </a>
       </div>
     </GlassSection>
   );

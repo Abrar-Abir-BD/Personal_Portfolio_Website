@@ -31,7 +31,7 @@ test("direct links open their own pages, no console errors", async ({ page }) =>
   });
   page.on("pageerror", (error) => errors.push(error.message));
 
-  for (const path of ["/art", "/certificates", "/deploy-check"]) {
+  for (const path of ["/art", "/certificates", "/media", "/deploy-check"]) {
     await page.goto(path);
     await expect(page.locator("#subpage")).toBeVisible();
   }
