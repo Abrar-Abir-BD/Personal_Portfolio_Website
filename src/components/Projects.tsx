@@ -87,7 +87,7 @@ const Projects = () => {
                     {link.name} <MdArrowOutward />
                   </a>
                 ))}
-                {project.code ? (
+                {project.code === "none" ? null : project.code ? (
                   <a
                     href={project.code}
                     target="_blank"

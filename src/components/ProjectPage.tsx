@@ -141,6 +141,8 @@ const ProjectPage = ({ slug }: { slug: string }) => {
   const related = (project?.related ?? [])
     .map((s) => projects.find((p) => p.slug === s))
     .filter((p): p is (typeof projects)[number] => Boolean(p));
+  // "none" in projects.json means the project has no code to show
+  const hasCode = Boolean(project?.code) && project?.code !== "none";
   const hasDetails =
     (project?.description.length ?? 0) > 0 ||
     (project?.sections?.length ?? 0) > 0;
@@ -386,7 +388,7 @@ const ProjectPage = ({ slug }: { slug: string }) => {
             </GlassCard>
           )}
 
-          {(project.links.length > 0 || project.code) && (
+          {(project.links.length > 0 || hasCode) && (
             <div className="project-page-links">
               {project.links.map((link, i) => (
                 <a
@@ -400,7 +402,7 @@ const ProjectPage = ({ slug }: { slug: string }) => {
                   {link.name} <MdArrowOutward />
                 </a>
               ))}
-              {project.code && (
+              {hasCode && (
                 <a
                   href={project.code}
                   className="glass-button"

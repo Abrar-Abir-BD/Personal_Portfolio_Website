@@ -28,7 +28,8 @@ const MediaPage = () => {
       <main className="project-page-main">
         <h1>Featured in Media</h1>
         <p className="project-page-summary">
-          News, press releases and features. Select one to read the article.
+          News, interviews, podcasts and features. Select one to read or
+          watch it.
         </p>
         <div className="media-grid">
           {media.map((item) => (

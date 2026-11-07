@@ -54,5 +54,37 @@
     "type": "Feature",
     "link": "https://hello.bdnews24.com/news/article21032.bdnews",
     "image": "/images/media/hello-bdnews24-abir.jpg"
+  },
+  {
+    "outlet": "The White Hole",
+    "headline": "Innovator's Talks, Episode 01: featuring Abrar Abir, IRO Silver & Bronze Medalist",
+    "date": "April 2025",
+    "type": "Podcast",
+    "link": "https://www.youtube.com/watch?v=Rgggrc54iZw",
+    "image": "/images/media/innovators-talks-podcast.webp"
+  },
+  {
+    "outlet": "Premia Education",
+    "headline": "Growing up outside the big city, how Abir won Silver at the International Robot Olympiad",
+    "date": "",
+    "type": "Interview",
+    "link": "https://www.facebook.com/reel/610737102108193",
+    "image": "/images/media/premia-iro-silver.webp"
+  },
+  {
+    "outlet": "Premia Education",
+    "headline": "Want to start in robotics? Abrar Abir says it begins with interest and curiosity",
+    "date": "",
+    "type": "Interview",
+    "link": "https://www.facebook.com/reel/761659600022279",
+    "image": "/images/media/premia-start-robotics.webp"
+  },
+  {
+    "outlet": "Premia Education",
+    "headline": "Do top-tier ECAs like robotics and research papers really cost a lot of money?",
+    "date": "",
+    "type": "Interview",
+    "link": "https://www.facebook.com/reel/1090709969834677",
+    "image": "/images/media/premia-eca-cost.webp"
   }
 ]

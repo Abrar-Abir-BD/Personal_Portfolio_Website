@@ -141,7 +141,8 @@ export type Project = {
   tags: string[];
   // Extra links shown under the card, e.g. { "name": "Project Video", "url": "..." }
   links: ProjectLink[];
-  // Source code URL; "" shows the Code button greyed out ("coming soon")
+  // Source code URL; "" shows the Code button greyed out ("coming soon"),
+  // and "none" hides it for a project with no code
   code: string;
   // The rest is only on the project's page; leave out what a project lacks.
   // Key numbers, e.g. { "value": "~90%", "label": "Detection accuracy" }

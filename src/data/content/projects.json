@@ -20,7 +20,7 @@
       "Pneumatics"
     ],
     "links": [],
-    "code": "",
+    "code": "https://github.com/SAPH-Ai/Flexi-Grow-AI-Enabled-Soft-Robot-for-Exploration",
     "highlights": [
       {
         "value": "$326",
@@ -187,9 +187,9 @@
     "featured": false,
     "summary": "A versatile robotic system featuring an extreme dynamic symmetry-based mechanical design for flexible, omnidirectional movement and multifunctional applications.",
     "description": [
-      "The robot features an extreme dynamic symmetry-based mechanical design for omnidirectional movement. Its symmetrical structure enables versatile locomotion in multiple directions.",
-      "The mechanism allows the robot to adapt its movement to different terrain conditions and navigation challenges. Its design supports multifunctional applications through flexible and efficient mobility.",
-      "The robot demonstrates the potential of symmetrical mechanisms in developing versatile robotic systems."
+      "When a building collapses or a factory catches fire, the ground a rescue robot has to cross is anything but predictable. Most robots have a front and a back: to change direction they have to stop, turn and line up again, and if they flip over, they're stuck. This robot is built so that doesn't matter.",
+      "Its mechanical design is symmetrical in every direction. With holonomic drive, it can move forwards, sideways or diagonally without turning first, and it handles the same way whichever side faces the hazard. That lets it slip through debris, reverse out of dead ends and react instantly. Meanwhile it detects dangers and collects real-time data from places too unsafe for people.",
+      "I originated the core idea and mentored the SAPH.Ai team that built it, guiding them with Emtenan Kabir. Talukdar Ahanaf Nafi, Ahmad Al Abid, Talukder Mahir Aronno and Talukder Tanzim Sayad, supervised by their teacher Biddut Kumar Mondol Sir, entered it as \"Symmetrical Holonomic Locomotion for Isotropic Hazard Traversal\". Representing Bagerhat at the 47th National Science and Technology Week, they won championship titles at the Upazila, District and Division levels, and took 3rd Place in Project Presentation at the BAFSD Science Fair."
     ],
     "image": "/images/projects/new.webp",
     "tags": [
@@ -198,7 +198,61 @@
       "Exploration"
     ],
     "links": [],
-    "code": ""
+    "code": "",
+    "highlights": [
+      {
+        "value": "3 titles",
+        "label": "Upazila, District and Division champion"
+      },
+      {
+        "value": "3rd Place",
+        "label": "Project Presentation, BAFSD Science Fair"
+      },
+      {
+        "value": "Any direction",
+        "label": "Moves sideways and diagonally, no turning"
+      },
+      {
+        "value": "Mentored",
+        "label": "Core idea and guidance from me"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Why symmetry",
+        "bullets": [
+          "Holonomic: it can move in any direction from a standstill, so it never needs room to turn.",
+          "Isotropic: it behaves the same whichever way it faces, so there's no weak side to get trapped on.",
+          "Adaptive: its mechanism adjusts its movement to the terrain in front of it.",
+          "Multi-purpose: the same mobile base can carry sensors, a camera or tools for different missions."
+        ]
+      },
+      {
+        "heading": "In a disaster",
+        "paragraphs": [
+          "The robot goes in first. It crosses debris, detects hazards, and sends live data back, so rescuers know what they're walking into before anyone enters. The team's aim is to show that robots built locally, at low cost, can make emergency rescue in Bangladesh faster and safer."
+        ]
+      },
+      {
+        "heading": "The team",
+        "bullets": [
+          "Talukdar Ahanaf Nafi",
+          "Ahmad Al Abid",
+          "Talukder Mahir Aronno",
+          "Talukder Tanzim Sayad",
+          "Supervised by Biddut Kumar Mondol Sir",
+          "Mentored by Abrar Abir (idea lead) with Emtenan Kabir"
+        ]
+      }
+    ],
+    "awards": [
+      "47th National Science and Technology Week"
+    ],
+    "related": [
+      "flexi-grow",
+      "nasa-herc-rover",
+      "ai-drainage-sewage-maintenance-system"
+    ]
   },
   {
     "slug": "nasa-herc-rover",
@@ -208,7 +262,11 @@
     "year": "",
     "featured": false,
     "summary": "A six-wheeled, remote-operated lunar rover I designed and piloted for NASA's Human Exploration Rover Challenge, finishing in the Top 10 of 75 global teams. Inspired by UIU's award-winning Mars rovers, it combines rocker-style suspension, spring-damped wheels and corner steering to cross boulders, ruts and crevasses on a simulated planetary course.",
-    "description": [],
+    "description": [
+      "NASA's Human Exploration Rover Challenge (HERC) asks students to design, build and drive a vehicle for the Moon, the kind of rover Artemis astronauts will need to explore the lunar surface. The 31st challenge was held on April 11–12, 2025, at the U.S. Space & Rocket Center in Huntsville, Alabama, next to NASA's Marshall Space Flight Center. About 500 students in 75 teams took part.",
+      "I designed, presented and piloted our team's rover as part of Dreams of Bangladesh, from Mohammadpur, Dhaka. 2025 was the first year HERC opened a remote-control division, so instead of being pedalled by a crew, our six-wheeled rover was driven remotely through a course of simulated lunar terrain: boulders, ruts and crevasses that punish any rover that can't keep its wheels on the ground. We finished in the Top 10 of 75 teams from around the world.",
+      "The design borrowed from the rovers I'd studied at the UIU Center for AI & Robotics. That lab is home to Asia's top-ranked University Rover Challenge team, which placed first in Asia for the fourth year running and sixth in the world at URC 2025."
+    ],
     "image": "/images/projects/nasa-herc-rover.webp",
     "tags": [
       "Space Robotics",
@@ -217,7 +275,65 @@
       "NASA HERC"
     ],
     "links": [],
-    "code": ""
+    "code": "",
+    "highlights": [
+      {
+        "value": "Top 10",
+        "label": "Out of 75 teams worldwide"
+      },
+      {
+        "value": "6 wheels",
+        "label": "Rocker-style suspension and corner steering"
+      },
+      {
+        "value": "~500",
+        "label": "Students competing at HERC 2025"
+      },
+      {
+        "value": "Apr 2025",
+        "label": "Huntsville, Alabama, USA"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "The challenge",
+        "paragraphs": [
+          "HERC is built around NASA's Artemis program. Teams submit design reviews through the year, then bring their rover to a timed obstacle course modelled on the lunar surface. Points come from the design reviews, from building a rover that meets every requirement, and from getting through the course, with penalties for each obstacle a rover fails to clear cleanly."
+        ]
+      },
+      {
+        "heading": "The rover",
+        "bullets": [
+          "Six wheels, so the load spreads out and the rover always has wheels in contact with uneven ground.",
+          "Rocker-style suspension that lets each side rise and fall over boulders while keeping the body level.",
+          "Spring-damped wheels that soak up impacts from ruts and drops instead of passing them to the frame.",
+          "Corner steering on the outer wheels for tight turns between obstacles.",
+          "Remote operation, with the driver piloting from outside the course."
+        ]
+      },
+      {
+        "heading": "What I did",
+        "bullets": [
+          "Designed the rover's mechanical system, from suspension geometry to steering.",
+          "Presented the design to NASA's judges.",
+          "Piloted the rover through the course on competition day."
+        ]
+      },
+      {
+        "heading": "Where it connects",
+        "paragraphs": [
+          "Rough-terrain mobility runs through most of my robots: the tracked drainage rover, the six-wheel-drive pipeline robot, and Flexi-Grow, which grows through spaces no wheel can reach."
+        ]
+      }
+    ],
+    "awards": [
+      "NASA Human Exploration Rover Challenge"
+    ],
+    "related": [
+      "six-wheeler-pipeline-inspection-robot",
+      "flexi-grow",
+      "dynamic-symmetry-robot"
+    ]
   },
   {
     "slug": "water-contamination-detection-system",
@@ -245,7 +361,7 @@
         "url": "https://ieeexplore.ieee.org/document/11715493"
       }
     ],
-    "code": "",
+    "code": "https://github.com/SAPH-Ai/Low-cost-ML-Based-Water-Contamination-Detection",
     "highlights": [
       {
         "value": "94.8%",
@@ -379,7 +495,11 @@
     "year": "",
     "featured": false,
     "summary": "This custom AUV submerges to navigate and explore various underwater environments. It inspects water quality in real-time using sensors while detecting contaminants via computer vision. All gathered environmental and visual data is then transmitted back to the surface for analysis.",
-    "description": [],
+    "description": [
+      "Most water testing happens at the shore: someone scoops a sample from the surface and takes it to a lab. But pollution doesn't stay at the surface. It settles, drifts and collects where nobody looks. This custom autonomous underwater vehicle (AUV) goes below to find it.",
+      "The robot submerges and navigates on its own through rivers, lakes and other underwater environments. As it moves, onboard sensors check water quality in real time, and a camera with computer vision looks for visible contaminants. Everything it gathers, both the sensor readings and the images, is sent back to the surface for analysis.",
+      "It takes the idea behind my water contamination detector further. Instead of bringing water to the device, the device goes into the water."
+    ],
     "image": "/images/projects/auto.webp",
     "tags": [
       "Robotics",
@@ -388,7 +508,55 @@
       "Computer Vision"
     ],
     "links": [],
-    "code": ""
+    "code": "",
+    "highlights": [
+      {
+        "value": "Autonomous",
+        "label": "Dives and navigates on its own"
+      },
+      {
+        "value": "Real-time",
+        "label": "Water quality read as it moves"
+      },
+      {
+        "value": "Vision AI",
+        "label": "Spots contaminants on camera"
+      },
+      {
+        "value": "Surface link",
+        "label": "Sends data back for analysis"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Why go underwater",
+        "bullets": [
+          "Surface samples miss pollution that sinks or collects in deeper water.",
+          "One sample gives a single snapshot. A moving robot maps how quality changes from place to place.",
+          "Divers are expensive, and polluted water can be dangerous to enter."
+        ]
+      },
+      {
+        "heading": "What it does",
+        "bullets": [
+          "Submerges and navigates through the water by itself.",
+          "Reads water quality with onboard sensors in real time.",
+          "Detects contaminants with a camera and a computer vision model.",
+          "Transmits its sensor data and images to the surface."
+        ]
+      },
+      {
+        "heading": "Where it connects",
+        "paragraphs": [
+          "Clean water is the thread through SAPH.Ai's work. The handheld detector tests a sample in seconds and has been used to test and treat water in 20 coastal villages. The drainage robots keep sewage from overflowing into rivers. This AUV checks the water bodies themselves."
+        ]
+      }
+    ],
+    "related": [
+      "water-contamination-detection-system",
+      "ai-drainage-sewage-maintenance-system",
+      "six-wheeler-pipeline-inspection-robot"
+    ]
   },
   {
     "slug": "ai-drainage-sewage-maintenance-system",
@@ -411,7 +579,7 @@
       "Computer Vision"
     ],
     "links": [],
-    "code": "",
+    "code": "https://github.com/SAPH-Ai/AI-Assisted_Drainage_Sewage_Maintenance",
     "highlights": [
       {
         "value": "~80%",
@@ -619,10 +787,6 @@
       {
         "name": "Try the app",
         "url": "https://monando.vercel.app/"
-      },
-      {
-        "name": "e-ICON official results",
-        "url": "https://e-icon.or.kr/en/2026%eb%85%84-%ec%a0%9c16%ed%9a%8c-%ea%b3%a0%eb%93%b1%eb%b6%80-3%eb%93%b1-%ed%95%9c%ea%b5%ad%ea%b5%90%ec%9c%a1%ed%95%99%ec%88%a0%ec%a0%95%eb%b3%b4%ec%9b%90%ec%9e%a5%ec%83%81/"
       }
     ],
     "code": "https://github.com/suaKim0/MonAndo-App-main-final",
@@ -782,7 +946,7 @@
       "Safety"
     ],
     "links": [],
-    "code": "",
+    "code": "https://github.com/SAPH-Ai/6-Wheeler-Robot-for-Pipeline-Inspection",
     "highlights": [
       {
         "value": "6WD",
@@ -902,7 +1066,8 @@
     "related": [
       "ai-drainage-sewage-maintenance-system",
       "flexi-grow",
-      "autonomous-underwater-robot"
+      "autonomous-underwater-robot",
+      "nasa-herc-rover"
     ]
   },
   {
@@ -925,7 +1090,7 @@
       "Urban Farming"
     ],
     "links": [],
-    "code": "",
+    "code": "none",
     "videos": [
       "https://www.youtube.com/watch?v=H5mQ0zMN1lw"
     ],
