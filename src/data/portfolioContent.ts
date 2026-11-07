@@ -111,6 +111,22 @@ export type ProjectLink = {
   url: string;
 };
 
+// A photo or figure on a project's own page, opened full size when selected
+export type ProjectImage = {
+  src: string;
+  caption: string;
+};
+
+// One titled part of a project's page ("How it works", "Results", ...)
+export type ProjectSection = {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  images?: ProjectImage[];
+  // Lays the images out as a row of phone screens instead of a photo grid
+  phone?: boolean;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -119,7 +135,7 @@ export type Project = {
   year: string;
   featured: boolean;
   summary: string;
-  // Longer write-up, one paragraph per item (not shown on the card yet)
+  // Longer write-up, one paragraph per item, shown on the project's page
   description: string[];
   image: string;
   tags: string[];
@@ -127,6 +143,17 @@ export type Project = {
   links: ProjectLink[];
   // Source code URL; "" shows the Code button greyed out ("coming soon")
   code: string;
+  // The rest is only on the project's page; leave out what a project lacks.
+  // Key numbers, e.g. { "value": "~90%", "label": "Detection accuracy" }
+  highlights?: { value: string; label: string }[];
+  // YouTube links (watch, youtu.be or shorts), embedded on the page
+  videos?: string[];
+  sections?: ProjectSection[];
+  // Awards this project won, by their "event" in awards.json; each shows as a
+  // card with the award's photo and its first link
+  awards?: string[];
+  // Other projects to suggest at the end, by slug
+  related?: string[];
 };
 
 export type Publication = {

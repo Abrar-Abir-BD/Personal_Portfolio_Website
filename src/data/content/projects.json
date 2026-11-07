@@ -7,7 +7,11 @@
     "year": "",
     "featured": false,
     "summary": "A pneumatically driven soft-growing robotic platform designed to navigate fragile or narrow environments where traditional rigid robots fail. It utilizes AI-based object detection and real-time FPV video for disaster response and exploration.",
-    "description": [],
+    "description": [
+      "Flexi-Grow is a soft robot that grows instead of walking or rolling. Its body is a sealed fabric tube that turns itself inside out under air pressure, so the tip pushes forward like a vine while the rest of the body stays still. Nothing slides against the walls around it, so it can work its way through rubble, pipes and narrow voids without pushing on anything fragile.",
+      "Team SAPH.Ai built it for the World Robot Olympiad 2025 Future Innovators (Senior) category, under the theme \"The Future of Robots\". It first won the national round of the WRO Bangladesh Open Championship. That earned Bangladesh a place at the WRO Open Championship for Asia & Pacific in Manila, where it won the Best Startup Award among 70,000+ competitors from 95 nations. It is Bangladesh's highest honour in that category to date.",
+      "An ESP32 controller drives the compressor and valves, and a separate ESP-01 module at the tip carries an FPV camera and a small gripper. Live video goes back to the operator, and AI object detection is designed to flag survivors, blockages or objects in the robot's path."
+    ],
     "image": "/images/projects/flexi_grow.webp",
     "tags": [
       "Soft Robotics",
@@ -16,7 +20,163 @@
       "Pneumatics"
     ],
     "links": [],
-    "code": ""
+    "code": "",
+    "highlights": [
+      {
+        "value": "$326",
+        "label": "Cost to build the prototype"
+      },
+      {
+        "value": "$120–150",
+        "label": "Planned cost per unit at scale"
+      },
+      {
+        "value": "9",
+        "label": "Relay-controlled air valves"
+      },
+      {
+        "value": "Live FPV",
+        "label": "Video from the robot's tip"
+      }
+    ],
+    "videos": [
+      "https://www.youtube.com/watch?v=Avmt_8sJTR8"
+    ],
+    "sections": [
+      {
+        "heading": "The problem",
+        "paragraphs": [
+          "Many of the places that most need inspecting are too narrow, unstable or dangerous for people, and too tight or twisting for rigid robots."
+        ],
+        "bullets": [
+          "Collapsed buildings: rescuers have to find survivors quickly without setting off a second collapse.",
+          "Oil and gas pipelines: they run deep underground or in confined spaces under high pressure.",
+          "Drains and sewers: they are narrow, dark and full of harmful gases.",
+          "Tombs, caves and burrows: archaeologists and geologists need to see inside without disturbing anything.",
+          "Hazardous sites: collecting data in contaminated or explosive areas puts people at risk."
+        ]
+      },
+      {
+        "heading": "Where it comes from",
+        "paragraphs": [
+          "SAPH.Ai's earlier drainage robots showed the limits of wheels. The drainage rover handled open drains, and the 6-Wheeler handled straight pipes, but neither could get around a sharp bend or into a gap smaller than its own body. Flexi-Grow takes a different approach: instead of driving through a space, it grows into it.",
+          "The same idea runs through my research at the UIU Center for AI & Robotics. There I've engineered 25+ pneumatic extension mechanisms that reach into collapsed and underground spaces. They have been used by the Fire Department in 30+ rescues and to map 25 km of sewage lines."
+        ]
+      },
+      {
+        "heading": "How it grows and steers",
+        "paragraphs": [
+          "Compressed air fills a pressurised chamber. The internal pressure (P') is higher than the air outside (P₀), so the folded fabric body turns inside out and the tip moves forward. A motor-driven spool inside the chamber pays the body out as it grows and winds it back in to retract it.",
+          "To steer, pneumatic artificial muscles run along the body. When one is pressurised it gets shorter (from L₁ to L₂), which pulls that side in and bends the body towards it. A pressure-trapping valve system holds the air in place, which stops the body buckling and saves power, because the compressor doesn't have to run all the time."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/flexi-grow/growth-mechanism.webp",
+            "caption": "Growth: internal pressure turns the body inside out at the tip"
+          },
+          {
+            "src": "/images/projects/flexi-grow/steering-muscles.webp",
+            "caption": "Steering: shortening one artificial muscle bends the body"
+          }
+        ]
+      },
+      {
+        "heading": "System design",
+        "paragraphs": [
+          "The robot is made of three units. In the main control unit, a laptop sends commands to an ESP32, which switches the relays. The pneumatic unit is a compressor and solenoid valves feeding the chamber. The exploring unit is the soft body, its artificial muscles and the tip module.",
+          "At the tip, an ESP-01 runs the FPV camera and a servo-driven gripper. It talks to the main controller wirelessly, so the operator can watch the live feed and adjust growth, direction and the gripper as the robot moves."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/flexi-grow/system-diagram.webp",
+            "caption": "System diagram: control, pneumatic and exploring units"
+          },
+          {
+            "src": "/images/projects/flexi-grow/full-setup.webp",
+            "caption": "The working prototype: compressor, valve box, growth chamber and control laptop"
+          },
+          {
+            "src": "/images/projects/flexi-grow/pcb-render.webp",
+            "caption": "Controller PCB (3D render): ESP32, relay bank and DC-DC converter"
+          },
+          {
+            "src": "/images/projects/flexi-grow/pcb-layout.webp",
+            "caption": "Controller PCB routing"
+          }
+        ]
+      },
+      {
+        "heading": "Control software",
+        "paragraphs": [
+          "The team wrote its own desktop app in Python with Tkinter, OpenCV and UDP networking, so the robot could be run during tests and demos without touching the code."
+        ],
+        "bullets": [
+          "Finds the ESP32 on the network by itself and keeps settings and status in sync.",
+          "Switches nine valve relays (R0–R8) directly, plus grow, release, hold and steering pads.",
+          "Controls the motor's speed (0–255), forward, reverse, brake and coast.",
+          "Moves the two tip servos by exact angle, by direction or together.",
+          "Shows live video from a USB or IP camera, with a command console and log for debugging."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/flexi-grow/control-gui.webp",
+            "caption": "The Flexi-Grow control app with the live camera feed"
+          }
+        ]
+      },
+      {
+        "heading": "What sets it apart",
+        "paragraphs": [
+          "Growing robots have been shown in research labs such as Stanford's, but they usually carry no onboard intelligence and no tools at the tip. Flexi-Grow puts soft growth, AI vision, wireless control and a working tip on one low-cost platform."
+        ],
+        "bullets": [
+          "Uses less power: trapped and reused air instead of a constant air supply.",
+          "No buckling: a pressure-trapping mechanism replaces extra stabilising parts.",
+          "Affordable, locally available materials instead of costly imported ones.",
+          "Tips attach with a simple string-pulling mechanism.",
+          "Modular hardware with easy-to-use control software."
+        ]
+      },
+      {
+        "heading": "Testing",
+        "paragraphs": [
+          "The robot was tested in a mock underground drain built from thin PVC pipes with sharp bends. It grew its way through the narrow sections while the tip camera sent back live video. That showed it could inspect a drain without digging up the ground or sending anyone inside."
+        ]
+      },
+      {
+        "heading": "Challenges",
+        "bullets": [
+          "Making a soft body that holds pressure without leaking: even a small leak stops it growing.",
+          "Building air-powered muscles that bend the body quickly and accurately without restricting it.",
+          "Choosing a body material soft enough for tight spaces yet strong enough to inflate many times over."
+        ]
+      },
+      {
+        "heading": "What's next",
+        "bullets": [
+          "Fully AI-guided operation, finding a route and targets with no operator.",
+          "Space exploration: lava tubes and tunnels on Mars that rovers can't reach.",
+          "A miniaturised version for medical procedures such as endoscopy."
+        ]
+      },
+      {
+        "heading": "Team SAPH.Ai",
+        "bullets": [
+          "Abrar Abir: Team Leader and Mechanical Lead",
+          "Emtenan Kabir: Programming and Research Lead",
+          "Arkoprotik Achariya: Control System Lead"
+        ]
+      }
+    ],
+    "awards": [
+      "World Robot Olympiad OC",
+      "World Robot Olympiad Bangladesh Open Championship"
+    ],
+    "related": [
+      "ai-drainage-sewage-maintenance-system",
+      "six-wheeler-pipeline-inspection-robot",
+      "nasa-herc-rover"
+    ]
   },
   {
     "slug": "dynamic-symmetry-robot",
@@ -67,7 +227,11 @@
     "year": "",
     "featured": false,
     "summary": "An ultra-low-cost, handheld device that uses a macro camera and edge AI to inspect water samples. It provides real-time detection of microplastics, microfibers, and iron particles with ~90% accuracy.",
-    "description": [],
+    "description": [
+      "In Bangladesh, about 98% of people have access to water, but only about 59% have clean, safe water. Lab tests are slow and expensive, and they can't easily spot micro-pollutants such as microplastics. This project is a handheld device that finds them in seconds, on site, for a fraction of the cost.",
+      "A digital microscope camera takes a picture of a drop of the water sample. A MobileNetV2-SSD object detection model, running on a Raspberry Pi, then finds and labels microplastics, microfibers and iron particles in it. Sensors on the same device read pH, total dissolved solids (TDS) and turbidity.",
+      "The work was published at the 13th International Conference on ICT for Smart Society (ICISS 2026) on IEEE Xplore: \"Low-Cost and Real-Time Water Contamination Detection in Bangladesh: A Sensor and Machine Learning Approach\"."
+    ],
     "image": "/images/projects/water_detect.webp",
     "tags": [
       "Water",
@@ -75,8 +239,137 @@
       "AI",
       "Sanitation"
     ],
-    "links": [],
-    "code": ""
+    "links": [
+      {
+        "name": "Read the paper on IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11715493"
+      }
+    ],
+    "code": "",
+    "highlights": [
+      {
+        "value": "94.8%",
+        "label": "F1-score across all classes"
+      },
+      {
+        "value": "0.88",
+        "label": "mAP@0.5"
+      },
+      {
+        "value": "98.3%",
+        "label": "Precision"
+      },
+      {
+        "value": "$55–60",
+        "label": "Planned retail price"
+      }
+    ],
+    "videos": [
+      "https://www.youtube.com/watch?v=QZP-aww4Gz8"
+    ],
+    "sections": [
+      {
+        "heading": "Building the dataset",
+        "paragraphs": [
+          "Samples came from places with real pollution. Polyester microfibers came from the Labandha River in Gazipur, which is badly affected by textile waste. Iron came from groundwater in Mongla, Bagerhat. Microplastic samples were made with PET, one of the most common plastics in Bangladesh's rivers and seas.",
+          "A drop of each sample went onto a slide under a digital microscope camera. That gave 1,600 images from 150 water samples: 600 of microplastics, 550 of iron and 450 of microfibers. Each image was then labelled by hand in LabelImg."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/water-contamination-detection-system/sample-slide.webp",
+            "caption": "Placing a sample on a slide"
+          },
+          {
+            "src": "/images/projects/water-contamination-detection-system/digital-microscope.webp",
+            "caption": "Imaging under the digital microscope camera"
+          },
+          {
+            "src": "/images/projects/water-contamination-detection-system/labelled-data.webp",
+            "caption": "Labelling contaminants for training"
+          }
+        ]
+      },
+      {
+        "heading": "Training the model",
+        "paragraphs": [
+          "The model is an SSD MobileNetV2 FPN-Lite 320 detector, trained with the TensorFlow Object Detection API on a Google Colab T4 GPU. The data was split 70/15/15 into training, validation and test sets, and training ran for 5,000 steps with a batch size of 16, which took 3 hours 26 minutes. The trained model was then converted to TensorFlow Lite with a 50% confidence threshold, so it can run on a Raspberry Pi, a PC or a phone.",
+          "During training, total loss fell from 0.79 to 0.24, localisation loss from 0.29 to 0.03, and classification loss from 0.34 to 0.07."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/water-contamination-detection-system/training-pipeline.webp",
+            "caption": "From water sample to trained detector"
+          }
+        ]
+      },
+      {
+        "heading": "The device",
+        "paragraphs": [
+          "The handheld prototype puts a Raspberry Pi 4 in a 3D-printed body. It also holds a 2S Li-Po battery with a 5 V buck converter, a 1600× digital microscope camera with an LED flash, an SPI display and a custom sensor panel for pH, TDS and turbidity. At home, results show on the device's screen. At a water treatment plant, the same unit can connect to the system and start treatment automatically."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/water-contamination-detection-system/prototype-device.webp",
+            "caption": "The handheld prototype"
+          },
+          {
+            "src": "/images/projects/water-contamination-detection-system/capturing-samples.webp",
+            "caption": "Testing water samples with the device"
+          },
+          {
+            "src": "/images/projects/water-contamination-detection-system/device-design.webp",
+            "caption": "Device layout: display, switches, focusing roller, LED, lens and sensors"
+          },
+          {
+            "src": "/images/projects/water-contamination-detection-system/device-schematic.webp",
+            "caption": "Electronics: Raspberry Pi 4, camera, sensor decoder, display and power"
+          }
+        ]
+      },
+      {
+        "heading": "Results",
+        "paragraphs": [
+          "The model was tested on 738 images, 687 of contaminated water and 51 of clean water. Overall it scored 98.28% precision, 91.56% recall, an F1-score of 94.80% and a mAP@0.5 of 0.88. On live samples, it found microplastics with 97% and 96% confidence and iron with 98% and 94% confidence."
+        ],
+        "bullets": [
+          "Microplastics: 98.43% precision, 92.59% recall, mAP@0.5 of 0.89",
+          "Iron: 99.01% precision, 93.02% recall, mAP@0.5 of 0.91",
+          "Microfibers: 97.28% precision, 88.61% recall, mAP@0.5 of 0.84",
+          "Against a lab test by BCSIR and icddr,b, its readings matched for TDS (166 vs 168 ppm), turbidity (10 NTU) and pH (6.9). It also detected microplastics and microfibers, which a lab can only find with FTIR, Raman or SEM equipment."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/water-contamination-detection-system/detect-microplastic.webp",
+            "caption": "Microplastics detected with 97% and 96% confidence"
+          },
+          {
+            "src": "/images/projects/water-contamination-detection-system/detect-iron.webp",
+            "caption": "Iron particles detected with 98% and 94% confidence"
+          }
+        ]
+      },
+      {
+        "heading": "Time and cost",
+        "paragraphs": [
+          "A lab test takes days to give results, and checking one sample for TDS, turbidity, pH and iron costs about $150–200. The device gives an answer in seconds and is planned to sell for $55–60. Local governments or NGOs could also set devices up in community centres so that anyone can test their water for free."
+        ]
+      },
+      {
+        "heading": "In the field",
+        "paragraphs": [
+          "The device became the core of SAPH.Ai, the AI water-tech venture I founded with A Z M Emtenan Kabir. It won a Research Seed Fund at the Stockholm Junior Water Prize, which is supported by the Swedish Government and organisations including WaterAid, from among participants from 60+ countries. With the treatment stage added, we used it to test and treat polluted water in 20 coastal villages.",
+          "We raised $10K to deploy the device in those villages, published the research at ICISS 2026 on IEEE Xplore, and have a patent pending."
+        ]
+      }
+    ],
+    "awards": [
+      "Stockholm Junior Water Prize"
+    ],
+    "related": [
+      "ai-drainage-sewage-maintenance-system",
+      "autonomous-underwater-robot",
+      "artificial-soil-enhanced-substrate"
+    ]
   },
   {
     "slug": "autonomous-underwater-robot",
@@ -105,7 +398,11 @@
     "year": "",
     "featured": false,
     "summary": "A system of specialized robots utilizing AI and computer vision to autonomously detect blockages, identify toxic gases, and clean urban drainage systems. It performs these tasks without risking human lives in hazardous environments.",
-    "description": [],
+    "description": [
+      "Every monsoon, Dhaka's roads flood because drains are blocked with plastic and waste. Methane builds up inside the sewers until a spark can set it off, and the people who clear the blockages still climb into manholes by hand, waist-deep in sewage, with no protection. Cleaning this way is dangerous, slow and expensive.",
+      "This robot does that job instead. It drives into a drain, uses a camera and an AI model to find what's blocking it, clears the debris with its arm, and keeps checking the air for explosive and toxic gases while it works. If it finds methane, it sprays a solution of methane-eating bacteria to break the gas down.",
+      "It was SAPH.Ai's very first project. I led the team, building it with A Z M Emtenan Kabir, and it won our first championship at the 5th BAFSD National Science Festival in 2023. Over the next year it placed at the National STEAM Olympiad, made the Top 20 at the BCSIR National Science and Industrial Technology Fair (where it was covered on national TV), and took First Position for its research paper at the Rajshahi College National Science Fest. Its pipe-crawling offshoot became the 6-Wheeler Pipeline Inspection Robot."
+    ],
     "image": "/images/projects/ai-drainage.webp",
     "tags": [
       "Robotics",
@@ -114,7 +411,189 @@
       "Computer Vision"
     ],
     "links": [],
-    "code": ""
+    "code": "",
+    "highlights": [
+      {
+        "value": "~80%",
+        "label": "Detection accuracy in the demo drain"
+      },
+      {
+        "value": "90%+",
+        "label": "Lower estimated cost per 100 km of drain"
+      },
+      {
+        "value": "5",
+        "label": "National awards, from 2023 to 2024"
+      },
+      {
+        "value": "On TV",
+        "label": "Featured on national news at the BCSIR fair"
+      }
+    ],
+    "videos": [
+      "https://www.youtube.com/watch?v=7eTOakkHbnk"
+    ],
+    "sections": [
+      {
+        "heading": "The problem",
+        "paragraphs": [
+          "Bangladesh's cities are growing faster than their drains can be maintained, and the cost lands on the people who live and work around them."
+        ],
+        "bullets": [
+          "Blocked drains flood the roads in every monsoon, stopping traffic and spreading dirty water into homes.",
+          "Sewage overflows into rivers and water sources, spreading disease.",
+          "Methane (CH₄) from rotting waste collects in sewers until it can explode, and industrial chemical vapours add to the risk.",
+          "Cleaners go into manholes by hand with no protective gear, breathing toxic gases.",
+          "Manual cleaning is slow and costly, so drains are cleared far less often than they need to be."
+        ]
+      },
+      {
+        "heading": "The robot",
+        "paragraphs": [
+          "The rover runs on four tracked wheels and carries a robotic arm with a gripper, a scrubber, front lights, and two spray nozzles: one for chemicals and one for sanitiser. A sensor panel at the front reads the drain around it."
+        ],
+        "bullets": [
+          "HC-SR04 sonar measures the distance to trash ahead.",
+          "MQ-135 senses toxic gases: methane, ammonia, sulphur dioxide, nitrogen dioxide and benzene.",
+          "DHT11 reads temperature and humidity, and an LDR measures light.",
+          "A live HD camera and an IR camera let it see in the dark."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/rover.webp",
+            "caption": "The working rover, with its arm, camera and sensor panel"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/structural-diagram.webp",
+            "caption": "Structural design: arm, sensors, nozzles, tracked wheels and scrubber"
+          }
+        ]
+      },
+      {
+        "heading": "Finding blockages with AI",
+        "paragraphs": [
+          "Off-the-shelf models don't know what a clogged drain in Dhaka looks like, so the team built its own dataset. They photographed real drain waste such as chip packets, cigarette ends, paper and plastic bottles, and labelled each image by hand.",
+          "A detection model was then trained on it using OpenCV, TensorFlow and YOLOv8. Its total loss fell from about 0.6 to under 0.3 over 15,000 training steps. In the demo drain, the robot finds and clears blockages with about 80% accuracy under normal conditions."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/dataset.webp",
+            "caption": "Part of the custom dataset of drain waste"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/training-loss.webp",
+            "caption": "Training loss falling over 15,000 steps"
+          }
+        ]
+      },
+      {
+        "heading": "Dealing with dangerous gas",
+        "paragraphs": [
+          "The MQ-135 reading tells the robot how safe the air is. Under 20% means the air is clean, 20–50% means it's bad, and over 50% means flammable gas is present.",
+          "When it finds methane, the nozzle sprays methane-oxidising bacteria (methanotrophs). Their methane monooxygenase (MMO) enzymes turn methane into methanol and then, step by step, into carbon dioxide. Cells with the particulate form of the enzyme (pMMO) grow faster and bind methane more readily, which makes them the better choice. A second tank sprays sodium hydroxide and sodium hypochlorite to sanitise the drain."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/methane-pathway.webp",
+            "caption": "How methane-oxidising bacteria break methane down to CO₂"
+          }
+        ]
+      },
+      {
+        "heading": "Electronics",
+        "paragraphs": [
+          "Two Arduinos share the work. An Arduino Uno reads the gas, light and sonar sensors, and switches the two water pumps (through MOSFETs), the lights, the UV LEDs and the IR blaster. An Arduino Mega drives the four DC motors through an L298N driver and the six servos in the arm, and takes commands over an HC-05 Bluetooth module.",
+          "The camera connects through a USB hub to a host computer, which runs the AI model. A 3S Li-Po battery with an LM2596 converter powers everything. When the sonar sees debris closer than 30 cm, the robot starts cleaning."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/connection-diagram.webp",
+            "caption": "How the boards, sensors, pumps and motors connect"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/open-drain-rover.webp",
+            "caption": "The rover at the edge of an open drain"
+          }
+        ]
+      },
+      {
+        "heading": "Cost",
+        "paragraphs": [
+          "The team estimated what it costs to maintain 100 km of drains. Today's method comes to roughly 260 crore taka, counting equipment, labour, research, gas and electric line work, and repairs after construction. Robots that inspect and clean without digging up roads would bring that down by more than 90%."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/cost-comparison.webp",
+            "caption": "Estimated maintenance cost for 100 km: today's method vs the SAPH.Ai robot"
+          }
+        ]
+      },
+      {
+        "heading": "Out in the world",
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/building-the-rover.webp",
+            "caption": "Working on the rover at a science fair"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/showcase.webp",
+            "caption": "Showing the rover to guests"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/tv-channel-8.webp",
+            "caption": "Talking about the project on national TV"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/tv-channel-i.webp",
+            "caption": "Interviewed at the BCSIR fair"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/tv-somoy.webp",
+            "caption": "Explaining how the robot works to reporters"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/astro-mela.webp",
+            "caption": "Receiving 1st Runner-Up at Astro Boishakhi Mela 1431"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/rajshahi-fest.webp",
+            "caption": "Prize ceremony at the Rajshahi College National Science Fest 2024"
+          }
+        ]
+      },
+      {
+        "heading": "What's next",
+        "bullets": [
+          "Refine the body so it handles deeper water and rougher drains.",
+          "Improve the AI model with more data from real city drains.",
+          "Make it fully autonomous, with no manual help.",
+          "Test it in real drains around Dhaka."
+        ]
+      },
+      {
+        "heading": "Team",
+        "paragraphs": [
+          "Built by Team SAPH.Ai, competing as Subterranean Sanitizers at the National STEAM Olympiad."
+        ],
+        "bullets": [
+          "Abrar Abir: Team Leader",
+          "A Z M Emtenan Kabir: Co-developer",
+          "Sonoth Amin: team member at the National STEAM Olympiad"
+        ]
+      }
+    ],
+    "awards": [
+      "5th BAFSD National Science Festival",
+      "National STEAM Olympiad",
+      "BCSIR National Science and Industrial Technology Fair",
+      "7th Rajshahi College National Science Fest",
+      "Astro Boishakhi Mela 1431"
+    ],
+    "related": [
+      "six-wheeler-pipeline-inspection-robot",
+      "flexi-grow",
+      "water-contamination-detection-system"
+    ]
   },
   {
     "slug": "monando",
@@ -124,7 +603,11 @@
     "year": "",
     "featured": false,
     "summary": "A free, AI-powered web app that turns ordinary smartphones into Virtual Reality Exposure Therapy (VRET) devices. Designed for underprivileged youth, it provides immersive therapy scenarios, non-judgmental AI reflection, and emergency SOS tools.",
-    "description": [],
+    "description": [
+      "Virtual Reality Exposure Therapy (VRET) works about as well as traditional cognitive behavioural therapy, but a headset costs $300–450 and a therapy session in Bangladesh costs $65–150. MonAndo removes both costs. It runs in a phone's browser and uses the phone's gyroscope (or a cheap cardboard headset) to place users in calm, guided practice scenes, with an AI voice coaching them in real time.",
+      "It is built for underprivileged youth in places where mental health care is hard to reach, too expensive, or stigmatised. Examples are Bangladesh, where up to 85% go untreated, and South Korea, where 93% of people with a mental health condition never seek help. MonAndo doesn't diagnose anyone or replace therapy. It is a free, private first step towards getting help.",
+      "I mentored the team (Musarrat Mahjabin, Turabi Meherin Sokal, Sooah Kim and Minjun Sim) and shaped the core idea. MonAndo won 3rd Prize at the 16th e-ICON World Contest in Seoul, South Korea, standing out among 252 international teams."
+    ],
     "image": "/images/projects/monando.webp",
     "tags": [
       "AI",
@@ -132,8 +615,151 @@
       "Mental Health",
       "Therapy"
     ],
-    "links": [],
-    "code": ""
+    "links": [
+      {
+        "name": "Try the app",
+        "url": "https://monando.vercel.app/"
+      },
+      {
+        "name": "e-ICON official results",
+        "url": "https://e-icon.or.kr/en/2026%eb%85%84-%ec%a0%9c16%ed%9a%8c-%ea%b3%a0%eb%93%b1%eb%b6%80-3%eb%93%b1-%ed%95%9c%ea%b5%ad%ea%b5%90%ec%9c%a1%ed%95%99%ec%88%a0%ec%a0%95%eb%b3%b4%ec%9b%90%ec%9e%a5%ec%83%81/"
+      }
+    ],
+    "code": "https://github.com/suaKim0/MonAndo-App-main-final",
+    "highlights": [
+      {
+        "value": "3rd Prize",
+        "label": "16th e-ICON World Contest, Seoul"
+      },
+      {
+        "value": "252",
+        "label": "International teams in the contest"
+      },
+      {
+        "value": "$0",
+        "label": "Cost to the user: no headset needed"
+      },
+      {
+        "value": "SDG 3",
+        "label": "Targets 3.4, 3.5 and 3.8"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Main features",
+        "bullets": [
+          "VR Therapy: a library of 360° practice scenes sorted Easy, Medium and Hard: classroom talk, class presentation, public bus, job interview, exam hall, hospital visit, flight anxiety and the Tong (tea stall). Each scene works in phone gyroscope mode or with a cardboard headset, guided by a real-time AI voice.",
+          "Urban Sansa: morning and evening meditation (the name means a temple in the middle of the city), with breathing text that rises and falls in time with each inhale and exhale.",
+          "AI Reflect: instead of giving advice, the AI asks two or three thoughtful questions about what the user is worried about.",
+          "Music and ASMR: mood-matched audio for sleep, focus and calm.",
+          "Progress: streaks, badges and a 30-day mood heatmap.",
+          "SOS: one tap opens emergency breathing and local helplines such as Kaan Pete Roi in Bangladesh and the crisis lines in Korea."
+        ]
+      },
+      {
+        "heading": "Inside the app",
+        "phone": true,
+        "images": [
+          {
+            "src": "/images/projects/monando/screen-splash.webp",
+            "caption": "Welcome"
+          },
+          {
+            "src": "/images/projects/monando/screen-check-in.webp",
+            "caption": "Daily mood check-in"
+          },
+          {
+            "src": "/images/projects/monando/screen-home.webp",
+            "caption": "Home"
+          },
+          {
+            "src": "/images/projects/monando/screen-vr-library.webp",
+            "caption": "VR scene library"
+          },
+          {
+            "src": "/images/projects/monando/screen-meditation.webp",
+            "caption": "Urban Sansa meditation"
+          },
+          {
+            "src": "/images/projects/monando/screen-ai-reflect.webp",
+            "caption": "AI Reflect"
+          },
+          {
+            "src": "/images/projects/monando/screen-music.webp",
+            "caption": "Music and ASMR"
+          },
+          {
+            "src": "/images/projects/monando/screen-progress.webp",
+            "caption": "Progress and mood heatmap"
+          },
+          {
+            "src": "/images/projects/monando/screen-sos.webp",
+            "caption": "SOS helplines"
+          }
+        ]
+      },
+      {
+        "heading": "How it works",
+        "paragraphs": [
+          "Every session starts with a mood check-in. Based on how the user feels, the AI suggests a VR scene, a meditation, some music, or the SOS screen if they seem to be in crisis. After a VR session, the user rates their anxiety again, which shapes what the app suggests next time. Guest mode and on-device encryption mean a session leaves no trace that could be held against the user."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/monando/vr-cardboard-view.webp",
+            "caption": "A practice scene in cardboard-headset mode"
+          }
+        ]
+      },
+      {
+        "heading": "Built with",
+        "bullets": [
+          "Designed in Figma and Adobe Illustrator",
+          "React Native with Expo and Tailwind CSS, with the web version hosted on Vercel",
+          "A-Frame for 360° scenes, driven by the phone's gyroscope",
+          "The Gemini API for the AI guide and the ElevenLabs API for its voice",
+          "Firebase (Firestore, Auth and Storage) and Cloudinary for data and media"
+        ]
+      },
+      {
+        "heading": "Impact",
+        "paragraphs": [
+          "The concept was reviewed by Prof. Dr. M S I Mullick of Bangladesh Psychiatric Care and Sharmin Akter of Bangladesh Mindsheba. Next on the roadmap is a dashboard where therapists and counsellors can see anonymised trends, plus support for more languages and regions."
+        ],
+        "bullets": [
+          "SDG 3.8: makes therapy free by removing both the headset and the cost of a session.",
+          "SDG 3.4: practice scenes set in familiar places help with exam, interview and hospital anxiety.",
+          "SDG 3.5: the Tong (tea stall) scene lets users practise saying no to peer pressure around smoking and drugs."
+        ]
+      },
+      {
+        "heading": "At the e-ICON World Contest",
+        "images": [
+          {
+            "src": "/images/projects/monando/award-stage.webp",
+            "caption": "Receiving 3rd Prize at the 16th e-ICON World Contest"
+          },
+          {
+            "src": "/images/projects/monando/award-handover.webp",
+            "caption": "The award ceremony"
+          },
+          {
+            "src": "/images/projects/monando/team-stage.webp",
+            "caption": "The team on stage"
+          },
+          {
+            "src": "/images/projects/monando/poster-session.webp",
+            "caption": "At the poster session"
+          }
+        ]
+      }
+    ],
+    "awards": [
+      "16th e-ICON World Contest"
+    ],
+    "related": [
+      "water-contamination-detection-system",
+      "flexi-grow"
+    ]
   },
   {
     "slug": "six-wheeler-pipeline-inspection-robot",
@@ -143,7 +769,11 @@
     "year": "",
     "featured": true,
     "summary": "A rugged, 6-wheel drive robot that autonomously navigates underground sewage lines to identify blockages and detect explosive gases like methane. It features a robotic arm for debris removal and automatic chemical mitigation.",
-    "description": [],
+    "description": [
+      "A city's drains come in two kinds: open drains along the roads, and closed pipes buried underground. The drainage rover handles the open ones. Inside a closed pipe, though, there's no room to work from above, the floor is curved and slippery, it's completely dark, and the air can be explosive. That makes it the most dangerous place to send a person, and the place where blockages do the most damage.",
+      "The 6-Wheeler Pipeline Inspection Robot was built for those pipes. It's a narrower robot on six-wheel drive that travels along sewage lines on its own. It uses the same AI model to find blockages, checks for methane (CH₄) before it can build up to explosive levels, clears debris with its arm, and sprays a treatment automatically when it finds gas.",
+      "I built it with A Z M Emtenan Kabir at SAPH.Ai as a subsystem of our AI-Assisted Drainage & Sewage Maintenance System. It won Gold at the national round of the Codeavour AI & Coding Competition, which earned us a place representing Bangladesh in Dubai. It was also named Champion at the 15th DRMC National Science & Codeavour International Carnival and at TCSC Science Fiesta 1.0."
+    ],
     "image": "/images/projects/pipeline_robot.webp",
     "tags": [
       "Robotics",
@@ -152,7 +782,128 @@
       "Safety"
     ],
     "links": [],
-    "code": ""
+    "code": "",
+    "highlights": [
+      {
+        "value": "6WD",
+        "label": "Six-wheel drive for wet, curved pipe floors"
+      },
+      {
+        "value": "Gold",
+        "label": "Codeavour national round, then Dubai"
+      },
+      {
+        "value": "2×",
+        "label": "Champion at DRMC and TCSC"
+      },
+      {
+        "value": "CH₄",
+        "label": "Methane found before it can explode"
+      }
+    ],
+    "videos": [
+      "https://www.youtube.com/watch?v=7eTOakkHbnk"
+    ],
+    "sections": [
+      {
+        "heading": "Why a second robot",
+        "paragraphs": [
+          "The four-wheel drainage rover works well in open drains, but it's too wide to fit inside a sewer pipe, and four wheels lose grip on a round, wet floor.",
+          "For pipes, the team redesigned it from the frame up. The new robot is a slimmer chassis that fits inside the pipe, with six driven wheels so that at least some always have grip as the floor curves and debris shifts. Its arm reaches forward along the pipe, the way a worker inside it would."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/open-drain-rover.webp",
+            "caption": "The original rover, built for open drains"
+          },
+          {
+            "src": "/images/projects/six-wheeler-pipeline-inspection-robot/on-the-drain.webp",
+            "caption": "The pipeline robot, built for closed pipes"
+          }
+        ]
+      },
+      {
+        "heading": "How it works",
+        "bullets": [
+          "Drives into the sewage line, lighting the pipe ahead.",
+          "Its camera feed runs through the detection model to spot blockages and debris.",
+          "Sonar measures how far away the blockage is, so the robot stops in reach.",
+          "An MQ-135 sensor checks the air continuously and flags methane and other toxic gases.",
+          "The arm, with its brush and gripper, breaks up and pulls out the debris.",
+          "When gas levels rise, it sprays a chemical treatment automatically, so there's no build-up waiting for the next person who opens the manhole."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/six-wheeler-pipeline-inspection-robot/robot.webp",
+            "caption": "The 6-wheeler with its forward arm and cleaning brush"
+          }
+        ]
+      },
+      {
+        "heading": "Same AI, new body",
+        "paragraphs": [
+          "The robot uses the same object detection model as the drainage rover. It was trained with OpenCV, TensorFlow and YOLOv8 on the team's own dataset of drain waste, so improving that dataset makes both robots better.",
+          "The electronics follow the same design too. Arduino boards handle the sensors, pumps, motors and arm, and a host computer runs the AI on the camera feed. The main changes are in the drivetrain: six motors instead of four, tuned for slow, steady pulling through sludge."
+        ],
+        "images": [
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/dataset.webp",
+            "caption": "The shared dataset of drain waste"
+          },
+          {
+            "src": "/images/projects/ai-drainage-sewage-maintenance-system/connection-diagram.webp",
+            "caption": "The electronics design both robots are built on"
+          }
+        ]
+      },
+      {
+        "heading": "Open drain vs pipe",
+        "bullets": [
+          "Drainage rover: four tracked wheels, works from inside open drains, with a wide sensor panel and two spray tanks.",
+          "Pipeline robot: six-wheel drive, a narrow frame that fits inside closed pipes, and an arm that reaches forward along the pipe.",
+          "Both: the same AI model, an MQ-135 gas sensor, sonar, a camera and automatic gas treatment."
+        ]
+      },
+      {
+        "heading": "What's next",
+        "bullets": [
+          "Map the condition of a pipe as the robot travels, not just clear it.",
+          "Longer range inside pipes, with a more robust link back to the operator.",
+          "Field tests in Dhaka's sewage lines."
+        ]
+      },
+      {
+        "heading": "Team",
+        "bullets": [
+          "Abrar Abir: Co-developer",
+          "A Z M Emtenan Kabir: Co-developer",
+          "Siam: team member at TCSC Science Fiesta 1.0"
+        ]
+      },
+      {
+        "heading": "On to Dubai",
+        "images": [
+          {
+            "src": "/images/projects/six-wheeler-pipeline-inspection-robot/codeavour-champions.webp",
+            "caption": "Codeavour 5.0: SAPH.Ai named Bangladesh's champion team, going on to compete in Dubai"
+          }
+        ],
+        "paragraphs": [
+          "Codeavour is billed as the world's biggest AI and coding competition for students. The robot's Gold Medal in the national round named SAPH.Ai Bangladesh's champion team, earning us the chance to represent the country at the international round in Dubai.",
+          "Back home, the same robot was named Champion in the IT Project Display at the 15th DRMC National Science & Codeavour International Carnival 2024, and Champion at TCSC Science Fiesta 1.0, hosted by the Tejgaon College Science Club."
+        ]
+      }
+    ],
+    "awards": [
+      "Codeavour: AI & Coding Competition",
+      "15th DRMC National Science & Codeavour International Carnival",
+      "TCSC Science Fiesta 1.0"
+    ],
+    "related": [
+      "ai-drainage-sewage-maintenance-system",
+      "flexi-grow",
+      "autonomous-underwater-robot"
+    ]
   },
   {
     "slug": "artificial-soil-enhanced-substrate",
@@ -162,19 +913,60 @@
     "year": "",
     "featured": false,
     "summary": "An ultra-lightweight, biologically enhanced coco peat substrate designed to replace traditional soil for rooftop and urban farming. It features superior aeration, retains up to 10x its weight in water, and utilizes Trichoderma fungi for disease resistance.",
-    "description": [],
+    "description": [
+      "Cities are running out of ground to farm on, but they have plenty of rooftops and balconies. The catch is soil itself: it's heavy when wet, compacts over time, drains poorly in containers and carries disease. Better Than Soil is a growing substrate designed to replace it for rooftop and urban farming.",
+      "The substrate is built on coco peat, the fibre left over from coconut husks. That makes it ultra-light, so it can sit on a roof without straining the structure, and it stays loose and well aerated so roots can breathe. It holds up to 10 times its own weight in water, so plants need watering far less often.",
+      "It is also biologically enhanced with Trichoderma, a beneficial fungus that colonises the roots and protects plants against soil-borne diseases. The result is a clean, light, disease-resistant medium that turns an empty rooftop into a place to grow food."
+    ],
     "image": "/images/projects/soil.webp",
     "tags": [
       "Agriculture",
       "Bioengineering",
       "Urban Farming"
     ],
-    "links": [
+    "links": [],
+    "code": "",
+    "videos": [
+      "https://www.youtube.com/watch?v=H5mQ0zMN1lw"
+    ],
+    "highlights": [
       {
-        "name": "Project Video",
-        "url": "https://youtu.be/H5mQ0zMN1lw"
+        "value": "10×",
+        "label": "Its own weight in water retained"
+      },
+      {
+        "value": "Ultra-light",
+        "label": "Safe to use on rooftops and balconies"
+      },
+      {
+        "value": "Trichoderma",
+        "label": "Beneficial fungi that guard roots against disease"
+      },
+      {
+        "value": "Coco peat",
+        "label": "Made from coconut husk, a farm by-product"
       }
     ],
-    "code": ""
+    "sections": [
+      {
+        "heading": "Why not just use soil",
+        "bullets": [
+          "Weight: wet soil is heavy, which limits how much a rooftop can hold.",
+          "Compaction: soil packs down in containers, choking roots of air.",
+          "Water: it either drains too fast or waterlogs, so plants need constant attention.",
+          "Disease: soil carries fungi and pests that attack young plants."
+        ]
+      },
+      {
+        "heading": "Where it fits",
+        "paragraphs": [
+          "The project grew out of the same question as my work in agriculture technology. As CTO of Bots Bangla, I built a sensor-to-cloud smart irrigation system for a government agricultural project. It was deployed across 310 rural farms and cut watering cost by 60%. A substrate that holds more water and needs less of it is the other half of that problem."
+        ]
+      }
+    ],
+    "related": [
+      "water-contamination-detection-system",
+      "ai-drainage-sewage-maintenance-system"
+    ]
   }
 ]
