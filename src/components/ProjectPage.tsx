@@ -196,7 +196,7 @@ const ProjectPage = ({ slug }: { slug: string }) => {
           {project.anatomy && hasAnatomy && (
             <ProjectAnatomy
               anatomy={project.anatomy}
-              image={project.anatomy.image || project.image}
+              image={project.image}
               title={project.title}
               key={project.slug}
             />

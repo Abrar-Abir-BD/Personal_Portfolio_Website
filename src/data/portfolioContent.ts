@@ -170,9 +170,8 @@ export type AnatomyLabel = {
   side?: string;
 };
 
+// Labels for the project's own photo
 export type ProjectAnatomy = {
-  // Defaults to the project's own photo
-  image?: string;
   labels: AnatomyLabel[];
 };
 

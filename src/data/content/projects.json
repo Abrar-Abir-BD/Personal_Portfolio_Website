@@ -164,50 +164,50 @@
         {
           "name": "Pressurised chamber",
           "note": "A motor-driven spool pays the body out",
-          "x": 35,
-          "y": 36,
+          "x": 34.5,
+          "y": 36.1,
           "side": "left"
         },
         {
           "name": "Everting soft body",
           "note": "A fabric tube that grows from its tip",
-          "x": 9.5,
-          "y": 58.6,
+          "x": 5.9,
+          "y": 60.2,
           "side": "left"
         },
         {
           "name": "Tip module",
           "note": "ESP-01, FPV camera and gripper",
-          "x": 48,
-          "y": 88.8,
+          "x": 49.1,
+          "y": 92.4,
           "side": "left"
         },
         {
           "name": "Air compressor",
           "note": "Feeds air to the chamber",
-          "x": 58,
-          "y": 10,
+          "x": 60.3,
+          "y": 8.4,
           "side": "right"
         },
         {
           "name": "Control software",
           "note": "Python app for growth, steering and the gripper",
-          "x": 75,
-          "y": 23.5,
+          "x": 79.3,
+          "y": 22.8,
           "side": "right"
         },
         {
           "name": "Main control unit",
           "note": "ESP32, relays and solenoid valves",
-          "x": 65,
-          "y": 38,
+          "x": 68.1,
+          "y": 38.3,
           "side": "right"
         },
         {
           "name": "Steering muscles",
           "note": "Pneumatic, running along the body",
-          "x": 83,
-          "y": 70,
+          "x": 88.3,
+          "y": 72.4,
           "side": "right"
         }
       ]
@@ -275,43 +275,185 @@
         {
           "name": "Radial legs",
           "note": "Reach out in every direction",
-          "x": 31.4,
-          "y": 26.4,
+          "x": 30.3,
+          "y": 25,
           "side": "left"
         },
         {
           "name": "Ball feet",
           "note": "Roll and push off on any side",
-          "x": 8.4,
-          "y": 36.6,
+          "x": 6.1,
+          "y": 35.8,
           "side": "left"
         },
         {
           "name": "Symmetric core",
           "note": "No front, back, top or bottom",
-          "x": 39.4,
-          "y": 53.5,
+          "x": 38.8,
+          "y": 53.7,
           "side": "left"
         },
         {
           "name": "Payload mount",
           "note": "Carries a camera, sensors or tools",
-          "x": 51,
-          "y": 42,
+          "x": 51.1,
+          "y": 41.5,
           "side": "right"
         },
         {
           "name": "Leg hubs",
           "note": "Each leg pivots from the core",
-          "x": 66.8,
-          "y": 48.4,
+          "x": 67.7,
+          "y": 48.3,
           "side": "right"
         },
         {
           "name": "Servo drives",
           "note": "Adjust each leg to the terrain",
-          "x": 53.4,
-          "y": 63,
+          "x": 53.6,
+          "y": 63.7,
+          "side": "right"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "emg-prosthetic-arm",
+    "title": "Low-Cost EMG-Controlled Robotic Prosthetic Arm",
+    "category": "",
+    "status": "",
+    "year": "",
+    "featured": false,
+    "summary": "An affordable robotic prosthetic arm that reads the muscle signals in an amputee's residual limb and turns them into hand movements. Custom-fitted and 3D-printed in Bangladesh, it costs a fraction of an imported bionic arm and has reached 100+ amputees.",
+    "description": [
+      "A modern bionic arm can open and close its hand when the wearer simply tenses the muscles in what remains of their arm. Imported ones usually cost tens of thousands of dollars, far out of reach for most amputees in Bangladesh, who are left with a cosmetic hand or a simple hook. This arm brings the same idea, myoelectric control, to a price people can actually pay.",
+      "It was built at Robolife Technologies, the country's first robotic prosthetic arm maker, founded by Joy Barua Lablu with support from the Government's ICT Division. Nearly 90% of the arm is designed and made in Bangladesh, and each one is fitted to its user: their arm is measured, a custom socket and hand are designed in 3D, printed, and assembled with the electronics.",
+      "As Electrical R&D Lead, I led the electromyography (EMG) control work. I integrated muscle-signal sensors into 30 low-cost prototypes and analysed 1,500 muscle-signal trials to make the arm respond reliably to its wearer. The work helped raise an $18K grant and bring affordable robotic arms to more than 100 amputees."
+    ],
+    "image": "/images/projects/emg-prosthetic-arm.webp",
+    "tags": [
+      "Robotics",
+      "Biomedical",
+      "Assistive Tech"
+    ],
+    "links": [],
+    "code": "none",
+    "sections": [
+      {
+        "heading": "The problem",
+        "paragraphs": [
+          "Losing a hand or arm to an accident, illness or violence changes what a person can do for work and for themselves every day. Powered prosthetic hands can give much of that back, but they are expensive, imported, and hard to repair locally."
+        ],
+        "bullets": [
+          "Imported myoelectric arms often cost tens of thousands of dollars.",
+          "Most amputees in Bangladesh can only afford cosmetic hands or body-powered hooks.",
+          "Imported devices need imported parts and specialists to fit and fix them."
+        ]
+      },
+      {
+        "heading": "How EMG control works",
+        "paragraphs": [
+          "Every time a muscle contracts, its fibres give off a tiny electrical signal, measured in microvolts. Sensors resting on the skin of the residual limb pick up these signals from the muscles that used to move the hand.",
+          "The controller amplifies the raw signal, filters out noise from movement and mains power, and turns it into a smooth measure of how hard the muscle is working. When that level crosses a threshold set for the wearer, the hand responds: one muscle opens it, another closes it, and a stronger or held contraction can switch between grips."
+        ]
+      },
+      {
+        "heading": "What I did",
+        "bullets": [
+          "Led EMG control R&D for the arm.",
+          "Integrated muscle-signal sensors into 30 low-cost prototypes.",
+          "Analysed 1,500 muscle-signal trials to tune how the arm reads its wearer.",
+          "Helped raise an $18K grant for the work."
+        ]
+      },
+      {
+        "heading": "Built to fit, built locally",
+        "bullets": [
+          "Measured: each user's residual limb is measured before anything is made.",
+          "Designed: a custom socket and hand are modelled in 3D for that person.",
+          "Printed: parts are 3D-printed, keeping cost and repair time low.",
+          "Fitted: the electronics are integrated and the arm is fitted and tuned to the user's own muscle signals."
+        ]
+      },
+      {
+        "heading": "Impact",
+        "bullets": [
+          "100+ upper-limb amputees across Bangladesh have received Robolife's robotic hands.",
+          "In 2024, five hands were given free, with ICT Division support, to people who lost limbs in the student movement. Voice of America and France 24 covered it.",
+          "The technology has been taken to India, Saudi Arabia, Turkey and Malaysia."
+        ]
+      },
+      {
+        "heading": "What's next",
+        "bullets": [
+          "Pattern-recognition control, so more grips can be chosen naturally with fewer deliberate signals.",
+          "Touch and pressure feedback from the fingertips.",
+          "Lighter parts and longer battery life for all-day wear."
+        ]
+      }
+    ],
+    "awards": [],
+    "related": [
+      "water-contamination-detection-system",
+      "flexi-grow",
+      "dynamic-symmetry-robot"
+    ],
+    "anatomy": {
+      "labels": [
+        {
+          "name": "EMG sensor socket",
+          "note": "Reads muscle signals from the residual limb",
+          "x": 16,
+          "y": 30,
+          "side": "left"
+        },
+        {
+          "name": "Battery & controller (inside)",
+          "note": "Filter the signal and drive the hand",
+          "x": 47.5,
+          "y": 60.3,
+          "side": "left"
+        },
+        {
+          "name": "Carbon-fibre forearm",
+          "note": "Light and stiff",
+          "x": 37.5,
+          "y": 70.3,
+          "side": "left"
+        },
+        {
+          "name": "Harness straps",
+          "note": "Hold the arm firmly in place",
+          "x": 11.5,
+          "y": 82.4,
+          "side": "left"
+        },
+        {
+          "name": "Opposable thumb",
+          "note": "For pinch and power grips",
+          "x": 57.5,
+          "y": 16,
+          "side": "right"
+        },
+        {
+          "name": "Articulated fingers",
+          "note": "Jointed to curl around objects",
+          "x": 79,
+          "y": 21.5,
+          "side": "right"
+        },
+        {
+          "name": "3D-printed hand",
+          "note": "Custom-made for each user",
+          "x": 65,
+          "y": 41.5,
+          "side": "right"
+        },
+        {
+          "name": "Wrist drive",
+          "note": "Motors and gears behind the palm",
+          "x": 54.5,
+          "y": 52.2,
           "side": "right"
         }
       ]
@@ -384,43 +526,43 @@
         {
           "name": "Antenna",
           "note": "Remote-control link to the driver",
-          "x": 35.2,
-          "y": 19.6,
+          "x": 29.2,
+          "y": 11.7,
           "side": "left"
         },
         {
           "name": "Rocker suspension",
           "note": "Keeps the body level over boulders",
-          "x": 40,
-          "y": 49,
+          "x": 34.5,
+          "y": 46.4,
           "side": "left"
         },
         {
           "name": "Six wheels",
           "note": "Some always stay on the ground",
-          "x": 17,
-          "y": 81.7,
+          "x": 9.1,
+          "y": 85,
           "side": "left"
         },
         {
           "name": "Chassis",
           "note": "Main body and electronics",
-          "x": 68,
-          "y": 42.5,
+          "x": 65.4,
+          "y": 38.7,
           "side": "right"
         },
         {
           "name": "Corner steering",
           "note": "Turns the outer wheels for tight gaps",
-          "x": 87.9,
-          "y": 58,
+          "x": 87.3,
+          "y": 57,
           "side": "right"
         },
         {
           "name": "Spring dampers",
           "note": "Soak up ruts and drops",
-          "x": 62.4,
-          "y": 65.4,
+          "x": 59.2,
+          "y": 65.8,
           "side": "right"
         }
       ]
@@ -564,50 +706,50 @@
         {
           "name": "3D-printed body",
           "note": "Handheld, built to use in the field",
-          "x": 35.2,
-          "y": 28.1,
+          "x": 5.2,
+          "y": 10.6,
           "side": "left"
         },
         {
           "name": "Display",
           "note": "Shows results on the spot",
-          "x": 38.4,
-          "y": 37.8,
+          "x": 9.9,
+          "y": 22.7,
           "side": "left"
         },
         {
           "name": "Microscope camera",
           "note": "1600× zoom with an LED flash",
-          "x": 42.6,
-          "y": 59.4,
+          "x": 16.1,
+          "y": 49.5,
           "side": "left"
         },
         {
           "name": "Sample chamber",
           "note": "pH, TDS and turbidity sensors",
-          "x": 46.5,
-          "y": 80.7,
+          "x": 21.9,
+          "y": 76,
           "side": "left"
         },
         {
           "name": "Control buttons",
           "note": "Power on and start a test",
-          "x": 59.4,
-          "y": 34.4,
+          "x": 41,
+          "y": 18.4,
           "side": "right"
         },
         {
           "name": "Raspberry Pi 4 (inside)",
           "note": "Runs the AI detection model",
-          "x": 50,
-          "y": 46.9,
+          "x": 27.1,
+          "y": 34,
           "side": "right"
         },
         {
           "name": "Li-Po battery (inside)",
           "note": "2S pack with a 5 V converter",
-          "x": 59.4,
-          "y": 62.5,
+          "x": 41,
+          "y": 53.4,
           "side": "right"
         }
       ]
@@ -624,6 +766,7 @@
     "description": [
       "Most water testing happens at the shore: someone scoops a sample from the surface and takes it to a lab. But pollution doesn't stay at the surface. It settles, drifts and collects where nobody looks. This custom autonomous underwater vehicle (AUV) goes below to find it.",
       "The robot submerges and navigates on its own through rivers, lakes and other underwater environments. As it moves, onboard sensors check water quality in real time, and a camera with computer vision looks for visible contaminants. Everything it gathers, both the sensor readings and the images, is sent back to the surface for analysis.",
+      "With my teammate Emtenan Kabir of Team SAPH.Ai, I took this work to the 26th International Robot Olympiad in Busan, South Korea, where it won Silver and Bronze Medals among 35,000+ participants from 90+ countries. We built it to tackle Busan's urban waste and marine pollution, and the solution was formally recognised by the Mayor of Busan and considered for future implementation.",
       "It takes the idea behind my water contamination detector further. Instead of bringing water to the device, the device goes into the water."
     ],
     "image": "/images/projects/auto.webp",
@@ -670,54 +813,57 @@
         {
           "name": "Action camera",
           "note": "Waterproof case for underwater vision",
-          "x": 33,
-          "y": 21,
+          "x": 25.8,
+          "y": 14.3,
           "side": "left"
         },
         {
           "name": "Sealed end cap",
           "note": "Watertight cable glands",
-          "x": 16.4,
-          "y": 58,
+          "x": 5.8,
+          "y": 57.6,
           "side": "left"
         },
         {
           "name": "Thrusters",
           "note": "Drive it through the water",
-          "x": 43,
-          "y": 77,
+          "x": 37.8,
+          "y": 79.9,
           "side": "left"
         },
         {
           "name": "Tether",
           "note": "Sends data and images to the surface",
-          "x": 18,
-          "y": 80,
+          "x": 7.7,
+          "y": 83.4,
           "side": "left"
         },
         {
           "name": "Pressure hull",
           "note": "Clear tube holding the electronics",
-          "x": 66,
-          "y": 35,
+          "x": 65.5,
+          "y": 30.7,
           "side": "right"
         },
         {
           "name": "Side thruster",
           "note": "Steers it underwater",
-          "x": 87,
-          "y": 50,
+          "x": 90.8,
+          "y": 48.2,
           "side": "right"
         },
         {
           "name": "Water-quality sensors",
           "note": "Read the water in real time",
-          "x": 54,
-          "y": 56,
+          "x": 51.1,
+          "y": 55.3,
           "side": "right"
         }
       ]
-    }
+    },
+    "awards": [
+      "26th International Robot Olympiad"
+    ]
   },
   {
     "slug": "ai-drainage-sewage-maintenance-system",
@@ -910,57 +1056,57 @@
         {
           "name": "Robotic arm",
           "note": "Six servos and a gripper clear debris",
-          "x": 12.5,
-          "y": 14.3,
+          "x": 9.4,
+          "y": 12.4,
           "side": "left"
         },
         {
           "name": "Bacteria spray tank",
           "note": "Methanotrophs break down methane",
-          "x": 37,
-          "y": 37.6,
+          "x": 34.8,
+          "y": 37.2,
           "side": "left"
         },
         {
           "name": "Front lights",
           "note": "Light up dark drains",
-          "x": 22.2,
-          "y": 51.9,
+          "x": 19.4,
+          "y": 52.4,
           "side": "left"
         },
         {
           "name": "Pressure sprayer",
           "note": "Sprays chemicals and sanitiser",
-          "x": 8.8,
-          "y": 64.8,
+          "x": 5.6,
+          "y": 66.1,
           "side": "left"
         },
         {
           "name": "AI trash-detection camera",
           "note": "YOLOv8 model finds blockages",
-          "x": 59.7,
-          "y": 36.2,
+          "x": 58.3,
+          "y": 35.7,
           "side": "right"
         },
         {
           "name": "Sensor panel",
           "note": "Gas, temperature, humidity and light",
-          "x": 70.8,
-          "y": 51.4,
+          "x": 69.8,
+          "y": 51.8,
           "side": "right"
         },
         {
           "name": "Status display",
           "note": "Live sensor readings",
-          "x": 70.4,
-          "y": 59.5,
+          "x": 69.3,
+          "y": 60.5,
           "side": "right"
         },
         {
           "name": "Four-wheel drive",
           "note": "DC motors on an L298N driver",
-          "x": 63.9,
-          "y": 87.6,
+          "x": 62.6,
+          "y": 90.4,
           "side": "right"
         }
       ]
@@ -1114,36 +1260,36 @@
         {
           "name": "Phone holder",
           "note": "MonAndo runs in the phone's browser",
-          "x": 26.3,
-          "y": 47.7,
+          "x": 11.8,
+          "y": 48.9,
           "side": "left"
         },
         {
           "name": "360° practice scenes",
           "note": "Guided by a real-time AI voice",
-          "x": 37.5,
-          "y": 61.9,
+          "x": 27.9,
+          "y": 66.7,
           "side": "left"
         },
         {
           "name": "Head strap",
           "note": "Adjustable for a comfortable fit",
-          "x": 54.4,
-          "y": 12.6,
+          "x": 52.2,
+          "y": 4.8,
           "side": "right"
         },
         {
           "name": "Face cushion",
           "note": "Soft foam for longer sessions",
-          "x": 71.9,
-          "y": 27.6,
+          "x": 77.4,
+          "y": 23.6,
           "side": "right"
         },
         {
           "name": "Low-cost headset",
           "note": "Or use gyroscope mode with no headset",
-          "x": 67.4,
-          "y": 58.8,
+          "x": 70.9,
+          "y": 62.8,
           "side": "right"
         }
       ]
@@ -1280,50 +1426,50 @@
         {
           "name": "Six-wheel drive",
           "note": "Grips the curved, wet pipe floor",
-          "x": 42.2,
-          "y": 20.4,
+          "x": 35.9,
+          "y": 20.9,
           "side": "left"
         },
         {
           "name": "Camera & light",
           "note": "Feeds the AI detection model",
-          "x": 37.9,
-          "y": 51.9,
+          "x": 31.2,
+          "y": 61.8,
           "side": "left"
         },
         {
           "name": "Gripper",
           "note": "Pulls debris out of the pipe",
-          "x": 43.5,
-          "y": 74.2,
+          "x": 37.4,
+          "y": 90.7,
           "side": "left"
         },
         {
           "name": "Narrow frame",
           "note": "Slim enough to fit inside the pipe",
-          "x": 71.6,
-          "y": 26,
+          "x": 68.5,
+          "y": 28.2,
           "side": "right"
         },
         {
           "name": "Tether",
           "note": "Link back to the operator",
-          "x": 88.1,
-          "y": 35.1,
+          "x": 86.8,
+          "y": 40,
           "side": "right"
         },
         {
           "name": "Controller & sensors",
           "note": "Arduino boards, sonar and an MQ-135 gas sensor",
-          "x": 63.6,
-          "y": 41.6,
+          "x": 59.6,
+          "y": 48.4,
           "side": "right"
         },
         {
           "name": "Brush head",
           "note": "Breaks up blockages",
-          "x": 60.6,
-          "y": 74.2,
+          "x": 56.3,
+          "y": 90.7,
           "side": "right"
         }
       ]
@@ -1379,36 +1525,36 @@
         {
           "name": "Seedling",
           "note": "Healthier roots, less watering",
-          "x": 31.3,
-          "y": 15.7,
+          "x": 18,
+          "y": 14.2,
           "side": "left"
         },
         {
           "name": "Coco peat base",
           "note": "Ultra-light coconut-husk fibre",
-          "x": 40,
-          "y": 53.4,
+          "x": 33.3,
+          "y": 53.5,
           "side": "left"
         },
         {
           "name": "Water retention",
           "note": "Holds up to 10× its weight in water",
-          "x": 35,
-          "y": 89,
+          "x": 24.5,
+          "y": 90.6,
           "side": "left"
         },
         {
           "name": "Root zone",
           "note": "Protected by Trichoderma fungus",
-          "x": 51.9,
-          "y": 47.4,
+          "x": 54.3,
+          "y": 47.3,
           "side": "right"
         },
         {
           "name": "Loose, airy structure",
           "note": "Roots can breathe; it never compacts",
-          "x": 67.5,
-          "y": 74.1,
+          "x": 81.9,
+          "y": 75.1,
           "side": "right"
         }
       ]
