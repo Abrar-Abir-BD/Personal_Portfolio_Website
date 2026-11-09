@@ -55,19 +55,34 @@ const Projects = () => {
             } ${index >= PREVIEW_COUNT ? "projects-item-new" : ""}`}
             key={index}
           >
-            <div className="projects-media">
+            {/* The photo, title and summary all open the project's page, like
+                "Learn more". The photo's link is skipped by keyboard and screen
+                readers, since the title's link right after it goes to the same place. */}
+            <a
+              href={`/projects/${project.slug}`}
+              className="projects-media"
+              tabIndex={-1}
+              aria-hidden="true"
+              data-cursor="disable"
+            >
               {project.image ? (
-                <img src={project.image} alt={project.title} loading="lazy" />
+                <img src={project.image} alt="" loading="lazy" />
               ) : (
                 <span>Add image</span>
               )}
-            </div>
+            </a>
             <div className="projects-info">
-              {metaOf(project) && (
-                <p className="projects-meta">{metaOf(project)}</p>
-              )}
-              <h3>{project.title}</h3>
-              <p className="projects-desc">{project.summary}</p>
+              <a
+                href={`/projects/${project.slug}`}
+                className="projects-open"
+                data-cursor="disable"
+              >
+                {metaOf(project) && (
+                  <p className="projects-meta">{metaOf(project)}</p>
+                )}
+                <h3>{project.title}</h3>
+                <p className="projects-desc">{project.summary}</p>
+              </a>
               <div className="projects-links">
                 <a
                   href={`/projects/${project.slug}`}

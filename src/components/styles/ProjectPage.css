@@ -149,7 +149,11 @@
   max-width: 1200px;
 }
 .project-detail .project-page-main {
-  padding-top: 40px;
+  padding-top: 18px;
+}
+.project-detail .project-page-meta {
+  font-size: 12px;
+  margin-bottom: 8px;
 }
 
 /* Title, summary and key numbers beside the floating photo */
@@ -159,46 +163,22 @@
   gap: 48px;
   align-items: center;
 }
+/* No photo beside the title: the labelled photo follows below instead */
+.project-page-hero.no-media {
+  grid-template-columns: minmax(0, 1fr);
+}
 .project-detail .project-page-main h1 {
-  font-size: 46px;
+  font-size: 34px;
+  line-height: 1.12;
 }
 .project-detail .project-page-summary {
-  font-size: 18px;
-  margin: 18px 0px 0px;
-  max-width: none;
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin: 10px 0px 0px;
+  max-width: 880px;
 }
 .project-detail .project-page-media {
   height: 440px;
-}
-
-.project-page-highlights {
-  list-style: none;
-  padding: 0;
-  margin: 28px 0px 0px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.project-page-highlights li {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 16px 18px;
-}
-.project-page-highlights strong {
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--accentColor);
-}
-.project-page-highlights span {
-  font-size: 13.5px;
-  line-height: 1.35;
-  color: var(--mutedColor);
-}
-:root[data-design="glow"] .project-page-highlights strong {
-  color: var(--accentWarm);
 }
 
 /* The write-up, with the video beside it */
@@ -591,19 +571,6 @@ a.project-page-award:hover {
   .project-detail .project-page-body p {
     font-size: 16px;
   }
-  .project-page-highlights {
-    margin-top: 22px;
-    gap: 10px;
-  }
-  .project-page-highlights li {
-    padding: 12px 14px;
-  }
-  .project-page-highlights strong {
-    font-size: 21px;
-  }
-  .project-page-highlights span {
-    font-size: 12.5px;
-  }
   .project-page-overview {
     margin-top: 44px;
   }
@@ -650,5 +617,140 @@ a.project-page-award:hover {
   .project-page-related-photo {
     width: 72px;
     height: 72px;
+  }
+}
+
+/* ---- Compact project page ----
+   Tighter spacing and smaller type throughout the write-up, so the page
+   reads denser and the labelled photo is in view on opening. Scoped to
+   .project-detail because other pages share these classes. */
+.project-detail .project-page-section.anatomy-section {
+  margin-top: 28px;
+}
+.project-detail .project-page-overview {
+  margin-top: 40px;
+  gap: 36px;
+}
+.project-detail .project-page-body p {
+  font-size: 15.5px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.project-detail .project-page-overview:not(.has-video) .project-page-body {
+  column-gap: 44px;
+}
+.project-detail .project-page-section,
+.project-detail .project-page-cards {
+  margin-top: 52px;
+}
+.project-detail .project-page-section h2,
+.project-detail .project-page-card h2 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.project-detail .project-page-card h2 {
+  font-size: 17px;
+}
+.project-detail .project-page-split-text p,
+.project-detail .project-page-card p,
+.project-detail .project-page-bullets {
+  font-size: 15px;
+  line-height: 1.65;
+}
+.project-detail .project-page-split-text p,
+.project-detail .project-page-card p,
+.project-detail .project-page-bullets {
+  margin-bottom: 10px;
+}
+.project-detail .project-page-bullets li {
+  margin-bottom: 4px;
+}
+.project-detail .project-page-split {
+  gap: 40px;
+}
+.project-detail .project-page-cards {
+  gap: 14px;
+}
+.project-detail .project-page-card {
+  padding: 20px 22px 10px;
+}
+.project-detail .project-page-gallery {
+  gap: 12px;
+}
+.project-detail .project-page-photo-caption {
+  font-size: 12.5px;
+}
+.project-detail .project-page-award {
+  gap: 14px;
+  padding: 10px;
+}
+.project-detail .project-page-award-photo {
+  width: 96px;
+}
+.project-detail .project-page-award-text strong {
+  font-size: 15px;
+}
+.project-detail .project-page-award-text span {
+  font-size: 13px;
+}
+.project-detail .project-page-related-card {
+  padding: 12px;
+  gap: 14px;
+}
+.project-detail .project-page-related-photo {
+  width: 80px;
+  height: 80px;
+}
+.project-detail .project-page-related-text strong {
+  font-size: 15px;
+}
+.project-detail .project-page-links {
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 900px) {
+  .project-detail .project-page-main {
+    padding-top: 12px;
+  }
+  .project-detail .project-page-main h1 {
+    font-size: 26px;
+  }
+  .project-detail .project-page-summary {
+    font-size: 14.5px;
+  }
+  .project-detail .project-page-section.anatomy-section {
+    margin-top: 24px;
+  }
+  .project-detail .project-page-overview {
+    margin-top: 32px;
+    gap: 24px;
+  }
+  .project-detail .project-page-body p {
+    font-size: 15px;
+  }
+  .project-detail .project-page-section,
+  .project-detail .project-page-cards {
+    margin-top: 40px;
+  }
+  .project-detail .project-page-section h2 {
+    font-size: 19px;
+  }
+  .project-detail .project-page-split-text p,
+  .project-detail .project-page-card p,
+  .project-detail .project-page-bullets {
+    font-size: 14.5px;
+  }
+  .project-detail .project-page-split {
+    gap: 24px;
+  }
+  .project-detail .project-page-card {
+    padding: 16px 18px 6px;
+  }
+  .project-detail .project-page-award-photo {
+    width: 80px;
+  }
+  .project-detail .project-page-related-photo {
+    width: 64px;
+    height: 64px;
   }
 }

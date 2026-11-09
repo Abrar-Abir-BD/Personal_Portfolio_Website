@@ -145,8 +145,6 @@ export type Project = {
   // and "none" hides it for a project with no code
   code: string;
   // The rest is only on the project's page; leave out what a project lacks.
-  // Key numbers, e.g. { "value": "~90%", "label": "Detection accuracy" }
-  highlights?: { value: string; label: string }[];
   // YouTube links (watch, youtu.be or shorts), embedded on the page
   videos?: string[];
   sections?: ProjectSection[];
@@ -155,6 +153,27 @@ export type Project = {
   awards?: string[];
   // Other projects to suggest at the end, by slug
   related?: string[];
+  // The photo with its parts labelled, shown under the title in place of the
+  // plain photo
+  anatomy?: ProjectAnatomy;
+};
+
+// One labelled part. x and y are where it is on the photo, in percent from
+// the photo's left and top edges.
+export type AnatomyLabel = {
+  name: string;
+  // A short line under the name ("" or left out shows none)
+  note?: string;
+  x: number;
+  y: number;
+  // "left" or "right": which side its label sits on (left out: the nearer one)
+  side?: string;
+};
+
+export type ProjectAnatomy = {
+  // Defaults to the project's own photo
+  image?: string;
+  labels: AnatomyLabel[];
 };
 
 export type Publication = {

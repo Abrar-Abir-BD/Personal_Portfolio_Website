@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import { GlassCard } from "./Glass";
+import ProjectAnatomy from "./ProjectAnatomy";
 import {
   awards as allAwards,
   landing,
@@ -143,6 +144,7 @@ const ProjectPage = ({ slug }: { slug: string }) => {
     .filter((p): p is (typeof projects)[number] => Boolean(p));
   // "none" in projects.json means the project has no code to show
   const hasCode = Boolean(project?.code) && project?.code !== "none";
+  const hasAnatomy = (project?.anatomy?.labels.length ?? 0) > 0;
   const hasDetails =
     (project?.description.length ?? 0) > 0 ||
     (project?.sections?.length ?? 0) > 0;
@@ -165,8 +167,9 @@ const ProjectPage = ({ slug }: { slug: string }) => {
         </main>
       ) : (
         <main className="project-page-main">
-          {/* Title and key numbers beside the floating photo */}
-          <div className="project-page-hero">
+          {/* Title beside the floating photo; or, when the project has a
+              labelled photo, the title alone with that photo below it */}
+          <div className={hasAnatomy ? "project-page-hero no-media" : "project-page-hero"}>
             <div className="project-page-intro">
               {metaOf([project.category, project.status, project.year]) && (
                 <p className="project-page-meta">
@@ -175,27 +178,29 @@ const ProjectPage = ({ slug }: { slug: string }) => {
               )}
               <h1>{project.title}</h1>
               <p className="project-page-summary">{project.summary}</p>
-              {project.highlights && project.highlights.length > 0 && (
-                <ul className="project-page-highlights">
-                  {project.highlights.map((item) => (
-                    <GlassCard as="li" key={item.label}>
-                      <strong>{item.value}</strong>
-                      <span>{item.label}</span>
-                    </GlassCard>
-                  ))}
-                </ul>
-              )}
             </div>
 
             {/* Floating photo on a soft glow, like the cards on the main page */}
-            <div className="project-page-media">
-              {project.image ? (
-                <img src={project.image} alt={project.title} />
-              ) : (
-                <span>Add image</span>
-              )}
-            </div>
+            {!hasAnatomy && (
+              <div className="project-page-media">
+                {project.image ? (
+                  <img src={project.image} alt={project.title} />
+                ) : (
+                  <span>Add image</span>
+                )}
+              </div>
+            )}
           </div>
+
+          {/* The photo with its parts labelled, in place of the plain one */}
+          {project.anatomy && hasAnatomy && (
+            <ProjectAnatomy
+              anatomy={project.anatomy}
+              image={project.anatomy.image || project.image}
+              title={project.title}
+              key={project.slug}
+            />
+          )}
 
           {/* The write-up, with the video beside it */}
           {(project.description.length > 0 || videos.length > 0) && (

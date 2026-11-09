@@ -532,6 +532,13 @@
   text-transform: uppercase;
   color: rgba(var(--line-rgb), 0.5);
 }
+/* Title and summary, a link to the project's page */
+.projects-open {
+  display: block;
+}
+.projects-open:hover {
+  color: inherit;
+}
 .projects-meta {
   font-size: 13px;
   letter-spacing: 1px;
