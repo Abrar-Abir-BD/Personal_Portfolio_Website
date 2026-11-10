@@ -12,6 +12,10 @@ vi.mock("gsap/ScrollSmoother", () => ({
 vi.mock("gsap/ScrollTrigger", () => ({
   ScrollTrigger: { create: () => ({ kill: vi.fn() }) },
 }));
+vi.mock("./utils/scrollDetents", () => ({
+  allowJump: vi.fn(),
+  createScrollDetents: () => () => {},
+}));
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 

@@ -5,6 +5,7 @@ import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { prefersReducedMotion } from "./utils/reducedMotion";
+import { allowJump, createScrollDetents } from "./utils/scrollDetents";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -45,6 +46,8 @@ export const scrollToSection = (selector: string, smooth = true) => {
     return Math.max(0, Math.min(y, max));
   };
   stopSectionJump();
+  // A jump goes where it was sent, past any section that holds the wheel
+  allowJump();
   if (!smoother || !smoother.smooth()) {
     const glide = smooth && !prefersReducedMotion();
     window.scrollTo({ top: target(), behavior: glide ? "smooth" : "auto" });
@@ -130,6 +133,7 @@ const Navbar = () => {
   }, [menuOpen]);
 
   useEffect(() => {
+    let removeDetents: (() => void) | undefined;
     if (!prefersReducedMotion()) {
       smoother = ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
@@ -143,6 +147,8 @@ const Navbar = () => {
 
       smoother.scrollTop(0);
       smoother.paused(true);
+      // About and What I Do each catch a scroll that would fly past them
+      removeDetents = createScrollDetents(smoother, SCROLL_SPEED);
     }
 
     // Scrolling by hand takes over from a nav jump in progress
@@ -166,6 +172,7 @@ const Navbar = () => {
 
     return () => {
       triggers.forEach((trigger) => trigger.kill());
+      removeDetents?.();
       window.removeEventListener("wheel", stopJump);
       window.removeEventListener("touchstart", stopJump);
     };
