@@ -233,87 +233,14 @@
 .project-page-section {
   margin-top: 80px;
 }
-.project-page-section h2,
-.project-page-card h2 {
+.project-page-section h2 {
   font-size: 26px;
   font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0px 0px 14px;
 }
-.project-page-split-text p,
-.project-page-card p,
-.project-page-bullets {
-  font-size: 16.5px;
-  font-weight: 300;
-  line-height: 1.7;
-}
-.project-page-split-text p,
-.project-page-card p {
-  margin: 0px 0px 14px;
-}
-.project-page-bullets {
-  margin: 0px 0px 14px;
-  padding-left: 20px;
-}
-.project-page-bullets li {
-  margin-bottom: 6px;
-}
-.project-page-bullets li::marker {
-  color: var(--accentColor);
-}
 
-/* Text on one side, its photos on the other; sides alternate */
-.project-page-split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: 56px;
-  align-items: center;
-}
-.project-page-split.flip {
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-}
-.project-page-split.flip .project-page-split-text {
-  order: 2;
-}
-.project-page-split .project-page-gallery {
-  margin-top: 0;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.project-page-split .project-page-gallery.count-1 {
-  grid-template-columns: 1fr;
-}
-.project-page-split .project-page-gallery.count-4 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-/* Three photos: one large on top, two below */
-.project-page-split .project-page-gallery.count-3 .project-page-photo:first-child {
-  grid-column: 1 / -1;
-}
-
-/* Text-only sections, side by side as cards */
-.project-page-cards {
-  margin-top: 80px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
-}
-.project-page-card {
-  padding: 26px 28px 14px;
-}
-.project-page-card h2 {
-  font-size: 21px;
-}
-/* A lone card spans the width, so its list flows into two columns */
-.project-page-cards.count-1 .project-page-bullets {
-  columns: 2;
-  column-gap: 48px;
-}
-.project-page-cards.count-1 .project-page-bullets li {
-  break-inside: avoid;
-}
-.project-page-cards.count-1 p {
-  max-width: 900px;
-}
+/* The sections themselves are laid out by ProjectFlow: ProjectFlow.css */
 
 /* Photos and figures; each opens full size */
 .project-page-gallery {
@@ -323,9 +250,6 @@
   margin-top: 18px;
   /* Photos of different heights sit at the top of their row */
   align-items: start;
-}
-.project-page-gallery.count-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .project-page-photo {
   display: flex;
@@ -518,12 +442,6 @@ a.project-page-award:hover {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 1100px) {
-  .project-page-gallery.count-4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media only screen and (max-width: 900px) {
   .project-page-main {
     padding-top: 30px;
@@ -547,14 +465,9 @@ a.project-page-award:hover {
     padding-top: 24px;
   }
   .project-page-hero,
-  .project-page-overview.has-video,
-  .project-page-split,
-  .project-page-split.flip {
+  .project-page-overview.has-video {
     grid-template-columns: 1fr;
     gap: 28px;
-  }
-  .project-page-split.flip .project-page-split-text {
-    order: 0;
   }
   .project-detail .project-page-main h1 {
     font-size: 32px;
@@ -572,32 +485,16 @@ a.project-page-award:hover {
   .project-page-overview {
     margin-top: 44px;
   }
-  .project-page-section,
-  .project-page-cards {
+  .project-page-section {
     margin-top: 52px;
   }
-  .project-page-section h2,
-  .project-page-card h2 {
+  .project-page-section h2 {
     font-size: 22px;
   }
-  .project-page-split-text p,
-  .project-page-card p,
-  .project-page-bullets {
-    font-size: 15.5px;
-  }
-  .project-page-cards {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .project-page-card {
-    padding: 20px 20px 8px;
-  }
-  .project-page-cards.count-1 .project-page-bullets,
   .project-page-overview:not(.has-video) .project-page-body {
     columns: 1;
   }
-  .project-page-gallery,
-  .project-page-gallery.count-4 {
+  .project-page-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
@@ -637,40 +534,12 @@ a.project-page-award:hover {
 .project-detail .project-page-overview:not(.has-video) .project-page-body {
   column-gap: 44px;
 }
-.project-detail .project-page-section,
-.project-detail .project-page-cards {
+.project-detail .project-page-section {
   margin-top: 52px;
 }
-.project-detail .project-page-section h2,
-.project-detail .project-page-card h2 {
+.project-detail .project-page-section h2 {
   font-size: 21px;
   margin-bottom: 10px;
-}
-.project-detail .project-page-card h2 {
-  font-size: 17px;
-}
-.project-detail .project-page-split-text p,
-.project-detail .project-page-card p,
-.project-detail .project-page-bullets {
-  font-size: 15px;
-  line-height: 1.65;
-}
-.project-detail .project-page-split-text p,
-.project-detail .project-page-card p,
-.project-detail .project-page-bullets {
-  margin-bottom: 10px;
-}
-.project-detail .project-page-bullets li {
-  margin-bottom: 4px;
-}
-.project-detail .project-page-split {
-  gap: 40px;
-}
-.project-detail .project-page-cards {
-  gap: 14px;
-}
-.project-detail .project-page-card {
-  padding: 20px 22px 10px;
 }
 .project-detail .project-page-gallery {
   gap: 12px;
@@ -726,23 +595,11 @@ a.project-page-award:hover {
   .project-detail .project-page-body p {
     font-size: 15px;
   }
-  .project-detail .project-page-section,
-  .project-detail .project-page-cards {
+  .project-detail .project-page-section {
     margin-top: 40px;
   }
   .project-detail .project-page-section h2 {
     font-size: 19px;
-  }
-  .project-detail .project-page-split-text p,
-  .project-detail .project-page-card p,
-  .project-detail .project-page-bullets {
-    font-size: 14.5px;
-  }
-  .project-detail .project-page-split {
-    gap: 24px;
-  }
-  .project-detail .project-page-card {
-    padding: 16px 18px 6px;
   }
   .project-detail .project-page-award-photo {
     width: 80px;

@@ -1,0 +1,202 @@
+/* ---- A project's write-up: every section, one under the other ----
+   Each section is a heading beside its points or photos; a section with
+   many photos puts them in a full-width row below its words. */
+.project-flow {
+  margin-top: 56px;
+}
+
+/* ================= The sections ================= */
+.flow-panel {
+  display: grid;
+  gap: 44px;
+  align-items: start;
+  padding: 44px 0px;
+}
+.flow-panel:first-child {
+  padding-top: 0;
+}
+.flow-panel + .flow-panel {
+  border-top: 1px solid rgba(var(--line-rgb), 0.1);
+}
+.flow-panel:last-child {
+  padding-bottom: 8px;
+}
+/* Sections ease in as they reach the screen */
+.flow-list.can-reveal .flow-panel > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.flow-list.can-reveal .flow-panel > :nth-child(2) {
+  transition-delay: 0.12s;
+}
+.flow-list.can-reveal .flow-panel.is-in > * {
+  opacity: 1;
+  transform: none;
+}
+.flow-panel.has-photos {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+}
+.flow-panel.has-points {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+.flow-panel.has-text {
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
+}
+.flow-panel.is-stacked {
+  gap: 22px;
+}
+.flow-panel.is-stacked .flow-lead {
+  max-width: 860px;
+}
+
+.flow-head {
+  margin-bottom: 14px;
+}
+.flow-count {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  color: var(--accentColor);
+  margin-bottom: 6px;
+}
+.project-detail .flow-head h2 {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+.flow-panel p {
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 1.7;
+  margin: 0px 0px 12px;
+}
+/* Paragraphs alone in the right-hand column read a little larger */
+.flow-panel.has-text .flow-side p {
+  font-size: 16.5px;
+}
+
+/* Bullets as tiles */
+.flow-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.flow-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 13px 16px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--line-rgb), 0.1);
+  border-left: 2px solid var(--accentColor);
+  background: rgba(var(--glass-rgb), 0.05);
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.flow-points strong {
+  font-size: 15px;
+  font-weight: 500;
+}
+/* An odd one out takes the full row */
+.flow-points li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+/* Beside photos: a single slim column */
+.flow-points.is-compact {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+.flow-points.is-compact li {
+  padding: 9px 14px 10px;
+  font-size: 14px;
+}
+.flow-panel.is-stacked .flow-points {
+  margin-top: 4px;
+}
+
+/* Photos: a justified layout. Each photo keeps its own shape (its ratio
+   comes from the page as --ar) and grows in proportion to it, so photos
+   sharing a row come out the same height, uncropped, with all four corners
+   rounded. --row-h sets roughly how tall a row is, and so how many fit. */
+.flow-panel .project-page-gallery:not(.project-page-phones) {
+  --row-h: 165px;
+  --max-h: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+}
+.flow-panel .project-page-gallery:not(.project-page-phones) .project-page-photo {
+  flex: var(--ar, 1.333) 1 calc(var(--ar, 1.333) * var(--row-h));
+  min-width: 0;
+  /* A photo left alone on its row doesn't balloon */
+  max-width: calc(var(--ar, 1.333) * var(--max-h));
+}
+.flow-panel .project-page-gallery:not(.project-page-phones) .project-page-photo-frame {
+  aspect-ratio: var(--ar, 1.333);
+}
+.flow-panel .project-page-gallery:not(.project-page-phones) .project-page-photo-frame img {
+  height: 100%;
+  object-fit: cover;
+}
+/* A wall of photos across the full width: about four to a row */
+.flow-panel.is-stacked .project-page-gallery:not(.project-page-phones) {
+  --row-h: 150px;
+  --max-h: 210px;
+}
+.flow-panel.is-stacked .project-page-gallery.project-page-phones {
+  margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+}
+
+/* ================= Narrower screens ================= */
+@media only screen and (max-width: 900px) {
+  .project-flow {
+    margin-top: 40px;
+  }
+  .flow-panel {
+    padding: 30px 0px;
+  }
+  .flow-panel,
+  .flow-panel.has-photos,
+  .flow-panel.has-points,
+  .flow-panel.has-text {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .project-detail .flow-head h2 {
+    font-size: 23px;
+  }
+  .flow-head {
+    margin-bottom: 10px;
+  }
+  .flow-panel p,
+  .flow-panel.has-text .flow-side p {
+    font-size: 15px;
+  }
+  .flow-panel .project-page-gallery:not(.project-page-phones),
+  .flow-panel.is-stacked .project-page-gallery:not(.project-page-phones) {
+    --row-h: 78px;
+    --max-h: 190px;
+    gap: 10px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .flow-points {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .flow-panel.is-stacked .project-page-gallery.project-page-phones {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

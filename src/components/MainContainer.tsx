@@ -1,7 +1,6 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import About from "./About";
 import Contact from "./Contact";
-import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar, { scrollToSection } from "./Navbar";
 import SocialIcons from "./SocialIcons";
@@ -52,7 +51,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
-      <Cursor />
       <Navbar />
       <SocialIcons />
       {isDesktopView && children}

@@ -11,6 +11,7 @@ import {
 } from "react";
 import "./App.css";
 import { LoadingProvider } from "./context/LoadingProvider";
+import Cursor from "./components/Cursor";
 import { onNavigate, parseRoute, setAway, SUBPAGE_ID } from "./router";
 
 const CharacterModel = lazy(() => import("./components/Character"));
@@ -95,6 +96,8 @@ const App = () => {
 
   return (
     <Suspense>
+      {/* One cursor for every page, above both the portfolio and subpages */}
+      <Cursor />
       {mainShown && main}
       {away && (
         // Keyed by address: each page starts fresh, at the top

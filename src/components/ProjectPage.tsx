@@ -9,12 +9,12 @@ import {
 import { FaGithub } from "react-icons/fa6";
 import { GlassCard } from "./Glass";
 import ProjectAnatomy from "./ProjectAnatomy";
+import ProjectFlow from "./ProjectFlow";
 import {
   awards as allAwards,
   landing,
   projects,
   type ProjectImage,
-  type ProjectSection,
 } from "../data/portfolioContent";
 import { subpageScroller } from "../router";
 import "./styles/ProjectPage.css";
@@ -30,48 +30,14 @@ const youTubeId = (url: string) =>
     /(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([A-Za-z0-9_-]{11})/
   )?.[1];
 
-// How the sections are laid out across the page's width:
-// - "split": text on one side, its photos on the other (sides alternate)
-// - "gallery": photos only, across the full width
-// - "cards": a run of text-only sections, side by side as cards
-type Block =
-  | { kind: "split"; section: ProjectSection; flip: boolean }
-  | { kind: "gallery"; section: ProjectSection }
-  | { kind: "cards"; sections: ProjectSection[] };
-
-const layOut = (sections: ProjectSection[]) => {
-  const blocks: Block[] = [];
-  let flip = false;
-  for (const section of sections) {
-    const hasImages = (section.images?.length ?? 0) > 0;
-    const hasText =
-      (section.paragraphs?.length ?? 0) + (section.bullets?.length ?? 0) > 0;
-    const last = blocks[blocks.length - 1];
-    if (!hasImages) {
-      if (last?.kind === "cards") last.sections.push(section);
-      else blocks.push({ kind: "cards", sections: [section] });
-    } else if (!hasText || section.phone) {
-      blocks.push({ kind: "gallery", section });
-    } else {
-      blocks.push({ kind: "split", section, flip });
-      flip = !flip;
-    }
-  }
-  return blocks;
+// Hands a loaded photo's real shape to its button as --ar, so the gallery can
+// size it without cropping or letterboxing it
+const fitPhoto = (img: HTMLImageElement) => {
+  if (!img.naturalWidth || !img.naturalHeight) return;
+  img
+    .closest<HTMLElement>(".project-page-photo")
+    ?.style.setProperty("--ar", (img.naturalWidth / img.naturalHeight).toFixed(4));
 };
-
-const SectionText = ({ section }: { section: ProjectSection }) => (
-  <>
-    {section.paragraphs?.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-    {section.bullets && section.bullets.length > 0 && (
-      <ul className="project-page-bullets">
-        {section.bullets.map((bullet, i) => (
-          <li key={i}>{bullet}</li>
-        ))}
-      </ul>
-    )}
-  </>
-);
 
 const ProjectPage = ({ slug }: { slug: string }) => {
   const project = projects.find((p) => p.slug === slug);
@@ -237,79 +203,50 @@ const ProjectPage = ({ slug }: { slug: string }) => {
             </section>
           )}
 
-          {layOut(project.sections ?? []).map((block) => {
-            if (block.kind === "cards") {
-              return (
-                <div
-                  className={`project-page-cards count-${Math.min(block.sections.length, 3)}`}
-                  key={block.sections[0].heading}
-                >
-                  {block.sections.map((section) => (
-                    <GlassCard
-                      as="article"
-                      className="project-page-card"
-                      key={section.heading}
-                    >
-                      <h2>{section.heading}</h2>
-                      <SectionText section={section} />
-                    </GlassCard>
-                  ))}
-                </div>
-              );
-            }
-            const { section } = block;
-            const images = section.images ?? [];
-            const gallery = (
-              <div
-                className={[
-                  "project-page-gallery",
-                  section.phone ? "project-page-phones" : "",
-                  `count-${Math.min(images.length, 4)}`,
-                ].join(" ")}
-              >
-                {images.map((image) => (
-                  <button
-                    type="button"
-                    className="project-page-photo"
-                    onClick={() => show(photos.indexOf(image))}
-                    data-cursor="disable"
-                    key={image.src}
+          {/* The sections, one under the other, with a pinned track of nodes */}
+          {(project.sections?.length ?? 0) > 0 && (
+            <ProjectFlow
+              sections={project.sections ?? []}
+              key={`flow-${project.slug}`}
+              renderGallery={(section) => {
+                const images = section.images ?? [];
+                return (
+                  <div
+                    className={
+                      section.phone
+                        ? "project-page-gallery project-page-phones"
+                        : "project-page-gallery"
+                    }
                   >
-                    <span className="project-page-photo-frame">
-                      <img src={image.src} alt={image.caption} loading="lazy" />
-                    </span>
-                    <span className="project-page-photo-caption">
-                      {image.caption}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            );
-            if (block.kind === "gallery") {
-              return (
-                <section className="project-page-section" key={section.heading}>
-                  <h2>{section.heading}</h2>
-                  {gallery}
-                </section>
-              );
-            }
-            return (
-              <section
-                className={
-                  block.flip
-                    ? "project-page-section project-page-split flip"
-                    : "project-page-section project-page-split"
-                }
-                key={section.heading}
-              >
-                <div className="project-page-split-text">
-                  <h2>{section.heading}</h2>
-                  <SectionText section={section} />
-                </div>
-                {gallery}
-              </section>
-            );
-          })}
+                    {images.map((image) => (
+                      <button
+                        type="button"
+                        className="project-page-photo"
+                        onClick={() => show(photos.indexOf(image))}
+                        data-cursor="disable"
+                        key={image.src}
+                      >
+                        <span className="project-page-photo-frame">
+                          <img
+                            src={image.src}
+                            alt={image.caption}
+                            loading="lazy"
+                            ref={(img) => {
+                              if (img?.complete) fitPhoto(img);
+                            }}
+                            onLoad={(e) => fitPhoto(e.currentTarget)}
+                          />
+                        </span>
+                        <span className="project-page-photo-caption">
+                          {image.caption}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                );
+              }}
+            />
+          )}
 
           {won.length > 0 && (
             <section className="project-page-section">

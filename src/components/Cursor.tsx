@@ -2,6 +2,10 @@ import { useEffect, useRef } from "react";
 import "./styles/Cursor.css";
 import gsap from "gsap";
 
+// The glowing dot that trails the mouse. Mounted once at the app's root so it
+// shows on every page (the portfolio and the pages opened over it), and it
+// watches hovers on the whole document, so elements that appear later, such
+// as a newly opened page's links, still change it through data-cursor.
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -44,33 +48,50 @@ const Cursor = () => {
       }
       if (!frame) frame = requestAnimationFrame(loop);
     };
-    document.addEventListener("mousemove", onMouseMove);
-    document.querySelectorAll("[data-cursor]").forEach((item) => {
-      const element = item as HTMLElement;
-      element.addEventListener("mouseover", (e: MouseEvent) => {
-        const target = e.currentTarget as HTMLElement;
-        const rect = target.getBoundingClientRect();
 
-        if (element.dataset.cursor === "icons") {
-          cursor.classList.add("cursor-icons");
-
-          gsap.to(cursor, { x: rect.left, y: rect.top, duration: 0.1 });
-          //   cursor.style.transform = `translate(${rect.left}px,${rect.top}px)`;
-          cursor.style.setProperty("--cursorH", `${rect.height}px`);
-          hover = true;
-        }
-        if (element.dataset.cursor === "disable") {
-          cursor.classList.add("cursor-disable");
-        }
-      });
-      element.addEventListener("mouseout", () => {
-        cursor.classList.remove("cursor-disable", "cursor-icons");
+    // The data-cursor element the mouse is over, if any
+    let current: HTMLElement | null = null;
+    const leave = () => {
+      cursor.classList.remove("cursor-disable", "cursor-icons");
+      current = null;
+      if (hover) {
         hover = false;
-      });
-    });
+        if (!frame) frame = requestAnimationFrame(loop);
+      }
+    };
+    const onMouseOver = (e: MouseEvent) => {
+      const element = (e.target as Element | null)?.closest<HTMLElement>(
+        "[data-cursor]"
+      );
+      if (element === current) return;
+      leave();
+      if (!element) return;
+      current = element;
+      if (element.dataset.cursor === "icons") {
+        const rect = element.getBoundingClientRect();
+        cursor.classList.add("cursor-icons");
+        gsap.to(cursor, { x: rect.left, y: rect.top, duration: 0.1 });
+        cursor.style.setProperty("--cursorH", `${rect.height}px`);
+        hover = true;
+      }
+      if (element.dataset.cursor === "disable") {
+        cursor.classList.add("cursor-disable");
+      }
+    };
+    // Off the window entirely, or onto something removed from the page
+    // (a page closing under the mouse): back to normal
+    const onMouseOut = (e: MouseEvent) => {
+      if (!e.relatedTarget) leave();
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseover", onMouseOver);
+    document.addEventListener("mouseout", onMouseOut);
     return () => {
       cancelAnimationFrame(frame);
       document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseout", onMouseOut);
     };
   }, []);
 
