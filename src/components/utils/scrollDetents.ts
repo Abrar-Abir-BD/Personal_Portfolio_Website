@@ -17,14 +17,14 @@ const SECTIONS = [".about-section", ".whatIDO"];
 // screen height of it...
 const NEAR = 0.08;
 // ...and the section as seen once it has rested there this long (ms)
-const DWELL = 350;
+const DWELL = 210;
 // A seen section holds again only after the page has moved this far from it
 const REARM = 0.45;
 // Once seen, the hold lets go at the first pause in the wheel this long (so
 // the tail of a trackpad fling can't carry the page on), or after PATIENCE
 // for a wheel that never pauses
-const QUIET = 120;
-const PATIENCE = 900;
+const QUIET = 72;
+const PATIENCE = 540;
 // A scroll counts as the visitor's while this soon after a wheel or key
 // event, or after another scroll that did: the browser spreads one wheel
 // notch or key press over many frames

@@ -115,12 +115,12 @@ test("flings back up rest on What I Do, then About, then reach the top", () => {
   expect(native).toBe(0);
 });
 
-test("a second flick while the page is still gliding in is held too", () => {
+test("a second flick moves on from About but still stops on What I Do", () => {
   fling(1500, 8);
   wait(500);
   fling(1500, 8);
   wait(2000);
-  expect(native).toBe(ABOUT);
+  expect(native).toBe(WHAT_I_DO);
 });
 
 test("a wheel that never pauses is held for a while, then let through", () => {
@@ -130,8 +130,8 @@ test("a wheel that never pauses is held for a while, then let through", () => {
     wait(16);
     if (native === ABOUT) heldFor += 16;
   }
-  expect(heldFor).toBeGreaterThan(1000);
-  expect(heldFor).toBeLessThan(2500);
+  expect(heldFor).toBeGreaterThan(600);
+  expect(heldFor).toBeLessThan(1500);
   expect(native).toBeGreaterThan(WHAT_I_DO);
 });
 
