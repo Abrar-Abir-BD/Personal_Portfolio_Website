@@ -11,7 +11,7 @@
 //   certificates.json  Certificates (main-page carousel and the /certificates page)
 //   media.json         Featured in Media (main-page row and the /media page)
 //   moments.json       Moments from Life
-//   contact.json       email, phone, GitHub, LinkedIn, YouTube (also used by the side icons)
+//   contact.json       personal and work email, phone, GitHub, LinkedIn, YouTube (also used by the side icons)
 // In the list files, add, remove or reorder items freely.
 // Leave `image` as "" to show the glass placeholder, or set it to a file in
 // /public/images (e.g. "/images/my-project.webp").
@@ -53,7 +53,9 @@ export type WhatIDoCard = {
 };
 
 export type Contact = {
+  // Personal: also the address behind the side icons and the Email links
   email: string;
+  workEmail: string;
   phone: string;
   github: string;
   linkedin: string;

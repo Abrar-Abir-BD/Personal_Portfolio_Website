@@ -11,10 +11,16 @@ const Contact = () => {
         </h2>
         <div className="contact-flex">
           <div className="contact-box">
-            <h4>Email</h4>
+            <h4>Personal Email</h4>
             <p>
               <a href={`mailto:${contact.email}`} data-cursor="disable">
                 {contact.email}
+              </a>
+            </p>
+            <h4>Work Email</h4>
+            <p>
+              <a href={`mailto:${contact.workEmail}`} data-cursor="disable">
+                {contact.workEmail}
               </a>
             </p>
             <h4>Phone</h4>
