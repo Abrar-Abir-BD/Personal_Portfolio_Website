@@ -2,6 +2,7 @@ import { FaEnvelope, FaGithub, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { contact } from "../data/portfolioContent";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const SocialIcons = () => {
   useEffect(() => {
@@ -57,7 +58,11 @@ const SocialIcons = () => {
     return () => cleanups.forEach((cleanup) => cleanup());
   }, []);
 
-  return (
+  // Straight into <body>, after the cursor: on hover the cursor becomes a pill
+  // behind the icons and they turn the background colour to stand out on it.
+  // Inside <main> (which its fade-in makes a layer of its own) they'd sit
+  // under the pill instead, and vanish into it
+  return createPortal(
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
@@ -81,7 +86,8 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

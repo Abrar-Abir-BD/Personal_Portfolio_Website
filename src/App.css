@@ -35,7 +35,9 @@
   overflow: hidden !important;
 }
 .subpage-open .main-body,
-.subpage-open .intro-veil {
+.subpage-open .intro-veil,
+/* The side social icons, which live outside .main-body (SocialIcons.tsx) */
+.subpage-open .icons-section {
   visibility: hidden;
   /* <main> transitions everything (index.css), which would keep it showing
      through the new page for a moment */
