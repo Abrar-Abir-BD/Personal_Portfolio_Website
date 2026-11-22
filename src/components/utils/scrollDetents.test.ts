@@ -63,13 +63,14 @@ afterEach(() => {
 });
 
 const scrolled = () => window.dispatchEvent(new Event("scroll"));
-// One wheel event and the scroll it causes, unless the page swallows it
-const wheel = (delta: number) => {
-  const event = new WheelEvent("wheel", { deltaY: delta, cancelable: true });
+// One wheel event and the scroll it causes, unless the page swallows it (it
+// can't when the browser sends it uncancelable, as mid-gesture on a trackpad)
+const wheel = (delta: number, cancelable = true) => {
+  const before = native;
+  const event = new WheelEvent("wheel", { deltaY: delta, cancelable });
   window.dispatchEvent(event);
-  if (event.defaultPrevented) return;
-  native = Math.max(0, native + delta);
-  scrolled();
+  if (!event.defaultPrevented) native = Math.max(0, native + delta);
+  if (native !== before) scrolled();
 };
 // Time passing, the page gliding after the window's position
 const wait = (ms: number) => {
@@ -123,16 +124,44 @@ test("a second flick moves on from About but still stops on What I Do", () => {
   expect(native).toBe(WHAT_I_DO);
 });
 
-test("a wheel that never pauses is held for a while, then let through", () => {
+// Holds a wheel that never pauses on About, and returns how long the page
+// sat there and how far each wheel event moved it on after
+const pressOnAbout = (cancelable: boolean) => {
   let heldFor = 0;
+  const steps: number[] = [];
   for (let t = 0; t < 8000; t += 16) {
-    wheel(40);
+    const before = native;
+    wheel(40, cancelable);
     wait(16);
     if (native === ABOUT) heldFor += 16;
+    else if (before >= ABOUT && native < WHAT_I_DO - 40) steps.push(native - before);
   }
-  expect(heldFor).toBeGreaterThan(600);
-  expect(heldFor).toBeLessThan(1500);
-  expect(native).toBeGreaterThan(WHAT_I_DO);
+  return { heldFor, steps };
+};
+
+for (const cancelable of [true, false]) {
+  test(`a wheel that never pauses is held, then eased off (${cancelable ? "cancelable" : "uncancelable"})`, () => {
+    const { heldFor, steps } = pressOnAbout(cancelable);
+    // Sits still while it settles, but not for long
+    expect(heldFor).toBeGreaterThan(250);
+    expect(heldFor).toBeLessThan(800);
+    // Then moves on a little at first, more each time, up to the wheel's
+    // own pace: no lurch from standing still to full speed
+    expect(steps[0]).toBeLessThan(10);
+    for (let i = 1; i < steps.length; i++) {
+      expect(steps[i]).toBeGreaterThanOrEqual(steps[i - 1] - 1);
+    }
+    expect(steps[steps.length - 1]).toBe(40);
+    // ...and What I Do still catches it
+    expect(native).toBeGreaterThan(WHAT_I_DO);
+  });
+}
+
+test("a wheel that pauses on the section after it settles goes on at full pace", () => {
+  fling(3000);
+  wait(2000);
+  wheel(100);
+  expect(native).toBe(ABOUT + 100);
 });
 
 test("a slow reader never has a notch of the wheel swallowed", () => {
